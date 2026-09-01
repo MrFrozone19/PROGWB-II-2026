@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Enlace B2B Local — Seguimiento de pedido</title>
+<style>
+  body { font-family: Arial, sans-serif; margin:0; background:#eef1f5; color:#333; }
+  header { background:#365F91; color:#fff; padding:14px 32px;
+           display:flex; justify-content:space-between; align-items:center; }
+  header h1 { margin:0; font-size:19px; }
+  .empresa { font-size:12.5px; text-align:right; color:#c9d8ea; }
+  .empresa a { color:#fff; font-size:12px; }
+  nav { background:#2c4a73; padding:9px 32px; }
+  nav a { color:#fff; text-decoration:none; margin-right:24px; font-size:13.5px; }
+  nav a.activo { font-weight:bold; border-bottom:2px solid #fff; padding-bottom:6px; }
+  main { padding:22px 32px; }
+  .titulo { display:flex; justify-content:space-between; align-items:flex-end;
+            margin-bottom:20px; }
+  h2 { font-size:19px; margin:0 0 3px 0; }
+  .sub { font-size:13px; color:#666; margin:0; }
+  .estado { background:#e8f3e9; color:#2e7d32; border:1px solid #a9d3ae;
+            border-radius:20px; padding:7px 18px; font-size:13.5px; font-weight:bold; }
+  .cuerpo { display:flex; gap:22px; align-items:flex-start; }
+  .izq { flex:2.4; }
+  .caja { background:#fff; border:1px solid #ccd3dc; border-radius:6px;
+          padding:20px; margin-bottom:16px; }
+  .caja h3 { margin:0 0 16px 0; font-size:15px;
+             border-bottom:1px solid #e6eaef; padding-bottom:8px; }
+  .paso { display:flex; gap:14px; padding-bottom:20px; position:relative; }
+  .paso:last-child { padding-bottom:0; }
+  .bolita { width:15px; height:15px; border-radius:50%; background:#dde2e8;
+            flex-shrink:0; margin-top:3px; border:2px solid #fff;
+            box-shadow:0 0 0 1px #ccd3dc; }
+  .paso.ok .bolita { background:#2e7d32; box-shadow:0 0 0 1px #2e7d32; }
+  .paso.act .bolita { background:#365F91; box-shadow:0 0 0 3px #cfe0f0; }
+  .linea-v { position:absolute; left:7px; top:20px; bottom:0; width:1px;
+             background:#dde2e8; }
+  .paso:last-child .linea-v { display:none; }
+  .paso .txt { font-size:13.5px; }
+  .paso .txt strong { display:block; }
+  .paso .txt span { color:#888; font-size:12.5px; }
+  .paso.pend .txt strong { color:#aaa; }
+  table { border-collapse:collapse; width:100%; }
+  th, td { border-bottom:1px solid #eef1f5; padding:10px 12px; font-size:13px;
+           text-align:left; }
+  th { background:#f2f5f9; font-size:12.5px; }
+  .imp { text-align:right; white-space:nowrap; }
+  .tot { background:#fafbfc; font-weight:bold; }
+  .der { flex:1; min-width:250px; }
+  .dcaja { background:#fff; border:1px solid #ccd3dc; border-radius:6px;
+           padding:18px; margin-bottom:16px; }
+  .dcaja h3 { margin:0 0 12px 0; font-size:15px; }
+  .dato { font-size:13px; margin:0 0 9px 0; }
+  .dato span { color:#888; display:block; font-size:12px; }
+  .dist { color:#2e7d32; font-weight:bold; }
+  .dcaja button { width:100%; background:#fff; color:#365F91;
+                  border:1px solid #365F91; padding:10px; border-radius:4px;
+                  font-size:13.5px; cursor:pointer; margin-top:6px; }
+  .dcaja .cancelar { color:#c0392b; border-color:#d9a5a0; }
+  .nota { font-size:12px; color:#666; margin-top:10px; line-height:1.5; }
+  footer { text-align:center; font-size:12px; color:#777; padding:20px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Enlace B2B Local</h1>
+  <div class="empresa">
+    Aceros del Norte S.A. de C.V.<br>
+    <a href="#">Cerrar sesión</a>
+  </div>
+</header>
+
+<nav>
+  <a href="#">Buscar insumos</a>
+  <a href="#">Mi carrito (0)</a>
+  <a href="#" class="activo">Mis pedidos</a>
+  <a href="#">Historial</a>
+  <a href="#">Mi empresa</a>
+</nav>
+
+<main>
+  <div class="titulo">
+    <div>
+      <h2>Pedido PED-2026-00418</h2>
+      <p class="sub">Generado el 25 de agosto de 2026, 10:42 h · Refacciones Industriales GM</p>
+    </div>
+    <div class="estado">En camino</div>
+  </div>
+
+  <div class="cuerpo">
+    <div class="izq">
+
+      <div class="caja">
+        <h3>Historial de estatus</h3>
+
+        <div class="paso ok">
+          <div class="linea-v"></div>
+          <div class="bolita"></div>
+          <div class="txt">
+            <strong>Pedido generado</strong>
+            <span>25/08/2026 10:42 h — Enviado al distribuidor</span>
+          </div>
+        </div>
+
+        <div class="paso ok">
+          <div class="linea-v"></div>
+          <div class="bolita"></div>
+          <div class="txt">
+            <strong>Aceptado por el distribuidor</strong>
+            <span>25/08/2026 11:05 h — Existencia confirmada</span>
+          </div>
+        </div>
+
+        <div class="paso ok">
+          <div class="linea-v"></div>
+          <div class="bolita"></div>
+          <div class="txt">
+            <strong>En preparación</strong>
+            <span>25/08/2026 11:30 h — Surtiendo en almacén</span>
+          </div>
+        </div>
+
+        <div class="paso act">
+          <div class="linea-v"></div>
+          <div class="bolita"></div>
+          <div class="txt">
+            <strong>En camino</strong>
+            <span>25/08/2026 13:15 h — Entrega estimada hoy antes de las 17:00 h</span>
+          </div>
+        </div>
+
+        <div class="paso pend">
+          <div class="bolita"></div>
+          <div class="txt">
+            <strong>Entregado</strong>
+            <span>Pendiente</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="caja">
+        <h3>Productos del pedido</h3>
+        <table>
+          <tr>
+            <th>Producto</th><th>Cantidad</th><th>Precio unitario</th><th class="imp">Importe</th>
+          </tr>
+          <tr>
+            <td>Rodamiento 6205-2RS sellado</td>
+            <td>40 pz</td>
+            <td>$185.00</td>
+            <td class="imp">$7,400.00</td>
+          </tr>
+          <tr>
+            <td>Chumacera UCP-205</td>
+            <td>6 pz</td>
+            <td>$310.00</td>
+            <td class="imp">$1,860.00</td>
+          </tr>
+          <tr class="tot">
+            <td colspan="3">Total del pedido</td>
+            <td class="imp">$9,260.00</td>
+          </tr>
+        </table>
+      </div>
+
+    </div>
+
+    <div class="der">
+      <div class="dcaja">
+        <h3>Distribuidor</h3>
+        <p class="dato"><strong>Refacciones Industriales GM</strong></p>
+        <p class="dato dist">A 2.4 km de tu empresa</p>
+        <p class="dato"><span>Contacto</span>Ing. Rubén Cavazos · 81 8345 2200</p>
+        <p class="dato"><span>Dirección</span>Av. Miguel Alemán 3400, Guadalupe, N.L.</p>
+      </div>
+
+      <div class="dcaja">
+        <h3>Entrega</h3>
+        <p class="dato"><span>Recibe</span>Sinuhé Martínez Hernández</p>
+        <p class="dato"><span>Dirección</span>Av. Manuel L. Barragán 1250, San Nicolás</p>
+        <p class="dato"><span>Método</span>Entrega a domicilio</p>
+      </div>
+
+      <div class="dcaja">
+        <h3>Acciones</h3>
+        <button type="button">Descargar comprobante</button>
+        <button type="button">Contactar al distribuidor</button>
+        <button type="button" class="cancelar">Cancelar pedido</button>
+        <p class="nota">
+          Un pedido solo puede cancelarse mientras no haya sido marcado como
+          entregado. Los pedidos cancelados no generan comisión.
+        </p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>Programación Web II — 053</footer>
+
+</body>
+</html>

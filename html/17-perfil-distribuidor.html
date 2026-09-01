@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Enlace B2B Local — Perfil del distribuidor</title>
+<style>
+  body { font-family: Arial, sans-serif; margin:0; background:#eef1f5; color:#333; }
+  header { background:#365F91; color:#fff; padding:14px 32px;
+           display:flex; justify-content:space-between; align-items:center; }
+  header h1 { margin:0; font-size:19px; }
+  .rol { font-size:11.5px; background:#2c4a73; padding:3px 10px;
+         border-radius:10px; margin-left:10px; }
+  .empresa { font-size:12.5px; text-align:right; color:#c9d8ea; }
+  .empresa a { color:#fff; font-size:12px; }
+  nav { background:#2c4a73; padding:9px 32px; }
+  nav a { color:#fff; text-decoration:none; margin-right:22px; font-size:13.5px; }
+  nav a.activo { font-weight:bold; border-bottom:2px solid #fff; padding-bottom:6px; }
+  main { padding:22px 32px; }
+  h2 { font-size:19px; margin:0 0 4px 0; }
+  .sub { font-size:13px; color:#666; margin:0 0 20px 0; }
+  .cuerpo { display:flex; gap:22px; align-items:flex-start; }
+  .izq { flex:2.2; }
+  .caja { background:#fff; border:1px solid #ccd3dc; border-radius:6px;
+          padding:20px; margin-bottom:16px; }
+  .caja h3 { margin:0 0 4px 0; font-size:15px; }
+  .caja .aviso-sec { font-size:12.5px; color:#777; margin:0 0 14px 0;
+                     border-bottom:1px solid #e6eaef; padding-bottom:10px; }
+  .par { display:flex; gap:18px; }
+  .par > div { flex:1; }
+  label { display:block; font-size:13px; margin-top:11px; }
+  input, select, textarea { width:100%; padding:8px; margin-top:4px;
+          box-sizing:border-box; border:1px solid #b9c2cd; border-radius:4px;
+          font-family:Arial, sans-serif; font-size:13.5px; }
+  textarea { height:62px; resize:vertical; }
+  .contador { font-size:11.5px; color:#999; margin-top:3px; }
+  .pago { display:flex; gap:20px; margin-top:10px; flex-wrap:wrap; }
+  .pago label { display:flex; align-items:center; gap:7px; margin:0;
+                font-size:13.5px; }
+  .pago input { width:auto; margin:0; }
+  .acciones { display:flex; gap:12px; margin-top:20px; }
+  button { background:#365F91; color:#fff; border:none; padding:11px 22px;
+           border-radius:4px; font-size:14px; cursor:pointer; }
+  .sec { background:#fff; color:#365F91; border:1px solid #365F91; }
+  .der { flex:1; min-width:252px; }
+  .dcaja { background:#fff; border:1px solid #ccd3dc; border-radius:6px;
+           padding:18px; margin-bottom:16px; }
+  .dcaja h3 { margin:0 0 12px 0; font-size:15px; }
+  .calif { text-align:center; padding:6px 0 10px 0; }
+  .calif .num { font-size:34px; color:#365F91; font-weight:bold; line-height:1; }
+  .calif .est { color:#e8a33d; font-size:17px; margin:6px 0 3px 0; }
+  .calif .cant { font-size:12px; color:#777; }
+  .previa { border:1px solid #dde2e8; border-radius:5px; padding:13px;
+            font-size:13px; }
+  .previa .n { font-weight:bold; font-size:14px; margin-bottom:4px; }
+  .previa .d { color:#2e7d32; font-size:12.5px; font-weight:bold; }
+  .previa .t { color:#666; font-size:12px; margin-top:5px; }
+  .previa .e { color:#e8a33d; font-size:12.5px; margin-top:4px; }
+  .nota { background:#eaf1f8; border:1px solid #b9cfe6; border-radius:5px;
+          padding:12px; font-size:12.5px; line-height:1.5; }
+  footer { text-align:center; font-size:12px; color:#777; padding:20px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Enlace B2B Local <span class="rol">Distribuidor</span></h1>
+  <div class="empresa">
+    Refacciones Industriales GM<br>
+    <a href="#">Cerrar sesión</a>
+  </div>
+</header>
+
+<nav>
+  <a href="#">Panel</a>
+  <a href="#">Mi catálogo</a>
+  <a href="#">Inventario</a>
+  <a href="#">Pedidos recibidos</a>
+  <a href="#">Entregas</a>
+  <a href="#">Ventas y comisiones</a>
+  <a href="#" class="activo">Mi empresa</a>
+</nav>
+
+<main>
+  <h2>Perfil del distribuidor</h2>
+  <p class="sub">Así te ven los compradores en los resultados de búsqueda. Los cambios se reflejan de inmediato.</p>
+
+  <div class="cuerpo">
+    <div class="izq">
+
+      <div class="caja">
+        <h3>Datos públicos</h3>
+        <p class="aviso-sec">Información visible para cualquier comprador dentro de la zona de cobertura.</p>
+        <div class="par">
+          <div>
+            <label>Razón social
+              <input type="text" value="Refacciones Industriales GM S.A. de C.V.">
+            </label>
+          </div>
+          <div>
+            <label>Giro
+              <select>
+                <option selected>Rodamientos y transmisión de potencia</option>
+                <option>Aceros y metales</option>
+                <option>Herramienta y consumibles</option>
+                <option>Seguridad industrial</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <label>Descripción breve
+          <textarea>Distribuidor de rodamientos, bandas, chumaceras y lubricantes industriales. Entrega el mismo día en el área metropolitana. 22 años de operación.</textarea>
+        </label>
+        <p class="contador">178 de 200 caracteres · Este texto aparece en tu tarjeta de resultado.</p>
+      </div>
+
+      <div class="caja">
+        <h3>Dirección de origen</h3>
+        <p class="aviso-sec">Punto desde el cual el sistema calcula la distancia hacia cada comprador. Es el dato que determina tu posición en los resultados.</p>
+        <label>Calle y número
+          <input type="text" value="Av. Miguel Alemán 3400">
+        </label>
+        <div class="par">
+          <div>
+            <label>Código postal
+              <input type="text" value="67130">
+            </label>
+          </div>
+          <div>
+            <label>Municipio
+              <input type="text" value="Guadalupe, N.L." readonly>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="caja">
+        <h3>Condiciones de operación</h3>
+        <p class="aviso-sec">Lo que el comprador ve antes de decidir la compra.</p>
+        <div class="par">
+          <div>
+            <label>Tiempo estimado de entrega
+              <select>
+                <option selected>Mismo día</option>
+                <option>24 horas</option>
+                <option>48 horas</option>
+                <option>3 a 5 días</option>
+              </select>
+            </label>
+          </div>
+          <div>
+            <label>Hora límite para entrega el mismo día
+              <input type="time" value="14:00">
+            </label>
+          </div>
+        </div>
+
+        <label style="margin-top:16px">Formas de pago aceptadas</label>
+        <div class="pago">
+          <label><input type="checkbox" checked> Transferencia</label>
+          <label><input type="checkbox" checked> Pago contra entrega</label>
+          <label><input type="checkbox"> Tarjeta de crédito</label>
+          <label><input type="checkbox" checked> Crédito a 30 días</label>
+        </div>
+
+        <div class="acciones">
+          <button type="button">Guardar cambios</button>
+          <button type="button" class="sec">Descartar</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="der">
+      <div class="dcaja">
+        <h3>Calificación promedio</h3>
+        <div class="calif">
+          <div class="num">4.3</div>
+          <div class="est">★★★★☆</div>
+          <div class="cant">28 calificaciones de compradores</div>
+        </div>
+        <div class="nota">
+          La calificación la otorgan los compradores al confirmar la recepción de
+          su pedido. No puede modificarse desde esta pantalla.
+        </div>
+      </div>
+
+      <div class="dcaja">
+        <h3>Vista previa</h3>
+        <p style="font-size:12px; color:#777; margin:0 0 10px 0;">
+          Así aparece tu empresa en los resultados de un comprador ubicado a 2.4 km.
+        </p>
+        <div class="previa">
+          <div class="n">Refacciones Industriales GM</div>
+          <div class="d">A 2.4 km — Guadalupe</div>
+          <div class="t">Entrega el mismo día · Transferencia, contra entrega, crédito 30 días</div>
+          <div class="e">★★★★☆ 4.3</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>Programación Web II — 053</footer>
+
+</body>
+</html>

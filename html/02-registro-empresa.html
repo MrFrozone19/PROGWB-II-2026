@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Enlace B2B Local — Registro de empresa</title>
+<style>
+  body { font-family: Arial, sans-serif; margin:0; background:#eef1f5; color:#333; }
+  header { background:#365F91; color:#fff; padding:16px 32px; }
+  header h1 { margin:0; font-size:20px; }
+  header p { margin:2px 0 0 0; font-size:13px; color:#c9d8ea; }
+  main { max-width:640px; margin:28px auto; background:#fff;
+         border:1px solid #ccd3dc; border-radius:6px; padding:26px; }
+  h2 { margin:0 0 4px 0; font-size:18px; }
+  .sub { font-size:13px; color:#666; margin:0 0 20px 0; }
+  fieldset { border:1px solid #dde2e8; border-radius:5px; padding:14px 16px 18px 16px;
+             margin:0 0 18px 0; }
+  legend { font-size:13px; color:#365F91; font-weight:bold; padding:0 6px; }
+  .fila { display:flex; gap:14px; }
+  .fila > div { flex:1; }
+  label { display:block; margin-top:12px; font-size:13.5px; }
+  input, select { width:100%; padding:8px; margin-top:4px; box-sizing:border-box;
+                  border:1px solid #b9c2cd; border-radius:4px; }
+  .ok { border-color:#2e7d32 !important; }
+  .msg-ok { color:#2e7d32; font-size:12.5px; margin-top:5px; }
+  .msg-error { color:#c0392b; font-size:12.5px; margin-top:5px; }
+  .nota { background:#eaf1f8; border:1px solid #b9cfe6; border-radius:4px;
+          padding:11px; font-size:12.5px; margin-top:4px; }
+  .acciones { display:flex; gap:12px; margin-top:22px; }
+  button { background:#365F91; color:#fff; border:none; padding:11px 20px;
+           border-radius:4px; font-size:14.5px; cursor:pointer; }
+  .cancelar { background:#fff; color:#365F91; border:1px solid #365F91; }
+  footer { text-align:center; font-size:12px; color:#777; padding:18px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Enlace B2B Local</h1>
+  <p>Marketplace Industrial Metropolitano</p>
+</header>
+
+<main>
+  <h2>Registro de empresa</h2>
+  <p class="sub">Solo empresas dentro del área metropolitana pueden operar en la plataforma.</p>
+
+  <fieldset>
+    <legend>Datos fiscales</legend>
+    <div class="fila">
+      <div>
+        <label>Razón social
+          <input type="text" value="Aceros del Norte S.A. de C.V.">
+        </label>
+      </div>
+      <div>
+        <label>RFC
+          <input type="text" value="ADN180423K21">
+        </label>
+      </div>
+    </div>
+    <label>Giro de la empresa
+      <select>
+        <option>Distribuidor de insumos industriales</option>
+        <option>Comprador / planta manufacturera</option>
+        <option>Ambos</option>
+      </select>
+    </label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Domicilio</legend>
+    <label>Calle y número
+      <input type="text" value="Av. Manuel L. Barragán 1250">
+    </label>
+    <div class="fila">
+      <div>
+        <label>Código postal
+          <input type="text" class="ok" value="66450">
+        </label>
+        <p class="msg-ok">Dentro del área de cobertura: San Nicolás de los Garza, N.L.</p>
+      </div>
+      <div>
+        <label>Municipio
+          <input type="text" value="San Nicolás de los Garza" readonly>
+        </label>
+      </div>
+    </div>
+    <div class="nota">
+      El domicilio determina la distancia con la que aparecerás en las búsquedas
+      de otras empresas. Captúralo con precisión.
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Contacto y acceso</legend>
+    <div class="fila">
+      <div>
+        <label>Nombre del responsable
+          <input type="text" value="Sinuhé Martínez Hernández">
+        </label>
+      </div>
+      <div>
+        <label>Teléfono
+          <input type="text" value="81 1234 5678">
+        </label>
+      </div>
+    </div>
+    <label>Correo de la empresa
+      <input type="email" value="compras@aceros-delnorte.mx">
+    </label>
+    <div class="fila">
+      <div>
+        <label>Contraseña
+          <input type="password" value="••••••••">
+        </label>
+      </div>
+      <div>
+        <label>Confirmar contraseña
+          <input type="password" value="••••••">
+        </label>
+        <p class="msg-error">Las contraseñas no coinciden.</p>
+      </div>
+    </div>
+  </fieldset>
+
+  <div class="acciones">
+    <button type="button">Enviar registro</button>
+    <button type="button" class="cancelar">Cancelar</button>
+  </div>
+</main>
+
+<footer>Programación Web II — 053</footer>
+
+</body>
+</html>

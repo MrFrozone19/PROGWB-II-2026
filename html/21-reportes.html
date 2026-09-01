@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Enlace B2B Local — Reportes</title>
+<style>
+  body { font-family: Arial, sans-serif; margin:0; background:#eef1f5; color:#333; }
+  header { background:#365F91; color:#fff; padding:14px 32px;
+           display:flex; justify-content:space-between; align-items:center; }
+  header h1 { margin:0; font-size:19px; }
+  .rol { font-size:11.5px; background:#8a2f2f; padding:3px 10px;
+         border-radius:10px; margin-left:10px; }
+  .empresa { font-size:12.5px; text-align:right; color:#c9d8ea; }
+  .empresa a { color:#fff; font-size:12px; }
+  nav { background:#2c4a73; padding:9px 32px; }
+  nav a { color:#fff; text-decoration:none; margin-right:22px; font-size:13.5px; }
+  nav a.activo { font-weight:bold; border-bottom:2px solid #fff; padding-bottom:6px; }
+  main { padding:22px 32px; }
+  h2 { font-size:19px; margin:0 0 4px 0; }
+  .sub { font-size:13px; color:#666; margin:0 0 18px 0; }
+  .panel { background:#fff; border:1px solid #ccd3dc; border-radius:6px;
+           padding:14px 16px; margin-bottom:20px; display:flex; gap:12px;
+           align-items:flex-end; flex-wrap:wrap; }
+  .panel div { flex:1; min-width:130px; }
+  .panel label { display:block; font-size:12px; color:#666; margin-bottom:4px; }
+  .panel input, .panel select { width:100%; padding:9px; box-sizing:border-box;
+           border:1px solid #b9c2cd; border-radius:4px; font-size:13px; }
+  .panel button { background:#365F91; color:#fff; border:none; padding:10px 24px;
+           border-radius:4px; cursor:pointer; font-size:14px; }
+  .panel .sec { background:#fff; color:#365F91; border:1px solid #365F91; }
+  .rejilla { display:flex; gap:18px; flex-wrap:wrap; }
+  .rep { background:#fff; border:1px solid #ccd3dc; border-radius:6px;
+         flex:1 1 46%; min-width:380px; overflow:hidden; margin-bottom:18px; }
+  .rcab { padding:14px 18px; border-bottom:1px solid #e6eaef;
+          display:flex; justify-content:space-between; align-items:center; }
+  .rcab h3 { margin:0; font-size:14.5px; }
+  .rcab .per { font-size:11.5px; color:#888; }
+  table { border-collapse:collapse; width:100%; }
+  th, td { border-bottom:1px solid #eef1f5; padding:9px 14px; font-size:12.5px;
+           text-align:left; }
+  th { background:#f7f9fb; font-size:11.5px; }
+  tr:last-child td { border-bottom:none; }
+  .num { text-align:right; white-space:nowrap; }
+  .tot { background:#fafbfc; font-weight:bold; }
+  .barras { padding:16px 18px; }
+  .fila-b { margin-bottom:11px; }
+  .fila-b:last-child { margin-bottom:0; }
+  .fila-b .et { display:flex; justify-content:space-between; font-size:12px;
+                margin-bottom:3px; }
+  .fila-b .pista { background:#eef1f5; border-radius:3px; height:15px; }
+  .fila-b .b { background:#365F91; height:15px; border-radius:3px; }
+  .fila-b .b.alt { background:#5b87bd; }
+  .dona { padding:16px 18px; display:flex; gap:20px; align-items:center; }
+  .dona .cifra { text-align:center; }
+  .dona .cifra .n { font-size:30px; font-weight:bold; color:#365F91; line-height:1; }
+  .dona .cifra .l { font-size:11.5px; color:#777; margin-top:4px; }
+  .dona .leyenda { flex:1; font-size:12.5px; }
+  .dona .leyenda div { display:flex; align-items:center; gap:8px;
+                       padding:5px 0; }
+  .pt { width:11px; height:11px; border-radius:2px; display:inline-block; }
+  footer { text-align:center; font-size:12px; color:#777; padding:20px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Enlace B2B Local <span class="rol">Administrador</span></h1>
+  <div class="empresa">
+    Operación de plataforma<br>
+    <a href="#">Cerrar sesión</a>
+  </div>
+</header>
+
+<nav>
+  <a href="#">Empresas por verificar</a>
+  <a href="#">Configuración de comisión</a>
+  <a href="#">Transacciones</a>
+  <a href="#" class="activo">Reportes</a>
+</nav>
+
+<main>
+  <h2>Reportes del sistema</h2>
+  <p class="sub">Todos los reportes se generan sobre el periodo seleccionado.</p>
+
+  <div class="panel">
+    <div>
+      <label>Desde</label>
+      <input type="date" value="2026-08-01">
+    </div>
+    <div>
+      <label>Hasta</label>
+      <input type="date" value="2026-08-25">
+    </div>
+    <div>
+      <label>Periodo rápido</label>
+      <select>
+        <option selected>Este mes</option>
+        <option>Mes anterior</option>
+        <option>Últimos 3 meses</option>
+        <option>Este año</option>
+      </select>
+    </div>
+    <div style="flex:0 0 auto">
+      <button type="button">Generar reporte</button>
+    </div>
+    <div style="flex:0 0 auto">
+      <button type="button" class="sec">Exportar todo</button>
+    </div>
+  </div>
+
+  <div class="rejilla">
+
+    <div class="rep">
+      <div class="rcab">
+        <h3>Ventas por distribuidor</h3>
+        <span class="per">01–25 ago 2026</span>
+      </div>
+      <table>
+        <tr>
+          <th>Distribuidor</th><th class="num">Pedidos</th><th class="num">Importe</th>
+        </tr>
+        <tr>
+          <td>Refacciones Industriales GM</td>
+          <td class="num">62</td>
+          <td class="num">$684,300</td>
+        </tr>
+        <tr>
+          <td>Aceros Monterrey Sur</td>
+          <td class="num">48</td>
+          <td class="num">$592,140</td>
+        </tr>
+        <tr>
+          <td>Seguridad Total del Norte</td>
+          <td class="num">55</td>
+          <td class="num">$438,700</td>
+        </tr>
+        <tr>
+          <td>Suministros Mecánicos Apodaca</td>
+          <td class="num">39</td>
+          <td class="num">$317,850</td>
+        </tr>
+        <tr>
+          <td>Soldaduras del Bajío MTY</td>
+          <td class="num">31</td>
+          <td class="num">$204,610</td>
+        </tr>
+        <tr class="tot">
+          <td>Total (18 distribuidores)</td>
+          <td class="num">318</td>
+          <td class="num">$2,846,300</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="rep">
+      <div class="rcab">
+        <h3>Productos más solicitados</h3>
+        <span class="per">Unidades vendidas</span>
+      </div>
+      <div class="barras">
+        <div class="fila-b">
+          <div class="et"><span>Rodamiento 6205-2RS</span><span>1,840 pz</span></div>
+          <div class="pista"><div class="b" style="width:100%"></div></div>
+        </div>
+        <div class="fila-b">
+          <div class="et"><span>Guantes de carnaza</span><span>1,520 pares</span></div>
+          <div class="pista"><div class="b" style="width:83%"></div></div>
+        </div>
+        <div class="fila-b">
+          <div class="et"><span>Electrodo 7018</span><span>1,190 kg</span></div>
+          <div class="pista"><div class="b" style="width:65%"></div></div>
+        </div>
+        <div class="fila-b">
+          <div class="et"><span>Solera de acero 1/2 × 2</span><span>870 tramos</span></div>
+          <div class="pista"><div class="b" style="width:47%"></div></div>
+        </div>
+        <div class="fila-b">
+          <div class="et"><span>Banda en V A-42</span><span>640 pz</span></div>
+          <div class="pista"><div class="b" style="width:35%"></div></div>
+        </div>
+        <div class="fila-b">
+          <div class="et"><span>Grasa para rodamiento</span><span>430 kg</span></div>
+          <div class="pista"><div class="b" style="width:23%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rep">
+      <div class="rcab">
+        <h3>Comisiones generadas</h3>
+        <span class="per">Retenido por la plataforma</span>
+      </div>
+      <table>
+        <tr>
+          <th>Distribuidor</th><th class="num">%</th>
+          <th class="num">Vendido</th><th class="num">Comisión</th>
+        </tr>
+        <tr>
+          <td>Refacciones Industriales GM</td>
+          <td class="num">5.0</td>
+          <td class="num">$684,300</td>
+          <td class="num">$34,215</td>
+        </tr>
+        <tr>
+          <td>Aceros Monterrey Sur</td>
+          <td class="num">2.5</td>
+          <td class="num">$592,140</td>
+          <td class="num">$14,803</td>
+        </tr>
+        <tr>
+          <td>Seguridad Total del Norte</td>
+          <td class="num">7.5</td>
+          <td class="num">$438,700</td>
+          <td class="num">$32,902</td>
+        </tr>
+        <tr>
+          <td>Suministros Mecánicos Apodaca</td>
+          <td class="num">5.0</td>
+          <td class="num">$317,850</td>
+          <td class="num">$15,892</td>
+        </tr>
+        <tr>
+          <td>Soldaduras del Bajío MTY</td>
+          <td class="num">6.0</td>
+          <td class="num">$204,610</td>
+          <td class="num">$12,276</td>
+        </tr>
+        <tr class="tot">
+          <td>Total del periodo</td>
+          <td class="num">—</td>
+          <td class="num">$2,846,300</td>
+          <td class="num">$142,315</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="rep">
+      <div class="rcab">
+        <h3>Empresas activas</h3>
+        <span class="per">Con y sin operación</span>
+      </div>
+      <div class="dona">
+        <div class="cifra">
+          <div class="n">74 %</div>
+          <div class="l">de las registradas<br>operaron en el mes</div>
+        </div>
+        <div class="leyenda">
+          <div><span class="pt" style="background:#365F91"></span> Compradoras con operación — 58</div>
+          <div><span class="pt" style="background:#5b87bd"></span> Distribuidoras con operación — 18</div>
+          <div><span class="pt" style="background:#c9d8ea"></span> Registradas sin operar — 27</div>
+          <div><span class="pt" style="background:#e8d190"></span> Pendientes de verificación — 6</div>
+        </div>
+      </div>
+      <table>
+        <tr>
+          <th>Categoría</th><th class="num">Empresas</th><th class="num">Operaciones</th>
+        </tr>
+        <tr>
+          <td>Compradoras activas</td>
+          <td class="num">58</td>
+          <td class="num">318</td>
+        </tr>
+        <tr>
+          <td>Distribuidoras activas</td>
+          <td class="num">18</td>
+          <td class="num">318</td>
+        </tr>
+        <tr>
+          <td>Registradas sin operar</td>
+          <td class="num">27</td>
+          <td class="num">0</td>
+        </tr>
+        <tr class="tot">
+          <td>Total registradas y verificadas</td>
+          <td class="num">103</td>
+          <td class="num">318</td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+</main>
+
+<footer>Programación Web II — 053</footer>
+
+</body>
+</html>

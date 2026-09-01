@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Enlace B2B Local — Pedidos recibidos</title>
+<style>
+  body { font-family: Arial, sans-serif; margin:0; background:#eef1f5; color:#333; }
+  header { background:#365F91; color:#fff; padding:14px 32px;
+           display:flex; justify-content:space-between; align-items:center; }
+  header h1 { margin:0; font-size:19px; }
+  .rol { font-size:11.5px; background:#2c4a73; padding:3px 10px;
+         border-radius:10px; margin-left:10px; }
+  .empresa { font-size:12.5px; text-align:right; color:#c9d8ea; }
+  .empresa a { color:#fff; font-size:12px; }
+  nav { background:#2c4a73; padding:9px 32px; }
+  nav a { color:#fff; text-decoration:none; margin-right:22px; font-size:13.5px; }
+  nav a.activo { font-weight:bold; border-bottom:2px solid #fff; padding-bottom:6px; }
+  main { padding:22px 32px; }
+  h2 { font-size:19px; margin:0 0 4px 0; }
+  .sub { font-size:13px; color:#666; margin:0 0 18px 0; }
+  .pestanas { display:flex; gap:6px; border-bottom:1px solid #ccd3dc;
+              margin-bottom:18px; }
+  .pest { padding:10px 18px; font-size:13.5px; background:#e4e9ef;
+          border:1px solid #ccd3dc; border-bottom:none; border-radius:5px 5px 0 0;
+          cursor:pointer; color:#555; }
+  .pest.act { background:#fff; color:#365F91; font-weight:bold;
+              position:relative; top:1px; }
+  .pest .n { background:#365F91; color:#fff; border-radius:9px;
+             font-size:11.5px; padding:1px 7px; margin-left:6px; }
+  .pedido { background:#fff; border:1px solid #ccd3dc; border-radius:6px;
+            margin-bottom:16px; overflow:hidden; }
+  .pedido.nuevo { border-left:4px solid #e8a33d; }
+  .pcab { padding:14px 18px; border-bottom:1px solid #e6eaef;
+          display:flex; justify-content:space-between; align-items:flex-start; }
+  .pcab h3 { margin:0 0 4px 0; font-size:15.5px; }
+  .pcab .meta { font-size:12.5px; color:#666; }
+  .pcab .dist { color:#2e7d32; font-weight:bold; }
+  .badge { display:inline-block; font-size:11.5px; padding:4px 11px;
+           border-radius:10px; white-space:nowrap; }
+  .b-nue { background:#fdf3d8; color:#8a6d1f; }
+  .b-pre { background:#e6eefa; color:#365F91; }
+  table { border-collapse:collapse; width:100%; }
+  th, td { border-bottom:1px solid #eef1f5; padding:10px 18px; font-size:13px;
+           text-align:left; }
+  th { background:#f7f9fb; font-size:12.5px; }
+  .imp { text-align:right; white-space:nowrap; }
+  .disp-ok { color:#2e7d32; font-size:12px; }
+  .disp-no { color:#c0392b; font-size:12px; font-weight:bold; }
+  .tot { background:#fafbfc; font-weight:bold; }
+  .entrega { padding:12px 18px; background:#f7f9fb; font-size:12.5px;
+             border-bottom:1px solid #e6eaef; line-height:1.6; }
+  .entrega strong { color:#333; }
+  .acciones { padding:14px 18px; display:flex; gap:10px; align-items:center; }
+  button { border:none; padding:10px 20px; border-radius:4px; font-size:13.5px;
+           cursor:pointer; }
+  .aceptar { background:#2e7d32; color:#fff; }
+  .rechazar { background:#fff; color:#c0392b; border:1px solid #d9a5a0; }
+  .ver { background:#fff; color:#365F91; border:1px solid #365F91; }
+  .sig { background:#365F91; color:#fff; }
+  .acciones .nota { font-size:12px; color:#777; margin-left:auto; }
+  .alerta { background:#fdf3d8; border-top:1px solid #e8d190; padding:11px 18px;
+            font-size:12.5px; }
+  footer { text-align:center; font-size:12px; color:#777; padding:20px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Enlace B2B Local <span class="rol">Distribuidor</span></h1>
+  <div class="empresa">
+    Refacciones Industriales GM<br>
+    <a href="#">Cerrar sesión</a>
+  </div>
+</header>
+
+<nav>
+  <a href="#">Panel</a>
+  <a href="#">Mi catálogo</a>
+  <a href="#">Inventario</a>
+  <a href="#" class="activo">Pedidos recibidos</a>
+  <a href="#">Entregas</a>
+  <a href="#">Ventas y comisiones</a>
+  <a href="#">Mi empresa</a>
+</nav>
+
+<main>
+  <h2>Pedidos recibidos</h2>
+  <p class="sub">Acepta o rechaza cada pedido. Al aceptar, la existencia se reserva automáticamente.</p>
+
+  <div class="pestanas">
+    <div class="pest act">Nuevos <span class="n">4</span></div>
+    <div class="pest">En preparación <span class="n">3</span></div>
+    <div class="pest">En camino <span class="n">2</span></div>
+    <div class="pest">Entregados</div>
+    <div class="pest">Rechazados</div>
+  </div>
+
+  <div class="pedido nuevo">
+    <div class="pcab">
+      <div>
+        <h3>PED-2026-00421 — Manufacturas del Golfo S.A.</h3>
+        <div class="meta">
+          Recibido hoy 13:48 h · <span class="dist">A 3.8 km — Escobedo</span> ·
+          Contacto: Lic. Andrea Sepúlveda · 81 8390 4411
+        </div>
+      </div>
+      <span class="badge b-nue">Nuevo</span>
+    </div>
+
+    <table>
+      <tr>
+        <th>Producto</th><th>Cantidad</th><th>Disponibilidad</th>
+        <th class="imp">Precio</th><th class="imp">Importe</th>
+      </tr>
+      <tr>
+        <td>Rodamiento 6205-2RS sellado</td>
+        <td>60 pz</td>
+        <td class="disp-ok">✓ 60 en existencia</td>
+        <td class="imp">$185.00</td>
+        <td class="imp">$11,100.00</td>
+      </tr>
+      <tr>
+        <td>Chumacera UCP-205</td>
+        <td>12 pz</td>
+        <td class="disp-no">✗ Solo 6 en existencia</td>
+        <td class="imp">$310.00</td>
+        <td class="imp">$3,720.00</td>
+      </tr>
+      <tr>
+        <td>Grasa para rodamiento 1 kg</td>
+        <td>8 kg</td>
+        <td class="disp-ok">✓ 8 en existencia</td>
+        <td class="imp">$188.00</td>
+        <td class="imp">$1,504.00</td>
+      </tr>
+      <tr>
+        <td>Retén 25×52×7</td>
+        <td>20 pz</td>
+        <td class="disp-no">✗ Sin existencia</td>
+        <td class="imp">$64.00</td>
+        <td class="imp">$1,280.00</td>
+      </tr>
+      <tr>
+        <td>Banda en V A-42</td>
+        <td>14 pz</td>
+        <td class="disp-ok">✓ 80 en existencia</td>
+        <td class="imp">$95.00</td>
+        <td class="imp">$1,330.00</td>
+      </tr>
+      <tr class="tot">
+        <td colspan="4">Total del pedido</td>
+        <td class="imp">$18,934.00</td>
+      </tr>
+    </table>
+
+    <div class="entrega">
+      <strong>Entrega:</strong> a domicilio — Parque Industrial Escobedo, Nave 14,
+      Gral. Escobedo, N.L. · C.P. 66050<br>
+      <strong>Recibe:</strong> Almacén general, de 7:00 a 16:00 h ·
+      <strong>Referencias:</strong> entrada por caseta poniente, registrar unidad.
+    </div>
+
+    <div class="alerta">
+      <strong>No puedes surtir 2 de los 5 productos completos.</strong> Puedes aceptar
+      el pedido parcialmente, ajustando las cantidades, o rechazarlo indicando el motivo.
+    </div>
+
+    <div class="acciones">
+      <button class="aceptar" type="button">Aceptar pedido</button>
+      <button class="ver" type="button">Aceptar con cantidades ajustadas</button>
+      <button class="rechazar" type="button">Rechazar</button>
+      <span class="nota">Un pedido sin respuesta en 4 horas se marca como no atendido.</span>
+    </div>
+  </div>
+
+  <div class="pedido nuevo">
+    <div class="pcab">
+      <div>
+        <h3>PED-2026-00420 — Talleres Unidos MTY</h3>
+        <div class="meta">
+          Recibido hoy 12:20 h · <span class="dist">A 6.1 km — Monterrey</span> ·
+          Contacto: Ing. Omar Villalobos · 81 8112 7788
+        </div>
+      </div>
+      <span class="badge b-nue">Nuevo</span>
+    </div>
+
+    <table>
+      <tr>
+        <th>Producto</th><th>Cantidad</th><th>Disponibilidad</th>
+        <th class="imp">Precio</th><th class="imp">Importe</th>
+      </tr>
+      <tr>
+        <td>Rodamiento 6205-2RS sellado</td>
+        <td>16 pz</td>
+        <td class="disp-ok">✓ 60 en existencia</td>
+        <td class="imp">$185.00</td>
+        <td class="imp">$2,960.00</td>
+      </tr>
+      <tr>
+        <td>Banda en V A-42</td>
+        <td>14 pz</td>
+        <td class="disp-ok">✓ 80 en existencia</td>
+        <td class="imp">$95.00</td>
+        <td class="imp">$1,330.00</td>
+      </tr>
+      <tr class="tot">
+        <td colspan="4">Total del pedido</td>
+        <td class="imp">$4,290.00</td>
+      </tr>
+    </table>
+
+    <div class="entrega">
+      <strong>Entrega:</strong> recolección en sucursal · <strong>Recoge:</strong>
+      Ing. Omar Villalobos, hoy después de las 16:00 h.
+    </div>
+
+    <div class="acciones">
+      <button class="aceptar" type="button">Aceptar pedido</button>
+      <button class="rechazar" type="button">Rechazar</button>
+      <span class="nota">Existencia suficiente para surtir completo.</span>
+    </div>
+  </div>
+</main>
+
+<footer>Programación Web II — 053</footer>
+
+</body>
+</html>

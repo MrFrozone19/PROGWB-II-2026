@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Enlace B2B Local — Supervisión de transacciones</title>
+<style>
+  body { font-family: Arial, sans-serif; margin:0; background:#eef1f5; color:#333; }
+  header { background:#365F91; color:#fff; padding:14px 32px;
+           display:flex; justify-content:space-between; align-items:center; }
+  header h1 { margin:0; font-size:19px; }
+  .rol { font-size:11.5px; background:#8a2f2f; padding:3px 10px;
+         border-radius:10px; margin-left:10px; }
+  .empresa { font-size:12.5px; text-align:right; color:#c9d8ea; }
+  .empresa a { color:#fff; font-size:12px; }
+  nav { background:#2c4a73; padding:9px 32px; }
+  nav a { color:#fff; text-decoration:none; margin-right:22px; font-size:13.5px; }
+  nav a.activo { font-weight:bold; border-bottom:2px solid #fff; padding-bottom:6px; }
+  main { padding:22px 32px; }
+  h2 { font-size:19px; margin:0 0 4px 0; }
+  .sub { font-size:13px; color:#666; margin:0 0 18px 0; }
+  .tarjetas { display:flex; gap:14px; margin-bottom:18px; }
+  .kpi { background:#fff; border:1px solid #ccd3dc; border-radius:6px;
+         padding:14px 18px; flex:1; }
+  .kpi span { display:block; font-size:12px; color:#777; margin-bottom:5px; }
+  .kpi strong { font-size:19px; color:#365F91; }
+  .kpi.com strong { color:#8a6d1f; }
+  .kpi.con strong { color:#c0392b; }
+  .filtros { background:#fff; border:1px solid #ccd3dc; border-radius:6px;
+             padding:13px 16px; margin-bottom:16px; display:flex; gap:12px;
+             align-items:flex-end; flex-wrap:wrap; }
+  .filtros div { flex:1; min-width:120px; }
+  .filtros label { display:block; font-size:12px; color:#666; margin-bottom:4px; }
+  .filtros input, .filtros select { width:100%; padding:8px; box-sizing:border-box;
+             border:1px solid #b9c2cd; border-radius:4px; font-size:13px; }
+  .filtros button { background:#365F91; color:#fff; border:none; padding:9px 20px;
+             border-radius:4px; cursor:pointer; font-size:13.5px; }
+  .cuerpo { display:flex; gap:20px; align-items:flex-start; }
+  .tabla { flex:1.6; background:#fff; border:1px solid #ccd3dc;
+           border-radius:6px; overflow:hidden; }
+  .cab { padding:13px 16px; border-bottom:1px solid #e6eaef; }
+  .cab h3 { margin:0; font-size:15px; }
+  table { border-collapse:collapse; width:100%; }
+  th, td { border-bottom:1px solid #eef1f5; padding:10px 12px; font-size:12px;
+           text-align:left; vertical-align:middle; }
+  th { background:#f7f9fb; font-size:11.5px; }
+  tr:last-child td { border-bottom:none; }
+  tr.sel { background:#f4f8fc; }
+  tr.conflicto { background:#fdf6f5; }
+  .folio { color:#365F91; font-weight:bold; text-decoration:none; }
+  .imp { text-align:right; white-space:nowrap; }
+  .com { text-align:right; white-space:nowrap; color:#8a6d1f; }
+  .badge { display:inline-block; font-size:10.5px; padding:3px 8px;
+           border-radius:10px; white-space:nowrap; }
+  .b-ent { background:#e8f3e9; color:#2e7d32; }
+  .b-cam { background:#e6eefa; color:#365F91; }
+  .b-pen { background:#fdf3d8; color:#8a6d1f; }
+  .b-can { background:#f7e7e5; color:#c0392b; }
+  .b-rec { background:#f7e7e5; color:#c0392b; }
+  .flag { color:#c0392b; font-weight:bold; font-size:13px; }
+  .pie-tabla { background:#fafbfc; border-top:1px solid #dde2e8; padding:11px 14px;
+               display:flex; justify-content:space-between; align-items:center;
+               font-size:12.5px; color:#666; }
+  .pag a { color:#365F91; text-decoration:none; margin-left:9px; }
+  .pag .act { font-weight:bold; }
+  .detalle { flex:1; background:#fff; border:1px solid #ccd3dc;
+             border-radius:6px; overflow:hidden; }
+  .dcab { background:#f7f9fb; padding:14px 18px; border-bottom:1px solid #e6eaef; }
+  .dcab h3 { margin:0 0 3px 0; font-size:15.5px; }
+  .dcab .m { font-size:12px; color:#666; }
+  .grupo { padding:14px 18px; border-bottom:1px solid #eef1f5; }
+  .grupo h4 { margin:0 0 10px 0; font-size:12px; color:#365F91;
+              text-transform:uppercase; letter-spacing:.4px; }
+  .dato { font-size:12.5px; margin:0 0 7px 0; }
+  .dato span { color:#888; display:block; font-size:11.5px; }
+  .art { font-size:12.5px; padding:6px 0; border-bottom:1px solid #f4f6f8;
+         display:flex; justify-content:space-between; }
+  .art:last-child { border-bottom:none; }
+  .bit { font-size:12px; padding:5px 0 5px 18px; position:relative; color:#555; }
+  .bit::before { content:"•"; position:absolute; left:3px; color:#365F91;
+                 font-size:15px; line-height:1; }
+  .totcom { background:#fdf3d8; border:1px solid #e8d190; border-radius:4px;
+            padding:10px 12px; font-size:12.5px; }
+  footer { text-align:center; font-size:12px; color:#777; padding:20px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Enlace B2B Local <span class="rol">Administrador</span></h1>
+  <div class="empresa">
+    Operación de plataforma<br>
+    <a href="#">Cerrar sesión</a>
+  </div>
+</header>
+
+<nav>
+  <a href="#">Empresas por verificar</a>
+  <a href="#">Configuración de comisión</a>
+  <a href="#" class="activo">Transacciones</a>
+  <a href="#">Reportes</a>
+</nav>
+
+<main>
+  <h2>Supervisión de transacciones</h2>
+  <p class="sub">Toda la actividad de compra y venta de la plataforma, sin importar el comprador o distribuidor involucrado.</p>
+
+  <div class="tarjetas">
+    <div class="kpi"><span>Total transaccionado</span><strong>$2,846,300</strong></div>
+    <div class="kpi"><span>Operaciones</span><strong>318</strong></div>
+    <div class="kpi com"><span>Comisión generada</span><strong>$142,315</strong></div>
+    <div class="kpi con"><span>Operaciones en conflicto</span><strong>11</strong></div>
+  </div>
+
+  <div class="filtros">
+    <div>
+      <label>Desde</label>
+      <input type="date" value="2026-08-01">
+    </div>
+    <div>
+      <label>Hasta</label>
+      <input type="date" value="2026-08-25">
+    </div>
+    <div>
+      <label>Estatus</label>
+      <select>
+        <option selected>Todos</option>
+        <option>Entregado</option>
+        <option>En camino</option>
+        <option>Pendiente</option>
+        <option>Cancelado</option>
+        <option>Rechazado</option>
+      </select>
+    </div>
+    <div>
+      <label>Empresa</label>
+      <select>
+        <option selected>Todas</option>
+        <option>Refacciones Industriales GM</option>
+        <option>Aceros del Norte</option>
+        <option>Seguridad Total del Norte</option>
+      </select>
+    </div>
+    <div style="flex:0 0 auto">
+      <button type="button">Filtrar</button>
+    </div>
+  </div>
+
+  <div class="cuerpo">
+    <div class="tabla">
+      <div class="cab"><h3>Transacciones del periodo</h3></div>
+      <table>
+        <tr>
+          <th></th><th>Folio</th><th>Fecha</th><th>Comprador</th><th>Distribuidor</th>
+          <th class="imp">Importe</th><th class="com">Comisión</th><th>Estatus</th>
+        </tr>
+        <tr class="sel">
+          <td></td>
+          <td><a href="#" class="folio">PED-2026-00418</a></td>
+          <td>25/08</td>
+          <td>Aceros del Norte</td>
+          <td>Refacciones Ind. GM</td>
+          <td class="imp">$9,260.00</td>
+          <td class="com">$463.00</td>
+          <td><span class="badge b-cam">En camino</span></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><a href="#" class="folio">PED-2026-00417</a></td>
+          <td>25/08</td>
+          <td>Aceros del Norte</td>
+          <td>Seguridad Total</td>
+          <td class="imp">$23,040.00</td>
+          <td class="com">$1,728.00</td>
+          <td><span class="badge b-pen">Pendiente</span></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><a href="#" class="folio">PED-2026-00415</a></td>
+          <td>25/08</td>
+          <td>Plásticos Regios</td>
+          <td>Refacciones Ind. GM</td>
+          <td class="imp">$26,700.00</td>
+          <td class="com">$1,335.00</td>
+          <td><span class="badge b-cam">En camino</span></td>
+        </tr>
+        <tr class="conflicto">
+          <td class="flag">⚑</td>
+          <td><a href="#" class="folio">PED-2026-00412</a></td>
+          <td>24/08</td>
+          <td>Talleres Unidos MTY</td>
+          <td>Suministros Apodaca</td>
+          <td class="imp">$6,340.00</td>
+          <td class="com">—</td>
+          <td><span class="badge b-rec">Rechazado</span></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><a href="#" class="folio">PED-2026-00409</a></td>
+          <td>24/08</td>
+          <td>Manufacturas Golfo</td>
+          <td>Refacciones Ind. GM</td>
+          <td class="imp">$14,120.00</td>
+          <td class="com">$706.00</td>
+          <td><span class="badge b-ent">Entregado</span></td>
+        </tr>
+        <tr class="conflicto">
+          <td class="flag">⚑</td>
+          <td><a href="#" class="folio">PED-2026-00405</a></td>
+          <td>23/08</td>
+          <td>Herrería El Roble</td>
+          <td>Soldaduras Bajío</td>
+          <td class="imp">$7,850.00</td>
+          <td class="com">—</td>
+          <td><span class="badge b-can">Cancelado</span></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><a href="#" class="folio">PED-2026-00402</a></td>
+          <td>22/08</td>
+          <td>Aceros del Norte</td>
+          <td>Aceros MTY Sur</td>
+          <td class="imp">$54,300.00</td>
+          <td class="com">$1,357.50</td>
+          <td><span class="badge b-ent">Entregado</span></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><a href="#" class="folio">PED-2026-00398</a></td>
+          <td>20/08</td>
+          <td>Inyección Reyes</td>
+          <td>Refacciones Ind. GM</td>
+          <td class="imp">$12,780.00</td>
+          <td class="com">$639.00</td>
+          <td><span class="badge b-ent">Entregado</span></td>
+        </tr>
+      </table>
+      <div class="pie-tabla">
+        <span>Mostrando 8 de 318 operaciones · <span class="flag">⚑</span> marca operación en conflicto</span>
+        <span class="pag">
+          <a href="#" class="act">1</a>
+          <a href="#">2</a>
+          <a href="#">3</a>
+          <a href="#">Siguiente ›</a>
+        </span>
+      </div>
+    </div>
+
+    <div class="detalle">
+      <div class="dcab">
+        <h3>PED-2026-00418</h3>
+        <div class="m">Generado hoy 10:42 h · En camino</div>
+      </div>
+
+      <div class="grupo">
+        <h4>Partes</h4>
+        <p class="dato"><span>Comprador</span>Aceros del Norte S.A. de C.V. — San Nicolás</p>
+        <p class="dato"><span>Distribuidor</span>Refacciones Industriales GM — Guadalupe</p>
+        <p class="dato"><span>Distancia</span>2.4 km</p>
+      </div>
+
+      <div class="grupo">
+        <h4>Artículos</h4>
+        <div class="art"><span>Rodamiento 6205-2RS × 40</span><span>$7,400.00</span></div>
+        <div class="art"><span>Chumacera UCP-205 × 6</span><span>$1,860.00</span></div>
+        <div class="art"><strong>Total</strong><strong>$9,260.00</strong></div>
+      </div>
+
+      <div class="grupo">
+        <h4>Comisión</h4>
+        <div class="totcom">
+          Porcentaje congelado al emitirse: <strong>5.0 %</strong><br>
+          Importe a retener: <strong>$463.00</strong><br>
+          Se aplicará al alcanzar estatus entregado.
+        </div>
+      </div>
+
+      <div class="grupo">
+        <h4>Bitácora de estatus</h4>
+        <div class="bit">Generado — hoy 10:42 h</div>
+        <div class="bit">Aceptado por el distribuidor — 11:05 h</div>
+        <div class="bit">En preparación — 11:30 h</div>
+        <div class="bit">En camino — 13:15 h</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>Programación Web II — 053</footer>
+
+</body>
+</html>

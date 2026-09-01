@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Enlace B2B Local — Entregas</title>
+<style>
+  body { font-family: Arial, sans-serif; margin:0; background:#eef1f5; color:#333; }
+  header { background:#365F91; color:#fff; padding:14px 32px;
+           display:flex; justify-content:space-between; align-items:center; }
+  header h1 { margin:0; font-size:19px; }
+  .rol { font-size:11.5px; background:#2c4a73; padding:3px 10px;
+         border-radius:10px; margin-left:10px; }
+  .empresa { font-size:12.5px; text-align:right; color:#c9d8ea; }
+  .empresa a { color:#fff; font-size:12px; }
+  nav { background:#2c4a73; padding:9px 32px; }
+  nav a { color:#fff; text-decoration:none; margin-right:22px; font-size:13.5px; }
+  nav a.activo { font-weight:bold; border-bottom:2px solid #fff; padding-bottom:6px; }
+  main { padding:22px 32px; }
+  h2 { font-size:19px; margin:0 0 4px 0; }
+  .sub { font-size:13px; color:#666; margin:0 0 20px 0; }
+  .cuerpo { display:flex; gap:22px; align-items:flex-start; }
+  .izq { flex:2.4; }
+  .pedido { background:#fff; border:1px solid #ccd3dc; border-radius:6px;
+            margin-bottom:14px; overflow:hidden; }
+  .pcab { padding:13px 16px; border-bottom:1px solid #e6eaef;
+          display:flex; justify-content:space-between; align-items:flex-start; }
+  .pcab h3 { margin:0 0 3px 0; font-size:14.5px; }
+  .pcab .meta { font-size:12px; color:#666; }
+  .pcab .dist { color:#2e7d32; font-weight:bold; }
+  .badge { display:inline-block; font-size:11.5px; padding:4px 11px;
+           border-radius:10px; white-space:nowrap; }
+  .b-pre { background:#e6eefa; color:#365F91; }
+  .b-cam { background:#e6f0fa; color:#2c4a73; }
+  .b-ent { background:#e8f3e9; color:#2e7d32; }
+  .campos { padding:14px 16px; display:flex; gap:16px; align-items:flex-end;
+            flex-wrap:wrap; }
+  .campos div { flex:1; min-width:150px; }
+  .campos label { display:block; font-size:12px; color:#666; margin-bottom:4px; }
+  .campos select, .campos input { width:100%; padding:8px; box-sizing:border-box;
+            border:1px solid #b9c2cd; border-radius:4px; font-size:13px;
+            font-family:Arial, sans-serif; }
+  .campos select.cambiada { border-color:#365F91; font-weight:bold;
+            background:#f4f8fc; }
+  .campos button { background:#365F91; color:#fff; border:none; padding:9px 18px;
+            border-radius:4px; font-size:13px; cursor:pointer; }
+  .campos button:disabled { background:#ccc; cursor:default; }
+  .nota-fila { padding:0 16px 14px 16px; }
+  .nota-fila label { display:block; font-size:12px; color:#666; margin-bottom:4px; }
+  .nota-fila textarea { width:100%; box-sizing:border-box; padding:8px;
+            border:1px solid #b9c2cd; border-radius:4px; font-size:13px;
+            font-family:Arial, sans-serif; height:50px; resize:vertical; }
+  .bitacora { background:#f7f9fb; border-top:1px solid #e6eaef;
+              padding:11px 16px; font-size:12px; color:#666; line-height:1.7; }
+  .bitacora strong { color:#333; }
+  .der { flex:1; min-width:245px; }
+  .dcaja { background:#fff; border:1px solid #ccd3dc; border-radius:6px;
+           padding:18px; margin-bottom:16px; }
+  .dcaja h3 { margin:0 0 12px 0; font-size:15px; }
+  .fila-b { display:flex; justify-content:space-between; font-size:13px;
+            padding:8px 0; border-bottom:1px solid #f0f3f6; }
+  .fila-b:last-child { border-bottom:none; }
+  .paso { font-size:12.5px; padding:7px 0 7px 20px; position:relative;
+          border-bottom:1px solid #f0f3f6; }
+  .paso:last-child { border-bottom:none; }
+  .paso::before { content:"•"; position:absolute; left:4px; color:#365F91;
+                  font-size:16px; line-height:1; }
+  .nota { background:#eaf1f8; border:1px solid #b9cfe6; border-radius:5px;
+          padding:12px; font-size:12.5px; line-height:1.5; }
+  footer { text-align:center; font-size:12px; color:#777; padding:20px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Enlace B2B Local <span class="rol">Distribuidor</span></h1>
+  <div class="empresa">
+    Refacciones Industriales GM<br>
+    <a href="#">Cerrar sesión</a>
+  </div>
+</header>
+
+<nav>
+  <a href="#">Panel</a>
+  <a href="#">Mi catálogo</a>
+  <a href="#">Inventario</a>
+  <a href="#">Pedidos recibidos</a>
+  <a href="#" class="activo">Entregas</a>
+  <a href="#">Ventas y comisiones</a>
+  <a href="#">Mi empresa</a>
+</nav>
+
+<main>
+  <h2>Actualización de estatus de entrega</h2>
+  <p class="sub">Cada cambio queda registrado con fecha y hora, y el comprador lo ve al instante en su pantalla de seguimiento.</p>
+
+  <div class="cuerpo">
+    <div class="izq">
+
+      <div class="pedido">
+        <div class="pcab">
+          <div>
+            <h3>PED-2026-00418 — Aceros del Norte S.A. de C.V.</h3>
+            <div class="meta">
+              Aceptado hoy 11:05 h · <span class="dist">A 2.4 km — San Nicolás</span> · $9,260.00
+            </div>
+          </div>
+          <span class="badge b-cam">En camino</span>
+        </div>
+        <div class="campos">
+          <div>
+            <label>Cambiar estatus a</label>
+            <select class="cambiada">
+              <option>En preparación</option>
+              <option>En camino</option>
+              <option selected>Entregado</option>
+            </select>
+          </div>
+          <div>
+            <label>Fecha estimada de entrega</label>
+            <input type="date" value="2026-08-25">
+          </div>
+          <div>
+            <label>Hora estimada</label>
+            <input type="time" value="17:00">
+          </div>
+          <div style="flex:0 0 auto">
+            <button type="button">Actualizar estatus</button>
+          </div>
+        </div>
+        <div class="nota-fila">
+          <label>Nota de entrega (visible para el comprador)</label>
+          <textarea>Se entrega completo. Transportista: Unidad 14, Sr. Cavazos. Favor de tener orden de compra a la mano.</textarea>
+        </div>
+        <div class="bitacora">
+          <strong>Bitácora:</strong> Generado 10:42 · Aceptado 11:05 · En preparación 11:30 · En camino 13:15
+        </div>
+      </div>
+
+      <div class="pedido">
+        <div class="pcab">
+          <div>
+            <h3>PED-2026-00415 — Plásticos Regiomontanos</h3>
+            <div class="meta">
+              Aceptado hoy 09:32 h · <span class="dist">A 8.9 km — Santa Catarina</span> · $26,700.00
+            </div>
+          </div>
+          <span class="badge b-pre">En preparación</span>
+        </div>
+        <div class="campos">
+          <div>
+            <label>Cambiar estatus a</label>
+            <select class="cambiada">
+              <option>En preparación</option>
+              <option selected>En camino</option>
+              <option>Entregado</option>
+            </select>
+          </div>
+          <div>
+            <label>Fecha estimada de entrega</label>
+            <input type="date" value="2026-08-26">
+          </div>
+          <div>
+            <label>Hora estimada</label>
+            <input type="time" value="10:30">
+          </div>
+          <div style="flex:0 0 auto">
+            <button type="button">Actualizar estatus</button>
+          </div>
+        </div>
+        <div class="nota-fila">
+          <label>Nota de entrega (visible para el comprador)</label>
+          <textarea>Entrega parcial: 5 de 7 artículos. Los 2 restantes se surten el viernes 28.</textarea>
+        </div>
+        <div class="bitacora">
+          <strong>Bitácora:</strong> Generado 09:18 · Aceptado 09:32 · En preparación 10:05
+        </div>
+      </div>
+
+      <div class="pedido">
+        <div class="pcab">
+          <div>
+            <h3>PED-2026-00409 — Manufacturas del Golfo</h3>
+            <div class="meta">
+              Aceptado ayer 10:15 h · <span class="dist">A 3.8 km — Escobedo</span> · $14,120.00
+            </div>
+          </div>
+          <span class="badge b-ent">Entregado</span>
+        </div>
+        <div class="campos">
+          <div>
+            <label>Cambiar estatus a</label>
+            <select disabled>
+              <option selected>Entregado</option>
+            </select>
+          </div>
+          <div>
+            <label>Fecha de entrega</label>
+            <input type="date" value="2026-08-24" readonly>
+          </div>
+          <div>
+            <label>Hora de entrega</label>
+            <input type="time" value="15:40" readonly>
+          </div>
+          <div style="flex:0 0 auto">
+            <button type="button" disabled>Actualizar estatus</button>
+          </div>
+        </div>
+        <div class="bitacora">
+          <strong>Bitácora:</strong> Generado 24/08 09:50 · Aceptado 10:15 · En preparación 10:40 · En camino 13:05 · Entregado 15:40 · Comisión aplicada 5 % ($706.00)
+        </div>
+      </div>
+
+    </div>
+
+    <div class="der">
+      <div class="dcaja">
+        <h3>Resumen de hoy</h3>
+        <div class="fila-b"><span>En preparación</span><strong>3</strong></div>
+        <div class="fila-b"><span>En camino</span><strong>2</strong></div>
+        <div class="fila-b"><span>Entregados</span><strong>6</strong></div>
+        <div class="fila-b"><span>Importe entregado</span><strong>$48,120</strong></div>
+      </div>
+
+      <div class="dcaja">
+        <h3>Secuencia de estatus</h3>
+        <div class="paso">Pedido generado</div>
+        <div class="paso">Aceptado por el distribuidor</div>
+        <div class="paso">En preparación</div>
+        <div class="paso">En camino</div>
+        <div class="paso">Entregado</div>
+      </div>
+
+      <div class="dcaja">
+        <h3>Importante</h3>
+        <div class="nota">
+          Marcar un pedido como <strong>entregado</strong> es lo que dispara el
+          cálculo de la comisión. Una vez entregado, el estatus ya no puede
+          modificarse ni el pedido cancelarse.
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>Programación Web II — 053</footer>
+
+</body>
+</html>

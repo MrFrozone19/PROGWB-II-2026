@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Enlace B2B Local — Mi catálogo</title>
+<style>
+  body { font-family: Arial, sans-serif; margin:0; background:#eef1f5; color:#333; }
+  header { background:#365F91; color:#fff; padding:14px 32px;
+           display:flex; justify-content:space-between; align-items:center; }
+  header h1 { margin:0; font-size:19px; }
+  .rol { font-size:11.5px; background:#2c4a73; padding:3px 10px;
+         border-radius:10px; margin-left:10px; }
+  .empresa { font-size:12.5px; text-align:right; color:#c9d8ea; }
+  .empresa a { color:#fff; font-size:12px; }
+  nav { background:#2c4a73; padding:9px 32px; }
+  nav a { color:#fff; text-decoration:none; margin-right:22px; font-size:13.5px; }
+  nav a.activo { font-weight:bold; border-bottom:2px solid #fff; padding-bottom:6px; }
+  main { padding:22px 32px; }
+  .titulo { display:flex; justify-content:space-between; align-items:flex-end;
+            margin-bottom:18px; }
+  h2 { font-size:19px; margin:0 0 3px 0; }
+  .sub { font-size:13px; color:#666; margin:0; }
+  .nuevo { background:#365F91; color:#fff; border:none; padding:11px 20px;
+           border-radius:4px; font-size:14px; cursor:pointer; }
+  .barra { background:#fff; border:1px solid #ccd3dc; border-radius:6px;
+           padding:13px 16px; margin-bottom:16px; display:flex; gap:12px;
+           align-items:flex-end; flex-wrap:wrap; }
+  .barra div { flex:1; min-width:130px; }
+  .barra label { display:block; font-size:12px; color:#666; margin-bottom:4px; }
+  .barra input, .barra select { width:100%; padding:8px; box-sizing:border-box;
+           border:1px solid #b9c2cd; border-radius:4px; font-size:13px; }
+  .barra button { background:#365F91; color:#fff; border:none; padding:9px 18px;
+           border-radius:4px; cursor:pointer; font-size:13.5px; }
+  .tabla { background:#fff; border:1px solid #ccd3dc; border-radius:6px;
+           overflow:hidden; }
+  table { border-collapse:collapse; width:100%; }
+  th, td { border-bottom:1px solid #eef1f5; padding:11px 14px; font-size:13px;
+           text-align:left; vertical-align:middle; }
+  th { background:#f7f9fb; font-size:12.5px; }
+  tr:last-child td { border-bottom:none; }
+  .nom { font-weight:bold; }
+  .clave { font-size:11.5px; color:#999; }
+  .imp { text-align:right; white-space:nowrap; }
+  .badge { display:inline-block; font-size:11.5px; padding:3px 10px;
+           border-radius:10px; white-space:nowrap; }
+  .b-act { background:#e8f3e9; color:#2e7d32; }
+  .b-ago { background:#f7e7e5; color:#c0392b; }
+  .b-oculto { background:#eceff2; color:#777; }
+  .acc a { color:#365F91; font-size:12.5px; text-decoration:none; margin-right:10px; }
+  .acc .del { color:#c0392b; }
+  .pie-tabla { background:#fafbfc; border-top:1px solid #dde2e8; padding:11px 14px;
+               display:flex; justify-content:space-between; align-items:center;
+               font-size:12.5px; color:#666; }
+  .pag a { color:#365F91; text-decoration:none; margin-left:9px; }
+  .pag .act { font-weight:bold; }
+  .nota { background:#eaf1f8; border:1px solid #b9cfe6; border-radius:5px;
+          padding:12px 14px; font-size:12.5px; margin-top:16px; line-height:1.5; }
+  footer { text-align:center; font-size:12px; color:#777; padding:20px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Enlace B2B Local <span class="rol">Distribuidor</span></h1>
+  <div class="empresa">
+    Refacciones Industriales GM<br>
+    <a href="#">Cerrar sesión</a>
+  </div>
+</header>
+
+<nav>
+  <a href="#">Panel</a>
+  <a href="#" class="activo">Mi catálogo</a>
+  <a href="#">Inventario</a>
+  <a href="#">Pedidos recibidos</a>
+  <a href="#">Entregas</a>
+  <a href="#">Ventas y comisiones</a>
+  <a href="#">Mi empresa</a>
+</nav>
+
+<main>
+  <div class="titulo">
+    <div>
+      <h2>Mi catálogo</h2>
+      <p class="sub">48 productos publicados · Solo los productos activos aparecen en las búsquedas.</p>
+    </div>
+    <button class="nuevo" type="button">+ Agregar producto</button>
+  </div>
+
+  <div class="barra">
+    <div>
+      <label>Buscar en mi catálogo</label>
+      <input type="text" placeholder="Nombre o clave del producto">
+    </div>
+    <div>
+      <label>Categoría</label>
+      <select>
+        <option selected>Todas</option>
+        <option>Rodamientos</option>
+        <option>Bandas y poleas</option>
+        <option>Lubricantes</option>
+        <option>Retenes y sellos</option>
+      </select>
+    </div>
+    <div>
+      <label>Estado</label>
+      <select>
+        <option selected>Todos</option>
+        <option>Activo</option>
+        <option>Agotado</option>
+        <option>Oculto</option>
+      </select>
+    </div>
+    <div style="flex:0 0 auto">
+      <button type="button">Filtrar</button>
+    </div>
+  </div>
+
+  <div class="tabla">
+    <table>
+      <tr>
+        <th>Producto</th><th>Categoría</th><th>Unidad</th>
+        <th class="imp">Precio</th><th class="imp">Existencia</th>
+        <th>Estado</th><th>Acciones</th>
+      </tr>
+      <tr>
+        <td>
+          <div class="nom">Rodamiento 6205-2RS sellado</div>
+          <div class="clave">RG-6205-2RS</div>
+        </td>
+        <td>Rodamientos</td>
+        <td>Pieza</td>
+        <td class="imp">$185.00</td>
+        <td class="imp">60</td>
+        <td><span class="badge b-act">Activo</span></td>
+        <td class="acc"><a href="#">Editar</a><a href="#">Ocultar</a><a href="#" class="del">Eliminar</a></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="nom">Rodamiento 6203-2RS</div>
+          <div class="clave">RG-6203-2RS</div>
+        </td>
+        <td>Rodamientos</td>
+        <td>Pieza</td>
+        <td class="imp">$142.00</td>
+        <td class="imp">2</td>
+        <td><span class="badge b-act">Activo</span></td>
+        <td class="acc"><a href="#">Editar</a><a href="#">Ocultar</a><a href="#" class="del">Eliminar</a></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="nom">Chumacera UCP-205</div>
+          <div class="clave">RG-UCP205</div>
+        </td>
+        <td>Rodamientos</td>
+        <td>Pieza</td>
+        <td class="imp">$310.00</td>
+        <td class="imp">6</td>
+        <td><span class="badge b-act">Activo</span></td>
+        <td class="acc"><a href="#">Editar</a><a href="#">Ocultar</a><a href="#" class="del">Eliminar</a></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="nom">Banda en V A-42</div>
+          <div class="clave">RG-BV-A42</div>
+        </td>
+        <td>Bandas y poleas</td>
+        <td>Pieza</td>
+        <td class="imp">$95.00</td>
+        <td class="imp">3</td>
+        <td><span class="badge b-act">Activo</span></td>
+        <td class="acc"><a href="#">Editar</a><a href="#">Ocultar</a><a href="#" class="del">Eliminar</a></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="nom">Grasa para rodamiento 1 kg</div>
+          <div class="clave">RG-GRA-1K</div>
+        </td>
+        <td>Lubricantes</td>
+        <td>Kilogramo</td>
+        <td class="imp">$188.00</td>
+        <td class="imp">8</td>
+        <td><span class="badge b-act">Activo</span></td>
+        <td class="acc"><a href="#">Editar</a><a href="#">Ocultar</a><a href="#" class="del">Eliminar</a></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="nom">Retén 25×52×7</div>
+          <div class="clave">RG-RET-255207</div>
+        </td>
+        <td>Retenes y sellos</td>
+        <td>Pieza</td>
+        <td class="imp">$64.00</td>
+        <td class="imp">0</td>
+        <td><span class="badge b-ago">Agotado</span></td>
+        <td class="acc"><a href="#">Editar</a><a href="#">Ocultar</a><a href="#" class="del">Eliminar</a></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="nom">Polea de aluminio 4"</div>
+          <div class="clave">RG-POL-4AL</div>
+        </td>
+        <td>Bandas y poleas</td>
+        <td>Pieza</td>
+        <td class="imp">$275.00</td>
+        <td class="imp">14</td>
+        <td><span class="badge b-oculto">Oculto</span></td>
+        <td class="acc"><a href="#">Editar</a><a href="#">Mostrar</a><a href="#" class="del">Eliminar</a></td>
+      </tr>
+    </table>
+    <div class="pie-tabla">
+      <span>Mostrando 7 de 48 productos</span>
+      <span class="pag">
+        <a href="#" class="act">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">Siguiente ›</a>
+      </span>
+    </div>
+  </div>
+
+  <div class="nota">
+    Un producto <strong>agotado</strong> sigue apareciendo en las búsquedas, marcado como
+    sin existencia. Un producto <strong>oculto</strong> no aparece en ninguna búsqueda hasta
+    que lo vuelvas a mostrar. Eliminar un producto no borra los pedidos que ya lo incluyen.
+  </div>
+</main>
+
+<footer>Programación Web II — 053</footer>
+
+</body>
+</html>

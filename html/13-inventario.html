@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Enlace B2B Local — Inventario</title>
+<style>
+  body { font-family: Arial, sans-serif; margin:0; background:#eef1f5; color:#333; }
+  header { background:#365F91; color:#fff; padding:14px 32px;
+           display:flex; justify-content:space-between; align-items:center; }
+  header h1 { margin:0; font-size:19px; }
+  .rol { font-size:11.5px; background:#2c4a73; padding:3px 10px;
+         border-radius:10px; margin-left:10px; }
+  .empresa { font-size:12.5px; text-align:right; color:#c9d8ea; }
+  .empresa a { color:#fff; font-size:12px; }
+  nav { background:#2c4a73; padding:9px 32px; }
+  nav a { color:#fff; text-decoration:none; margin-right:22px; font-size:13.5px; }
+  nav a.activo { font-weight:bold; border-bottom:2px solid #fff; padding-bottom:6px; }
+  main { padding:22px 32px; }
+  h2 { font-size:19px; margin:0 0 4px 0; }
+  .sub { font-size:13px; color:#666; margin:0 0 16px 0; }
+  .aviso { background:#fdf3d8; border:1px solid #e8d190; border-radius:5px;
+           padding:12px 15px; font-size:13px; margin-bottom:16px; }
+  .barra { background:#fff; border:1px solid #ccd3dc; border-radius:6px;
+           padding:13px 16px; margin-bottom:16px; display:flex; gap:12px;
+           align-items:flex-end; }
+  .barra div { flex:1; }
+  .barra label { display:block; font-size:12px; color:#666; margin-bottom:4px; }
+  .barra input, .barra select { width:100%; padding:8px; box-sizing:border-box;
+           border:1px solid #b9c2cd; border-radius:4px; font-size:13px; }
+  .tabla { background:#fff; border:1px solid #ccd3dc; border-radius:6px;
+           overflow:hidden; }
+  table { border-collapse:collapse; width:100%; }
+  th, td { border-bottom:1px solid #eef1f5; padding:10px 13px; font-size:12.5px;
+           text-align:left; vertical-align:middle; }
+  th { background:#f7f9fb; font-size:12px; }
+  tr:last-child td { border-bottom:none; }
+  tr.editada { background:#f4f8fc; }
+  .nom { font-weight:bold; font-size:13px; }
+  .clave { font-size:11px; color:#999; }
+  .num { text-align:right; white-space:nowrap; }
+  .ajuste { display:flex; gap:5px; align-items:center; justify-content:flex-end; }
+  .ajuste button { width:26px; height:26px; border:1px solid #b9c2cd;
+                   background:#f7f9fb; border-radius:4px; cursor:pointer;
+                   font-size:14px; line-height:1; color:#365F91; }
+  .ajuste input { width:62px; padding:5px; border:1px solid #b9c2cd;
+                  border-radius:4px; text-align:right; font-size:12.5px; }
+  .ajuste input.cambiada { border-color:#365F91; font-weight:bold; }
+  .min input { width:56px; padding:5px; border:1px solid #b9c2cd;
+               border-radius:4px; text-align:right; font-size:12.5px; }
+  .delta { font-size:11.5px; color:#365F91; white-space:nowrap; }
+  .alerta-bajo { color:#c0392b; font-weight:bold; }
+  .alerta-medio { color:#8a6d1f; font-weight:bold; }
+  .badge { display:inline-block; font-size:11px; padding:3px 9px;
+           border-radius:10px; white-space:nowrap; }
+  .b-ok { background:#e8f3e9; color:#2e7d32; }
+  .b-baj { background:#fdf3d8; color:#8a6d1f; }
+  .b-ago { background:#f7e7e5; color:#c0392b; }
+  .ajus { font-size:11.5px; color:#888; white-space:nowrap; }
+  .pie-acciones { background:#fafbfc; border-top:1px solid #dde2e8;
+                  padding:14px; display:flex; justify-content:space-between;
+                  align-items:center; }
+  .pie-acciones span { font-size:13px; color:#666; }
+  button.principal { background:#365F91; color:#fff; border:none; padding:10px 20px;
+           border-radius:4px; font-size:13.5px; cursor:pointer; }
+  button.sec { background:#fff; color:#365F91; border:1px solid #365F91;
+           padding:10px 20px; border-radius:4px; font-size:13.5px;
+           cursor:pointer; margin-right:10px; }
+  .nota { background:#eaf1f8; border:1px solid #b9cfe6; border-radius:5px;
+          padding:12px 14px; font-size:12.5px; margin-top:16px; line-height:1.5; }
+  footer { text-align:center; font-size:12px; color:#777; padding:20px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Enlace B2B Local <span class="rol">Distribuidor</span></h1>
+  <div class="empresa">
+    Refacciones Industriales GM<br>
+    <a href="#">Cerrar sesión</a>
+  </div>
+</header>
+
+<nav>
+  <a href="#">Panel</a>
+  <a href="#">Mi catálogo</a>
+  <a href="#" class="activo">Inventario</a>
+  <a href="#">Pedidos recibidos</a>
+  <a href="#">Entregas</a>
+  <a href="#">Ventas y comisiones</a>
+  <a href="#">Mi empresa</a>
+</nav>
+
+<main>
+  <h2>Actualización de inventario</h2>
+  <p class="sub">Captura las existencias reales. Los cambios se reflejan de inmediato en las búsquedas de los compradores.</p>
+
+  <div class="aviso">
+    <strong>7 productos por agotarse.</strong> Un producto se considera por agotarse
+    cuando su existencia queda por debajo de la existencia mínima que definas.
+  </div>
+
+  <div class="barra">
+    <div>
+      <label>Buscar producto</label>
+      <input type="text" placeholder="Nombre o clave">
+    </div>
+    <div>
+      <label>Categoría</label>
+      <select>
+        <option selected>Todas</option>
+        <option>Rodamientos</option>
+        <option>Bandas y poleas</option>
+        <option>Lubricantes</option>
+        <option>Retenes y sellos</option>
+      </select>
+    </div>
+    <div>
+      <label>Mostrar</label>
+      <select>
+        <option>Todos los productos</option>
+        <option selected>Solo con existencia baja o cero</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="tabla">
+    <table>
+      <tr>
+        <th>Producto</th><th>Unidad</th>
+        <th class="num">Actual</th><th class="num">Nueva existencia</th>
+        <th class="num">Exist. mínima</th><th>Estado</th><th>Último ajuste</th>
+      </tr>
+      <tr class="editada">
+        <td>
+          <div class="nom">Rodamiento 6203-2RS</div>
+          <div class="clave">RG-6203-2RS</div>
+        </td>
+        <td>Pieza</td>
+        <td class="num alerta-bajo">2</td>
+        <td>
+          <div class="ajuste">
+            <button type="button">−</button>
+            <input type="number" class="cambiada" value="120">
+            <button type="button">+</button>
+            <span class="delta">+118</span>
+          </div>
+        </td>
+        <td class="min num"><input type="number" value="20"></td>
+        <td><span class="badge b-ago">Por agotarse</span></td>
+        <td class="ajus">18/08/2026 09:14</td>
+      </tr>
+      <tr class="editada">
+        <td>
+          <div class="nom">Banda en V A-42</div>
+          <div class="clave">RG-BV-A42</div>
+        </td>
+        <td>Pieza</td>
+        <td class="num alerta-bajo">3</td>
+        <td>
+          <div class="ajuste">
+            <button type="button">−</button>
+            <input type="number" class="cambiada" value="80">
+            <button type="button">+</button>
+            <span class="delta">+77</span>
+          </div>
+        </td>
+        <td class="min num"><input type="number" value="15"></td>
+        <td><span class="badge b-ago">Por agotarse</span></td>
+        <td class="ajus">15/08/2026 16:40</td>
+      </tr>
+      <tr>
+        <td>
+          <div class="nom">Chumacera UCP-205</div>
+          <div class="clave">RG-UCP205</div>
+        </td>
+        <td>Pieza</td>
+        <td class="num alerta-medio">6</td>
+        <td>
+          <div class="ajuste">
+            <button type="button">−</button>
+            <input type="number" value="6">
+            <button type="button">+</button>
+          </div>
+        </td>
+        <td class="min num"><input type="number" value="10"></td>
+        <td><span class="badge b-baj">Existencia baja</span></td>
+        <td class="ajus">22/08/2026 11:02</td>
+      </tr>
+      <tr>
+        <td>
+          <div class="nom">Grasa para rodamiento 1 kg</div>
+          <div class="clave">RG-GRA-1K</div>
+        </td>
+        <td>Kilogramo</td>
+        <td class="num alerta-medio">8</td>
+        <td>
+          <div class="ajuste">
+            <button type="button">−</button>
+            <input type="number" value="8">
+            <button type="button">+</button>
+          </div>
+        </td>
+        <td class="min num"><input type="number" value="12"></td>
+        <td><span class="badge b-baj">Existencia baja</span></td>
+        <td class="ajus">21/08/2026 08:35</td>
+      </tr>
+      <tr>
+        <td>
+          <div class="nom">Retén 25×52×7</div>
+          <div class="clave">RG-RET-255207</div>
+        </td>
+        <td>Pieza</td>
+        <td class="num alerta-bajo">0</td>
+        <td>
+          <div class="ajuste">
+            <button type="button">−</button>
+            <input type="number" value="0">
+            <button type="button">+</button>
+          </div>
+        </td>
+        <td class="min num"><input type="number" value="25"></td>
+        <td><span class="badge b-ago">Agotado</span></td>
+        <td class="ajus">12/08/2026 17:20</td>
+      </tr>
+      <tr>
+        <td>
+          <div class="nom">Rodamiento 6205-2RS sellado</div>
+          <div class="clave">RG-6205-2RS</div>
+        </td>
+        <td>Pieza</td>
+        <td class="num">60</td>
+        <td>
+          <div class="ajuste">
+            <button type="button">−</button>
+            <input type="number" value="60">
+            <button type="button">+</button>
+          </div>
+        </td>
+        <td class="min num"><input type="number" value="30"></td>
+        <td><span class="badge b-ok">Suficiente</span></td>
+        <td class="ajus">Hoy 11:05</td>
+      </tr>
+    </table>
+    <div class="pie-acciones">
+      <span><strong>2 productos modificados</strong> sin guardar</span>
+      <div>
+        <button type="button" class="sec">Descartar cambios</button>
+        <button type="button" class="principal">Guardar inventario</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="nota">
+    La existencia capturada aquí es la que ve el comprador. Si un pedido solicita
+    más piezas de las disponibles, el sistema lo señala antes de que puedas
+    aceptarlo, así que mantener este número al día evita pedidos que no puedas surtir.
+  </div>
+</main>
+
+<footer>Programación Web II — 053</footer>
+
+</body>
+</html>

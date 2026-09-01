@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Enlace B2B Local — Ventas y comisiones</title>
+<style>
+  body { font-family: Arial, sans-serif; margin:0; background:#eef1f5; color:#333; }
+  header { background:#365F91; color:#fff; padding:14px 32px;
+           display:flex; justify-content:space-between; align-items:center; }
+  header h1 { margin:0; font-size:19px; }
+  .rol { font-size:11.5px; background:#2c4a73; padding:3px 10px;
+         border-radius:10px; margin-left:10px; }
+  .empresa { font-size:12.5px; text-align:right; color:#c9d8ea; }
+  .empresa a { color:#fff; font-size:12px; }
+  nav { background:#2c4a73; padding:9px 32px; }
+  nav a { color:#fff; text-decoration:none; margin-right:22px; font-size:13.5px; }
+  nav a.activo { font-weight:bold; border-bottom:2px solid #fff; padding-bottom:6px; }
+  main { padding:22px 32px; }
+  .titulo { display:flex; justify-content:space-between; align-items:flex-end;
+            margin-bottom:18px; }
+  h2 { font-size:19px; margin:0 0 3px 0; }
+  .sub { font-size:13px; color:#666; margin:0; }
+  .exportar { background:#fff; color:#365F91; border:1px solid #365F91;
+              padding:10px 18px; border-radius:4px; font-size:13.5px; cursor:pointer; }
+  .filtros { background:#fff; border:1px solid #ccd3dc; border-radius:6px;
+             padding:13px 16px; margin-bottom:18px; display:flex; gap:12px;
+             align-items:flex-end; }
+  .filtros div { flex:1; }
+  .filtros label { display:block; font-size:12px; color:#666; margin-bottom:4px; }
+  .filtros input, .filtros select { width:100%; padding:8px; box-sizing:border-box;
+             border:1px solid #b9c2cd; border-radius:4px; font-size:13px; }
+  .filtros button { background:#365F91; color:#fff; border:none; padding:9px 20px;
+             border-radius:4px; cursor:pointer; font-size:13.5px; }
+  .tarjetas { display:flex; gap:14px; margin-bottom:20px; }
+  .kpi { background:#fff; border:1px solid #ccd3dc; border-radius:6px;
+         padding:15px 18px; flex:1; }
+  .kpi span { display:block; font-size:12px; color:#777; margin-bottom:5px; }
+  .kpi strong { font-size:20px; color:#365F91; }
+  .kpi.neg strong { color:#8a6d1f; }
+  .kpi.net strong { color:#2e7d32; }
+  .caja { background:#fff; border:1px solid #ccd3dc; border-radius:6px;
+          margin-bottom:18px; overflow:hidden; }
+  .cab { padding:14px 18px; border-bottom:1px solid #e6eaef; }
+  .cab h3 { margin:0; font-size:15px; }
+  .grafica { padding:20px 18px; display:flex; align-items:flex-end; gap:20px;
+             height:180px; }
+  .barra-g { flex:1; display:flex; flex-direction:column; justify-content:flex-end;
+             align-items:center; height:100%; }
+  .barra-g .val { font-size:11.5px; color:#666; margin-bottom:5px; }
+  .barra-g .b { width:100%; background:#365F91; border-radius:3px 3px 0 0; }
+  .barra-g .b.actual { background:#2c4a73; }
+  .barra-g .mes { font-size:12px; color:#666; margin-top:7px; }
+  table { border-collapse:collapse; width:100%; }
+  th, td { border-bottom:1px solid #eef1f5; padding:11px 16px; font-size:13px;
+           text-align:left; }
+  th { background:#f7f9fb; font-size:12.5px; }
+  tr:last-child td { border-bottom:none; }
+  .folio { color:#365F91; font-weight:bold; text-decoration:none; }
+  .imp { text-align:right; white-space:nowrap; }
+  .com { text-align:right; white-space:nowrap; color:#8a6d1f; }
+  .net { text-align:right; white-space:nowrap; color:#2e7d32; font-weight:bold; }
+  .pct { text-align:center; font-size:12.5px; }
+  .tot { background:#fafbfc; font-weight:bold; }
+  .nota { background:#eaf1f8; border:1px solid #b9cfe6; border-radius:5px;
+          padding:12px 14px; font-size:12.5px; line-height:1.5; }
+  footer { text-align:center; font-size:12px; color:#777; padding:20px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Enlace B2B Local <span class="rol">Distribuidor</span></h1>
+  <div class="empresa">
+    Refacciones Industriales GM<br>
+    <a href="#">Cerrar sesión</a>
+  </div>
+</header>
+
+<nav>
+  <a href="#">Panel</a>
+  <a href="#">Mi catálogo</a>
+  <a href="#">Inventario</a>
+  <a href="#">Pedidos recibidos</a>
+  <a href="#">Entregas</a>
+  <a href="#" class="activo">Ventas y comisiones</a>
+  <a href="#">Mi empresa</a>
+</nav>
+
+<main>
+  <div class="titulo">
+    <div>
+      <h2>Ventas y comisiones</h2>
+      <p class="sub">Resultado de los pedidos concluidos en el periodo seleccionado.</p>
+    </div>
+    <button class="exportar" type="button">Exportar</button>
+  </div>
+
+  <div class="filtros">
+    <div>
+      <label>Desde</label>
+      <input type="date" value="2026-08-01">
+    </div>
+    <div>
+      <label>Hasta</label>
+      <input type="date" value="2026-08-25">
+    </div>
+    <div>
+      <label>Periodo rápido</label>
+      <select>
+        <option selected>Este mes</option>
+        <option>Mes anterior</option>
+        <option>Últimos 3 meses</option>
+        <option>Este año</option>
+      </select>
+    </div>
+    <div style="flex:0 0 auto">
+      <button type="button">Aplicar</button>
+    </div>
+  </div>
+
+  <div class="tarjetas">
+    <div class="kpi"><span>Total vendido</span><strong>$684,300</strong></div>
+    <div class="kpi"><span>Pedidos concluidos</span><strong>62</strong></div>
+    <div class="kpi neg"><span>Comisión retenida</span><strong>$34,215</strong></div>
+    <div class="kpi net"><span>Importe neto</span><strong>$650,085</strong></div>
+  </div>
+
+  <div class="caja">
+    <div class="cab"><h3>Ventas por periodo</h3></div>
+    <div class="grafica">
+      <div class="barra-g">
+        <div class="val">$412K</div>
+        <div class="b" style="height:52%"></div>
+        <div class="mes">Abr</div>
+      </div>
+      <div class="barra-g">
+        <div class="val">$498K</div>
+        <div class="b" style="height:63%"></div>
+        <div class="mes">May</div>
+      </div>
+      <div class="barra-g">
+        <div class="val">$536K</div>
+        <div class="b" style="height:68%"></div>
+        <div class="mes">Jun</div>
+      </div>
+      <div class="barra-g">
+        <div class="val">$602K</div>
+        <div class="b" style="height:76%"></div>
+        <div class="mes">Jul</div>
+      </div>
+      <div class="barra-g">
+        <div class="val">$684K</div>
+        <div class="b actual" style="height:87%"></div>
+        <div class="mes">Ago</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="caja">
+    <div class="cab"><h3>Detalle de ventas concluidas</h3></div>
+    <table>
+      <tr>
+        <th>Folio</th><th>Fecha</th><th>Empresa compradora</th>
+        <th class="imp">Importe</th><th class="pct">Comisión</th>
+        <th class="com">Retenido</th><th class="net">Neto</th>
+      </tr>
+      <tr>
+        <td><a href="#" class="folio">PED-2026-00409</a></td>
+        <td>24/08/2026</td>
+        <td>Manufacturas del Golfo</td>
+        <td class="imp">$14,120.00</td>
+        <td class="pct">5 %</td>
+        <td class="com">$706.00</td>
+        <td class="net">$13,414.00</td>
+      </tr>
+      <tr>
+        <td><a href="#" class="folio">PED-2026-00402</a></td>
+        <td>22/08/2026</td>
+        <td>Plásticos Regiomontanos</td>
+        <td class="imp">$31,850.00</td>
+        <td class="pct">5 %</td>
+        <td class="com">$1,592.50</td>
+        <td class="net">$30,257.50</td>
+      </tr>
+      <tr>
+        <td><a href="#" class="folio">PED-2026-00398</a></td>
+        <td>20/08/2026</td>
+        <td>Aceros del Norte</td>
+        <td class="imp">$12,780.00</td>
+        <td class="pct">5 %</td>
+        <td class="com">$639.00</td>
+        <td class="net">$12,141.00</td>
+      </tr>
+      <tr>
+        <td><a href="#" class="folio">PED-2026-00391</a></td>
+        <td>17/08/2026</td>
+        <td>Talleres Unidos MTY</td>
+        <td class="imp">$8,460.00</td>
+        <td class="pct">4 %</td>
+        <td class="com">$338.40</td>
+        <td class="net">$8,121.60</td>
+      </tr>
+      <tr>
+        <td><a href="#" class="folio">PED-2026-00384</a></td>
+        <td>13/08/2026</td>
+        <td>Herrería El Roble</td>
+        <td class="imp">$1,480.00</td>
+        <td class="pct">4 %</td>
+        <td class="com">$59.20</td>
+        <td class="net">$1,420.80</td>
+      </tr>
+      <tr class="tot">
+        <td colspan="3">Total del periodo (62 pedidos)</td>
+        <td class="imp">$684,300.00</td>
+        <td class="pct">—</td>
+        <td class="com">$34,215.00</td>
+        <td class="net">$650,085.00</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="nota">
+    El porcentaje mostrado en cada renglón es el que estaba vigente cuando se generó
+    el pedido. Un cambio posterior en la configuración de la plataforma no modifica
+    los pedidos ya emitidos. Los pedidos cancelados o rechazados no aparecen en esta
+    tabla porque no generan comisión.
+  </div>
+</main>
+
+<footer>Programación Web II — 053</footer>
+
+</body>
+</html>
