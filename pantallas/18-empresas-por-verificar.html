@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-rol="administrador">
 <head>
 <meta charset="UTF-8">
 <title>Enlace B2B Local — Empresas por verificar</title>
@@ -70,6 +70,10 @@
   .nota { font-size:11.5px; color:#777; margin-top:10px; line-height:1.5; }
   footer { text-align:center; font-size:12px; color:#777; padding:20px; }
 </style>
+<link rel="stylesheet" href="../css/base.css">
+<script src="../js/datos.js"></script>
+<script src="../js/sesion.js"></script>
+<script src="../js/comun.js" defer></script>
 </head>
 <body>
 
@@ -77,15 +81,15 @@
   <h1>Enlace B2B Local <span class="rol">Administrador</span></h1>
   <div class="empresa">
     Operación de plataforma<br>
-    <a href="#">Cerrar sesión</a>
+    <a href="01-inicio-sesion.html" data-cerrar-sesion>Cerrar sesión</a>
   </div>
 </header>
 
 <nav>
-  <a href="#" class="activo">Empresas por verificar</a>
-  <a href="#">Configuración de comisión</a>
-  <a href="#">Transacciones</a>
-  <a href="#">Reportes</a>
+  <a href="18-empresas-por-verificar.html" class="activo">Empresas por verificar</a>
+  <a href="19-configuracion-comision.html">Configuración de comisión</a>
+  <a href="20-supervision-transacciones.html">Transacciones</a>
+  <a href="21-reportes.html">Reportes</a>
 </nav>
 
 <main>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-rol="comprador">
 <head>
 <meta charset="UTF-8">
 <title>Enlace B2B Local — Detalle de producto</title>
@@ -52,6 +52,10 @@
   .otro .n { color:#365F91; font-weight:bold; }
   footer { text-align:center; font-size:12px; color:#777; padding:20px; }
 </style>
+<link rel="stylesheet" href="../css/base.css">
+<script src="../js/datos.js"></script>
+<script src="../js/sesion.js"></script>
+<script src="../js/comun.js" defer></script>
 </head>
 <body>
 
@@ -59,20 +63,20 @@
   <h1>Enlace B2B Local</h1>
   <div class="empresa">
     Aceros del Norte S.A. de C.V.<br>
-    <a href="#">Cerrar sesión</a>
+    <a href="01-inicio-sesion.html" data-cerrar-sesion>Cerrar sesión</a>
   </div>
 </header>
 
 <nav>
-  <a href="#">Buscar insumos</a>
-  <a href="#">Mi carrito (3)</a>
-  <a href="#">Mis pedidos</a>
-  <a href="#">Historial</a>
-  <a href="#">Mi empresa</a>
+  <a href="03-busqueda-principal.html">Buscar insumos</a>
+  <a href="06-carrito.html">Mi carrito (3)</a>
+  <a href="08-seguimiento-pedido.html">Mis pedidos</a>
+  <a href="09-historial-compras.html">Historial</a>
+  <a href="10-perfil-empresa.html">Mi empresa</a>
 </nav>
 
 <div class="ruta">
-  <a href="#">Buscar insumos</a> › <a href="#">Rodamientos</a> › Rodamiento 6205-2RS sellado
+  <a href="03-busqueda-principal.html">Buscar insumos</a> › <a href="04-resultados-busqueda.html">Rodamientos</a> › Rodamiento 6205-2RS sellado
 </div>
 
 <div class="cuerpo">
@@ -89,7 +93,7 @@
           <input type="number" value="75" min="1">
         </label>
       </div>
-      <button type="button">Agregar al carrito</button>
+      <button type="button" data-aviso="Producto agregado al carrito">Agregar al carrito</button>
       <div style="font-size:13px; color:#666;">Existencia disponible: 60 piezas</div>
     </div>
     <p class="msg-error">
@@ -131,10 +135,10 @@
 
     <div class="caja">
       <h3>Otros productos de este distribuidor</h3>
-      <div class="otro">Rodamiento 6203-2RS · <span class="n">$142.00</span></div>
-      <div class="otro">Banda en V A-42 · <span class="n">$95.00</span></div>
-      <div class="otro">Chumacera UCP-205 · <span class="n">$310.00</span></div>
-      <div class="otro">Grasa para rodamiento 1 kg · <span class="n">$188.00</span></div>
+      <div class="otro" data-ir="05-detalle-producto.html">Rodamiento 6203-2RS · <span class="n">$142.00</span></div>
+      <div class="otro" data-ir="05-detalle-producto.html">Banda en V A-42 · <span class="n">$95.00</span></div>
+      <div class="otro" data-ir="05-detalle-producto.html">Chumacera UCP-205 · <span class="n">$310.00</span></div>
+      <div class="otro" data-ir="05-detalle-producto.html">Grasa para rodamiento 1 kg · <span class="n">$188.00</span></div>
     </div>
   </div>
 </div>

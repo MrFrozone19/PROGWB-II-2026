@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-rol="comprador">
 <head>
 <meta charset="UTF-8">
 <title>Enlace B2B Local — Resultados</title>
@@ -55,6 +55,10 @@
   .aviso a { color:#365F91; }
   footer { text-align:center; font-size:12px; color:#777; padding:20px; }
 </style>
+<link rel="stylesheet" href="../css/base.css">
+<script src="../js/datos.js"></script>
+<script src="../js/sesion.js"></script>
+<script src="../js/comun.js" defer></script>
 </head>
 <body>
 
@@ -62,21 +66,21 @@
   <h1>Enlace B2B Local</h1>
   <div class="empresa">
     Aceros del Norte S.A. de C.V.<br>
-    <a href="#">Cerrar sesión</a>
+    <a href="01-inicio-sesion.html" data-cerrar-sesion>Cerrar sesión</a>
   </div>
 </header>
 
 <nav>
-  <a href="#" class="activo">Buscar insumos</a>
-  <a href="#">Mi carrito (3)</a>
-  <a href="#">Mis pedidos</a>
-  <a href="#">Historial</a>
-  <a href="#">Mi empresa</a>
+  <a href="03-busqueda-principal.html" class="activo">Buscar insumos</a>
+  <a href="06-carrito.html">Mi carrito (3)</a>
+  <a href="08-seguimiento-pedido.html">Mis pedidos</a>
+  <a href="09-historial-compras.html">Historial</a>
+  <a href="10-perfil-empresa.html">Mi empresa</a>
 </nav>
 
 <div class="barra">
   <input type="text" value="rodamiento 6205">
-  <button type="button">Buscar</button>
+  <button type="button" data-ir="04-resultados-busqueda.html">Buscar</button>
 </div>
 
 <div class="cuerpo">
@@ -128,59 +132,59 @@
 
     <div class="fila">
       <div>
-        <h4>Rodamiento 6205-2RS sellado</h4>
+        <h4><a href="05-detalle-producto.html" class="enlace-producto">Rodamiento 6205-2RS sellado</a></h4>
         <p class="prov">Refacciones Industriales GM — Guadalupe</p>
         <p class="dist">A 2.4 km</p>
       </div>
       <div class="derecha">
         <p class="precio">$185.00</p>
         <p class="exist">60 piezas disponibles</p>
-        <button type="button">Agregar</button>
+        <button type="button" data-aviso="Producto agregado al carrito">Agregar</button>
       </div>
     </div>
 
     <div class="fila">
       <div>
-        <h4>Rodamiento 6205-ZZ blindado</h4>
+        <h4><a href="05-detalle-producto.html" class="enlace-producto">Rodamiento 6205-ZZ blindado</a></h4>
         <p class="prov">Rodamientos y Bandas del Norte — San Nicolás</p>
         <p class="dist">A 5.7 km</p>
       </div>
       <div class="derecha">
         <p class="precio">$168.00</p>
         <p class="exist">34 piezas disponibles</p>
-        <button type="button">Agregar</button>
+        <button type="button" data-aviso="Producto agregado al carrito">Agregar</button>
       </div>
     </div>
 
     <div class="fila">
       <div>
-        <h4>Rodamiento 6205 abierto</h4>
+        <h4><a href="05-detalle-producto.html" class="enlace-producto">Rodamiento 6205 abierto</a></h4>
         <p class="prov">Suministros Mecánicos Apodaca — Apodaca</p>
         <p class="dist">A 9.1 km</p>
       </div>
       <div class="derecha">
         <p class="precio">$142.00</p>
         <p class="exist">12 piezas disponibles</p>
-        <button type="button">Agregar</button>
+        <button type="button" data-aviso="Producto agregado al carrito">Agregar</button>
       </div>
     </div>
 
     <div class="fila">
       <div>
-        <h4>Rodamiento 6205-2RS premium</h4>
+        <h4><a href="05-detalle-producto.html" class="enlace-producto">Rodamiento 6205-2RS premium</a></h4>
         <p class="prov">Importaciones Técnicas MTY — Monterrey Centro</p>
         <p class="dist">A 13.6 km</p>
       </div>
       <div class="derecha">
         <p class="precio">$236.00</p>
         <p class="exist">80 piezas disponibles</p>
-        <button type="button">Agregar</button>
+        <button type="button" data-aviso="Producto agregado al carrito">Agregar</button>
       </div>
     </div>
 
     <div class="fila agotado">
       <div>
-        <h4>Rodamiento 6205-2RS línea económica</h4>
+        <h4><a href="05-detalle-producto.html" class="enlace-producto">Rodamiento 6205-2RS línea económica</a></h4>
         <p class="prov">Refacciones El Puente — Escobedo</p>
         <p class="dist">A 7.3 km</p>
         <p style="margin:6px 0 0 0"><span class="etiq-agotado">Agotado</span></p>
@@ -194,7 +198,7 @@
 
     <div class="aviso">
       ¿No encuentras lo que buscas? Hay 3 resultados más entre 15 y 30 km.
-      <a href="#">Ampliar la búsqueda a 30 km</a>
+      <a href="04-resultados-busqueda.html">Ampliar la búsqueda a 30 km</a>
     </div>
   </div>
 </div>
