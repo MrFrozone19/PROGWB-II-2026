@@ -31,6 +31,16 @@ La plataforma tiene tres roles, cada uno con sus propias pantallas:
 ## Estado actual — Primer avance
 
 Prototipo navegable del frontend con **datos de ejemplo** (aún no conectado a un backend).
+El inicio de sesión es simulado: cada rol entra a sus propias pantallas y no puede abrir las de otro rol.
+
+**Cuentas de prueba** (contraseña de todas: `demo1234`):
+
+| Rol | Correo |
+|---|---|
+| Comprador | `compras@aceros-delnorte.mx` |
+| Distribuidor | `ventas@refacciones-gm.mx` |
+| Administrador | `admin@enlaceb2b.mx` |
+| Empresa pendiente de verificación | `ventas@bvpacifico.mx` |
 
 ## Carpetas
 
@@ -38,4 +48,10 @@ Prototipo navegable del frontend con **datos de ejemplo** (aún no conectado a u
 |---|---|
 | `index.html` | Punto de entrada; redirige a la pantalla de inicio de sesión |
 | `pantallas/` | Las pantallas del sistema, numeradas en el orden del mapa de navegación (`01`–`21`) y el mapa de navegación (`22`) |
+| `css/base.css` | Estilos compartidos por todas las pantallas |
+| `js/datos.js` | Datos de ejemplo que sustituyen temporalmente al backend |
+| `js/sesion.js` | Sesión simulada: inicio y cierre de sesión, protección de pantallas por rol |
+| `js/comun.js` | Comportamiento compartido: encabezado, navegación y avisos |
+| `js/formularios.js` | Validaciones y mensajes de error de los formularios |
+| `js/pantallas/` | Código propio de cada pantalla, con el mismo número que su archivo HTML |
 | `.nojekyll` | Indica a GitHub Pages que publique los archivos tal cual |

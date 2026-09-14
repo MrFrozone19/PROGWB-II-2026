@@ -20,17 +20,27 @@
   label { display:block; margin-top:12px; font-size:13.5px; }
   input, select { width:100%; padding:8px; margin-top:4px; box-sizing:border-box;
                   border:1px solid #b9c2cd; border-radius:4px; }
+  input[readonly] { background:#f4f6f8; color:#555; }
   .ok { border-color:#2e7d32 !important; }
   .msg-ok { color:#2e7d32; font-size:12.5px; margin-top:5px; }
   .msg-error { color:#c0392b; font-size:12.5px; margin-top:5px; }
   .nota { background:#eaf1f8; border:1px solid #b9cfe6; border-radius:4px;
-          padding:11px; font-size:12.5px; margin-top:4px; }
+          padding:11px; font-size:12.5px; margin-top:14px; }
   .acciones { display:flex; gap:12px; margin-top:22px; }
   button { background:#365F91; color:#fff; border:none; padding:11px 20px;
            border-radius:4px; font-size:14.5px; cursor:pointer; }
   .cancelar { background:#fff; color:#365F91; border:1px solid #365F91; }
+  .confirmacion { text-align:center; padding:20px 10px; }
+  .confirmacion .icono { font-size:40px; color:#2e7d32; line-height:1; margin-bottom:10px; }
+  .confirmacion p { font-size:14px; color:#555; margin:8px 0 20px 0; }
   footer { text-align:center; font-size:12px; color:#777; padding:18px; }
 </style>
+<link rel="stylesheet" href="../css/base.css">
+<script src="../js/datos.js"></script>
+<script src="../js/sesion.js"></script>
+<script src="../js/comun.js" defer></script>
+<script src="../js/formularios.js" defer></script>
+<script src="../js/pantallas/02-registro-empresa.js" defer></script>
 </head>
 <body>
 
@@ -40,91 +50,118 @@
 </header>
 
 <main>
-  <h2>Registro de empresa</h2>
-  <p class="sub">Solo empresas dentro del área metropolitana pueden operar en la plataforma.</p>
+  <form id="formulario-registro" novalidate>
+    <h2>Registro de empresa</h2>
+    <p class="sub">Solo empresas dentro del área metropolitana pueden operar en la plataforma.</p>
 
-  <fieldset>
-    <legend>Datos fiscales</legend>
-    <div class="fila">
-      <div>
-        <label>Razón social
-          <input type="text" value="Aceros del Norte S.A. de C.V.">
-        </label>
+    <fieldset>
+      <legend>Datos de la empresa</legend>
+      <div class="fila">
+        <div>
+          <label>Razón social
+            <input type="text" id="razon-social" placeholder="Aceros del Norte S.A. de C.V.">
+          </label>
+        </div>
+        <div>
+          <label>RFC
+            <input type="text" id="rfc" maxlength="13" placeholder="ADN180423K21">
+          </label>
+        </div>
       </div>
-      <div>
-        <label>RFC
-          <input type="text" value="ADN180423K21">
-        </label>
+      <div class="fila">
+        <div>
+          <label>Tipo de empresa
+            <select id="tipo-empresa">
+              <option value="">Selecciona una opción</option>
+              <option value="comprador">Compradora</option>
+              <option value="distribuidor">Distribuidora</option>
+              <option value="ambos">Ambas</option>
+            </select>
+          </label>
+        </div>
+        <div>
+          <label>Giro industrial
+            <input type="text" id="giro" placeholder="Rodamientos y transmisión de potencia">
+          </label>
+        </div>
       </div>
-    </div>
-    <label>Giro de la empresa
-      <select>
-        <option>Distribuidor de insumos industriales</option>
-        <option>Comprador / planta manufacturera</option>
-        <option>Ambos</option>
-      </select>
-    </label>
-  </fieldset>
+    </fieldset>
 
-  <fieldset>
-    <legend>Domicilio</legend>
-    <label>Calle y número
-      <input type="text" value="Av. Manuel L. Barragán 1250">
-    </label>
-    <div class="fila">
-      <div>
-        <label>Código postal
-          <input type="text" class="ok" value="66450">
-        </label>
-        <p class="msg-ok">Dentro del área de cobertura: San Nicolás de los Garza, N.L.</p>
+    <fieldset>
+      <legend>Domicilio</legend>
+      <div class="fila">
+        <div>
+          <label>Calle y número
+            <input type="text" id="calle" placeholder="Av. Manuel L. Barragán 1250">
+          </label>
+        </div>
+        <div>
+          <label>Colonia
+            <input type="text" id="colonia" placeholder="Anáhuac">
+          </label>
+        </div>
       </div>
-      <div>
-        <label>Municipio
-          <input type="text" value="San Nicolás de los Garza" readonly>
-        </label>
+      <div class="fila">
+        <div>
+          <label>Código postal
+            <input type="text" id="codigo-postal" maxlength="5" inputmode="numeric" placeholder="66450">
+          </label>
+          <p id="mensaje-cobertura" hidden></p>
+        </div>
+        <div>
+          <label>Municipio
+            <input type="text" id="municipio" readonly placeholder="Se llena con el código postal">
+          </label>
+        </div>
       </div>
-    </div>
-    <div class="nota">
-      El domicilio determina la distancia con la que aparecerás en las búsquedas
-      de otras empresas. Captúralo con precisión.
-    </div>
-  </fieldset>
+      <div class="nota">
+        El domicilio determina la distancia con la que aparecerás en las búsquedas
+        de otras empresas. Captúralo con precisión.
+      </div>
+    </fieldset>
 
-  <fieldset>
-    <legend>Contacto y acceso</legend>
-    <div class="fila">
-      <div>
-        <label>Nombre del responsable
-          <input type="text" value="Sinuhé Martínez Hernández">
-        </label>
+    <fieldset>
+      <legend>Usuario responsable</legend>
+      <div class="fila">
+        <div>
+          <label>Nombre del responsable
+            <input type="text" id="nombre-responsable" placeholder="Sinuhé Martínez Hernández">
+          </label>
+        </div>
+        <div>
+          <label>Teléfono
+            <input type="tel" id="telefono" placeholder="81 1234 5678">
+          </label>
+        </div>
       </div>
-      <div>
-        <label>Teléfono
-          <input type="text" value="81 1234 5678">
-        </label>
+      <label>Correo de la empresa
+        <input type="email" id="correo" placeholder="compras@aceros-delnorte.mx">
+      </label>
+      <div class="fila">
+        <div>
+          <label>Contraseña
+            <input type="password" id="contrasena" placeholder="Mínimo 8 caracteres">
+          </label>
+        </div>
+        <div>
+          <label>Confirmar contraseña
+            <input type="password" id="confirmar-contrasena">
+          </label>
+        </div>
       </div>
-    </div>
-    <label>Correo de la empresa
-      <input type="email" value="compras@aceros-delnorte.mx">
-    </label>
-    <div class="fila">
-      <div>
-        <label>Contraseña
-          <input type="password" value="••••••••">
-        </label>
-      </div>
-      <div>
-        <label>Confirmar contraseña
-          <input type="password" value="••••••">
-        </label>
-        <p class="msg-error">Las contraseñas no coinciden.</p>
-      </div>
-    </div>
-  </fieldset>
+    </fieldset>
 
-  <div class="acciones">
-    <button type="button">Enviar registro</button>
-    <button type="button" class="cancelar">Cancelar</button>
+    <div class="acciones">
+      <button type="submit">Registrar empresa</button>
+      <button type="button" class="cancelar" data-ir="01-inicio-sesion.html">Cancelar</button>
+    </div>
+  </form>
+
+  <div class="confirmacion" id="registro-recibido" hidden>
+    <div class="icono">✓</div>
+    <h2>Registro recibido</h2>
+    <p>Te avisaremos por correo cuando tu empresa sea verificada por el administrador.</p>
+    <button type="button" data-ir="01-inicio-sesion.html">Ir al inicio de sesión</button>
   </div>
 </main>
 

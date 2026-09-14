@@ -1,0 +1,25 @@
+/* Estilos compartidos por todas las pantallas.
+   Los estilos propios de cada pantalla siguen dentro de su archivo HTML. */
+
+[hidden] { display: none !important; }
+
+[data-ir], [data-aviso] { cursor: pointer; }
+
+header h1.enlace-inicio { cursor: pointer; }
+
+.campo-error { border-color: #c0392b !important; }
+
+a.enlace-producto { color: inherit; text-decoration: none; }
+a.enlace-producto:hover { color: #365F91; text-decoration: underline; }
+
+/* Aviso breve que aparece abajo a la derecha tras una acción. */
+.aviso-flotante {
+  position: fixed; right: 24px; bottom: 24px; z-index: 1000;
+  max-width: 360px; padding: 12px 18px; border-radius: 6px;
+  background: #2e7d32; color: #fff; font-size: 14px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .2);
+  opacity: 0; transform: translateY(10px); pointer-events: none;
+  transition: opacity .2s, transform .2s;
+}
+.aviso-flotante.visible { opacity: 1; transform: none; }
+.aviso-flotante.error { background: #c0392b; }

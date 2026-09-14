@@ -71,6 +71,10 @@
           vertical-align:-2px; margin-right:7px; }
   footer { text-align:center; font-size:11.5px; color:#888; margin-top:22px; }
 </style>
+<link rel="stylesheet" href="../css/base.css">
+<script src="../js/datos.js"></script>
+<script src="../js/sesion.js"></script>
+<script src="../js/comun.js" defer></script>
 </head>
 <body>
 
@@ -80,12 +84,12 @@
 <div class="publico">
   <div class="et">Accesible sin sesión activa</div>
   <div class="fila">
-    <div class="caja">
+    <div class="caja" data-ir="02-registro-empresa.html">
       <div class="n">Registro de Empresa</div>
       <div class="f">02-registro-empresa</div>
     </div>
     <div class="fl">→</div>
-    <div class="caja entrada">
+    <div class="caja entrada" data-ir="01-inicio-sesion.html">
       <div class="n">Inicio de Sesión</div>
       <div class="f">01-inicio-sesion</div>
     </div>
@@ -110,43 +114,43 @@
       <div class="c">10 pantallas</div>
     </div>
     <div class="cuerpo">
-      <div class="caja entrada">
+      <div class="caja entrada" data-ir="03-busqueda-principal.html">
         <div class="n">Pantalla Principal de Búsqueda</div>
         <div class="f">03-busqueda-principal</div>
       </div>
       <div class="fl v">↓</div>
-      <div class="caja">
+      <div class="caja" data-ir="04-resultados-busqueda.html">
         <div class="n">Resultados de Búsqueda</div>
         <div class="f">04-resultados-busqueda</div>
       </div>
       <div class="fl v">↓</div>
-      <div class="caja">
+      <div class="caja" data-ir="05-detalle-producto.html">
         <div class="n">Detalle de Producto</div>
         <div class="f">05-detalle-producto</div>
       </div>
       <div class="fl v">↓</div>
-      <div class="caja">
+      <div class="caja" data-ir="06-carrito.html">
         <div class="n">Carrito de Compra</div>
         <div class="f">06-carrito</div>
       </div>
       <div class="fl v">↓</div>
-      <div class="caja">
+      <div class="caja" data-ir="07-confirmacion-pedido.html">
         <div class="n">Confirmación de Pedido</div>
         <div class="f">07-confirmacion-pedido</div>
       </div>
       <div class="fl v">↓</div>
-      <div class="caja">
+      <div class="caja" data-ir="08-seguimiento-pedido.html">
         <div class="n">Seguimiento de Pedido</div>
         <div class="f">08-seguimiento-pedido</div>
       </div>
 
       <div class="grupo-menu">
         <div class="et">Desde la barra superior</div>
-        <div class="caja menu">
+        <div class="caja menu" data-ir="09-historial-compras.html">
           <div class="n">Historial de Compras</div>
           <div class="f">09-historial-compras</div>
         </div>
-        <div class="caja menu">
+        <div class="caja menu" data-ir="10-perfil-empresa.html">
           <div class="n">Perfil de Empresa</div>
           <div class="f">10-perfil-empresa</div>
         </div>
@@ -160,37 +164,37 @@
       <div class="c">7 pantallas</div>
     </div>
     <div class="cuerpo">
-      <div class="caja entrada">
+      <div class="caja entrada" data-ir="11-panel-distribuidor.html">
         <div class="n">Panel Principal</div>
         <div class="f">11-panel-distribuidor</div>
       </div>
       <div class="fl v">↓</div>
-      <div class="caja">
+      <div class="caja" data-ir="14-pedidos-recibidos.html">
         <div class="n">Pedidos Recibidos</div>
         <div class="f">14-pedidos-recibidos</div>
       </div>
       <div class="fl v">↓</div>
-      <div class="caja">
+      <div class="caja" data-ir="15-estatus-entrega.html">
         <div class="n">Estatus de Entrega</div>
         <div class="f">15-estatus-entrega</div>
       </div>
       <div class="fl v">↓</div>
-      <div class="caja">
+      <div class="caja" data-ir="16-ventas-comisiones.html">
         <div class="n">Ventas y Comisiones</div>
         <div class="f">16-ventas-comisiones</div>
       </div>
 
       <div class="grupo-menu">
         <div class="et">Desde el menú del panel</div>
-        <div class="caja menu">
+        <div class="caja menu" data-ir="12-catalogo-productos.html">
           <div class="n">Catálogo de Productos</div>
           <div class="f">12-catalogo-productos</div>
         </div>
-        <div class="caja menu">
+        <div class="caja menu" data-ir="13-inventario.html">
           <div class="n">Actualización de Inventario</div>
           <div class="f">13-inventario</div>
         </div>
-        <div class="caja menu">
+        <div class="caja menu" data-ir="17-perfil-distribuidor.html">
           <div class="n">Perfil del Distribuidor</div>
           <div class="f">17-perfil-distribuidor</div>
         </div>
@@ -204,23 +208,23 @@
       <div class="c">4 pantallas</div>
     </div>
     <div class="cuerpo">
-      <div class="caja entrada">
+      <div class="caja entrada" data-ir="18-empresas-por-verificar.html">
         <div class="n">Empresas por Verificar</div>
         <div class="f">18-empresas-por-verificar</div>
       </div>
       <div class="fl v">↓</div>
-      <div class="caja">
+      <div class="caja" data-ir="20-supervision-transacciones.html">
         <div class="n">Supervisión de Transacciones</div>
         <div class="f">20-supervision-transacciones</div>
       </div>
 
       <div class="grupo-menu">
         <div class="et">Desde el menú del panel</div>
-        <div class="caja menu">
+        <div class="caja menu" data-ir="19-configuracion-comision.html">
           <div class="n">Configuración de Comisión</div>
           <div class="f">19-configuracion-comision</div>
         </div>
-        <div class="caja menu">
+        <div class="caja menu" data-ir="21-reportes.html">
           <div class="n">Reportes del Sistema</div>
           <div class="f">21-reportes</div>
         </div>

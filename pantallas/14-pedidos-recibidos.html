@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-rol="distribuidor">
 <head>
 <meta charset="UTF-8">
 <title>Enlace B2B Local — Pedidos recibidos</title>
@@ -62,6 +62,10 @@
             font-size:12.5px; }
   footer { text-align:center; font-size:12px; color:#777; padding:20px; }
 </style>
+<link rel="stylesheet" href="../css/base.css">
+<script src="../js/datos.js"></script>
+<script src="../js/sesion.js"></script>
+<script src="../js/comun.js" defer></script>
 </head>
 <body>
 
@@ -69,18 +73,18 @@
   <h1>Enlace B2B Local <span class="rol">Distribuidor</span></h1>
   <div class="empresa">
     Refacciones Industriales GM<br>
-    <a href="#">Cerrar sesión</a>
+    <a href="01-inicio-sesion.html" data-cerrar-sesion>Cerrar sesión</a>
   </div>
 </header>
 
 <nav>
-  <a href="#">Panel</a>
-  <a href="#">Mi catálogo</a>
-  <a href="#">Inventario</a>
-  <a href="#" class="activo">Pedidos recibidos</a>
-  <a href="#">Entregas</a>
-  <a href="#">Ventas y comisiones</a>
-  <a href="#">Mi empresa</a>
+  <a href="11-panel-distribuidor.html">Panel</a>
+  <a href="12-catalogo-productos.html">Mi catálogo</a>
+  <a href="13-inventario.html">Inventario</a>
+  <a href="14-pedidos-recibidos.html" class="activo">Pedidos recibidos</a>
+  <a href="15-estatus-entrega.html">Entregas</a>
+  <a href="16-ventas-comisiones.html">Ventas y comisiones</a>
+  <a href="17-perfil-distribuidor.html">Mi empresa</a>
 </nav>
 
 <main>
