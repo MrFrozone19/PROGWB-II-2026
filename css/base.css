@@ -156,10 +156,8 @@ header p a:hover { color: #fed7aa !important; }
 }
 
 nav {
-  position: fixed;
-  top: 92px;
-  left: 50%;
-  transform: translateX(-50%);
+  position: static;
+  margin: 18px auto;
   width: min(var(--content-max), calc(100% - 64px));
   z-index: 50;
 
@@ -981,18 +979,16 @@ body:has(.demo) {
 
 }
 
-/* Navegación principal fija para todos los roles */
+/* Navegación principal para todos los roles */
 header + nav,
 nav,
 .barra-navegacion,
 .nav-rol,
 .menu-rol,
 .pestanas {
-    position: fixed !important;
-    top: 92px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
+    position: static !important;
     width: min(var(--content-max), calc(100% - 64px)) !important;
+    margin: 18px auto !important;
     z-index: 999 !important;
 
     background: rgba(255,255,255,.90) !important;
@@ -1002,7 +998,6 @@ nav,
     border-radius: 999px !important;
     box-shadow: 0 12px 35px rgba(15,23,42,.12);
 }
-
 
 /* Reserva espacio para que el contenido no quede debajo */
 main {
@@ -1066,10 +1061,7 @@ header {
 body > nav,
 header + nav,
 nav {
-    position: sticky !important;
-    top: 88px !important;
-    left: auto !important;
-    transform: none !important;
+    position: static !important;
     width: min(var(--content-max), calc(100% - 64px)) !important;
     margin: 18px auto !important;
     z-index: 900 !important;
