@@ -4,78 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Enlace B2B Local — Configuración de comisión</title>
-<style>
-  body { font-family: Arial, sans-serif; margin:0; background:#eef1f5; color:#333; }
-  header { background:#365F91; color:#fff; padding:14px 32px;
-           display:flex; justify-content:space-between; align-items:center; }
-  header h1 { margin:0; font-size:19px; }
-  .rol { font-size:11.5px; background:#8a2f2f; padding:3px 10px;
-         border-radius:10px; margin-left:10px; }
-  .empresa { font-size:12.5px; text-align:right; color:#c9d8ea; }
-  .empresa a { color:#fff; font-size:12px; }
-  nav { background:#2c4a73; padding:9px 32px; }
-  nav a { color:#fff; text-decoration:none; margin-right:22px; font-size:13.5px; }
-  nav a.activo { font-weight:bold; border-bottom:2px solid #fff; padding-bottom:6px; }
-  main { padding:22px 32px; }
-  h2 { font-size:19px; margin:0 0 4px 0; }
-  .sub { font-size:13px; color:#666; margin:0 0 20px 0; }
-  .cuerpo { display:flex; gap:22px; align-items:flex-start; }
-  .izq { flex:2.2; }
-  .caja { background:#fff; border:1px solid #ccd3dc; border-radius:6px;
-          padding:20px; margin-bottom:16px; }
-  .caja h3 { margin:0 0 4px 0; font-size:15px; }
-  .caja .aviso-sec { font-size:12.5px; color:#777; margin:0 0 16px 0;
-                     border-bottom:1px solid #e6eaef; padding-bottom:10px; }
-  .general { display:flex; gap:22px; align-items:flex-end; }
-  .pctbox { text-align:center; }
-  .pctbox input { width:100px; padding:14px; font-size:26px; text-align:center;
-                  border:2px solid #365F91; border-radius:6px; color:#365F91;
-                  font-weight:bold; box-sizing:border-box; }
-  .pctbox .lbl { font-size:12px; color:#666; margin-bottom:5px; }
-  .rango { flex:1; }
-  .rango input[type=range] { width:100%; }
-  .marcas { display:flex; justify-content:space-between; font-size:11.5px;
-            color:#888; margin-top:3px; }
-  .permitido { background:#eaf1f8; border:1px solid #b9cfe6; border-radius:4px;
-               padding:9px 12px; font-size:12.5px; margin-top:14px; }
-  table { border-collapse:collapse; width:100%; }
-  th, td { border-bottom:1px solid #eef1f5; padding:10px 12px; font-size:12.5px;
-           text-align:left; vertical-align:middle; }
-  th { background:#f7f9fb; font-size:12px; }
-  tr:last-child td { border-bottom:none; }
-  .num { text-align:right; white-space:nowrap; }
-  .num input { width:66px; padding:6px; border:1px solid #b9c2cd;
-               border-radius:4px; text-align:right; font-size:12.5px; }
-  .quitar { color:#c0392b; font-size:12px; text-decoration:none; }
-  .agregar { color:#365F91; font-size:13px; text-decoration:none;
-             display:inline-block; margin-top:12px; }
-  .vigencia { display:flex; gap:16px; align-items:flex-end; }
-  .vigencia div { flex:1; }
-  label { display:block; font-size:12.5px; color:#666; margin-bottom:4px; }
-  input[type=date], select { width:100%; padding:9px; box-sizing:border-box;
-             border:1px solid #b9c2cd; border-radius:4px; font-size:13px; }
-  .acciones { display:flex; gap:12px; margin-top:20px; }
-  button { background:#365F91; color:#fff; border:none; padding:11px 22px;
-           border-radius:4px; font-size:14px; cursor:pointer; }
-  .sec { background:#fff; color:#365F91; border:1px solid #365F91; }
-  .der { flex:1; min-width:255px; }
-  .dcaja { background:#fff; border:1px solid #ccd3dc; border-radius:6px;
-           padding:18px; margin-bottom:16px; }
-  .dcaja h3 { margin:0 0 12px 0; font-size:15px; }
-  .hist { border-bottom:1px solid #f0f3f6; padding:9px 0; font-size:12.5px; }
-  .hist:last-child { border-bottom:none; }
-  .hist .p { font-weight:bold; color:#365F91; }
-  .hist .f { color:#888; font-size:11.5px; }
-  .alerta { background:#fdf3d8; border:1px solid #e8d190; border-radius:5px;
-            padding:12px; font-size:12.5px; line-height:1.5; }
-  footer { text-align:center; font-size:12px; color:#777; padding:20px; }
-</style>
 <link rel="stylesheet" href="../css/base.css">
 <script src="../js/datos.js"></script>
 <script src="../js/sesion.js"></script>
 <script src="../js/comun.js" defer></script>
 </head>
-<body>
+<body class="pantalla-19">
 
 <header>
   <h1>Enlace B2B Local <span class="rol">Administrador</span></h1>

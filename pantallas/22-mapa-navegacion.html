@@ -4,80 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Enlace B2B Local — Mapa de navegación</title>
-<style>
-  body { font-family: Arial, sans-serif; margin:0; background:#fff; color:#333;
-         padding:26px 30px; }
-  h1 { font-size:20px; margin:0 0 3px 0; color:#365F91; }
-  .sub { font-size:12.5px; color:#666; margin:0 0 22px 0; }
-
-  .publico { border:2px dashed #b9c2cd; border-radius:8px; padding:16px 18px;
-             margin-bottom:8px; background:#fafbfc; }
-  .publico .et { font-size:11px; color:#888; text-transform:uppercase;
-                 letter-spacing:.6px; margin-bottom:11px; }
-  .fila { display:flex; gap:16px; align-items:center; justify-content:center; }
-
-  .caja { border:1.5px solid #365F91; border-radius:6px; background:#fff;
-          padding:9px 13px; text-align:center; min-width:150px; }
-  .caja .n { font-size:13px; font-weight:bold; line-height:1.25; }
-  .caja .f { font-size:10.5px; color:#8a97a8; margin-top:3px; }
-  .caja.entrada { background:#365F91; color:#fff; }
-  .caja.entrada .f { color:#c9d8ea; }
-  .caja.menu { border-color:#b9c2cd; background:#f7f9fb; }
-  .caja.menu .n { font-weight:normal; }
-
-  .fl { color:#365F91; font-size:19px; line-height:1; }
-  .fl.v { text-align:center; margin:5px 0; }
-  .fl.lbl { font-size:11px; color:#777; text-align:center; margin:3px 0; }
-
-  .gate { border:1.5px solid #8a6d1f; background:#fdf9ee; border-radius:6px;
-          padding:9px 14px; text-align:center; max-width:520px; margin:0 auto; }
-  .gate .n { font-size:12.5px; font-weight:bold; color:#8a6d1f; }
-  .gate .d { font-size:11px; color:#8a6d1f; margin-top:2px; }
-
-  .roles { display:flex; gap:18px; margin-top:10px; align-items:stretch; }
-  .col { flex:1; border:1px solid #ccd3dc; border-radius:8px; overflow:hidden;
-         display:flex; flex-direction:column; }
-  .ccab { padding:10px 12px; text-align:center; color:#fff; }
-  .ccab .r { font-size:14px; font-weight:bold; }
-  .ccab .c { font-size:10.5px; opacity:.85; margin-top:2px; }
-  .col.comprador .ccab { background:#365F91; }
-  .col.distribuidor .ccab { background:#2c6b4f; }
-  .col.admin .ccab { background:#8a2f2f; }
-  .col.distribuidor .caja { border-color:#2c6b4f; }
-  .col.distribuidor .caja.entrada { background:#2c6b4f; }
-  .col.distribuidor .fl { color:#2c6b4f; }
-  .col.admin .caja { border-color:#8a2f2f; }
-  .col.admin .caja.entrada { background:#8a2f2f; }
-  .col.admin .fl { color:#8a2f2f; }
-  .col.distribuidor .caja.menu, .col.admin .caja.menu { border-color:#b9c2cd; }
-
-  .cuerpo { padding:14px 13px; flex:1; }
-  .cuerpo .caja { width:100%; box-sizing:border-box; min-width:0; }
-  .grupo-menu { border-top:1px dashed #ccd3dc; margin-top:12px; padding-top:11px; }
-  .grupo-menu .et { font-size:10.5px; color:#888; text-align:center;
-                    margin-bottom:8px; }
-  .grupo-menu .caja { margin-bottom:7px; }
-  .grupo-menu .caja:last-child { margin-bottom:0; }
-
-  .salida { margin-top:20px; border-top:1px solid #e6eaef; padding-top:14px;
-            display:flex; gap:26px; align-items:center; justify-content:center;
-            font-size:12px; color:#555; }
-  .salida .caja { min-width:130px; }
-
-  .leyenda { margin-top:22px; border:1px solid #e6eaef; border-radius:6px;
-             padding:13px 16px; font-size:11.5px; color:#555; }
-  .leyenda h3 { margin:0 0 9px 0; font-size:12px; color:#365F91; }
-  .leyenda div { padding:3px 0; }
-  .mini { display:inline-block; width:26px; height:13px; border-radius:3px;
-          vertical-align:-2px; margin-right:7px; }
-  footer { text-align:center; font-size:11.5px; color:#888; margin-top:22px; }
-</style>
 <link rel="stylesheet" href="../css/base.css">
 <script src="../js/datos.js"></script>
 <script src="../js/sesion.js"></script>
 <script src="../js/comun.js" defer></script>
 </head>
-<body>
+<body class="pantalla-22">
 
 <h1>Mapa general de navegación</h1>
 <p class="sub">Enlace B2B Local — Marketplace Industrial Metropolitano · Tres áreas separadas por rol</p>
@@ -249,11 +181,11 @@
 
 <div class="leyenda">
   <h3>Cómo leer este mapa</h3>
-  <div><span class="mini" style="background:#365F91"></span> Caja de color sólido = pantalla de entrada del rol, la primera que se ve al iniciar sesión.</div>
-  <div><span class="mini" style="background:#fff; border:1.5px solid #365F91"></span> Caja con borde = pantalla del recorrido principal; la flecha indica el paso siguiente.</div>
-  <div><span class="mini" style="background:#f7f9fb; border:1.5px solid #b9c2cd"></span> Caja gris = pantalla accesible en cualquier momento desde el menú, sin orden fijo.</div>
-  <div><span class="mini" style="background:#fafbfc; border:2px dashed #b9c2cd"></span> Marco punteado = zona pública, única parte del sistema sin sesión activa.</div>
-  <div style="margin-top:7px; color:#8a6d1f;">Ningún rol puede navegar a las pantallas de otro rol. Los tres bloques están aislados entre sí.</div>
+  <div><span class="mini fondo-azul"></span> Caja de color sólido = pantalla de entrada del rol, la primera que se ve al iniciar sesión.</div>
+  <div><span class="mini muestra-recorrido"></span> Caja con borde = pantalla del recorrido principal; la flecha indica el paso siguiente.</div>
+  <div><span class="mini muestra-menu"></span> Caja gris = pantalla accesible en cualquier momento desde el menú, sin orden fijo.</div>
+  <div><span class="mini muestra-publica"></span> Marco punteado = zona pública, única parte del sistema sin sesión activa.</div>
+  <div class="nota-aislamiento">Ningún rol puede navegar a las pantallas de otro rol. Los tres bloques están aislados entre sí.</div>
 </div>
 
 <footer>Programación Web II — 053 · Mapa de navegación</footer>

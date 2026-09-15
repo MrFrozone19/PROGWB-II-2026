@@ -1,7 +1,983 @@
-/* Estilos compartidos por todas las pantallas.
-   Los estilos propios de cada pantalla siguen dentro de su archivo HTML. */
+/* Estilos de todas las pantallas.
+   Los estilos propios de cada pantalla van primero, limitados con :where(.pantalla-NN) para no sumar
+   especificidad; así los estilos compartidos, que van después, siguen ganando en caso de empate. */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* ===== Estilos propios de cada pantalla ===== */
+
+/* 01-inicio-sesion */
+body:where(.pantalla-01) { font-family: Arial, sans-serif; margin: 0; background: #eef1f5; color: #333; }
+:where(.pantalla-01) header { background: #365F91; color: #fff; padding: 16px 32px; }
+:where(.pantalla-01) header h1 { margin: 0; font-size: 20px; }
+:where(.pantalla-01) header p { margin: 2px 0 0 0; font-size: 13px; color: #c9d8ea; }
+:where(.pantalla-01) .centro { display: flex; flex-direction: column; align-items: center; gap: 18px; padding: 40px 20px; }
+:where(.pantalla-01) .caja { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; padding: 26px; width: 340px; }
+:where(.pantalla-01) .caja h2 { margin: 0 0 4px 0; font-size: 17px; }
+:where(.pantalla-01) .caja .sub { font-size: 13px; color: #666; margin: 0 0 18px 0; }
+:where(.pantalla-01) label { display: block; margin-top: 14px; font-size: 14px; }
+:where(.pantalla-01) input { width: 100%; padding: 8px; margin-top: 4px; box-sizing: border-box; border: 1px solid #b9c2cd; border-radius: 4px; }
+:where(.pantalla-01) .campo-contrasena { position: relative; display: block; }
+:where(.pantalla-01) .campo-contrasena input { padding-right: 76px; }
+:where(.pantalla-01) .ver-contrasena { position: absolute; right: 4px; top: 4px; bottom: 0; background: none; border: none; color: #365F91; font-size: 12.5px; cursor: pointer; padding: 0 8px; }
+:where(.pantalla-01) .msg-error { color: #c0392b; font-size: 12.5px; margin: 10px 0 0 0; }
+:where(.pantalla-01) .msg-ok { color: #2e7d32; font-size: 12.5px; margin: 14px 0 0 0; }
+:where(.pantalla-01) .aviso { background: #fdf3d8; border: 1px solid #e8d190; border-radius: 4px; padding: 10px; font-size: 12.5px; margin-top: 16px; }
+:where(.pantalla-01) .entrar { width: 100%; background: #365F91; color: #fff; border: none; padding: 11px; border-radius: 4px; font-size: 15px; cursor: pointer; margin-top: 20px; }
+:where(.pantalla-01) .enlaces { margin-top: 16px; font-size: 13px; text-align: center; }
+:where(.pantalla-01) .enlaces a { color: #365F91; text-decoration: none; display: block; margin-top: 7px; }
+:where(.pantalla-01) .demo { background: #fff; border: 1px dashed #b9c2cd; border-radius: 6px; padding: 16px 26px; width: 340px; font-size: 12.5px; }
+:where(.pantalla-01) .demo h3 { margin: 0 0 8px 0; font-size: 13px; color: #365F91; }
+:where(.pantalla-01) .demo table { width: 100%; border-collapse: collapse; }
+:where(.pantalla-01) .demo th, :where(.pantalla-01) .demo td { text-align: left; padding: 5px 4px; border-bottom: 1px solid #eef1f5; }
+:where(.pantalla-01) .demo th { font-size: 11.5px; color: #777; font-weight: normal; }
+:where(.pantalla-01) .demo tr[data-correo] { cursor: pointer; }
+:where(.pantalla-01) .demo tr[data-correo]:hover { background: #f4f8fc; }
+:where(.pantalla-01) .demo p { margin: 8px 0 0 0; color: #666; }
+:where(.pantalla-01) .demo a { color: #365F91; }
+:where(.pantalla-01) footer { text-align: center; font-size: 12px; color: #777; padding: 18px; }
+
+/* 02-registro-empresa */
+body:where(.pantalla-02) { font-family: Arial, sans-serif; margin: 0; background: #eef1f5; color: #333; }
+:where(.pantalla-02) header { background: #365F91; color: #fff; padding: 16px 32px; }
+:where(.pantalla-02) header h1 { margin: 0; font-size: 20px; }
+:where(.pantalla-02) header p { margin: 2px 0 0 0; font-size: 13px; color: #c9d8ea; }
+:where(.pantalla-02) main { max-width: 640px; margin: 28px auto; background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; padding: 26px; }
+:where(.pantalla-02) h2 { margin: 0 0 4px 0; font-size: 18px; }
+:where(.pantalla-02) .sub { font-size: 13px; color: #666; margin: 0 0 20px 0; }
+:where(.pantalla-02) fieldset { border: 1px solid #dde2e8; border-radius: 5px; padding: 14px 16px 18px 16px; margin: 0 0 18px 0; }
+:where(.pantalla-02) legend { font-size: 13px; color: #365F91; font-weight: bold; padding: 0 6px; }
+:where(.pantalla-02) .fila { display: flex; gap: 14px; }
+:where(.pantalla-02) .fila > div { flex: 1; }
+:where(.pantalla-02) label { display: block; margin-top: 12px; font-size: 13.5px; }
+:where(.pantalla-02) input, :where(.pantalla-02) select { width: 100%; padding: 8px; margin-top: 4px; box-sizing: border-box; border: 1px solid #b9c2cd; border-radius: 4px; }
+:where(.pantalla-02) input[readonly] { background: #f4f6f8; color: #555; }
+:where(.pantalla-02) .ok { border-color: #2e7d32 !important; }
+:where(.pantalla-02) .msg-ok { color: #2e7d32; font-size: 12.5px; margin-top: 5px; }
+:where(.pantalla-02) .msg-error { color: #c0392b; font-size: 12.5px; margin-top: 5px; }
+:where(.pantalla-02) .nota { background: #eaf1f8; border: 1px solid #b9cfe6; border-radius: 4px; padding: 11px; font-size: 12.5px; margin-top: 14px; }
+:where(.pantalla-02) .acciones { display: flex; gap: 12px; margin-top: 22px; }
+:where(.pantalla-02) button { background: #365F91; color: #fff; border: none; padding: 11px 20px; border-radius: 4px; font-size: 14.5px; cursor: pointer; }
+:where(.pantalla-02) .cancelar { background: #fff; color: #365F91; border: 1px solid #365F91; }
+:where(.pantalla-02) .confirmacion { text-align: center; padding: 20px 10px; }
+:where(.pantalla-02) .confirmacion .icono { font-size: 40px; color: #2e7d32; line-height: 1; margin-bottom: 10px; }
+:where(.pantalla-02) .confirmacion p { font-size: 14px; color: #555; margin: 8px 0 20px 0; }
+:where(.pantalla-02) footer { text-align: center; font-size: 12px; color: #777; padding: 18px; }
+
+/* 03-busqueda-principal */
+body:where(.pantalla-03) { font-family: Arial, sans-serif; margin: 0; background: #eef1f5; color: #333; }
+:where(.pantalla-03) header { background: #365F91; color: #fff; padding: 14px 32px; display: flex; justify-content: space-between; align-items: center; }
+:where(.pantalla-03) header h1 { margin: 0; font-size: 19px; }
+:where(.pantalla-03) .empresa { font-size: 12.5px; text-align: right; color: #c9d8ea; }
+:where(.pantalla-03) .empresa a { color: #fff; font-size: 12px; }
+:where(.pantalla-03) nav { background: #2c4a73; padding: 9px 32px; }
+:where(.pantalla-03) nav a { color: #fff; text-decoration: none; margin-right: 24px; font-size: 13.5px; }
+:where(.pantalla-03) nav a.activo { font-weight: bold; border-bottom: 2px solid #fff; padding-bottom: 6px; }
+:where(.pantalla-03) .buscador { background: #fff; border-bottom: 1px solid #ccd3dc; padding: 26px 32px; }
+:where(.pantalla-03) .buscador h2 { margin: 0 0 16px 0; font-size: 20px; }
+:where(.pantalla-03) .linea { display: flex; gap: 10px; align-items: flex-end; }
+:where(.pantalla-03) .etiqueta { font-size: 12px; color: #666; display: block; margin-bottom: 4px; }
+:where(.pantalla-03) .linea input[type=text] { width: 100%; padding: 14px; border: 1px solid #b9c2cd; border-radius: 4px; font-size: 15px; box-sizing: border-box; }
+:where(.pantalla-03) .linea select { width: 100%; padding: 14px; border: 1px solid #b9c2cd; border-radius: 4px; box-sizing: border-box; font-size: 14px; }
+:where(.pantalla-03) .linea button { background: #365F91; color: #fff; border: none; padding: 15px 32px; border-radius: 4px; font-size: 15px; cursor: pointer; }
+:where(.pantalla-03) .sugerencias { border: 1px solid #ccd3dc; border-top: none; background: #fff; max-width: 520px; margin-top: -1px; }
+:where(.pantalla-03) .sug { padding: 9px 14px; font-size: 13.5px; border-bottom: 1px solid #f0f3f6; }
+:where(.pantalla-03) .sug:last-child { border-bottom: none; }
+:where(.pantalla-03) .sug b { color: #365F91; }
+:where(.pantalla-03) main { padding: 24px 32px; }
+:where(.pantalla-03) h3 { font-size: 15px; margin: 0 0 14px 0; }
+:where(.pantalla-03) .iconos { display: flex; gap: 16px; margin-bottom: 30px; }
+:where(.pantalla-03) .icono { background: #fff; border: 1px solid #ccd3dc; border-radius: 8px; padding: 20px 12px; flex: 1; text-align: center; cursor: pointer; }
+:where(.pantalla-03) .icono .fig { font-size: 34px; line-height: 1; margin-bottom: 10px; }
+:where(.pantalla-03) .icono .nom { font-size: 13.5px; font-weight: bold; }
+:where(.pantalla-03) .recientes { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; overflow: hidden; }
+:where(.pantalla-03) .rcab { padding: 14px 18px; border-bottom: 1px solid #e6eaef; display: flex; justify-content: space-between; align-items: center; }
+:where(.pantalla-03) .rcab h3 { margin: 0; }
+:where(.pantalla-03) .rcab a { color: #365F91; font-size: 12.5px; text-decoration: none; }
+:where(.pantalla-03) table { border-collapse: collapse; width: 100%; }
+:where(.pantalla-03) td { border-bottom: 1px solid #eef1f5; padding: 12px 18px; font-size: 13.5px; vertical-align: middle; }
+:where(.pantalla-03) tr:last-child td { border-bottom: none; }
+:where(.pantalla-03) .nom { font-weight: bold; }
+:where(.pantalla-03) .prov { font-size: 12px; color: #777; }
+:where(.pantalla-03) .dist { color: #2e7d32; font-size: 12.5px; font-weight: bold; }
+:where(.pantalla-03) .precio { color: #365F91; font-weight: bold; text-align: right; white-space: nowrap; }
+:where(.pantalla-03) .fecha { font-size: 12.5px; color: #777; }
+:where(.pantalla-03) .btn { background: #365F91; color: #fff; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 12.5px; white-space: nowrap; }
+:where(.pantalla-03) footer { text-align: center; font-size: 12px; color: #777; padding: 20px; }
+
+/* 04-resultados-busqueda */
+body:where(.pantalla-04) { font-family: Arial, sans-serif; margin: 0; background: #eef1f5; color: #333; }
+:where(.pantalla-04) header { background: #365F91; color: #fff; padding: 14px 32px; display: flex; justify-content: space-between; align-items: center; }
+:where(.pantalla-04) header h1 { margin: 0; font-size: 19px; }
+:where(.pantalla-04) .empresa { font-size: 12.5px; text-align: right; color: #c9d8ea; }
+:where(.pantalla-04) .empresa a { color: #fff; font-size: 12px; }
+:where(.pantalla-04) nav { background: #2c4a73; padding: 9px 32px; }
+:where(.pantalla-04) nav a { color: #fff; text-decoration: none; margin-right: 24px; font-size: 13.5px; }
+:where(.pantalla-04) nav a.activo { font-weight: bold; border-bottom: 2px solid #fff; padding-bottom: 6px; }
+:where(.pantalla-04) .barra { background: #fff; border-bottom: 1px solid #ccd3dc; padding: 16px 32px; display: flex; gap: 10px; align-items: center; }
+:where(.pantalla-04) .barra input { flex: 1; padding: 10px; border: 1px solid #b9c2cd; border-radius: 4px; }
+:where(.pantalla-04) .barra button { background: #365F91; color: #fff; border: none; padding: 11px 22px; border-radius: 4px; cursor: pointer; }
+:where(.pantalla-04) .cuerpo { display: flex; gap: 22px; padding: 22px 32px; align-items: flex-start; }
+:where(.pantalla-04) aside { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; padding: 16px; width: 216px; flex-shrink: 0; }
+:where(.pantalla-04) aside h3 { margin: 0 0 10px 0; font-size: 14px; }
+:where(.pantalla-04) aside .grupo { border-top: 1px solid #e6eaef; padding-top: 12px; margin-top: 12px; }
+:where(.pantalla-04) aside label { display: block; font-size: 13px; margin-top: 7px; }
+:where(.pantalla-04) aside select, :where(.pantalla-04) aside input[type=number] { width: 100%; padding: 6px; margin-top: 3px; box-sizing: border-box; border: 1px solid #b9c2cd; border-radius: 4px; }
+:where(.pantalla-04) aside button { width: 100%; background: #365F91; color: #fff; border: none; padding: 9px; border-radius: 4px; cursor: pointer; margin-top: 14px; font-size: 13px; }
+:where(.pantalla-04) .contenido { flex: 1; }
+:where(.pantalla-04) .resumen { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+:where(.pantalla-04) .resumen p { margin: 0; font-size: 13.5px; color: #555; }
+:where(.pantalla-04) .resumen select { padding: 7px; border: 1px solid #b9c2cd; border-radius: 4px; font-size: 13px; }
+:where(.pantalla-04) .fila { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; padding: 14px 16px; margin-bottom: 11px; display: flex; justify-content: space-between; align-items: center; }
+:where(.pantalla-04) .fila h4 { margin: 0 0 4px 0; font-size: 15px; }
+:where(.pantalla-04) .prov { font-size: 12.5px; color: #666; margin: 0; }
+:where(.pantalla-04) .dist { font-size: 12.5px; color: #2e7d32; font-weight: bold; margin: 5px 0 0 0; }
+:where(.pantalla-04) .derecha { text-align: right; min-width: 150px; }
+:where(.pantalla-04) .precio { color: #365F91; font-weight: bold; font-size: 16px; margin: 0; }
+:where(.pantalla-04) .exist { font-size: 12px; color: #666; margin: 3px 0 0 0; }
+:where(.pantalla-04) .fila button { background: #365F91; color: #fff; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin-top: 8px; font-size: 13px; }
+:where(.pantalla-04) .fila.agotado { opacity: .65; }
+:where(.pantalla-04) .fila.agotado button { background: #bbb; cursor: default; }
+:where(.pantalla-04) .etiq-agotado { display: inline-block; background: #e8e8e8; color: #777; font-size: 11.5px; padding: 2px 8px; border-radius: 10px; }
+:where(.pantalla-04) .aviso { background: #fdf3d8; border: 1px solid #e8d190; border-radius: 5px; padding: 13px; font-size: 13px; margin-top: 16px; }
+:where(.pantalla-04) .aviso a { color: #365F91; }
+:where(.pantalla-04) footer { text-align: center; font-size: 12px; color: #777; padding: 20px; }
+
+/* 05-detalle-producto */
+body:where(.pantalla-05) { font-family: Arial, sans-serif; margin: 0; background: #eef1f5; color: #333; }
+:where(.pantalla-05) header { background: #365F91; color: #fff; padding: 14px 32px; display: flex; justify-content: space-between; align-items: center; }
+:where(.pantalla-05) header h1 { margin: 0; font-size: 19px; }
+:where(.pantalla-05) .empresa { font-size: 12.5px; text-align: right; color: #c9d8ea; }
+:where(.pantalla-05) .empresa a { color: #fff; font-size: 12px; }
+:where(.pantalla-05) nav { background: #2c4a73; padding: 9px 32px; }
+:where(.pantalla-05) nav a { color: #fff; text-decoration: none; margin-right: 24px; font-size: 13.5px; }
+:where(.pantalla-05) nav a.activo { font-weight: bold; border-bottom: 2px solid #fff; padding-bottom: 6px; }
+:where(.pantalla-05) .ruta { padding: 14px 32px 0 32px; font-size: 12.5px; color: #666; }
+:where(.pantalla-05) .ruta a { color: #365F91; text-decoration: none; }
+:where(.pantalla-05) .cuerpo { display: flex; gap: 22px; padding: 16px 32px; align-items: flex-start; }
+:where(.pantalla-05) .ficha { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; padding: 22px; flex: 2; }
+:where(.pantalla-05) .ficha h2 { margin: 0 0 6px 0; font-size: 20px; }
+:where(.pantalla-05) .clave { font-size: 12.5px; color: #666; margin: 0 0 18px 0; }
+:where(.pantalla-05) .precio-grande { color: #365F91; font-size: 26px; font-weight: bold; margin: 0; }
+:where(.pantalla-05) .unidad { font-size: 13px; color: #666; margin: 2px 0 16px 0; }
+:where(.pantalla-05) .compra { display: flex; gap: 12px; align-items: flex-end; border-top: 1px solid #e6eaef; border-bottom: 1px solid #e6eaef; padding: 16px 0; margin-bottom: 18px; }
+:where(.pantalla-05) .compra label { font-size: 13px; }
+:where(.pantalla-05) .compra input { width: 90px; padding: 9px; margin-top: 4px; box-sizing: border-box; border: 1px solid #b9c2cd; border-radius: 4px; }
+:where(.pantalla-05) .compra button { background: #365F91; color: #fff; border: none; padding: 11px 24px; border-radius: 4px; font-size: 14.5px; cursor: pointer; }
+:where(.pantalla-05) .msg-error { color: #c0392b; font-size: 12.5px; margin: 8px 0 0 0; }
+:where(.pantalla-05) h3 { font-size: 14.5px; margin: 0 0 8px 0; }
+:where(.pantalla-05) table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+:where(.pantalla-05) th, :where(.pantalla-05) td { border: 1px solid #dde2e8; padding: 8px 10px; font-size: 13px; text-align: left; }
+:where(.pantalla-05) th { background: #f2f5f9; width: 38%; }
+:where(.pantalla-05) .cond { background: #eaf1f8; border: 1px solid #b9cfe6; border-radius: 5px; padding: 12px; font-size: 13px; }
+:where(.pantalla-05) .cond p { margin: 0 0 6px 0; }
+:where(.pantalla-05) .cond p:last-child { margin: 0; }
+:where(.pantalla-05) .lateral { flex: 1; min-width: 252px; }
+:where(.pantalla-05) .caja { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; padding: 18px; margin-bottom: 16px; }
+:where(.pantalla-05) .caja h3 { margin: 0 0 10px 0; }
+:where(.pantalla-05) .dist { color: #2e7d32; font-weight: bold; font-size: 14px; margin: 0 0 6px 0; }
+:where(.pantalla-05) .dir { font-size: 12.5px; color: #666; margin: 0 0 12px 0; line-height: 1.5; }
+:where(.pantalla-05) .estrellas { color: #e8a33d; font-size: 14px; }
+:where(.pantalla-05) .caja a { color: #365F91; font-size: 13px; text-decoration: none; }
+:where(.pantalla-05) .otro { border-top: 1px solid #e6eaef; padding-top: 10px; margin-top: 10px; font-size: 13px; }
+:where(.pantalla-05) .otro .n { color: #365F91; font-weight: bold; }
+:where(.pantalla-05) footer { text-align: center; font-size: 12px; color: #777; padding: 20px; }
+
+/* 06-carrito */
+body:where(.pantalla-06) { font-family: Arial, sans-serif; margin: 0; background: #eef1f5; color: #333; }
+:where(.pantalla-06) header { background: #365F91; color: #fff; padding: 14px 32px; display: flex; justify-content: space-between; align-items: center; }
+:where(.pantalla-06) header h1 { margin: 0; font-size: 19px; }
+:where(.pantalla-06) .empresa { font-size: 12.5px; text-align: right; color: #c9d8ea; }
+:where(.pantalla-06) .empresa a { color: #fff; font-size: 12px; }
+:where(.pantalla-06) nav { background: #2c4a73; padding: 9px 32px; }
+:where(.pantalla-06) nav a { color: #fff; text-decoration: none; margin-right: 24px; font-size: 13.5px; }
+:where(.pantalla-06) nav a.activo { font-weight: bold; border-bottom: 2px solid #fff; padding-bottom: 6px; }
+:where(.pantalla-06) main { padding: 22px 32px; }
+:where(.pantalla-06) h2 { font-size: 19px; margin: 0 0 4px 0; }
+:where(.pantalla-06) .sub { font-size: 13px; color: #666; margin: 0 0 20px 0; }
+:where(.pantalla-06) .cuerpo { display: flex; gap: 22px; align-items: flex-start; }
+:where(.pantalla-06) .izq { flex: 2.4; }
+:where(.pantalla-06) .grupo { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; margin-bottom: 16px; overflow: hidden; }
+:where(.pantalla-06) .cab { background: #f2f5f9; border-bottom: 1px solid #dde2e8; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; }
+:where(.pantalla-06) .cab strong { font-size: 14px; }
+:where(.pantalla-06) .cab .dist { color: #2e7d32; font-size: 12.5px; font-weight: bold; }
+:where(.pantalla-06) table { border-collapse: collapse; width: 100%; }
+:where(.pantalla-06) td { border-bottom: 1px solid #eef1f5; padding: 12px 16px; font-size: 13.5px; vertical-align: middle; }
+:where(.pantalla-06) tr:last-child td { border-bottom: none; }
+:where(.pantalla-06) .nom { font-weight: bold; }
+:where(.pantalla-06) .clave { font-size: 12px; color: #888; }
+:where(.pantalla-06) input[type=number] { width: 70px; padding: 6px; border: 1px solid #b9c2cd; border-radius: 4px; }
+:where(.pantalla-06) .quitar { color: #c0392b; font-size: 12.5px; text-decoration: none; }
+:where(.pantalla-06) .imp { text-align: right; font-weight: bold; color: #365F91; white-space: nowrap; }
+:where(.pantalla-06) .subtotal { background: #fafbfc; padding: 11px 16px; text-align: right; font-size: 13.5px; border-top: 1px solid #dde2e8; }
+:where(.pantalla-06) .alerta { background: #fdf3d8; border-top: 1px solid #e8d190; padding: 11px 16px; font-size: 12.5px; }
+:where(.pantalla-06) .der { flex: 1; min-width: 250px; background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; padding: 20px; }
+:where(.pantalla-06) .der h3 { margin: 0 0 14px 0; font-size: 15px; }
+:where(.pantalla-06) .linea { display: flex; justify-content: space-between; font-size: 13.5px; margin-bottom: 9px; }
+:where(.pantalla-06) .total { border-top: 2px solid #dde2e8; margin-top: 12px; padding-top: 12px; font-size: 17px; font-weight: bold; color: #365F91; display: flex; justify-content: space-between; }
+:where(.pantalla-06) .der button { width: 100%; background: #365F91; color: #fff; border: none; padding: 12px; border-radius: 4px; font-size: 14.5px; cursor: pointer; margin-top: 16px; }
+:where(.pantalla-06) .der .sec { background: #fff; color: #365F91; border: 1px solid #365F91; }
+:where(.pantalla-06) .der .vaciar { background: #fff; color: #c0392b; border: 1px solid #d9a5a0; }
+:where(.pantalla-06) .nota { font-size: 12px; color: #666; margin-top: 14px; line-height: 1.5; }
+:where(.pantalla-06) footer { text-align: center; font-size: 12px; color: #777; padding: 20px; }
+
+/* 07-confirmacion-pedido */
+body:where(.pantalla-07) { font-family: Arial, sans-serif; margin: 0; background: #eef1f5; color: #333; }
+:where(.pantalla-07) header { background: #365F91; color: #fff; padding: 14px 32px; display: flex; justify-content: space-between; align-items: center; }
+:where(.pantalla-07) header h1 { margin: 0; font-size: 19px; }
+:where(.pantalla-07) .empresa { font-size: 12.5px; text-align: right; color: #c9d8ea; }
+:where(.pantalla-07) .empresa a { color: #fff; font-size: 12px; }
+:where(.pantalla-07) nav { background: #2c4a73; padding: 9px 32px; }
+:where(.pantalla-07) nav a { color: #fff; text-decoration: none; margin-right: 24px; font-size: 13.5px; }
+:where(.pantalla-07) nav a.activo { font-weight: bold; border-bottom: 2px solid #fff; padding-bottom: 6px; }
+:where(.pantalla-07) .pasos { background: #fff; border-bottom: 1px solid #ccd3dc; padding: 14px 32px; font-size: 13px; color: #999; }
+:where(.pantalla-07) .pasos span { margin-right: 8px; }
+:where(.pantalla-07) .pasos .hecho { color: #2e7d32; }
+:where(.pantalla-07) .pasos .actual { color: #365F91; font-weight: bold; }
+:where(.pantalla-07) main { padding: 22px 32px; }
+:where(.pantalla-07) h2 { font-size: 19px; margin: 0 0 4px 0; }
+:where(.pantalla-07) .sub { font-size: 13px; color: #666; margin: 0 0 20px 0; }
+:where(.pantalla-07) .cuerpo { display: flex; gap: 22px; align-items: flex-start; }
+:where(.pantalla-07) .izq { flex: 2.4; }
+:where(.pantalla-07) .caja { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; padding: 18px 20px; margin-bottom: 16px; }
+:where(.pantalla-07) .caja h3 { margin: 0 0 12px 0; font-size: 15px; border-bottom: 1px solid #e6eaef; padding-bottom: 8px; }
+:where(.pantalla-07) .par { display: flex; gap: 20px; }
+:where(.pantalla-07) .par > div { flex: 1; }
+:where(.pantalla-07) label { display: block; font-size: 13px; margin-top: 11px; }
+:where(.pantalla-07) input, :where(.pantalla-07) select, :where(.pantalla-07) textarea { width: 100%; padding: 8px; margin-top: 4px; box-sizing: border-box; border: 1px solid #b9c2cd; border-radius: 4px; font-family: Arial, sans-serif; font-size: 13.5px; }
+:where(.pantalla-07) textarea { height: 64px; resize: vertical; }
+:where(.pantalla-07) .opcion { border: 1px solid #ccd3dc; border-radius: 5px; padding: 12px; margin-top: 10px; font-size: 13.5px; }
+:where(.pantalla-07) .opcion.sel { border-color: #365F91; background: #f4f8fc; }
+:where(.pantalla-07) .opcion .det { font-size: 12.5px; color: #666; margin: 4px 0 0 24px; }
+:where(.pantalla-07) .pedido { border: 1px solid #dde2e8; border-radius: 5px; margin-bottom: 14px; overflow: hidden; }
+:where(.pantalla-07) .pcab { background: #f2f5f9; padding: 10px 14px; font-size: 13.5px; display: flex; justify-content: space-between; }
+:where(.pantalla-07) .pcab .dist { color: #2e7d32; font-size: 12.5px; font-weight: bold; }
+:where(.pantalla-07) table { border-collapse: collapse; width: 100%; }
+:where(.pantalla-07) td { border-bottom: 1px solid #eef1f5; padding: 9px 14px; font-size: 13px; }
+:where(.pantalla-07) tr:last-child td { border-bottom: none; }
+:where(.pantalla-07) .imp { text-align: right; white-space: nowrap; }
+:where(.pantalla-07) .psub { background: #fafbfc; border-top: 1px solid #dde2e8; padding: 9px 14px; text-align: right; font-size: 13px; }
+:where(.pantalla-07) .der { flex: 1; min-width: 250px; background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; padding: 20px; }
+:where(.pantalla-07) .der h3 { margin: 0 0 14px 0; font-size: 15px; }
+:where(.pantalla-07) .linea { display: flex; justify-content: space-between; font-size: 13.5px; margin-bottom: 9px; }
+:where(.pantalla-07) .total { border-top: 2px solid #dde2e8; margin-top: 12px; padding-top: 12px; font-size: 17px; font-weight: bold; color: #365F91; display: flex; justify-content: space-between; }
+:where(.pantalla-07) .der button { width: 100%; background: #365F91; color: #fff; border: none; padding: 12px; border-radius: 4px; font-size: 14.5px; cursor: pointer; margin-top: 16px; }
+:where(.pantalla-07) .der .sec { background: #fff; color: #365F91; border: 1px solid #365F91; }
+:where(.pantalla-07) .chk { font-size: 12.5px; margin-top: 14px; line-height: 1.5; }
+:where(.pantalla-07) footer { text-align: center; font-size: 12px; color: #777; padding: 20px; }
+
+/* 08-seguimiento-pedido */
+body:where(.pantalla-08) { font-family: Arial, sans-serif; margin: 0; background: #eef1f5; color: #333; }
+:where(.pantalla-08) header { background: #365F91; color: #fff; padding: 14px 32px; display: flex; justify-content: space-between; align-items: center; }
+:where(.pantalla-08) header h1 { margin: 0; font-size: 19px; }
+:where(.pantalla-08) .empresa { font-size: 12.5px; text-align: right; color: #c9d8ea; }
+:where(.pantalla-08) .empresa a { color: #fff; font-size: 12px; }
+:where(.pantalla-08) nav { background: #2c4a73; padding: 9px 32px; }
+:where(.pantalla-08) nav a { color: #fff; text-decoration: none; margin-right: 24px; font-size: 13.5px; }
+:where(.pantalla-08) nav a.activo { font-weight: bold; border-bottom: 2px solid #fff; padding-bottom: 6px; }
+:where(.pantalla-08) main { padding: 22px 32px; }
+:where(.pantalla-08) .titulo { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px; }
+:where(.pantalla-08) h2 { font-size: 19px; margin: 0 0 3px 0; }
+:where(.pantalla-08) .sub { font-size: 13px; color: #666; margin: 0; }
+:where(.pantalla-08) .estado { background: #e8f3e9; color: #2e7d32; border: 1px solid #a9d3ae; border-radius: 20px; padding: 7px 18px; font-size: 13.5px; font-weight: bold; }
+:where(.pantalla-08) .cuerpo { display: flex; gap: 22px; align-items: flex-start; }
+:where(.pantalla-08) .izq { flex: 2.4; }
+:where(.pantalla-08) .caja { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; padding: 20px; margin-bottom: 16px; }
+:where(.pantalla-08) .caja h3 { margin: 0 0 16px 0; font-size: 15px; border-bottom: 1px solid #e6eaef; padding-bottom: 8px; }
+:where(.pantalla-08) .paso { display: flex; gap: 14px; padding-bottom: 20px; position: relative; }
+:where(.pantalla-08) .paso:last-child { padding-bottom: 0; }
+:where(.pantalla-08) .bolita { width: 15px; height: 15px; border-radius: 50%; background: #dde2e8; flex-shrink: 0; margin-top: 3px; border: 2px solid #fff; box-shadow: 0 0 0 1px #ccd3dc; }
+:where(.pantalla-08) .paso.ok .bolita { background: #2e7d32; box-shadow: 0 0 0 1px #2e7d32; }
+:where(.pantalla-08) .paso.act .bolita { background: #365F91; box-shadow: 0 0 0 3px #cfe0f0; }
+:where(.pantalla-08) .linea-v { position: absolute; left: 7px; top: 20px; bottom: 0; width: 1px; background: #dde2e8; }
+:where(.pantalla-08) .paso:last-child .linea-v { display: none; }
+:where(.pantalla-08) .paso .txt { font-size: 13.5px; }
+:where(.pantalla-08) .paso .txt strong { display: block; }
+:where(.pantalla-08) .paso .txt span { color: #888; font-size: 12.5px; }
+:where(.pantalla-08) .paso.pend .txt strong { color: #aaa; }
+:where(.pantalla-08) table { border-collapse: collapse; width: 100%; }
+:where(.pantalla-08) th, :where(.pantalla-08) td { border-bottom: 1px solid #eef1f5; padding: 10px 12px; font-size: 13px; text-align: left; }
+:where(.pantalla-08) th { background: #f2f5f9; font-size: 12.5px; }
+:where(.pantalla-08) .imp { text-align: right; white-space: nowrap; }
+:where(.pantalla-08) .tot { background: #fafbfc; font-weight: bold; }
+:where(.pantalla-08) .der { flex: 1; min-width: 250px; }
+:where(.pantalla-08) .dcaja { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; padding: 18px; margin-bottom: 16px; }
+:where(.pantalla-08) .dcaja h3 { margin: 0 0 12px 0; font-size: 15px; }
+:where(.pantalla-08) .dato { font-size: 13px; margin: 0 0 9px 0; }
+:where(.pantalla-08) .dato span { color: #888; display: block; font-size: 12px; }
+:where(.pantalla-08) .dist { color: #2e7d32; font-weight: bold; }
+:where(.pantalla-08) .dcaja button { width: 100%; background: #fff; color: #365F91; border: 1px solid #365F91; padding: 10px; border-radius: 4px; font-size: 13.5px; cursor: pointer; margin-top: 6px; }
+:where(.pantalla-08) .dcaja .cancelar { color: #c0392b; border-color: #d9a5a0; }
+:where(.pantalla-08) .nota { font-size: 12px; color: #666; margin-top: 10px; line-height: 1.5; }
+:where(.pantalla-08) footer { text-align: center; font-size: 12px; color: #777; padding: 20px; }
+
+/* 09-historial-compras */
+body:where(.pantalla-09) { font-family: Arial, sans-serif; margin: 0; background: #eef1f5; color: #333; }
+:where(.pantalla-09) header { background: #365F91; color: #fff; padding: 14px 32px; display: flex; justify-content: space-between; align-items: center; }
+:where(.pantalla-09) header h1 { margin: 0; font-size: 19px; }
+:where(.pantalla-09) .empresa { font-size: 12.5px; text-align: right; color: #c9d8ea; }
+:where(.pantalla-09) .empresa a { color: #fff; font-size: 12px; }
+:where(.pantalla-09) nav { background: #2c4a73; padding: 9px 32px; }
+:where(.pantalla-09) nav a { color: #fff; text-decoration: none; margin-right: 24px; font-size: 13.5px; }
+:where(.pantalla-09) nav a.activo { font-weight: bold; border-bottom: 2px solid #fff; padding-bottom: 6px; }
+:where(.pantalla-09) main { padding: 22px 32px; }
+:where(.pantalla-09) h2 { font-size: 19px; margin: 0 0 4px 0; }
+:where(.pantalla-09) .sub { font-size: 13px; color: #666; margin: 0 0 18px 0; }
+:where(.pantalla-09) .tarjetas { display: flex; gap: 14px; margin-bottom: 18px; }
+:where(.pantalla-09) .kpi { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; padding: 14px 18px; flex: 1; }
+:where(.pantalla-09) .kpi span { display: block; font-size: 12px; color: #777; margin-bottom: 5px; }
+:where(.pantalla-09) .kpi strong { font-size: 19px; color: #365F91; }
+:where(.pantalla-09) .filtros { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; padding: 14px 16px; margin-bottom: 16px; display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; }
+:where(.pantalla-09) .filtros div { flex: 1; min-width: 120px; }
+:where(.pantalla-09) .filtros label { display: block; font-size: 12px; color: #666; margin-bottom: 4px; }
+:where(.pantalla-09) .filtros input, :where(.pantalla-09) .filtros select { width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #b9c2cd; border-radius: 4px; font-size: 13px; }
+:where(.pantalla-09) .filtros button { background: #365F91; color: #fff; border: none; padding: 9px 20px; border-radius: 4px; cursor: pointer; font-size: 13.5px; }
+:where(.pantalla-09) .filtros .limpiar { background: #fff; color: #365F91; border: 1px solid #365F91; }
+:where(.pantalla-09) .tabla { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; overflow: hidden; }
+:where(.pantalla-09) table { border-collapse: collapse; width: 100%; }
+:where(.pantalla-09) th, :where(.pantalla-09) td { border-bottom: 1px solid #eef1f5; padding: 11px 13px; font-size: 12.5px; text-align: left; vertical-align: middle; }
+:where(.pantalla-09) th { background: #f2f5f9; font-size: 12px; }
+:where(.pantalla-09) tr:last-child td { border-bottom: none; }
+:where(.pantalla-09) .folio { color: #365F91; font-weight: bold; text-decoration: none; }
+:where(.pantalla-09) .imp { text-align: right; white-space: nowrap; }
+:where(.pantalla-09) .badge { display: inline-block; font-size: 11px; padding: 3px 9px; border-radius: 10px; white-space: nowrap; }
+:where(.pantalla-09) .b-ent { background: #e8f3e9; color: #2e7d32; }
+:where(.pantalla-09) .b-cam { background: #e6eefa; color: #365F91; }
+:where(.pantalla-09) .b-pen { background: #fdf3d8; color: #8a6d1f; }
+:where(.pantalla-09) .b-can { background: #f7e7e5; color: #c0392b; }
+:where(.pantalla-09) .estrellas { color: #e8a33d; font-size: 12.5px; }
+:where(.pantalla-09) .acc { white-space: nowrap; }
+:where(.pantalla-09) .btn { background: #365F91; color: #fff; border: none; padding: 6px 11px; border-radius: 4px; cursor: pointer; font-size: 11.5px; margin-right: 5px; }
+:where(.pantalla-09) .btn.sec { background: #fff; color: #365F91; border: 1px solid #365F91; }
+:where(.pantalla-09) .btn:disabled { background: #ccc; cursor: default; }
+:where(.pantalla-09) .pie-tabla { background: #fafbfc; border-top: 1px solid #dde2e8; padding: 11px 14px; display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; color: #666; }
+:where(.pantalla-09) .pag a { color: #365F91; text-decoration: none; margin-left: 9px; }
+:where(.pantalla-09) .pag .act { font-weight: bold; }
+:where(.pantalla-09) footer { text-align: center; font-size: 12px; color: #777; padding: 20px; }
+
+/* 10-perfil-empresa */
+body:where(.pantalla-10) { font-family: Arial, sans-serif; margin: 0; background: #eef1f5; color: #333; }
+:where(.pantalla-10) header { background: #365F91; color: #fff; padding: 14px 32px; display: flex; justify-content: space-between; align-items: center; }
+:where(.pantalla-10) header h1 { margin: 0; font-size: 19px; }
+:where(.pantalla-10) .empresa { font-size: 12.5px; text-align: right; color: #c9d8ea; }
+:where(.pantalla-10) .empresa a { color: #fff; font-size: 12px; }
+:where(.pantalla-10) nav { background: #2c4a73; padding: 9px 32px; }
+:where(.pantalla-10) nav a { color: #fff; text-decoration: none; margin-right: 24px; font-size: 13.5px; }
+:where(.pantalla-10) nav a.activo { font-weight: bold; border-bottom: 2px solid #fff; padding-bottom: 6px; }
+:where(.pantalla-10) main { padding: 22px 32px; }
+:where(.pantalla-10) .titulo { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px; }
+:where(.pantalla-10) h2 { font-size: 19px; margin: 0 0 3px 0; }
+:where(.pantalla-10) .sub { font-size: 13px; color: #666; margin: 0; }
+:where(.pantalla-10) .verificada { background: #e8f3e9; color: #2e7d32; border: 1px solid #a9d3ae; border-radius: 20px; padding: 7px 18px; font-size: 13px; font-weight: bold; }
+:where(.pantalla-10) .cuerpo { display: flex; gap: 22px; align-items: flex-start; }
+:where(.pantalla-10) .izq { flex: 2.4; }
+:where(.pantalla-10) .caja { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; padding: 20px; margin-bottom: 16px; }
+:where(.pantalla-10) .caja h3 { margin: 0 0 4px 0; font-size: 15px; }
+:where(.pantalla-10) .caja .aviso-sec { font-size: 12.5px; color: #777; margin: 0 0 14px 0; border-bottom: 1px solid #e6eaef; padding-bottom: 10px; }
+:where(.pantalla-10) .par { display: flex; gap: 18px; }
+:where(.pantalla-10) .par > div { flex: 1; }
+:where(.pantalla-10) label { display: block; font-size: 13px; margin-top: 11px; }
+:where(.pantalla-10) input, :where(.pantalla-10) select { width: 100%; padding: 8px; margin-top: 4px; box-sizing: border-box; border: 1px solid #b9c2cd; border-radius: 4px; font-size: 13.5px; }
+:where(.pantalla-10) input[readonly] { background: #f4f6f8; color: #777; }
+:where(.pantalla-10) .candado { font-size: 12px; color: #888; margin-top: 4px; }
+:where(.pantalla-10) .ok { border-color: #2e7d32 !important; }
+:where(.pantalla-10) .msg-ok { color: #2e7d32; font-size: 12.5px; margin-top: 5px; }
+:where(.pantalla-10) .dir-caja { border: 1px solid #dde2e8; border-radius: 5px; padding: 12px 14px; margin-top: 12px; font-size: 13.5px; display: flex; justify-content: space-between; align-items: center; }
+:where(.pantalla-10) .dir-caja .p { font-size: 11.5px; background: #e6eefa; color: #365F91; border-radius: 10px; padding: 2px 9px; margin-left: 8px; }
+:where(.pantalla-10) .dir-caja a { color: #365F91; font-size: 12.5px; text-decoration: none; margin-left: 12px; }
+:where(.pantalla-10) .agregar { color: #365F91; font-size: 13px; text-decoration: none; display: inline-block; margin-top: 12px; }
+:where(.pantalla-10) .acciones { display: flex; gap: 12px; margin-top: 20px; }
+:where(.pantalla-10) button { background: #365F91; color: #fff; border: none; padding: 11px 22px; border-radius: 4px; font-size: 14px; cursor: pointer; }
+:where(.pantalla-10) .sec { background: #fff; color: #365F91; border: 1px solid #365F91; }
+:where(.pantalla-10) .der { flex: 1; min-width: 250px; }
+:where(.pantalla-10) .dcaja { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; padding: 18px; margin-bottom: 16px; }
+:where(.pantalla-10) .dcaja h3 { margin: 0 0 12px 0; font-size: 15px; }
+:where(.pantalla-10) .dato { font-size: 13px; margin: 0 0 10px 0; }
+:where(.pantalla-10) .dato span { color: #888; display: block; font-size: 12px; }
+:where(.pantalla-10) .nota { background: #eaf1f8; border: 1px solid #b9cfe6; border-radius: 5px; padding: 12px; font-size: 12.5px; line-height: 1.5; }
+:where(.pantalla-10) footer { text-align: center; font-size: 12px; color: #777; padding: 20px; }
+
+/* 11-panel-distribuidor */
+body:where(.pantalla-11) { font-family: Arial, sans-serif; margin: 0; background: #eef1f5; color: #333; }
+:where(.pantalla-11) header { background: #365F91; color: #fff; padding: 14px 32px; display: flex; justify-content: space-between; align-items: center; }
+:where(.pantalla-11) header h1 { margin: 0; font-size: 19px; }
+:where(.pantalla-11) .rol { font-size: 11.5px; background: #2c4a73; padding: 3px 10px; border-radius: 10px; margin-left: 10px; }
+:where(.pantalla-11) .empresa { font-size: 12.5px; text-align: right; color: #c9d8ea; }
+:where(.pantalla-11) .empresa a { color: #fff; font-size: 12px; }
+:where(.pantalla-11) nav { background: #2c4a73; padding: 9px 32px; }
+:where(.pantalla-11) nav a { color: #fff; text-decoration: none; margin-right: 22px; font-size: 13.5px; }
+:where(.pantalla-11) nav a.activo { font-weight: bold; border-bottom: 2px solid #fff; padding-bottom: 6px; }
+:where(.pantalla-11) main { padding: 22px 32px; }
+:where(.pantalla-11) h2 { font-size: 19px; margin: 0 0 4px 0; }
+:where(.pantalla-11) .sub { font-size: 13px; color: #666; margin: 0 0 20px 0; }
+:where(.pantalla-11) .tarjetas { display: flex; gap: 14px; margin-bottom: 22px; }
+:where(.pantalla-11) .kpi { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; padding: 15px 18px; flex: 1; }
+:where(.pantalla-11) .kpi span { display: block; font-size: 12px; color: #777; margin-bottom: 5px; }
+:where(.pantalla-11) .kpi strong { font-size: 21px; color: #365F91; }
+:where(.pantalla-11) .kpi.alerta { border-color: #e8d190; background: #fdfaf1; }
+:where(.pantalla-11) .kpi.alerta strong { color: #8a6d1f; }
+:where(.pantalla-11) .cuerpo { display: flex; gap: 22px; align-items: flex-start; }
+:where(.pantalla-11) .izq { flex: 2.2; }
+:where(.pantalla-11) .caja { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; margin-bottom: 16px; overflow: hidden; }
+:where(.pantalla-11) .cab { padding: 14px 18px; border-bottom: 1px solid #e6eaef; display: flex; justify-content: space-between; align-items: center; }
+:where(.pantalla-11) .cab h3 { margin: 0; font-size: 15px; }
+:where(.pantalla-11) .cab a { color: #365F91; font-size: 12.5px; text-decoration: none; }
+:where(.pantalla-11) table { border-collapse: collapse; width: 100%; }
+:where(.pantalla-11) th, :where(.pantalla-11) td { border-bottom: 1px solid #eef1f5; padding: 11px 18px; font-size: 13px; text-align: left; }
+:where(.pantalla-11) th { background: #f7f9fb; font-size: 12.5px; }
+:where(.pantalla-11) tr:last-child td { border-bottom: none; }
+:where(.pantalla-11) .folio { color: #365F91; font-weight: bold; text-decoration: none; }
+:where(.pantalla-11) .imp { text-align: right; white-space: nowrap; }
+:where(.pantalla-11) .badge { display: inline-block; font-size: 11.5px; padding: 3px 10px; border-radius: 10px; white-space: nowrap; }
+:where(.pantalla-11) .b-nue { background: #fdf3d8; color: #8a6d1f; }
+:where(.pantalla-11) .b-pre { background: #e6eefa; color: #365F91; }
+:where(.pantalla-11) .b-cam { background: #e6f0fa; color: #2c4a73; }
+:where(.pantalla-11) .b-ent { background: #e8f3e9; color: #2e7d32; }
+:where(.pantalla-11) .btn-mini { background: #365F91; color: #fff; border: none; padding: 6px 12px; border-radius: 4px; font-size: 12px; cursor: pointer; }
+:where(.pantalla-11) .der { flex: 1; min-width: 250px; }
+:where(.pantalla-11) .dcaja { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; padding: 18px; margin-bottom: 16px; }
+:where(.pantalla-11) .dcaja h3 { margin: 0 0 12px 0; font-size: 15px; }
+:where(.pantalla-11) .fila-b { display: flex; justify-content: space-between; font-size: 13px; padding: 8px 0; border-bottom: 1px solid #f0f3f6; }
+:where(.pantalla-11) .fila-b:last-child { border-bottom: none; }
+:where(.pantalla-11) .rojo { color: #c0392b; font-weight: bold; }
+:where(.pantalla-11) .naranja { color: #8a6d1f; font-weight: bold; }
+:where(.pantalla-11) .dcaja button { width: 100%; background: #365F91; color: #fff; border: none; padding: 10px; border-radius: 4px; font-size: 13.5px; cursor: pointer; margin-top: 12px; }
+:where(.pantalla-11) footer { text-align: center; font-size: 12px; color: #777; padding: 20px; }
+
+/* 12-catalogo-productos */
+body:where(.pantalla-12) { font-family: Arial, sans-serif; margin: 0; background: #eef1f5; color: #333; }
+:where(.pantalla-12) header { background: #365F91; color: #fff; padding: 14px 32px; display: flex; justify-content: space-between; align-items: center; }
+:where(.pantalla-12) header h1 { margin: 0; font-size: 19px; }
+:where(.pantalla-12) .rol { font-size: 11.5px; background: #2c4a73; padding: 3px 10px; border-radius: 10px; margin-left: 10px; }
+:where(.pantalla-12) .empresa { font-size: 12.5px; text-align: right; color: #c9d8ea; }
+:where(.pantalla-12) .empresa a { color: #fff; font-size: 12px; }
+:where(.pantalla-12) nav { background: #2c4a73; padding: 9px 32px; }
+:where(.pantalla-12) nav a { color: #fff; text-decoration: none; margin-right: 22px; font-size: 13.5px; }
+:where(.pantalla-12) nav a.activo { font-weight: bold; border-bottom: 2px solid #fff; padding-bottom: 6px; }
+:where(.pantalla-12) main { padding: 22px 32px; }
+:where(.pantalla-12) .titulo { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 18px; }
+:where(.pantalla-12) h2 { font-size: 19px; margin: 0 0 3px 0; }
+:where(.pantalla-12) .sub { font-size: 13px; color: #666; margin: 0; }
+:where(.pantalla-12) .nuevo { background: #365F91; color: #fff; border: none; padding: 11px 20px; border-radius: 4px; font-size: 14px; cursor: pointer; }
+:where(.pantalla-12) .barra { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; padding: 13px 16px; margin-bottom: 16px; display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; }
+:where(.pantalla-12) .barra div { flex: 1; min-width: 130px; }
+:where(.pantalla-12) .barra label { display: block; font-size: 12px; color: #666; margin-bottom: 4px; }
+:where(.pantalla-12) .barra input, :where(.pantalla-12) .barra select { width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #b9c2cd; border-radius: 4px; font-size: 13px; }
+:where(.pantalla-12) .barra button { background: #365F91; color: #fff; border: none; padding: 9px 18px; border-radius: 4px; cursor: pointer; font-size: 13.5px; }
+:where(.pantalla-12) .tabla { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; overflow: hidden; }
+:where(.pantalla-12) table { border-collapse: collapse; width: 100%; }
+:where(.pantalla-12) th, :where(.pantalla-12) td { border-bottom: 1px solid #eef1f5; padding: 11px 14px; font-size: 13px; text-align: left; vertical-align: middle; }
+:where(.pantalla-12) th { background: #f7f9fb; font-size: 12.5px; }
+:where(.pantalla-12) tr:last-child td { border-bottom: none; }
+:where(.pantalla-12) .nom { font-weight: bold; }
+:where(.pantalla-12) .clave { font-size: 11.5px; color: #999; }
+:where(.pantalla-12) .imp { text-align: right; white-space: nowrap; }
+:where(.pantalla-12) .badge { display: inline-block; font-size: 11.5px; padding: 3px 10px; border-radius: 10px; white-space: nowrap; }
+:where(.pantalla-12) .b-act { background: #e8f3e9; color: #2e7d32; }
+:where(.pantalla-12) .b-ago { background: #f7e7e5; color: #c0392b; }
+:where(.pantalla-12) .b-oculto { background: #eceff2; color: #777; }
+:where(.pantalla-12) .acc a { color: #365F91; font-size: 12.5px; text-decoration: none; margin-right: 10px; }
+:where(.pantalla-12) .acc .del { color: #c0392b; }
+:where(.pantalla-12) .pie-tabla { background: #fafbfc; border-top: 1px solid #dde2e8; padding: 11px 14px; display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; color: #666; }
+:where(.pantalla-12) .pag a { color: #365F91; text-decoration: none; margin-left: 9px; }
+:where(.pantalla-12) .pag .act { font-weight: bold; }
+:where(.pantalla-12) .nota { background: #eaf1f8; border: 1px solid #b9cfe6; border-radius: 5px; padding: 12px 14px; font-size: 12.5px; margin-top: 16px; line-height: 1.5; }
+:where(.pantalla-12) footer { text-align: center; font-size: 12px; color: #777; padding: 20px; }
+
+/* 13-inventario */
+body:where(.pantalla-13) { font-family: Arial, sans-serif; margin: 0; background: #eef1f5; color: #333; }
+:where(.pantalla-13) header { background: #365F91; color: #fff; padding: 14px 32px; display: flex; justify-content: space-between; align-items: center; }
+:where(.pantalla-13) header h1 { margin: 0; font-size: 19px; }
+:where(.pantalla-13) .rol { font-size: 11.5px; background: #2c4a73; padding: 3px 10px; border-radius: 10px; margin-left: 10px; }
+:where(.pantalla-13) .empresa { font-size: 12.5px; text-align: right; color: #c9d8ea; }
+:where(.pantalla-13) .empresa a { color: #fff; font-size: 12px; }
+:where(.pantalla-13) nav { background: #2c4a73; padding: 9px 32px; }
+:where(.pantalla-13) nav a { color: #fff; text-decoration: none; margin-right: 22px; font-size: 13.5px; }
+:where(.pantalla-13) nav a.activo { font-weight: bold; border-bottom: 2px solid #fff; padding-bottom: 6px; }
+:where(.pantalla-13) main { padding: 22px 32px; }
+:where(.pantalla-13) h2 { font-size: 19px; margin: 0 0 4px 0; }
+:where(.pantalla-13) .sub { font-size: 13px; color: #666; margin: 0 0 16px 0; }
+:where(.pantalla-13) .aviso { background: #fdf3d8; border: 1px solid #e8d190; border-radius: 5px; padding: 12px 15px; font-size: 13px; margin-bottom: 16px; }
+:where(.pantalla-13) .barra { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; padding: 13px 16px; margin-bottom: 16px; display: flex; gap: 12px; align-items: flex-end; }
+:where(.pantalla-13) .barra div { flex: 1; }
+:where(.pantalla-13) .barra label { display: block; font-size: 12px; color: #666; margin-bottom: 4px; }
+:where(.pantalla-13) .barra input, :where(.pantalla-13) .barra select { width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #b9c2cd; border-radius: 4px; font-size: 13px; }
+:where(.pantalla-13) .tabla { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; overflow: hidden; }
+:where(.pantalla-13) table { border-collapse: collapse; width: 100%; }
+:where(.pantalla-13) th, :where(.pantalla-13) td { border-bottom: 1px solid #eef1f5; padding: 10px 13px; font-size: 12.5px; text-align: left; vertical-align: middle; }
+:where(.pantalla-13) th { background: #f7f9fb; font-size: 12px; }
+:where(.pantalla-13) tr:last-child td { border-bottom: none; }
+:where(.pantalla-13) tr.editada { background: #f4f8fc; }
+:where(.pantalla-13) .nom { font-weight: bold; font-size: 13px; }
+:where(.pantalla-13) .clave { font-size: 11px; color: #999; }
+:where(.pantalla-13) .num { text-align: right; white-space: nowrap; }
+:where(.pantalla-13) .ajuste { display: flex; gap: 5px; align-items: center; justify-content: flex-end; }
+:where(.pantalla-13) .ajuste button { width: 26px; height: 26px; border: 1px solid #b9c2cd; background: #f7f9fb; border-radius: 4px; cursor: pointer; font-size: 14px; line-height: 1; color: #365F91; }
+:where(.pantalla-13) .ajuste input { width: 62px; padding: 5px; border: 1px solid #b9c2cd; border-radius: 4px; text-align: right; font-size: 12.5px; }
+:where(.pantalla-13) .ajuste input.cambiada { border-color: #365F91; font-weight: bold; }
+:where(.pantalla-13) .min input { width: 56px; padding: 5px; border: 1px solid #b9c2cd; border-radius: 4px; text-align: right; font-size: 12.5px; }
+:where(.pantalla-13) .delta { font-size: 11.5px; color: #365F91; white-space: nowrap; }
+:where(.pantalla-13) .alerta-bajo { color: #c0392b; font-weight: bold; }
+:where(.pantalla-13) .alerta-medio { color: #8a6d1f; font-weight: bold; }
+:where(.pantalla-13) .badge { display: inline-block; font-size: 11px; padding: 3px 9px; border-radius: 10px; white-space: nowrap; }
+:where(.pantalla-13) .b-ok { background: #e8f3e9; color: #2e7d32; }
+:where(.pantalla-13) .b-baj { background: #fdf3d8; color: #8a6d1f; }
+:where(.pantalla-13) .b-ago { background: #f7e7e5; color: #c0392b; }
+:where(.pantalla-13) .ajus { font-size: 11.5px; color: #888; white-space: nowrap; }
+:where(.pantalla-13) .pie-acciones { background: #fafbfc; border-top: 1px solid #dde2e8; padding: 14px; display: flex; justify-content: space-between; align-items: center; }
+:where(.pantalla-13) .pie-acciones span { font-size: 13px; color: #666; }
+:where(.pantalla-13) button.principal { background: #365F91; color: #fff; border: none; padding: 10px 20px; border-radius: 4px; font-size: 13.5px; cursor: pointer; }
+:where(.pantalla-13) button.sec { background: #fff; color: #365F91; border: 1px solid #365F91; padding: 10px 20px; border-radius: 4px; font-size: 13.5px; cursor: pointer; margin-right: 10px; }
+:where(.pantalla-13) .nota { background: #eaf1f8; border: 1px solid #b9cfe6; border-radius: 5px; padding: 12px 14px; font-size: 12.5px; margin-top: 16px; line-height: 1.5; }
+:where(.pantalla-13) footer { text-align: center; font-size: 12px; color: #777; padding: 20px; }
+
+/* 14-pedidos-recibidos */
+body:where(.pantalla-14) { font-family: Arial, sans-serif; margin: 0; background: #eef1f5; color: #333; }
+:where(.pantalla-14) header { background: #365F91; color: #fff; padding: 14px 32px; display: flex; justify-content: space-between; align-items: center; }
+:where(.pantalla-14) header h1 { margin: 0; font-size: 19px; }
+:where(.pantalla-14) .rol { font-size: 11.5px; background: #2c4a73; padding: 3px 10px; border-radius: 10px; margin-left: 10px; }
+:where(.pantalla-14) .empresa { font-size: 12.5px; text-align: right; color: #c9d8ea; }
+:where(.pantalla-14) .empresa a { color: #fff; font-size: 12px; }
+:where(.pantalla-14) nav { background: #2c4a73; padding: 9px 32px; }
+:where(.pantalla-14) nav a { color: #fff; text-decoration: none; margin-right: 22px; font-size: 13.5px; }
+:where(.pantalla-14) nav a.activo { font-weight: bold; border-bottom: 2px solid #fff; padding-bottom: 6px; }
+:where(.pantalla-14) main { padding: 22px 32px; }
+:where(.pantalla-14) h2 { font-size: 19px; margin: 0 0 4px 0; }
+:where(.pantalla-14) .sub { font-size: 13px; color: #666; margin: 0 0 18px 0; }
+:where(.pantalla-14) .pestanas { display: flex; gap: 6px; border-bottom: 1px solid #ccd3dc; margin-bottom: 18px; }
+:where(.pantalla-14) .pest { padding: 10px 18px; font-size: 13.5px; background: #e4e9ef; border: 1px solid #ccd3dc; border-bottom: none; border-radius: 5px 5px 0 0; cursor: pointer; color: #555; }
+:where(.pantalla-14) .pest.act { background: #fff; color: #365F91; font-weight: bold; position: relative; top: 1px; }
+:where(.pantalla-14) .pest .n { background: #365F91; color: #fff; border-radius: 9px; font-size: 11.5px; padding: 1px 7px; margin-left: 6px; }
+:where(.pantalla-14) .pedido { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; margin-bottom: 16px; overflow: hidden; }
+:where(.pantalla-14) .pedido.nuevo { border-left: 4px solid #e8a33d; }
+:where(.pantalla-14) .pcab { padding: 14px 18px; border-bottom: 1px solid #e6eaef; display: flex; justify-content: space-between; align-items: flex-start; }
+:where(.pantalla-14) .pcab h3 { margin: 0 0 4px 0; font-size: 15.5px; }
+:where(.pantalla-14) .pcab .meta { font-size: 12.5px; color: #666; }
+:where(.pantalla-14) .pcab .dist { color: #2e7d32; font-weight: bold; }
+:where(.pantalla-14) .badge { display: inline-block; font-size: 11.5px; padding: 4px 11px; border-radius: 10px; white-space: nowrap; }
+:where(.pantalla-14) .b-nue { background: #fdf3d8; color: #8a6d1f; }
+:where(.pantalla-14) .b-pre { background: #e6eefa; color: #365F91; }
+:where(.pantalla-14) table { border-collapse: collapse; width: 100%; }
+:where(.pantalla-14) th, :where(.pantalla-14) td { border-bottom: 1px solid #eef1f5; padding: 10px 18px; font-size: 13px; text-align: left; }
+:where(.pantalla-14) th { background: #f7f9fb; font-size: 12.5px; }
+:where(.pantalla-14) .imp { text-align: right; white-space: nowrap; }
+:where(.pantalla-14) .disp-ok { color: #2e7d32; font-size: 12px; }
+:where(.pantalla-14) .disp-no { color: #c0392b; font-size: 12px; font-weight: bold; }
+:where(.pantalla-14) .tot { background: #fafbfc; font-weight: bold; }
+:where(.pantalla-14) .entrega { padding: 12px 18px; background: #f7f9fb; font-size: 12.5px; border-bottom: 1px solid #e6eaef; line-height: 1.6; }
+:where(.pantalla-14) .entrega strong { color: #333; }
+:where(.pantalla-14) .acciones { padding: 14px 18px; display: flex; gap: 10px; align-items: center; }
+:where(.pantalla-14) button { border: none; padding: 10px 20px; border-radius: 4px; font-size: 13.5px; cursor: pointer; }
+:where(.pantalla-14) .aceptar { background: #2e7d32; color: #fff; }
+:where(.pantalla-14) .rechazar { background: #fff; color: #c0392b; border: 1px solid #d9a5a0; }
+:where(.pantalla-14) .ver { background: #fff; color: #365F91; border: 1px solid #365F91; }
+:where(.pantalla-14) .sig { background: #365F91; color: #fff; }
+:where(.pantalla-14) .acciones .nota { font-size: 12px; color: #777; margin-left: auto; }
+:where(.pantalla-14) .alerta { background: #fdf3d8; border-top: 1px solid #e8d190; padding: 11px 18px; font-size: 12.5px; }
+:where(.pantalla-14) footer { text-align: center; font-size: 12px; color: #777; padding: 20px; }
+
+/* 15-estatus-entrega */
+body:where(.pantalla-15) { font-family: Arial, sans-serif; margin: 0; background: #eef1f5; color: #333; }
+:where(.pantalla-15) header { background: #365F91; color: #fff; padding: 14px 32px; display: flex; justify-content: space-between; align-items: center; }
+:where(.pantalla-15) header h1 { margin: 0; font-size: 19px; }
+:where(.pantalla-15) .rol { font-size: 11.5px; background: #2c4a73; padding: 3px 10px; border-radius: 10px; margin-left: 10px; }
+:where(.pantalla-15) .empresa { font-size: 12.5px; text-align: right; color: #c9d8ea; }
+:where(.pantalla-15) .empresa a { color: #fff; font-size: 12px; }
+:where(.pantalla-15) nav { background: #2c4a73; padding: 9px 32px; }
+:where(.pantalla-15) nav a { color: #fff; text-decoration: none; margin-right: 22px; font-size: 13.5px; }
+:where(.pantalla-15) nav a.activo { font-weight: bold; border-bottom: 2px solid #fff; padding-bottom: 6px; }
+:where(.pantalla-15) main { padding: 22px 32px; }
+:where(.pantalla-15) h2 { font-size: 19px; margin: 0 0 4px 0; }
+:where(.pantalla-15) .sub { font-size: 13px; color: #666; margin: 0 0 20px 0; }
+:where(.pantalla-15) .cuerpo { display: flex; gap: 22px; align-items: flex-start; }
+:where(.pantalla-15) .izq { flex: 2.4; }
+:where(.pantalla-15) .pedido { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; margin-bottom: 14px; overflow: hidden; }
+:where(.pantalla-15) .pcab { padding: 13px 16px; border-bottom: 1px solid #e6eaef; display: flex; justify-content: space-between; align-items: flex-start; }
+:where(.pantalla-15) .pcab h3 { margin: 0 0 3px 0; font-size: 14.5px; }
+:where(.pantalla-15) .pcab .meta { font-size: 12px; color: #666; }
+:where(.pantalla-15) .pcab .dist { color: #2e7d32; font-weight: bold; }
+:where(.pantalla-15) .badge { display: inline-block; font-size: 11.5px; padding: 4px 11px; border-radius: 10px; white-space: nowrap; }
+:where(.pantalla-15) .b-pre { background: #e6eefa; color: #365F91; }
+:where(.pantalla-15) .b-cam { background: #e6f0fa; color: #2c4a73; }
+:where(.pantalla-15) .b-ent { background: #e8f3e9; color: #2e7d32; }
+:where(.pantalla-15) .campos { padding: 14px 16px; display: flex; gap: 16px; align-items: flex-end; flex-wrap: wrap; }
+:where(.pantalla-15) .campos div { flex: 1; min-width: 150px; }
+:where(.pantalla-15) .campos label { display: block; font-size: 12px; color: #666; margin-bottom: 4px; }
+:where(.pantalla-15) .campos select, :where(.pantalla-15) .campos input { width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #b9c2cd; border-radius: 4px; font-size: 13px; font-family: Arial, sans-serif; }
+:where(.pantalla-15) .campos select.cambiada { border-color: #365F91; font-weight: bold; background: #f4f8fc; }
+:where(.pantalla-15) .campos button { background: #365F91; color: #fff; border: none; padding: 9px 18px; border-radius: 4px; font-size: 13px; cursor: pointer; }
+:where(.pantalla-15) .campos button:disabled { background: #ccc; cursor: default; }
+:where(.pantalla-15) .nota-fila { padding: 0 16px 14px 16px; }
+:where(.pantalla-15) .nota-fila label { display: block; font-size: 12px; color: #666; margin-bottom: 4px; }
+:where(.pantalla-15) .nota-fila textarea { width: 100%; box-sizing: border-box; padding: 8px; border: 1px solid #b9c2cd; border-radius: 4px; font-size: 13px; font-family: Arial, sans-serif; height: 50px; resize: vertical; }
+:where(.pantalla-15) .bitacora { background: #f7f9fb; border-top: 1px solid #e6eaef; padding: 11px 16px; font-size: 12px; color: #666; line-height: 1.7; }
+:where(.pantalla-15) .bitacora strong { color: #333; }
+:where(.pantalla-15) .der { flex: 1; min-width: 245px; }
+:where(.pantalla-15) .dcaja { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; padding: 18px; margin-bottom: 16px; }
+:where(.pantalla-15) .dcaja h3 { margin: 0 0 12px 0; font-size: 15px; }
+:where(.pantalla-15) .fila-b { display: flex; justify-content: space-between; font-size: 13px; padding: 8px 0; border-bottom: 1px solid #f0f3f6; }
+:where(.pantalla-15) .fila-b:last-child { border-bottom: none; }
+:where(.pantalla-15) .paso { font-size: 12.5px; padding: 7px 0 7px 20px; position: relative; border-bottom: 1px solid #f0f3f6; }
+:where(.pantalla-15) .paso:last-child { border-bottom: none; }
+:where(.pantalla-15) .paso::before { content: "•"; position: absolute; left: 4px; color: #365F91; font-size: 16px; line-height: 1; }
+:where(.pantalla-15) .nota { background: #eaf1f8; border: 1px solid #b9cfe6; border-radius: 5px; padding: 12px; font-size: 12.5px; line-height: 1.5; }
+:where(.pantalla-15) footer { text-align: center; font-size: 12px; color: #777; padding: 20px; }
+
+/* 16-ventas-comisiones */
+body:where(.pantalla-16) { font-family: Arial, sans-serif; margin: 0; background: #eef1f5; color: #333; }
+:where(.pantalla-16) header { background: #365F91; color: #fff; padding: 14px 32px; display: flex; justify-content: space-between; align-items: center; }
+:where(.pantalla-16) header h1 { margin: 0; font-size: 19px; }
+:where(.pantalla-16) .rol { font-size: 11.5px; background: #2c4a73; padding: 3px 10px; border-radius: 10px; margin-left: 10px; }
+:where(.pantalla-16) .empresa { font-size: 12.5px; text-align: right; color: #c9d8ea; }
+:where(.pantalla-16) .empresa a { color: #fff; font-size: 12px; }
+:where(.pantalla-16) nav { background: #2c4a73; padding: 9px 32px; }
+:where(.pantalla-16) nav a { color: #fff; text-decoration: none; margin-right: 22px; font-size: 13.5px; }
+:where(.pantalla-16) nav a.activo { font-weight: bold; border-bottom: 2px solid #fff; padding-bottom: 6px; }
+:where(.pantalla-16) main { padding: 22px 32px; }
+:where(.pantalla-16) .titulo { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 18px; }
+:where(.pantalla-16) h2 { font-size: 19px; margin: 0 0 3px 0; }
+:where(.pantalla-16) .sub { font-size: 13px; color: #666; margin: 0; }
+:where(.pantalla-16) .exportar { background: #fff; color: #365F91; border: 1px solid #365F91; padding: 10px 18px; border-radius: 4px; font-size: 13.5px; cursor: pointer; }
+:where(.pantalla-16) .filtros { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; padding: 13px 16px; margin-bottom: 18px; display: flex; gap: 12px; align-items: flex-end; }
+:where(.pantalla-16) .filtros div { flex: 1; }
+:where(.pantalla-16) .filtros label { display: block; font-size: 12px; color: #666; margin-bottom: 4px; }
+:where(.pantalla-16) .filtros input, :where(.pantalla-16) .filtros select { width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #b9c2cd; border-radius: 4px; font-size: 13px; }
+:where(.pantalla-16) .filtros button { background: #365F91; color: #fff; border: none; padding: 9px 20px; border-radius: 4px; cursor: pointer; font-size: 13.5px; }
+:where(.pantalla-16) .tarjetas { display: flex; gap: 14px; margin-bottom: 20px; }
+:where(.pantalla-16) .kpi { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; padding: 15px 18px; flex: 1; }
+:where(.pantalla-16) .kpi span { display: block; font-size: 12px; color: #777; margin-bottom: 5px; }
+:where(.pantalla-16) .kpi strong { font-size: 20px; color: #365F91; }
+:where(.pantalla-16) .kpi.neg strong { color: #8a6d1f; }
+:where(.pantalla-16) .kpi.net strong { color: #2e7d32; }
+:where(.pantalla-16) .caja { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; margin-bottom: 18px; overflow: hidden; }
+:where(.pantalla-16) .cab { padding: 14px 18px; border-bottom: 1px solid #e6eaef; }
+:where(.pantalla-16) .cab h3 { margin: 0; font-size: 15px; }
+:where(.pantalla-16) .grafica { padding: 20px 18px; display: flex; align-items: flex-end; gap: 20px; height: 180px; }
+:where(.pantalla-16) .barra-g { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%; }
+:where(.pantalla-16) .barra-g .val { font-size: 11.5px; color: #666; margin-bottom: 5px; }
+:where(.pantalla-16) .barra-g .b { width: 100%; background: #365F91; border-radius: 3px 3px 0 0; }
+:where(.pantalla-16) .barra-g .b.actual { background: #2c4a73; }
+:where(.pantalla-16) .barra-g .mes { font-size: 12px; color: #666; margin-top: 7px; }
+:where(.pantalla-16) table { border-collapse: collapse; width: 100%; }
+:where(.pantalla-16) th, :where(.pantalla-16) td { border-bottom: 1px solid #eef1f5; padding: 11px 16px; font-size: 13px; text-align: left; }
+:where(.pantalla-16) th { background: #f7f9fb; font-size: 12.5px; }
+:where(.pantalla-16) tr:last-child td { border-bottom: none; }
+:where(.pantalla-16) .folio { color: #365F91; font-weight: bold; text-decoration: none; }
+:where(.pantalla-16) .imp { text-align: right; white-space: nowrap; }
+:where(.pantalla-16) .com { text-align: right; white-space: nowrap; color: #8a6d1f; }
+:where(.pantalla-16) .net { text-align: right; white-space: nowrap; color: #2e7d32; font-weight: bold; }
+:where(.pantalla-16) .pct { text-align: center; font-size: 12.5px; }
+:where(.pantalla-16) .tot { background: #fafbfc; font-weight: bold; }
+:where(.pantalla-16) .nota { background: #eaf1f8; border: 1px solid #b9cfe6; border-radius: 5px; padding: 12px 14px; font-size: 12.5px; line-height: 1.5; }
+:where(.pantalla-16) footer { text-align: center; font-size: 12px; color: #777; padding: 20px; }
+
+/* 17-perfil-distribuidor */
+body:where(.pantalla-17) { font-family: Arial, sans-serif; margin: 0; background: #eef1f5; color: #333; }
+:where(.pantalla-17) header { background: #365F91; color: #fff; padding: 14px 32px; display: flex; justify-content: space-between; align-items: center; }
+:where(.pantalla-17) header h1 { margin: 0; font-size: 19px; }
+:where(.pantalla-17) .rol { font-size: 11.5px; background: #2c4a73; padding: 3px 10px; border-radius: 10px; margin-left: 10px; }
+:where(.pantalla-17) .empresa { font-size: 12.5px; text-align: right; color: #c9d8ea; }
+:where(.pantalla-17) .empresa a { color: #fff; font-size: 12px; }
+:where(.pantalla-17) nav { background: #2c4a73; padding: 9px 32px; }
+:where(.pantalla-17) nav a { color: #fff; text-decoration: none; margin-right: 22px; font-size: 13.5px; }
+:where(.pantalla-17) nav a.activo { font-weight: bold; border-bottom: 2px solid #fff; padding-bottom: 6px; }
+:where(.pantalla-17) main { padding: 22px 32px; }
+:where(.pantalla-17) h2 { font-size: 19px; margin: 0 0 4px 0; }
+:where(.pantalla-17) .sub { font-size: 13px; color: #666; margin: 0 0 20px 0; }
+:where(.pantalla-17) .cuerpo { display: flex; gap: 22px; align-items: flex-start; }
+:where(.pantalla-17) .izq { flex: 2.2; }
+:where(.pantalla-17) .caja { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; padding: 20px; margin-bottom: 16px; }
+:where(.pantalla-17) .caja h3 { margin: 0 0 4px 0; font-size: 15px; }
+:where(.pantalla-17) .caja .aviso-sec { font-size: 12.5px; color: #777; margin: 0 0 14px 0; border-bottom: 1px solid #e6eaef; padding-bottom: 10px; }
+:where(.pantalla-17) .par { display: flex; gap: 18px; }
+:where(.pantalla-17) .par > div { flex: 1; }
+:where(.pantalla-17) label { display: block; font-size: 13px; margin-top: 11px; }
+:where(.pantalla-17) input, :where(.pantalla-17) select, :where(.pantalla-17) textarea { width: 100%; padding: 8px; margin-top: 4px; box-sizing: border-box; border: 1px solid #b9c2cd; border-radius: 4px; font-family: Arial, sans-serif; font-size: 13.5px; }
+:where(.pantalla-17) textarea { height: 62px; resize: vertical; }
+:where(.pantalla-17) .contador { font-size: 11.5px; color: #999; margin-top: 3px; }
+:where(.pantalla-17) .pago { display: flex; gap: 20px; margin-top: 10px; flex-wrap: wrap; }
+:where(.pantalla-17) .pago label { display: flex; align-items: center; gap: 7px; margin: 0; font-size: 13.5px; }
+:where(.pantalla-17) .pago input { width: auto; margin: 0; }
+:where(.pantalla-17) .acciones { display: flex; gap: 12px; margin-top: 20px; }
+:where(.pantalla-17) button { background: #365F91; color: #fff; border: none; padding: 11px 22px; border-radius: 4px; font-size: 14px; cursor: pointer; }
+:where(.pantalla-17) .sec { background: #fff; color: #365F91; border: 1px solid #365F91; }
+:where(.pantalla-17) .der { flex: 1; min-width: 252px; }
+:where(.pantalla-17) .dcaja { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; padding: 18px; margin-bottom: 16px; }
+:where(.pantalla-17) .dcaja h3 { margin: 0 0 12px 0; font-size: 15px; }
+:where(.pantalla-17) .calif { text-align: center; padding: 6px 0 10px 0; }
+:where(.pantalla-17) .calif .num { font-size: 34px; color: #365F91; font-weight: bold; line-height: 1; }
+:where(.pantalla-17) .calif .est { color: #e8a33d; font-size: 17px; margin: 6px 0 3px 0; }
+:where(.pantalla-17) .calif .cant { font-size: 12px; color: #777; }
+:where(.pantalla-17) .previa { border: 1px solid #dde2e8; border-radius: 5px; padding: 13px; font-size: 13px; }
+:where(.pantalla-17) .previa .n { font-weight: bold; font-size: 14px; margin-bottom: 4px; }
+:where(.pantalla-17) .previa .d { color: #2e7d32; font-size: 12.5px; font-weight: bold; }
+:where(.pantalla-17) .previa .t { color: #666; font-size: 12px; margin-top: 5px; }
+:where(.pantalla-17) .previa .e { color: #e8a33d; font-size: 12.5px; margin-top: 4px; }
+:where(.pantalla-17) .nota { background: #eaf1f8; border: 1px solid #b9cfe6; border-radius: 5px; padding: 12px; font-size: 12.5px; line-height: 1.5; }
+:where(.pantalla-17) footer { text-align: center; font-size: 12px; color: #777; padding: 20px; }
+
+/* 18-empresas-por-verificar */
+body:where(.pantalla-18) { font-family: Arial, sans-serif; margin: 0; background: #eef1f5; color: #333; }
+:where(.pantalla-18) header { background: #365F91; color: #fff; padding: 14px 32px; display: flex; justify-content: space-between; align-items: center; }
+:where(.pantalla-18) header h1 { margin: 0; font-size: 19px; }
+:where(.pantalla-18) .rol { font-size: 11.5px; background: #8a2f2f; padding: 3px 10px; border-radius: 10px; margin-left: 10px; }
+:where(.pantalla-18) .empresa { font-size: 12.5px; text-align: right; color: #c9d8ea; }
+:where(.pantalla-18) .empresa a { color: #fff; font-size: 12px; }
+:where(.pantalla-18) nav { background: #2c4a73; padding: 9px 32px; }
+:where(.pantalla-18) nav a { color: #fff; text-decoration: none; margin-right: 22px; font-size: 13.5px; }
+:where(.pantalla-18) nav a.activo { font-weight: bold; border-bottom: 2px solid #fff; padding-bottom: 6px; }
+:where(.pantalla-18) main { padding: 22px 32px; }
+:where(.pantalla-18) h2 { font-size: 19px; margin: 0 0 4px 0; }
+:where(.pantalla-18) .sub { font-size: 13px; color: #666; margin: 0 0 18px 0; }
+:where(.pantalla-18) .barra { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; padding: 13px 16px; margin-bottom: 16px; display: flex; gap: 12px; align-items: flex-end; }
+:where(.pantalla-18) .barra div { flex: 1; }
+:where(.pantalla-18) .barra label { display: block; font-size: 12px; color: #666; margin-bottom: 4px; }
+:where(.pantalla-18) .barra input, :where(.pantalla-18) .barra select { width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #b9c2cd; border-radius: 4px; font-size: 13px; }
+:where(.pantalla-18) .barra button { background: #365F91; color: #fff; border: none; padding: 9px 20px; border-radius: 4px; cursor: pointer; font-size: 13.5px; }
+:where(.pantalla-18) .cuerpo { display: flex; gap: 20px; align-items: flex-start; }
+:where(.pantalla-18) .lista { flex: 1.4; background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; overflow: hidden; }
+:where(.pantalla-18) .cab { padding: 13px 16px; border-bottom: 1px solid #e6eaef; }
+:where(.pantalla-18) .cab h3 { margin: 0; font-size: 15px; }
+:where(.pantalla-18) table { border-collapse: collapse; width: 100%; }
+:where(.pantalla-18) th, :where(.pantalla-18) td { border-bottom: 1px solid #eef1f5; padding: 11px 14px; font-size: 12.5px; text-align: left; vertical-align: middle; }
+:where(.pantalla-18) th { background: #f7f9fb; font-size: 12px; }
+:where(.pantalla-18) tr:last-child td { border-bottom: none; }
+:where(.pantalla-18) tr.sel { background: #f4f8fc; border-left: 3px solid #365F91; }
+:where(.pantalla-18) .nom { font-weight: bold; font-size: 13px; }
+:where(.pantalla-18) .rfc { font-size: 11.5px; color: #999; }
+:where(.pantalla-18) .badge { display: inline-block; font-size: 11px; padding: 3px 9px; border-radius: 10px; white-space: nowrap; }
+:where(.pantalla-18) .b-pen { background: #fdf3d8; color: #8a6d1f; }
+:where(.pantalla-18) .b-apr { background: #e8f3e9; color: #2e7d32; }
+:where(.pantalla-18) .b-rec { background: #f7e7e5; color: #c0392b; }
+:where(.pantalla-18) .tipo { font-size: 11.5px; color: #555; }
+:where(.pantalla-18) .detalle { flex: 1; background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; overflow: hidden; }
+:where(.pantalla-18) .dcab { background: #f7f9fb; padding: 14px 18px; border-bottom: 1px solid #e6eaef; }
+:where(.pantalla-18) .dcab h3 { margin: 0 0 3px 0; font-size: 16px; }
+:where(.pantalla-18) .dcab .est { font-size: 12px; color: #8a6d1f; font-weight: bold; }
+:where(.pantalla-18) .grupo { padding: 14px 18px; border-bottom: 1px solid #eef1f5; }
+:where(.pantalla-18) .grupo h4 { margin: 0 0 10px 0; font-size: 12.5px; color: #365F91; text-transform: uppercase; letter-spacing: .4px; }
+:where(.pantalla-18) .dato { font-size: 13px; margin: 0 0 8px 0; }
+:where(.pantalla-18) .dato:last-child { margin: 0; }
+:where(.pantalla-18) .dato span { color: #888; display: block; font-size: 11.5px; }
+:where(.pantalla-18) .cobertura { background: #e8f3e9; border: 1px solid #a9d3ae; border-radius: 4px; padding: 9px 11px; font-size: 12px; color: #2e7d32; margin-top: 8px; }
+:where(.pantalla-18) .acciones { padding: 16px 18px; }
+:where(.pantalla-18) .acciones button { width: 100%; border: none; padding: 11px; border-radius: 4px; font-size: 14px; cursor: pointer; margin-bottom: 9px; }
+:where(.pantalla-18) .aprobar { background: #2e7d32; color: #fff; }
+:where(.pantalla-18) .rechazar { background: #fff; color: #c0392b; border: 1px solid #d9a5a0 !important; }
+:where(.pantalla-18) .acciones label { display: block; font-size: 12px; color: #666; margin: 6px 0 4px 0; }
+:where(.pantalla-18) .acciones select { width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #b9c2cd; border-radius: 4px; font-size: 12.5px; }
+:where(.pantalla-18) .nota { font-size: 11.5px; color: #777; margin-top: 10px; line-height: 1.5; }
+:where(.pantalla-18) footer { text-align: center; font-size: 12px; color: #777; padding: 20px; }
+
+/* 19-configuracion-comision */
+body:where(.pantalla-19) { font-family: Arial, sans-serif; margin: 0; background: #eef1f5; color: #333; }
+:where(.pantalla-19) header { background: #365F91; color: #fff; padding: 14px 32px; display: flex; justify-content: space-between; align-items: center; }
+:where(.pantalla-19) header h1 { margin: 0; font-size: 19px; }
+:where(.pantalla-19) .rol { font-size: 11.5px; background: #8a2f2f; padding: 3px 10px; border-radius: 10px; margin-left: 10px; }
+:where(.pantalla-19) .empresa { font-size: 12.5px; text-align: right; color: #c9d8ea; }
+:where(.pantalla-19) .empresa a { color: #fff; font-size: 12px; }
+:where(.pantalla-19) nav { background: #2c4a73; padding: 9px 32px; }
+:where(.pantalla-19) nav a { color: #fff; text-decoration: none; margin-right: 22px; font-size: 13.5px; }
+:where(.pantalla-19) nav a.activo { font-weight: bold; border-bottom: 2px solid #fff; padding-bottom: 6px; }
+:where(.pantalla-19) main { padding: 22px 32px; }
+:where(.pantalla-19) h2 { font-size: 19px; margin: 0 0 4px 0; }
+:where(.pantalla-19) .sub { font-size: 13px; color: #666; margin: 0 0 20px 0; }
+:where(.pantalla-19) .cuerpo { display: flex; gap: 22px; align-items: flex-start; }
+:where(.pantalla-19) .izq { flex: 2.2; }
+:where(.pantalla-19) .caja { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; padding: 20px; margin-bottom: 16px; }
+:where(.pantalla-19) .caja h3 { margin: 0 0 4px 0; font-size: 15px; }
+:where(.pantalla-19) .caja .aviso-sec { font-size: 12.5px; color: #777; margin: 0 0 16px 0; border-bottom: 1px solid #e6eaef; padding-bottom: 10px; }
+:where(.pantalla-19) .general { display: flex; gap: 22px; align-items: flex-end; }
+:where(.pantalla-19) .pctbox { text-align: center; }
+:where(.pantalla-19) .pctbox input { width: 100px; padding: 14px; font-size: 26px; text-align: center; border: 2px solid #365F91; border-radius: 6px; color: #365F91; font-weight: bold; box-sizing: border-box; }
+:where(.pantalla-19) .pctbox .lbl { font-size: 12px; color: #666; margin-bottom: 5px; }
+:where(.pantalla-19) .rango { flex: 1; }
+:where(.pantalla-19) .rango input[type=range] { width: 100%; }
+:where(.pantalla-19) .marcas { display: flex; justify-content: space-between; font-size: 11.5px; color: #888; margin-top: 3px; }
+:where(.pantalla-19) .permitido { background: #eaf1f8; border: 1px solid #b9cfe6; border-radius: 4px; padding: 9px 12px; font-size: 12.5px; margin-top: 14px; }
+:where(.pantalla-19) table { border-collapse: collapse; width: 100%; }
+:where(.pantalla-19) th, :where(.pantalla-19) td { border-bottom: 1px solid #eef1f5; padding: 10px 12px; font-size: 12.5px; text-align: left; vertical-align: middle; }
+:where(.pantalla-19) th { background: #f7f9fb; font-size: 12px; }
+:where(.pantalla-19) tr:last-child td { border-bottom: none; }
+:where(.pantalla-19) .num { text-align: right; white-space: nowrap; }
+:where(.pantalla-19) .num input { width: 66px; padding: 6px; border: 1px solid #b9c2cd; border-radius: 4px; text-align: right; font-size: 12.5px; }
+:where(.pantalla-19) .quitar { color: #c0392b; font-size: 12px; text-decoration: none; }
+:where(.pantalla-19) .agregar { color: #365F91; font-size: 13px; text-decoration: none; display: inline-block; margin-top: 12px; }
+:where(.pantalla-19) .vigencia { display: flex; gap: 16px; align-items: flex-end; }
+:where(.pantalla-19) .vigencia div { flex: 1; }
+:where(.pantalla-19) label { display: block; font-size: 12.5px; color: #666; margin-bottom: 4px; }
+:where(.pantalla-19) input[type=date], :where(.pantalla-19) select { width: 100%; padding: 9px; box-sizing: border-box; border: 1px solid #b9c2cd; border-radius: 4px; font-size: 13px; }
+:where(.pantalla-19) .acciones { display: flex; gap: 12px; margin-top: 20px; }
+:where(.pantalla-19) button { background: #365F91; color: #fff; border: none; padding: 11px 22px; border-radius: 4px; font-size: 14px; cursor: pointer; }
+:where(.pantalla-19) .sec { background: #fff; color: #365F91; border: 1px solid #365F91; }
+:where(.pantalla-19) .der { flex: 1; min-width: 255px; }
+:where(.pantalla-19) .dcaja { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; padding: 18px; margin-bottom: 16px; }
+:where(.pantalla-19) .dcaja h3 { margin: 0 0 12px 0; font-size: 15px; }
+:where(.pantalla-19) .hist { border-bottom: 1px solid #f0f3f6; padding: 9px 0; font-size: 12.5px; }
+:where(.pantalla-19) .hist:last-child { border-bottom: none; }
+:where(.pantalla-19) .hist .p { font-weight: bold; color: #365F91; }
+:where(.pantalla-19) .hist .f { color: #888; font-size: 11.5px; }
+:where(.pantalla-19) .alerta { background: #fdf3d8; border: 1px solid #e8d190; border-radius: 5px; padding: 12px; font-size: 12.5px; line-height: 1.5; }
+:where(.pantalla-19) footer { text-align: center; font-size: 12px; color: #777; padding: 20px; }
+
+/* 20-supervision-transacciones */
+body:where(.pantalla-20) { font-family: Arial, sans-serif; margin: 0; background: #eef1f5; color: #333; }
+:where(.pantalla-20) header { background: #365F91; color: #fff; padding: 14px 32px; display: flex; justify-content: space-between; align-items: center; }
+:where(.pantalla-20) header h1 { margin: 0; font-size: 19px; }
+:where(.pantalla-20) .rol { font-size: 11.5px; background: #8a2f2f; padding: 3px 10px; border-radius: 10px; margin-left: 10px; }
+:where(.pantalla-20) .empresa { font-size: 12.5px; text-align: right; color: #c9d8ea; }
+:where(.pantalla-20) .empresa a { color: #fff; font-size: 12px; }
+:where(.pantalla-20) nav { background: #2c4a73; padding: 9px 32px; }
+:where(.pantalla-20) nav a { color: #fff; text-decoration: none; margin-right: 22px; font-size: 13.5px; }
+:where(.pantalla-20) nav a.activo { font-weight: bold; border-bottom: 2px solid #fff; padding-bottom: 6px; }
+:where(.pantalla-20) main { padding: 22px 32px; }
+:where(.pantalla-20) h2 { font-size: 19px; margin: 0 0 4px 0; }
+:where(.pantalla-20) .sub { font-size: 13px; color: #666; margin: 0 0 18px 0; }
+:where(.pantalla-20) .tarjetas { display: flex; gap: 14px; margin-bottom: 18px; }
+:where(.pantalla-20) .kpi { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; padding: 14px 18px; flex: 1; }
+:where(.pantalla-20) .kpi span { display: block; font-size: 12px; color: #777; margin-bottom: 5px; }
+:where(.pantalla-20) .kpi strong { font-size: 19px; color: #365F91; }
+:where(.pantalla-20) .kpi.com strong { color: #8a6d1f; }
+:where(.pantalla-20) .kpi.con strong { color: #c0392b; }
+:where(.pantalla-20) .filtros { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; padding: 13px 16px; margin-bottom: 16px; display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; }
+:where(.pantalla-20) .filtros div { flex: 1; min-width: 120px; }
+:where(.pantalla-20) .filtros label { display: block; font-size: 12px; color: #666; margin-bottom: 4px; }
+:where(.pantalla-20) .filtros input, :where(.pantalla-20) .filtros select { width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #b9c2cd; border-radius: 4px; font-size: 13px; }
+:where(.pantalla-20) .filtros button { background: #365F91; color: #fff; border: none; padding: 9px 20px; border-radius: 4px; cursor: pointer; font-size: 13.5px; }
+:where(.pantalla-20) .cuerpo { display: flex; gap: 20px; align-items: flex-start; }
+:where(.pantalla-20) .tabla { flex: 1.6; background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; overflow: hidden; }
+:where(.pantalla-20) .cab { padding: 13px 16px; border-bottom: 1px solid #e6eaef; }
+:where(.pantalla-20) .cab h3 { margin: 0; font-size: 15px; }
+:where(.pantalla-20) table { border-collapse: collapse; width: 100%; }
+:where(.pantalla-20) th, :where(.pantalla-20) td { border-bottom: 1px solid #eef1f5; padding: 10px 12px; font-size: 12px; text-align: left; vertical-align: middle; }
+:where(.pantalla-20) th { background: #f7f9fb; font-size: 11.5px; }
+:where(.pantalla-20) tr:last-child td { border-bottom: none; }
+:where(.pantalla-20) tr.sel { background: #f4f8fc; }
+:where(.pantalla-20) tr.conflicto { background: #fdf6f5; }
+:where(.pantalla-20) .folio { color: #365F91; font-weight: bold; text-decoration: none; }
+:where(.pantalla-20) .imp { text-align: right; white-space: nowrap; }
+:where(.pantalla-20) .com { text-align: right; white-space: nowrap; color: #8a6d1f; }
+:where(.pantalla-20) .badge { display: inline-block; font-size: 10.5px; padding: 3px 8px; border-radius: 10px; white-space: nowrap; }
+:where(.pantalla-20) .b-ent { background: #e8f3e9; color: #2e7d32; }
+:where(.pantalla-20) .b-cam { background: #e6eefa; color: #365F91; }
+:where(.pantalla-20) .b-pen { background: #fdf3d8; color: #8a6d1f; }
+:where(.pantalla-20) .b-can { background: #f7e7e5; color: #c0392b; }
+:where(.pantalla-20) .b-rec { background: #f7e7e5; color: #c0392b; }
+:where(.pantalla-20) .flag { color: #c0392b; font-weight: bold; font-size: 13px; }
+:where(.pantalla-20) .pie-tabla { background: #fafbfc; border-top: 1px solid #dde2e8; padding: 11px 14px; display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; color: #666; }
+:where(.pantalla-20) .pag a { color: #365F91; text-decoration: none; margin-left: 9px; }
+:where(.pantalla-20) .pag .act { font-weight: bold; }
+:where(.pantalla-20) .detalle { flex: 1; background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; overflow: hidden; }
+:where(.pantalla-20) .dcab { background: #f7f9fb; padding: 14px 18px; border-bottom: 1px solid #e6eaef; }
+:where(.pantalla-20) .dcab h3 { margin: 0 0 3px 0; font-size: 15.5px; }
+:where(.pantalla-20) .dcab .m { font-size: 12px; color: #666; }
+:where(.pantalla-20) .grupo { padding: 14px 18px; border-bottom: 1px solid #eef1f5; }
+:where(.pantalla-20) .grupo h4 { margin: 0 0 10px 0; font-size: 12px; color: #365F91; text-transform: uppercase; letter-spacing: .4px; }
+:where(.pantalla-20) .dato { font-size: 12.5px; margin: 0 0 7px 0; }
+:where(.pantalla-20) .dato span { color: #888; display: block; font-size: 11.5px; }
+:where(.pantalla-20) .art { font-size: 12.5px; padding: 6px 0; border-bottom: 1px solid #f4f6f8; display: flex; justify-content: space-between; }
+:where(.pantalla-20) .art:last-child { border-bottom: none; }
+:where(.pantalla-20) .bit { font-size: 12px; padding: 5px 0 5px 18px; position: relative; color: #555; }
+:where(.pantalla-20) .bit::before { content: "•"; position: absolute; left: 3px; color: #365F91; font-size: 15px; line-height: 1; }
+:where(.pantalla-20) .totcom { background: #fdf3d8; border: 1px solid #e8d190; border-radius: 4px; padding: 10px 12px; font-size: 12.5px; }
+:where(.pantalla-20) footer { text-align: center; font-size: 12px; color: #777; padding: 20px; }
+
+/* 21-reportes */
+body:where(.pantalla-21) { font-family: Arial, sans-serif; margin: 0; background: #eef1f5; color: #333; }
+:where(.pantalla-21) header { background: #365F91; color: #fff; padding: 14px 32px; display: flex; justify-content: space-between; align-items: center; }
+:where(.pantalla-21) header h1 { margin: 0; font-size: 19px; }
+:where(.pantalla-21) .rol { font-size: 11.5px; background: #8a2f2f; padding: 3px 10px; border-radius: 10px; margin-left: 10px; }
+:where(.pantalla-21) .empresa { font-size: 12.5px; text-align: right; color: #c9d8ea; }
+:where(.pantalla-21) .empresa a { color: #fff; font-size: 12px; }
+:where(.pantalla-21) nav { background: #2c4a73; padding: 9px 32px; }
+:where(.pantalla-21) nav a { color: #fff; text-decoration: none; margin-right: 22px; font-size: 13.5px; }
+:where(.pantalla-21) nav a.activo { font-weight: bold; border-bottom: 2px solid #fff; padding-bottom: 6px; }
+:where(.pantalla-21) main { padding: 22px 32px; }
+:where(.pantalla-21) h2 { font-size: 19px; margin: 0 0 4px 0; }
+:where(.pantalla-21) .sub { font-size: 13px; color: #666; margin: 0 0 18px 0; }
+:where(.pantalla-21) .panel { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; padding: 14px 16px; margin-bottom: 20px; display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; }
+:where(.pantalla-21) .panel div { flex: 1; min-width: 130px; }
+:where(.pantalla-21) .panel label { display: block; font-size: 12px; color: #666; margin-bottom: 4px; }
+:where(.pantalla-21) .panel input, :where(.pantalla-21) .panel select { width: 100%; padding: 9px; box-sizing: border-box; border: 1px solid #b9c2cd; border-radius: 4px; font-size: 13px; }
+:where(.pantalla-21) .panel button { background: #365F91; color: #fff; border: none; padding: 10px 24px; border-radius: 4px; cursor: pointer; font-size: 14px; }
+:where(.pantalla-21) .panel .sec { background: #fff; color: #365F91; border: 1px solid #365F91; }
+:where(.pantalla-21) .rejilla { display: flex; gap: 18px; flex-wrap: wrap; }
+:where(.pantalla-21) .rep { background: #fff; border: 1px solid #ccd3dc; border-radius: 6px; flex: 1 1 46%; min-width: 380px; overflow: hidden; margin-bottom: 18px; }
+:where(.pantalla-21) .rcab { padding: 14px 18px; border-bottom: 1px solid #e6eaef; display: flex; justify-content: space-between; align-items: center; }
+:where(.pantalla-21) .rcab h3 { margin: 0; font-size: 14.5px; }
+:where(.pantalla-21) .rcab .per { font-size: 11.5px; color: #888; }
+:where(.pantalla-21) table { border-collapse: collapse; width: 100%; }
+:where(.pantalla-21) th, :where(.pantalla-21) td { border-bottom: 1px solid #eef1f5; padding: 9px 14px; font-size: 12.5px; text-align: left; }
+:where(.pantalla-21) th { background: #f7f9fb; font-size: 11.5px; }
+:where(.pantalla-21) tr:last-child td { border-bottom: none; }
+:where(.pantalla-21) .num { text-align: right; white-space: nowrap; }
+:where(.pantalla-21) .tot { background: #fafbfc; font-weight: bold; }
+:where(.pantalla-21) .barras { padding: 16px 18px; }
+:where(.pantalla-21) .fila-b { margin-bottom: 11px; }
+:where(.pantalla-21) .fila-b:last-child { margin-bottom: 0; }
+:where(.pantalla-21) .fila-b .et { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 3px; }
+:where(.pantalla-21) .fila-b .pista { background: #eef1f5; border-radius: 3px; height: 15px; }
+:where(.pantalla-21) .fila-b .b { background: #365F91; height: 15px; border-radius: 3px; }
+:where(.pantalla-21) .fila-b .b.alt { background: #5b87bd; }
+:where(.pantalla-21) .dona { padding: 16px 18px; display: flex; gap: 20px; align-items: center; }
+:where(.pantalla-21) .dona .cifra { text-align: center; }
+:where(.pantalla-21) .dona .cifra .n { font-size: 30px; font-weight: bold; color: #365F91; line-height: 1; }
+:where(.pantalla-21) .dona .cifra .l { font-size: 11.5px; color: #777; margin-top: 4px; }
+:where(.pantalla-21) .dona .leyenda { flex: 1; font-size: 12.5px; }
+:where(.pantalla-21) .dona .leyenda div { display: flex; align-items: center; gap: 8px; padding: 5px 0; }
+:where(.pantalla-21) .pt { width: 11px; height: 11px; border-radius: 2px; display: inline-block; }
+:where(.pantalla-21) footer { text-align: center; font-size: 12px; color: #777; padding: 20px; }
+
+/* 22-mapa-navegacion */
+body:where(.pantalla-22) { font-family: Arial, sans-serif; margin: 0; background: #fff; color: #333; padding: 26px 30px; }
+:where(.pantalla-22) h1 { font-size: 20px; margin: 0 0 3px 0; color: #365F91; }
+:where(.pantalla-22) .sub { font-size: 12.5px; color: #666; margin: 0 0 22px 0; }
+:where(.pantalla-22) .publico { border: 2px dashed #b9c2cd; border-radius: 8px; padding: 16px 18px; margin-bottom: 8px; background: #fafbfc; }
+:where(.pantalla-22) .publico .et { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: .6px; margin-bottom: 11px; }
+:where(.pantalla-22) .fila { display: flex; gap: 16px; align-items: center; justify-content: center; }
+:where(.pantalla-22) .caja { border: 1.5px solid #365F91; border-radius: 6px; background: #fff; padding: 9px 13px; text-align: center; min-width: 150px; }
+:where(.pantalla-22) .caja .n { font-size: 13px; font-weight: bold; line-height: 1.25; }
+:where(.pantalla-22) .caja .f { font-size: 10.5px; color: #8a97a8; margin-top: 3px; }
+:where(.pantalla-22) .caja.entrada { background: #365F91; color: #fff; }
+:where(.pantalla-22) .caja.entrada .f { color: #c9d8ea; }
+:where(.pantalla-22) .caja.menu { border-color: #b9c2cd; background: #f7f9fb; }
+:where(.pantalla-22) .caja.menu .n { font-weight: normal; }
+:where(.pantalla-22) .fl { color: #365F91; font-size: 19px; line-height: 1; }
+:where(.pantalla-22) .fl.v { text-align: center; margin: 5px 0; }
+:where(.pantalla-22) .fl.lbl { font-size: 11px; color: #777; text-align: center; margin: 3px 0; }
+:where(.pantalla-22) .gate { border: 1.5px solid #8a6d1f; background: #fdf9ee; border-radius: 6px; padding: 9px 14px; text-align: center; max-width: 520px; margin: 0 auto; }
+:where(.pantalla-22) .gate .n { font-size: 12.5px; font-weight: bold; color: #8a6d1f; }
+:where(.pantalla-22) .gate .d { font-size: 11px; color: #8a6d1f; margin-top: 2px; }
+:where(.pantalla-22) .roles { display: flex; gap: 18px; margin-top: 10px; align-items: stretch; }
+:where(.pantalla-22) .col { flex: 1; border: 1px solid #ccd3dc; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; }
+:where(.pantalla-22) .ccab { padding: 10px 12px; text-align: center; color: #fff; }
+:where(.pantalla-22) .ccab .r { font-size: 14px; font-weight: bold; }
+:where(.pantalla-22) .ccab .c { font-size: 10.5px; opacity: .85; margin-top: 2px; }
+:where(.pantalla-22) .col.comprador .ccab { background: #365F91; }
+:where(.pantalla-22) .col.distribuidor .ccab { background: #2c6b4f; }
+:where(.pantalla-22) .col.admin .ccab { background: #8a2f2f; }
+:where(.pantalla-22) .col.distribuidor .caja { border-color: #2c6b4f; }
+:where(.pantalla-22) .col.distribuidor .caja.entrada { background: #2c6b4f; }
+:where(.pantalla-22) .col.distribuidor .fl { color: #2c6b4f; }
+:where(.pantalla-22) .col.admin .caja { border-color: #8a2f2f; }
+:where(.pantalla-22) .col.admin .caja.entrada { background: #8a2f2f; }
+:where(.pantalla-22) .col.admin .fl { color: #8a2f2f; }
+:where(.pantalla-22) .col.distribuidor .caja.menu, :where(.pantalla-22) .col.admin .caja.menu { border-color: #b9c2cd; }
+:where(.pantalla-22) .cuerpo { padding: 14px 13px; flex: 1; }
+:where(.pantalla-22) .cuerpo .caja { width: 100%; box-sizing: border-box; min-width: 0; }
+:where(.pantalla-22) .grupo-menu { border-top: 1px dashed #ccd3dc; margin-top: 12px; padding-top: 11px; }
+:where(.pantalla-22) .grupo-menu .et { font-size: 10.5px; color: #888; text-align: center; margin-bottom: 8px; }
+:where(.pantalla-22) .grupo-menu .caja { margin-bottom: 7px; }
+:where(.pantalla-22) .grupo-menu .caja:last-child { margin-bottom: 0; }
+:where(.pantalla-22) .salida { margin-top: 20px; border-top: 1px solid #e6eaef; padding-top: 14px; display: flex; gap: 26px; align-items: center; justify-content: center; font-size: 12px; color: #555; }
+:where(.pantalla-22) .salida .caja { min-width: 130px; }
+:where(.pantalla-22) .leyenda { margin-top: 22px; border: 1px solid #e6eaef; border-radius: 6px; padding: 13px 16px; font-size: 11.5px; color: #555; }
+:where(.pantalla-22) .leyenda h3 { margin: 0 0 9px 0; font-size: 12px; color: #365F91; }
+:where(.pantalla-22) .leyenda div { padding: 3px 0; }
+:where(.pantalla-22) .mini { display: inline-block; width: 26px; height: 13px; border-radius: 3px; vertical-align: -2px; margin-right: 7px; }
+:where(.pantalla-22) footer { text-align: center; font-size: 11.5px; color: #888; margin-top: 22px; }
+
+/* ===== Estilos compartidos ===== */
 
 :root {
   --bg: #f1f5f9;
@@ -1079,3 +2055,38 @@ main {
         margin: 12px auto !important;
     }
 }
+
+/* Clases que sustituyen los antiguos atributos style="" en línea; !important conserva su prioridad sobre las reglas normales. */
+.flex-3 { flex: 3 !important; }
+.flex-1 { flex: 1 !important; }
+.ancho-auto { width: auto !important; }
+.margen-sup-6 { margin: 6px 0 0 0 !important; }
+.existencia-disponible { font-size: 13px !important; color: #666 !important; }
+.distribuidor-nombre { margin: 0 0 6px 0 !important; font-size: 14.5px !important; }
+.distribuidor-dato { margin: 0 0 4px 0 !important; font-size: 13px !important; }
+.distribuidor-enlace { margin: 10px 0 0 0 !important; }
+.sin-margen { margin: 0 !important; }
+.flex-fijo { flex: 0 0 auto !important; }
+.enlace-calificar { color: #365F91 !important; font-size: 11.5px !important; }
+.alto-52 { height: 52% !important; }
+.alto-63 { height: 63% !important; }
+.alto-68 { height: 68% !important; }
+.alto-76 { height: 76% !important; }
+.alto-87 { height: 87% !important; }
+.margen-sup-16 { margin-top: 16px !important; }
+.texto-ayuda { font-size: 12px !important; color: #777 !important; margin: 0 0 10px 0 !important; }
+.margen-sup-9 { margin-top: 9px !important; }
+.ancho-100 { width: 100% !important; }
+.ancho-83 { width: 83% !important; }
+.ancho-65 { width: 65% !important; }
+.ancho-47 { width: 47% !important; }
+.ancho-35 { width: 35% !important; }
+.ancho-23 { width: 23% !important; }
+.fondo-azul { background: #365F91 !important; }
+.fondo-azul-medio { background: #5b87bd !important; }
+.fondo-azul-claro { background: #c9d8ea !important; }
+.fondo-dorado { background: #e8d190 !important; }
+.muestra-recorrido { background: #fff !important; border: 1.5px solid #365F91 !important; }
+.muestra-menu { background: #f7f9fb !important; border: 1.5px solid #b9c2cd !important; }
+.muestra-publica { background: #fafbfc !important; border: 2px dashed #b9c2cd !important; }
+.nota-aislamiento { margin-top: 7px !important; color: #8a6d1f !important; }
