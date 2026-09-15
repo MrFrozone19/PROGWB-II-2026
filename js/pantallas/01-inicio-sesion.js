@@ -1,5 +1,3 @@
-/* Pantalla 01 — Inicio de sesión. */
-
 const formularioLogin = document.getElementById('formulario-login');
 const campoCorreo = document.getElementById('correo');
 const campoContrasena = document.getElementById('contrasena');
@@ -7,8 +5,8 @@ const botonVerContrasena = document.getElementById('ver-contrasena');
 const mensajeError = document.getElementById('mensaje-error');
 const avisoPendiente = document.getElementById('aviso-pendiente');
 const mensajeRecuperacion = document.getElementById('mensaje-recuperacion');
+const botonEntrar = formularioLogin.querySelector('button[type="submit"]');
 
-// Si ya hay una sesión abierta, no tiene caso volver a pedir credenciales.
 const sesionAbierta = sesionVigente();
 if (sesionAbierta) {
   location.replace(pantallaInicioDe(sesionAbierta.rol));
@@ -31,7 +29,7 @@ function mostrarError(mensaje, campo) {
   }
 }
 
-formularioLogin.addEventListener('submit', (evento) => {
+formularioLogin.addEventListener('submit', async (evento) => {
   evento.preventDefault();
   ocultarMensajes();
 
@@ -44,13 +42,19 @@ formularioLogin.addEventListener('submit', (evento) => {
     return;
   }
 
-  const resultado = iniciarSesion(campoCorreo.value, campoContrasena.value);
+  botonEntrar.disabled = true;
+  botonEntrar.textContent = 'Ingresando...';
+  const resultado = await iniciarSesion(campoCorreo.value, campoContrasena.value);
+  botonEntrar.disabled = false;
+  botonEntrar.textContent = 'Iniciar sesión';
+
   if (resultado.exito) {
     location.href = resultado.destino;
   } else if (resultado.motivo === 'pendiente') {
     avisoPendiente.hidden = false;
+  } else if (resultado.motivo === 'servicio') {
+    mostrarError('No fue posible comunicarse con el servicio. Revisa que el Back End esté iniciado.');
   } else {
-    // No se indica cuál de los dos datos falló.
     mostrarError('Correo o contraseña incorrectos.');
   }
 });
