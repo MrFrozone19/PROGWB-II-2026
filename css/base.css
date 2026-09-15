@@ -1050,3 +1050,40 @@ main {
     }
 
 }
+
+
+/* Corrección final navegación fija */
+body {
+    padding-bottom: 0 !important;
+}
+
+header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+}
+
+body > nav,
+header + nav,
+nav {
+    position: sticky !important;
+    top: 88px !important;
+    left: auto !important;
+    transform: none !important;
+    width: min(var(--content-max), calc(100% - 64px)) !important;
+    margin: 18px auto !important;
+    z-index: 900 !important;
+}
+
+/* Evita que la navegación desaparezca pero mantiene el flujo correcto */
+main {
+    padding-top: 28px !important;
+}
+
+@media(max-width:860px){
+    nav {
+        top: 105px !important;
+        width: calc(100% - 24px) !important;
+        margin: 12px auto !important;
+    }
+}
