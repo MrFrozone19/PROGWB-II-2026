@@ -1,7 +1,3 @@
-/* Sesión simulada del prototipo.
-   Guarda al usuario en localStorage para poder navegar entre pantallas
-   sin backend. En la versión final este control lo hará el token del login. */
-
 const CLAVE_SESION = 'enlaceB2B.sesion';
 const MINUTOS_MAXIMOS_INACTIVIDAD = 30;
 const PANTALLA_INICIO_SESION = '01-inicio-sesion.html';
@@ -28,16 +24,18 @@ function guardarSesion(sesion) {
   try {
     localStorage.setItem(CLAVE_SESION, JSON.stringify(sesion));
   } catch {
-    // El navegador no permite guardar datos (por ejemplo, modo privado estricto).
+    return null;
   }
+  return sesion;
 }
 
 function borrarSesion() {
   try {
     localStorage.removeItem(CLAVE_SESION);
   } catch {
-    // Nada que borrar si el almacenamiento no está disponible.
+    return null;
   }
+  return null;
 }
 
 function sesionVigente() {
@@ -52,9 +50,9 @@ function sesionVigente() {
   return sesion;
 }
 
-function iniciarSesion(correo, contrasena) {
+function iniciarSesionDemo(correo, contrasena) {
   const correoNormalizado = correo.trim().toLowerCase();
-  const usuario = USUARIOS_DEMO.find((u) => u.correo === correoNormalizado);
+  const usuario = USUARIOS_DEMO.find((item) => item.correo === correoNormalizado);
 
   if (!usuario || usuario.contrasena !== contrasena) {
     return { exito: false, motivo: 'credenciales' };
@@ -69,8 +67,37 @@ function iniciarSesion(correo, contrasena) {
     empresa: usuario.empresa,
     rol: usuario.rol,
     ultimaActividad: Date.now(),
+    modo: 'demo',
   });
   return { exito: true, destino: pantallaInicioDe(usuario.rol) };
+}
+
+async function iniciarSesion(correo, contrasena) {
+  if (!usarBackendLocal()) return iniciarSesionDemo(correo, contrasena);
+
+  try {
+    const respuesta = await solicitarApi('/auth/login', {
+      method: 'POST',
+      body: JSON.stringify({ correo, contrasena }),
+    });
+
+    guardarSesion({
+      correo: respuesta.usuario.correo,
+      nombre: respuesta.usuario.nombre,
+      empresa: respuesta.usuario.empresa,
+      empresaId: respuesta.usuario.empresaId,
+      rol: respuesta.usuario.rol,
+      token: respuesta.token,
+      ultimaActividad: Date.now(),
+      modo: 'backend',
+    });
+
+    return { exito: true, destino: pantallaInicioDe(respuesta.usuario.rol) };
+  } catch (error) {
+    if (error.datos?.motivo === 'pendiente') return { exito: false, motivo: 'pendiente' };
+    if (error.estado === 401) return { exito: false, motivo: 'credenciales' };
+    return { exito: false, motivo: 'servicio' };
+  }
 }
 
 function cerrarSesion() {
@@ -85,18 +112,18 @@ function registrarActividad() {
   guardarSesion(sesion);
 }
 
-/* Cada pantalla interna declara su rol en <html data-rol="...">.
-   Sin sesión se regresa al login; con otro rol se envía a su propio inicio. */
 function protegerPantalla() {
   const rolRequerido = document.documentElement.dataset.rol;
-  if (!rolRequerido) return;
+  const requiereSesion = document.documentElement.dataset.requiereSesion === 'true';
+  if (!rolRequerido && !requiereSesion) return;
 
   const sesion = sesionVigente();
   if (!sesion) {
     location.replace(PANTALLA_INICIO_SESION);
     return;
   }
-  if (sesion.rol !== rolRequerido) {
+
+  if (rolRequerido && sesion.rol !== rolRequerido) {
     location.replace(pantallaInicioDe(sesion.rol));
     return;
   }
