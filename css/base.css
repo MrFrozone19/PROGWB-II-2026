@@ -878,3 +878,37 @@ html[data-rol="administrador"] .rol {
   .icono { padding: 18px 14px !important; }
   th, td { padding: 12px 13px !important; }
 }
+
+/* Ajuste específico para pantallas laptop */
+@media (min-width: 861px) and (max-width: 1500px) {
+
+  .centro {
+    min-height: calc(100vh - 110px);
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+
+  .caja {
+    width: 430px !important;
+  }
+
+  .demo {
+    width: 430px !important;
+  }
+
+  .centro::before {
+    content: "";
+    position: fixed;
+    left: 0;
+    top: 110px;
+    width: 45%;
+    height: calc(100vh - 110px);
+    background:
+      radial-gradient(circle at center,
+      rgba(249,115,22,.10),
+      transparent 55%);
+    pointer-events: none;
+    z-index: -1;
+  }
+}
