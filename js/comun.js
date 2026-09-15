@@ -62,15 +62,6 @@ function prepararClics() {
 }
 
 
-
-function limpiarElementosInstitucionales() {
-  document.querySelectorAll('footer').forEach((footer) => {
-    if (footer.textContent.includes('Programación Web II')) {
-      footer.remove();
-    }
-  });
-}
-
 function prepararContextoVisual() {
   const html = document.documentElement;
   const body = document.body;
@@ -119,4 +110,3 @@ prepararContextoVisual();
 prepararEncabezado();
 prepararClics();
 prepararIconos();
-limpiarElementosInstitucionales();
