@@ -19,12 +19,12 @@
   </div>
 </header>
 
-<nav>
-  <a href="03-busqueda-principal.html">Buscar insumos</a>
-  <a href="06-carrito.html" class="activo">Mi carrito (3)</a>
-  <a href="08-seguimiento-pedido.html">Mis pedidos</a>
-  <a href="09-historial-compras.html">Historial</a>
-  <a href="10-perfil-empresa.html">Mi empresa</a>
+<nav class="nav">
+  <a class="nav-link" href="03-busqueda-principal.html">Buscar insumos</a>
+  <a href="06-carrito.html" class="activo nav-link active">Mi carrito (3)</a>
+  <a class="nav-link" href="08-seguimiento-pedido.html">Mis pedidos</a>
+  <a class="nav-link" href="09-historial-compras.html">Historial</a>
+  <a class="nav-link" href="10-perfil-empresa.html">Mi empresa</a>
 </nav>
 
 <div class="pasos">
@@ -45,23 +45,23 @@
         <div class="par">
           <div>
             <label>Recibe
-              <input type="text" value="Sinuhé Martínez Hernández">
+              <input class="form-control" type="text" value="Sinuhé Martínez Hernández">
             </label>
           </div>
           <div>
             <label>Teléfono de contacto
-              <input type="text" value="81 1234 5678">
+              <input class="form-control" type="text" value="81 1234 5678">
             </label>
           </div>
         </div>
         <label>Dirección de entrega
-          <select>
+          <select class="form-select">
             <option selected>Planta principal — Av. Manuel L. Barragán 1250, San Nicolás</option>
             <option>Almacén 2 — Carr. Miguel Alemán km 18, Apodaca</option>
           </select>
         </label>
         <label>Referencias para el repartidor
-          <textarea>Portón azul, entrada por anden de carga. Recepción de 8:00 a 17:00 h.</textarea>
+          <textarea class="form-control">Portón azul, entrada por anden de carga. Recepción de 8:00 a 17:00 h.</textarea>
         </label>
       </div>
 
@@ -85,7 +85,7 @@
             <strong>Refacciones Industriales GM</strong>
             <span class="dist">A 2.4 km — Guadalupe</span>
           </div>
-          <table>
+          <table class="table table-sm">
             <tr>
               <td>Rodamiento 6205-2RS sellado</td>
               <td>40 pz × $185.00</td>
@@ -105,7 +105,7 @@
             <strong>Seguridad Total del Norte</strong>
             <span class="dist">A 4.8 km — Apodaca</span>
           </div>
-          <table>
+          <table class="table table-sm">
             <tr>
               <td>Guantes de carnaza reforzados</td>
               <td>240 pares × $96.00</td>
@@ -132,8 +132,8 @@
         fecha de entrega de su pedido.</label>
       </div>
 
-      <button type="button" data-ir="08-seguimiento-pedido.html">Generar pedido</button>
-      <button type="button" class="sec" data-ir="06-carrito.html">Regresar al carrito</button>
+      <button class="btn" type="button" data-ir="08-seguimiento-pedido.html">Generar pedido</button>
+      <button type="button" class="sec btn" data-ir="06-carrito.html">Regresar al carrito</button>
     </div>
   </div>
 </main>

@@ -19,17 +19,17 @@
   </div>
 </header>
 
-<nav>
-  <a href="03-busqueda-principal.html" class="activo">Buscar insumos</a>
-  <a href="06-carrito.html">Mi carrito (3)</a>
-  <a href="08-seguimiento-pedido.html">Mis pedidos</a>
-  <a href="09-historial-compras.html">Historial</a>
-  <a href="10-perfil-empresa.html">Mi empresa</a>
+<nav class="nav">
+  <a href="03-busqueda-principal.html" class="activo nav-link active">Buscar insumos</a>
+  <a class="nav-link" href="06-carrito.html">Mi carrito (3)</a>
+  <a class="nav-link" href="08-seguimiento-pedido.html">Mis pedidos</a>
+  <a class="nav-link" href="09-historial-compras.html">Historial</a>
+  <a class="nav-link" href="10-perfil-empresa.html">Mi empresa</a>
 </nav>
 
 <div class="barra">
-  <input type="text" value="rodamiento 6205">
-  <button type="button" data-ir="04-resultados-busqueda.html">Buscar</button>
+  <input class="form-control" type="text" value="rodamiento 6205">
+  <button class="btn" type="button" data-ir="04-resultados-busqueda.html">Buscar</button>
 </div>
 
 <div class="cuerpo">
@@ -37,7 +37,7 @@
     <h3>Filtrar</h3>
     <div class="grupo">
       <label>Distancia máxima
-        <select>
+        <select class="form-select">
           <option>Hasta 5 km</option>
           <option selected>Hasta 15 km</option>
           <option>Hasta 30 km</option>
@@ -47,7 +47,7 @@
     </div>
     <div class="grupo">
       <label>Categoría
-        <select>
+        <select class="form-select">
           <option selected>Rodamientos</option>
           <option>Aceros y metales</option>
           <option>Herramienta</option>
@@ -56,23 +56,23 @@
     </div>
     <div class="grupo">
       <label>Precio desde
-        <input type="number" value="0">
+        <input class="form-control" type="number" value="0">
       </label>
       <label>Precio hasta
-        <input type="number" value="500">
+        <input class="form-control" type="number" value="500">
       </label>
     </div>
     <div class="grupo">
       <label><input type="checkbox" checked class="ancho-auto"> Solo con existencia</label>
       <label><input type="checkbox" class="ancho-auto"> Entrega el mismo día</label>
     </div>
-    <button type="button">Aplicar filtros</button>
+    <button class="btn" type="button">Aplicar filtros</button>
   </aside>
 
   <div class="contenido">
     <div class="resumen">
       <p>5 resultados para <strong>“rodamiento 6205”</strong> en un radio de 15 km</p>
-      <select>
+      <select class="form-select">
         <option selected>Ordenar por: cercanía</option>
         <option>Ordenar por: precio más bajo</option>
         <option>Ordenar por: mayor existencia</option>
@@ -88,7 +88,7 @@
       <div class="derecha">
         <p class="precio">$185.00</p>
         <p class="exist">60 piezas disponibles</p>
-        <button type="button" data-aviso="Producto agregado al carrito">Agregar</button>
+        <button class="btn" type="button" data-aviso="Producto agregado al carrito">Agregar</button>
       </div>
     </div>
 
@@ -101,7 +101,7 @@
       <div class="derecha">
         <p class="precio">$168.00</p>
         <p class="exist">34 piezas disponibles</p>
-        <button type="button" data-aviso="Producto agregado al carrito">Agregar</button>
+        <button class="btn" type="button" data-aviso="Producto agregado al carrito">Agregar</button>
       </div>
     </div>
 
@@ -114,7 +114,7 @@
       <div class="derecha">
         <p class="precio">$142.00</p>
         <p class="exist">12 piezas disponibles</p>
-        <button type="button" data-aviso="Producto agregado al carrito">Agregar</button>
+        <button class="btn" type="button" data-aviso="Producto agregado al carrito">Agregar</button>
       </div>
     </div>
 
@@ -127,7 +127,7 @@
       <div class="derecha">
         <p class="precio">$236.00</p>
         <p class="exist">80 piezas disponibles</p>
-        <button type="button" data-aviso="Producto agregado al carrito">Agregar</button>
+        <button class="btn" type="button" data-aviso="Producto agregado al carrito">Agregar</button>
       </div>
     </div>
 
@@ -141,11 +141,11 @@
       <div class="derecha">
         <p class="precio">$121.00</p>
         <p class="exist">Sin existencia</p>
-        <button type="button" disabled>Agregar</button>
+        <button class="btn" type="button" disabled>Agregar</button>
       </div>
     </div>
 
-    <div class="aviso">
+    <div class="aviso alert">
       ¿No encuentras lo que buscas? Hay 3 resultados más entre 15 y 30 km.
       <a href="04-resultados-busqueda.html">Ampliar la búsqueda a 30 km</a>
     </div>

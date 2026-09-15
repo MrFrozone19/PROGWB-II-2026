@@ -12,18 +12,18 @@
 <body class="pantalla-19">
 
 <header>
-  <h1>Enlace B2B Local <span class="rol">Administrador</span></h1>
+  <h1>Enlace B2B Local <span class="rol badge">Administrador</span></h1>
   <div class="empresa">
     Operación de plataforma<br>
     <a href="01-inicio-sesion.html" data-cerrar-sesion>Cerrar sesión</a>
   </div>
 </header>
 
-<nav>
-  <a href="18-empresas-por-verificar.html">Empresas por verificar</a>
-  <a href="19-configuracion-comision.html" class="activo">Configuración de comisión</a>
-  <a href="20-supervision-transacciones.html">Transacciones</a>
-  <a href="21-reportes.html">Reportes</a>
+<nav class="nav">
+  <a class="nav-link" href="18-empresas-por-verificar.html">Empresas por verificar</a>
+  <a href="19-configuracion-comision.html" class="activo nav-link active">Configuración de comisión</a>
+  <a class="nav-link" href="20-supervision-transacciones.html">Transacciones</a>
+  <a class="nav-link" href="21-reportes.html">Reportes</a>
 </nav>
 
 <main>
@@ -35,11 +35,11 @@
 
       <div class="caja">
         <h3>Comisión general</h3>
-        <p class="aviso-sec">Aplica a todas las transacciones que no tengan un porcentaje específico por categoría o por distribuidor.</p>
+        <p class="aviso-sec alert">Aplica a todas las transacciones que no tengan un porcentaje específico por categoría o por distribuidor.</p>
         <div class="general">
           <div class="pctbox">
             <div class="lbl">Porcentaje</div>
-            <input type="text" value="5.0 %">
+            <input class="form-control" type="text" value="5.0 %">
           </div>
           <div class="rango">
             <label>Ajuste dentro del rango permitido</label>
@@ -59,24 +59,24 @@
 
       <div class="caja">
         <h3>Comisión por categoría</h3>
-        <p class="aviso-sec">Porcentaje distinto para categorías específicas de insumo. Tiene prioridad sobre la comisión general.</p>
-        <table>
+        <p class="aviso-sec alert">Porcentaje distinto para categorías específicas de insumo. Tiene prioridad sobre la comisión general.</p>
+        <table class="table table-sm">
           <tr>
             <th>Categoría</th><th class="num">Comisión</th><th></th>
           </tr>
           <tr>
             <td>Aceros y metales</td>
-            <td class="num"><input type="number" value="3.0" step="0.5"></td>
+            <td class="num"><input class="form-control" type="number" value="3.0" step="0.5"></td>
             <td><a href="#" class="quitar">Quitar</a></td>
           </tr>
           <tr>
             <td>Seguridad industrial</td>
-            <td class="num"><input type="number" value="7.5" step="0.5"></td>
+            <td class="num"><input class="form-control" type="number" value="7.5" step="0.5"></td>
             <td><a href="#" class="quitar">Quitar</a></td>
           </tr>
           <tr>
             <td>Consumibles de soldadura</td>
-            <td class="num"><input type="number" value="6.0" step="0.5"></td>
+            <td class="num"><input class="form-control" type="number" value="6.0" step="0.5"></td>
             <td><a href="#" class="quitar">Quitar</a></td>
           </tr>
         </table>
@@ -85,20 +85,20 @@
 
       <div class="caja">
         <h3>Comisión por distribuidor</h3>
-        <p class="aviso-sec">Porcentaje pactado con un distribuidor determinado. Tiene prioridad sobre la comisión general y la de categoría.</p>
-        <table>
+        <p class="aviso-sec alert">Porcentaje pactado con un distribuidor determinado. Tiene prioridad sobre la comisión general y la de categoría.</p>
+        <table class="table table-sm">
           <tr>
             <th>Distribuidor</th><th class="num">Comisión</th><th>Vigente desde</th><th></th>
           </tr>
           <tr>
             <td>Refacciones Industriales GM</td>
-            <td class="num"><input type="number" value="5.0" step="0.5"></td>
+            <td class="num"><input class="form-control" type="number" value="5.0" step="0.5"></td>
             <td>01/03/2026</td>
             <td><a href="#" class="quitar">Quitar</a></td>
           </tr>
           <tr>
             <td>Aceros Monterrey Sur</td>
-            <td class="num"><input type="number" value="2.5" step="0.5"></td>
+            <td class="num"><input class="form-control" type="number" value="2.5" step="0.5"></td>
             <td>01/07/2026</td>
             <td><a href="#" class="quitar">Quitar</a></td>
           </tr>
@@ -108,23 +108,23 @@
 
       <div class="caja">
         <h3>Vigencia del cambio</h3>
-        <p class="aviso-sec">Los pedidos generados antes de esta fecha conservan el porcentaje con el que fueron emitidos.</p>
+        <p class="aviso-sec alert">Los pedidos generados antes de esta fecha conservan el porcentaje con el que fueron emitidos.</p>
         <div class="vigencia">
           <div>
             <label>Aplica a partir de</label>
-            <input type="date" value="2026-09-01">
+            <input class="form-control" type="date" value="2026-09-01">
           </div>
           <div>
             <label>Notificar a los distribuidores</label>
-            <select>
+            <select class="form-select">
               <option selected>Sí, por correo al guardar</option>
               <option>No notificar</option>
             </select>
           </div>
         </div>
         <div class="acciones">
-          <button type="button">Guardar configuración</button>
-          <button type="button" class="sec">Descartar</button>
+          <button class="btn" type="button">Guardar configuración</button>
+          <button type="button" class="sec btn">Descartar</button>
         </div>
       </div>
 

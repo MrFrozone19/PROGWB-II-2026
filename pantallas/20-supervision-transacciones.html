@@ -12,18 +12,18 @@
 <body class="pantalla-20">
 
 <header>
-  <h1>Enlace B2B Local <span class="rol">Administrador</span></h1>
+  <h1>Enlace B2B Local <span class="rol badge">Administrador</span></h1>
   <div class="empresa">
     Operación de plataforma<br>
     <a href="01-inicio-sesion.html" data-cerrar-sesion>Cerrar sesión</a>
   </div>
 </header>
 
-<nav>
-  <a href="18-empresas-por-verificar.html">Empresas por verificar</a>
-  <a href="19-configuracion-comision.html">Configuración de comisión</a>
-  <a href="20-supervision-transacciones.html" class="activo">Transacciones</a>
-  <a href="21-reportes.html">Reportes</a>
+<nav class="nav">
+  <a class="nav-link" href="18-empresas-por-verificar.html">Empresas por verificar</a>
+  <a class="nav-link" href="19-configuracion-comision.html">Configuración de comisión</a>
+  <a href="20-supervision-transacciones.html" class="activo nav-link active">Transacciones</a>
+  <a class="nav-link" href="21-reportes.html">Reportes</a>
 </nav>
 
 <main>
@@ -40,15 +40,15 @@
   <div class="filtros">
     <div>
       <label>Desde</label>
-      <input type="date" value="2026-08-01">
+      <input class="form-control" type="date" value="2026-08-01">
     </div>
     <div>
       <label>Hasta</label>
-      <input type="date" value="2026-08-25">
+      <input class="form-control" type="date" value="2026-08-25">
     </div>
     <div>
       <label>Estatus</label>
-      <select>
+      <select class="form-select">
         <option selected>Todos</option>
         <option>Entregado</option>
         <option>En camino</option>
@@ -59,7 +59,7 @@
     </div>
     <div>
       <label>Empresa</label>
-      <select>
+      <select class="form-select">
         <option selected>Todas</option>
         <option>Refacciones Industriales GM</option>
         <option>Aceros del Norte</option>
@@ -67,14 +67,14 @@
       </select>
     </div>
     <div class="flex-fijo">
-      <button type="button">Filtrar</button>
+      <button class="btn" type="button">Filtrar</button>
     </div>
   </div>
 
   <div class="cuerpo">
     <div class="tabla">
       <div class="cab"><h3>Transacciones del periodo</h3></div>
-      <table>
+      <table class="table table-sm">
         <tr>
           <th></th><th>Folio</th><th>Fecha</th><th>Comprador</th><th>Distribuidor</th>
           <th class="imp">Importe</th><th class="com">Comisión</th><th>Estatus</th>

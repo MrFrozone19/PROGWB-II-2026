@@ -29,19 +29,19 @@
       <div class="fila">
         <div>
           <label>Razón social
-            <input type="text" id="razon-social" placeholder="Aceros del Norte S.A. de C.V.">
+            <input class="form-control" type="text" id="razon-social" placeholder="Aceros del Norte S.A. de C.V.">
           </label>
         </div>
         <div>
           <label>RFC
-            <input type="text" id="rfc" maxlength="13" placeholder="ADN180423K21">
+            <input class="form-control" type="text" id="rfc" maxlength="13" placeholder="ADN180423K21">
           </label>
         </div>
       </div>
       <div class="fila">
         <div>
           <label>Tipo de empresa
-            <select id="tipo-empresa">
+            <select class="form-select" id="tipo-empresa">
               <option value="">Selecciona una opción</option>
               <option value="comprador">Compradora</option>
               <option value="distribuidor">Distribuidora</option>
@@ -51,7 +51,7 @@
         </div>
         <div>
           <label>Giro industrial
-            <input type="text" id="giro" placeholder="Rodamientos y transmisión de potencia">
+            <input class="form-control" type="text" id="giro" placeholder="Rodamientos y transmisión de potencia">
           </label>
         </div>
       </div>
@@ -62,29 +62,29 @@
       <div class="fila">
         <div>
           <label>Calle y número
-            <input type="text" id="calle" placeholder="Av. Manuel L. Barragán 1250">
+            <input class="form-control" type="text" id="calle" placeholder="Av. Manuel L. Barragán 1250">
           </label>
         </div>
         <div>
           <label>Colonia
-            <input type="text" id="colonia" placeholder="Anáhuac">
+            <input class="form-control" type="text" id="colonia" placeholder="Anáhuac">
           </label>
         </div>
       </div>
       <div class="fila">
         <div>
           <label>Código postal
-            <input type="text" id="codigo-postal" maxlength="5" inputmode="numeric" placeholder="66450">
+            <input class="form-control" type="text" id="codigo-postal" maxlength="5" inputmode="numeric" placeholder="66450">
           </label>
           <p id="mensaje-cobertura" hidden></p>
         </div>
         <div>
           <label>Municipio
-            <input type="text" id="municipio" readonly placeholder="Se llena con el código postal">
+            <input class="form-control" type="text" id="municipio" readonly placeholder="Se llena con el código postal">
           </label>
         </div>
       </div>
-      <div class="nota">
+      <div class="nota alert">
         El domicilio determina la distancia con la que aparecerás en las búsquedas
         de otras empresas. Captúralo con precisión.
       </div>
@@ -95,35 +95,35 @@
       <div class="fila">
         <div>
           <label>Nombre del responsable
-            <input type="text" id="nombre-responsable" placeholder="Sinuhé Martínez Hernández">
+            <input class="form-control" type="text" id="nombre-responsable" placeholder="Sinuhé Martínez Hernández">
           </label>
         </div>
         <div>
           <label>Teléfono
-            <input type="tel" id="telefono" placeholder="81 1234 5678">
+            <input class="form-control" type="tel" id="telefono" placeholder="81 1234 5678">
           </label>
         </div>
       </div>
       <label>Correo de la empresa
-        <input type="email" id="correo" placeholder="compras@aceros-delnorte.mx">
+        <input class="form-control" type="email" id="correo" placeholder="compras@aceros-delnorte.mx">
       </label>
       <div class="fila">
         <div>
           <label>Contraseña
-            <input type="password" id="contrasena" placeholder="Mínimo 8 caracteres">
+            <input class="form-control" type="password" id="contrasena" placeholder="Mínimo 8 caracteres">
           </label>
         </div>
         <div>
           <label>Confirmar contraseña
-            <input type="password" id="confirmar-contrasena">
+            <input class="form-control" type="password" id="confirmar-contrasena">
           </label>
         </div>
       </div>
     </fieldset>
 
     <div class="acciones">
-      <button type="submit">Registrar empresa</button>
-      <button type="button" class="cancelar" data-ir="01-inicio-sesion.html">Cancelar</button>
+      <button class="btn" type="submit">Registrar empresa</button>
+      <button type="button" class="cancelar btn" data-ir="01-inicio-sesion.html">Cancelar</button>
     </div>
   </form>
 
@@ -131,7 +131,7 @@
     <div class="icono">✓</div>
     <h2>Registro recibido</h2>
     <p>Te avisaremos por correo cuando tu empresa sea verificada por el administrador.</p>
-    <button type="button" data-ir="01-inicio-sesion.html">Ir al inicio de sesión</button>
+    <button class="btn" type="button" data-ir="01-inicio-sesion.html">Ir al inicio de sesión</button>
   </div>
 </main>
 

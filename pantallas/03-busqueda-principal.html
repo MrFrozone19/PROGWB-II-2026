@@ -19,12 +19,12 @@
   </div>
 </header>
 
-<nav>
-  <a href="03-busqueda-principal.html" class="activo">Buscar insumos</a>
-  <a href="06-carrito.html">Mi carrito (3)</a>
-  <a href="08-seguimiento-pedido.html">Mis pedidos</a>
-  <a href="09-historial-compras.html">Historial</a>
-  <a href="10-perfil-empresa.html">Mi empresa</a>
+<nav class="nav">
+  <a href="03-busqueda-principal.html" class="activo nav-link active">Buscar insumos</a>
+  <a class="nav-link" href="06-carrito.html">Mi carrito (3)</a>
+  <a class="nav-link" href="08-seguimiento-pedido.html">Mis pedidos</a>
+  <a class="nav-link" href="09-historial-compras.html">Historial</a>
+  <a class="nav-link" href="10-perfil-empresa.html">Mi empresa</a>
 </nav>
 
 <div class="buscador">
@@ -32,18 +32,18 @@
   <div class="linea">
     <div class="flex-3">
       <span class="etiqueta">Producto o descripción</span>
-      <input type="text" value="rodamien">
+      <input class="form-control" type="text" value="rodamien">
     </div>
     <div class="flex-1">
       <span class="etiqueta">Distancia máxima</span>
-      <select>
+      <select class="form-select">
         <option>Hasta 5 km</option>
         <option selected>Hasta 15 km</option>
         <option>Hasta 30 km</option>
         <option>Toda la zona metropolitana</option>
       </select>
     </div>
-    <button type="button" data-ir="04-resultados-busqueda.html">Buscar</button>
+    <button class="btn" type="button" data-ir="04-resultados-busqueda.html">Buscar</button>
   </div>
   <div class="sugerencias">
     <div class="sug" data-ir="04-resultados-busqueda.html"><b>rodamien</b>to 6205-2RS · 5 distribuidores cerca</div>
@@ -67,7 +67,7 @@
       <h3>Comprados recientemente</h3>
       <a href="09-historial-compras.html">Ver historial completo ›</a>
     </div>
-    <table>
+    <table class="table table-sm">
       <tr>
         <td>
           <div class="nom">Rodamiento 6205-2RS sellado</div>

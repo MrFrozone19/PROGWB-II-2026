@@ -12,18 +12,18 @@
 <body class="pantalla-18">
 
 <header>
-  <h1>Enlace B2B Local <span class="rol">Administrador</span></h1>
+  <h1>Enlace B2B Local <span class="rol badge">Administrador</span></h1>
   <div class="empresa">
     Operación de plataforma<br>
     <a href="01-inicio-sesion.html" data-cerrar-sesion>Cerrar sesión</a>
   </div>
 </header>
 
-<nav>
-  <a href="18-empresas-por-verificar.html" class="activo">Empresas por verificar</a>
-  <a href="19-configuracion-comision.html">Configuración de comisión</a>
-  <a href="20-supervision-transacciones.html">Transacciones</a>
-  <a href="21-reportes.html">Reportes</a>
+<nav class="nav">
+  <a href="18-empresas-por-verificar.html" class="activo nav-link active">Empresas por verificar</a>
+  <a class="nav-link" href="19-configuracion-comision.html">Configuración de comisión</a>
+  <a class="nav-link" href="20-supervision-transacciones.html">Transacciones</a>
+  <a class="nav-link" href="21-reportes.html">Reportes</a>
 </nav>
 
 <main>
@@ -33,11 +33,11 @@
   <div class="barra">
     <div>
       <label>Buscar por razón social o RFC</label>
-      <input type="text" placeholder="Ej. Aceros del Norte o ADN180423K21">
+      <input class="form-control" type="text" placeholder="Ej. Aceros del Norte o ADN180423K21">
     </div>
     <div>
       <label>Estado</label>
-      <select>
+      <select class="form-select">
         <option selected>Pendientes</option>
         <option>Aprobadas</option>
         <option>Rechazadas</option>
@@ -46,7 +46,7 @@
     </div>
     <div>
       <label>Tipo de empresa</label>
-      <select>
+      <select class="form-select">
         <option selected>Todos</option>
         <option>Compradora</option>
         <option>Distribuidora</option>
@@ -54,14 +54,14 @@
       </select>
     </div>
     <div class="flex-fijo">
-      <button type="button">Filtrar</button>
+      <button class="btn" type="button">Filtrar</button>
     </div>
   </div>
 
   <div class="cuerpo">
     <div class="lista">
       <div class="cab"><h3>Solicitudes de registro — 6 pendientes</h3></div>
-      <table>
+      <table class="table table-sm">
         <tr>
           <th>Empresa</th><th>Tipo</th><th>Registro</th><th>Estado</th>
         </tr>
@@ -151,9 +151,9 @@
       </div>
 
       <div class="acciones">
-        <button class="aprobar" type="button">Aprobar empresa</button>
+        <button class="aprobar btn" type="button">Aprobar empresa</button>
         <label>Motivo del rechazo</label>
-        <select>
+        <select class="form-select">
           <option selected>Selecciona un motivo</option>
           <option>RFC no válido o no coincide con la razón social</option>
           <option>Domicilio fuera del área metropolitana</option>
@@ -161,8 +161,8 @@
           <option>Empresa duplicada</option>
           <option>Otro (especificar)</option>
         </select>
-        <button class="rechazar margen-sup-9" type="button">Rechazar solicitud</button>
-        <p class="nota">
+        <button class="rechazar margen-sup-9 btn" type="button">Rechazar solicitud</button>
+        <p class="nota alert">
           El motivo capturado se envía por correo al solicitante. Una empresa
           rechazada puede volver a registrarse corrigiendo los datos.
         </p>
