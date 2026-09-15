@@ -772,7 +772,7 @@ table tr:hover td { background: rgba(248, 250, 252, 0.75); }
 .aviso-flotante.error { background: linear-gradient(135deg, var(--danger), #dc2626); }
 
 footer {
-  width: min(var(--content-max), calc(100% - 32px));
+  width: min(var(--content-max), calc(100% - 64px));
   margin: 0 auto;
   padding: 14px 12px 34px !important;
   text-align: center;
