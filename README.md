@@ -1,15 +1,6 @@
 # Enlace B2B Local — Marketplace Industrial Metropolitano
 
 Proyecto integrador de **Programación Web II — Grupo 053**
-Mtro. Alejandro Becerra Jiménez · Semestre agosto–diciembre 2026
-
-## Integrantes
-
-| Nombre | Matrícula |
-|---|---|
-| Sinuhé Martínez Hernández | 1955659 |
-| Briseidi De la Rosa | 2007166 |
-| Axel Santiago Martínez Martínez | 2132951 |
 
 ## Descripción
 
@@ -27,11 +18,6 @@ La plataforma tiene tres roles, cada uno con sus propias pantallas:
 - **Comprador:** busca insumos, arma su carrito, genera pedidos y les da seguimiento.
 - **Distribuidor:** administra catálogo e inventario, acepta pedidos y actualiza entregas.
 - **Administrador:** verifica empresas, configura la comisión, supervisa transacciones y consulta reportes.
-
-## Estado actual — Primer avance
-
-Prototipo navegable del frontend con **datos de ejemplo** (aún no conectado a un backend).
-El inicio de sesión es simulado: cada rol entra a sus propias pantallas y no puede abrir las de otro rol.
 
 **Cuentas de prueba** (contraseña de todas: `demo1234`):
 
