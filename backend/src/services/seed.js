@@ -91,7 +91,7 @@ async function sembrarDatos() {
   });
 
   await crearUsuarioDemo(comprador, {
-    nombre: 'Sinuhé Martínez Hernández',
+    nombre: 'Alejandro Ramírez Garza',
     correo: 'compras@aceros-delnorte.mx',
     telefono: '8111111111',
     rol: 'comprador',

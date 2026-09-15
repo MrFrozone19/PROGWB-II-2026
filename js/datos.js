@@ -8,7 +8,7 @@ const USUARIOS_DEMO = [
   {
     correo: 'compras@aceros-delnorte.mx',
     contrasena: CONTRASENA_DEMO,
-    nombre: 'Sinuhé Martínez Hernández',
+    nombre: 'Alejandro Ramírez Garza',
     empresa: 'Aceros del Norte S.A. de C.V.',
     rol: 'comprador',
     estadoEmpresa: 'verificada',
