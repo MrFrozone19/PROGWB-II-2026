@@ -19,12 +19,12 @@
   </div>
 </header>
 
-<nav>
-  <a href="03-busqueda-principal.html">Buscar insumos</a>
-  <a href="06-carrito.html">Mi carrito (0)</a>
-  <a href="08-seguimiento-pedido.html">Mis pedidos</a>
-  <a href="09-historial-compras.html">Historial</a>
-  <a href="10-perfil-empresa.html" class="activo">Mi empresa</a>
+<nav class="nav">
+  <a class="nav-link" href="03-busqueda-principal.html">Buscar insumos</a>
+  <a class="nav-link" href="06-carrito.html">Mi carrito (0)</a>
+  <a class="nav-link" href="08-seguimiento-pedido.html">Mis pedidos</a>
+  <a class="nav-link" href="09-historial-compras.html">Historial</a>
+  <a href="10-perfil-empresa.html" class="activo nav-link active">Mi empresa</a>
 </nav>
 
 <main>
@@ -41,16 +41,16 @@
 
       <div class="caja">
         <h3>Datos fiscales</h3>
-        <p class="aviso-sec">Estos campos no pueden modificarse por cuenta propia. Solicita el cambio al administrador de la plataforma.</p>
+        <p class="aviso-sec alert">Estos campos no pueden modificarse por cuenta propia. Solicita el cambio al administrador de la plataforma.</p>
         <div class="par">
           <div>
             <label>Razón social
-              <input type="text" value="Aceros del Norte S.A. de C.V." readonly>
+              <input class="form-control" type="text" value="Aceros del Norte S.A. de C.V." readonly>
             </label>
           </div>
           <div>
             <label>RFC
-              <input type="text" value="ADN180423K21" readonly>
+              <input class="form-control" type="text" value="ADN180423K21" readonly>
             </label>
           </div>
         </div>
@@ -59,7 +59,7 @@
 
       <div class="caja">
         <h3>Direcciones de entrega</h3>
-        <p class="aviso-sec">La dirección principal determina la distancia con la que ves los resultados de búsqueda.</p>
+        <p class="aviso-sec alert">La dirección principal determina la distancia con la que ves los resultados de búsqueda.</p>
 
         <div class="dir-caja">
           <div>
@@ -87,29 +87,29 @@
 
       <div class="caja">
         <h3>Contacto y acceso</h3>
-        <p class="aviso-sec">Datos de la persona responsable de las compras.</p>
+        <p class="aviso-sec alert">Datos de la persona responsable de las compras.</p>
         <div class="par">
           <div>
             <label>Nombre del responsable
-              <input type="text" value="Sinuhé Martínez Hernández">
+              <input class="form-control" type="text" value="Sinuhé Martínez Hernández">
             </label>
           </div>
           <div>
             <label>Teléfono
-              <input type="text" value="81 1234 5678">
+              <input class="form-control" type="text" value="81 1234 5678">
             </label>
           </div>
         </div>
         <label>Correo de la empresa
-          <input type="email" class="ok" value="compras@aceros-delnorte.mx">
+          <input type="email" class="ok form-control" value="compras@aceros-delnorte.mx">
         </label>
-        <p class="msg-ok">Correo confirmado.</p>
+        <p class="msg-ok alert">Correo confirmado.</p>
         <label>Contraseña
-          <input type="password" value="••••••••">
+          <input class="form-control" type="password" value="••••••••">
         </label>
         <div class="acciones">
-          <button type="button">Guardar cambios</button>
-          <button type="button" class="sec">Cambiar contraseña</button>
+          <button class="btn" type="button">Guardar cambios</button>
+          <button type="button" class="sec btn">Cambiar contraseña</button>
         </div>
       </div>
 
@@ -126,7 +126,7 @@
 
       <div class="dcaja">
         <h3>Cobertura</h3>
-        <div class="nota">
+        <div class="nota alert">
           Tu empresa opera dentro del área metropolitana de Monterrey. Solo verás
           inventario de distribuidores dentro de esta zona, y solo ellos podrán
           venderte.

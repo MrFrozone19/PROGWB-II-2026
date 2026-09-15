@@ -19,12 +19,12 @@
   </div>
 </header>
 
-<nav>
-  <a href="03-busqueda-principal.html">Buscar insumos</a>
-  <a href="06-carrito.html">Mi carrito (0)</a>
-  <a href="08-seguimiento-pedido.html">Mis pedidos</a>
-  <a href="09-historial-compras.html" class="activo">Historial</a>
-  <a href="10-perfil-empresa.html">Mi empresa</a>
+<nav class="nav">
+  <a class="nav-link" href="03-busqueda-principal.html">Buscar insumos</a>
+  <a class="nav-link" href="06-carrito.html">Mi carrito (0)</a>
+  <a class="nav-link" href="08-seguimiento-pedido.html">Mis pedidos</a>
+  <a href="09-historial-compras.html" class="activo nav-link active">Historial</a>
+  <a class="nav-link" href="10-perfil-empresa.html">Mi empresa</a>
 </nav>
 
 <main>
@@ -41,15 +41,15 @@
   <div class="filtros">
     <div>
       <label>Desde</label>
-      <input type="date" value="2026-01-01">
+      <input class="form-control" type="date" value="2026-01-01">
     </div>
     <div>
       <label>Hasta</label>
-      <input type="date" value="2026-08-25">
+      <input class="form-control" type="date" value="2026-08-25">
     </div>
     <div>
       <label>Distribuidor</label>
-      <select>
+      <select class="form-select">
         <option selected>Todos</option>
         <option>Refacciones Industriales GM</option>
         <option>Seguridad Total del Norte</option>
@@ -58,18 +58,18 @@
     </div>
     <div>
       <label>Buscar por producto</label>
-      <input type="text" placeholder="Ej. rodamiento 6205">
+      <input class="form-control" type="text" placeholder="Ej. rodamiento 6205">
     </div>
     <div class="flex-fijo">
-      <button type="button">Filtrar</button>
+      <button class="btn" type="button">Filtrar</button>
     </div>
     <div class="flex-fijo">
-      <button type="button" class="limpiar">Limpiar</button>
+      <button type="button" class="limpiar btn">Limpiar</button>
     </div>
   </div>
 
   <div class="tabla">
-    <table>
+    <table class="table table-sm">
       <tr>
         <th>Folio</th><th>Fecha</th><th>Distribuidor</th><th>Art.</th>
         <th class="imp">Importe</th><th>Estatus</th><th>Calif.</th><th>Acciones</th>

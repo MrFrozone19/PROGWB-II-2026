@@ -19,12 +19,12 @@
   </div>
 </header>
 
-<nav>
-  <a href="03-busqueda-principal.html">Buscar insumos</a>
-  <a href="06-carrito.html" class="activo">Mi carrito (3)</a>
-  <a href="08-seguimiento-pedido.html">Mis pedidos</a>
-  <a href="09-historial-compras.html">Historial</a>
-  <a href="10-perfil-empresa.html">Mi empresa</a>
+<nav class="nav">
+  <a class="nav-link" href="03-busqueda-principal.html">Buscar insumos</a>
+  <a href="06-carrito.html" class="activo nav-link active">Mi carrito (3)</a>
+  <a class="nav-link" href="08-seguimiento-pedido.html">Mis pedidos</a>
+  <a class="nav-link" href="09-historial-compras.html">Historial</a>
+  <a class="nav-link" href="10-perfil-empresa.html">Mi empresa</a>
 </nav>
 
 <main>
@@ -39,13 +39,13 @@
           <strong>Refacciones Industriales GM</strong>
           <span class="dist">A 2.4 km — Guadalupe</span>
         </div>
-        <table>
+        <table class="table table-sm">
           <tr>
             <td>
               <div class="nom">Rodamiento 6205-2RS sellado</div>
               <div class="clave">RG-6205-2RS</div>
             </td>
-            <td><input type="number" value="40" min="1"></td>
+            <td><input class="form-control" type="number" value="40" min="1"></td>
             <td>$185.00</td>
             <td class="imp">$7,400.00</td>
             <td><a href="#" class="quitar">Quitar</a></td>
@@ -55,7 +55,7 @@
               <div class="nom">Chumacera UCP-205</div>
               <div class="clave">RG-UCP205</div>
             </td>
-            <td><input type="number" value="6" min="1"></td>
+            <td><input class="form-control" type="number" value="6" min="1"></td>
             <td>$310.00</td>
             <td class="imp">$1,860.00</td>
             <td><a href="#" class="quitar">Quitar</a></td>
@@ -69,13 +69,13 @@
           <strong>Seguridad Total del Norte</strong>
           <span class="dist">A 4.8 km — Apodaca</span>
         </div>
-        <table>
+        <table class="table table-sm">
           <tr>
             <td>
               <div class="nom">Guantes de carnaza reforzados</div>
               <div class="clave">ST-GC-REF</div>
             </td>
-            <td><input type="number" value="300" min="1"></td>
+            <td><input class="form-control" type="number" value="300" min="1"></td>
             <td>$96.00</td>
             <td class="imp">$28,800.00</td>
             <td><a href="#" class="quitar">Quitar</a></td>
@@ -98,11 +98,11 @@
       <div class="linea"><span>Subtotal</span><span>$38,060.00</span></div>
       <div class="total"><span>Total</span><span>$38,060.00</span></div>
 
-      <button type="button" data-ir="07-confirmacion-pedido.html">Continuar con el pedido</button>
-      <button type="button" class="sec" data-ir="03-busqueda-principal.html">Seguir buscando</button>
-      <button type="button" class="vaciar">Vaciar carrito</button>
+      <button class="btn" type="button" data-ir="07-confirmacion-pedido.html">Continuar con el pedido</button>
+      <button type="button" class="sec btn" data-ir="03-busqueda-principal.html">Seguir buscando</button>
+      <button type="button" class="vaciar btn">Vaciar carrito</button>
 
-      <p class="nota">
+      <p class="nota alert">
         La comisión de la plataforma se calcula sobre el pedido concluido y no
         modifica el importe que pagas al distribuidor.
       </p>

@@ -19,12 +19,12 @@
   </div>
 </header>
 
-<nav>
-  <a href="03-busqueda-principal.html">Buscar insumos</a>
-  <a href="06-carrito.html">Mi carrito (3)</a>
-  <a href="08-seguimiento-pedido.html">Mis pedidos</a>
-  <a href="09-historial-compras.html">Historial</a>
-  <a href="10-perfil-empresa.html">Mi empresa</a>
+<nav class="nav">
+  <a class="nav-link" href="03-busqueda-principal.html">Buscar insumos</a>
+  <a class="nav-link" href="06-carrito.html">Mi carrito (3)</a>
+  <a class="nav-link" href="08-seguimiento-pedido.html">Mis pedidos</a>
+  <a class="nav-link" href="09-historial-compras.html">Historial</a>
+  <a class="nav-link" href="10-perfil-empresa.html">Mi empresa</a>
 </nav>
 
 <div class="ruta">
@@ -42,18 +42,18 @@
     <div class="compra">
       <div>
         <label>Cantidad
-          <input type="number" value="75" min="1">
+          <input class="form-control" type="number" value="75" min="1">
         </label>
       </div>
-      <button type="button" data-aviso="Producto agregado al carrito">Agregar al carrito</button>
+      <button class="btn" type="button" data-aviso="Producto agregado al carrito">Agregar al carrito</button>
       <div class="existencia-disponible">Existencia disponible: 60 piezas</div>
     </div>
-    <p class="msg-error">
+    <p class="msg-error alert">
       La cantidad solicitada supera la existencia disponible. Reduce a 60 piezas o menos.
     </p>
 
     <h3>Ficha técnica</h3>
-    <table>
+    <table class="table table-sm">
       <tr><th>Diámetro interior</th><td>25 mm</td></tr>
       <tr><th>Diámetro exterior</th><td>52 mm</td></tr>
       <tr><th>Ancho</th><td>15 mm</td></tr>

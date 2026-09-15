@@ -19,12 +19,12 @@
   </div>
 </header>
 
-<nav>
-  <a href="03-busqueda-principal.html">Buscar insumos</a>
-  <a href="06-carrito.html">Mi carrito (0)</a>
-  <a href="08-seguimiento-pedido.html" class="activo">Mis pedidos</a>
-  <a href="09-historial-compras.html">Historial</a>
-  <a href="10-perfil-empresa.html">Mi empresa</a>
+<nav class="nav">
+  <a class="nav-link" href="03-busqueda-principal.html">Buscar insumos</a>
+  <a class="nav-link" href="06-carrito.html">Mi carrito (0)</a>
+  <a href="08-seguimiento-pedido.html" class="activo nav-link active">Mis pedidos</a>
+  <a class="nav-link" href="09-historial-compras.html">Historial</a>
+  <a class="nav-link" href="10-perfil-empresa.html">Mi empresa</a>
 </nav>
 
 <main>
@@ -89,7 +89,7 @@
 
       <div class="caja">
         <h3>Productos del pedido</h3>
-        <table>
+        <table class="table table-sm">
           <tr>
             <th>Producto</th><th>Cantidad</th><th>Precio unitario</th><th class="imp">Importe</th>
           </tr>
@@ -132,10 +132,10 @@
 
       <div class="dcaja">
         <h3>Acciones</h3>
-        <button type="button">Descargar comprobante</button>
-        <button type="button">Contactar al distribuidor</button>
-        <button type="button" class="cancelar">Cancelar pedido</button>
-        <p class="nota">
+        <button class="btn" type="button">Descargar comprobante</button>
+        <button class="btn" type="button">Contactar al distribuidor</button>
+        <button type="button" class="cancelar btn">Cancelar pedido</button>
+        <p class="nota alert">
           Un pedido solo puede cancelarse mientras no haya sido marcado como
           entregado. Los pedidos cancelados no generan comisión.
         </p>

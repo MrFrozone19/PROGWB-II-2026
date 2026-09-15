@@ -25,26 +25,26 @@
     <p class="sub">Acceso exclusivo para empresas registradas</p>
 
     <label>Correo de la empresa
-      <input type="email" id="correo" autocomplete="username" placeholder="compras@empresa.mx">
+      <input class="form-control" type="email" id="correo" autocomplete="username" placeholder="compras@empresa.mx">
     </label>
 
     <label>Contraseña
       <span class="campo-contrasena">
-        <input type="password" id="contrasena" autocomplete="current-password">
-        <button type="button" class="ver-contrasena" id="ver-contrasena">Mostrar</button>
+        <input class="form-control" type="password" id="contrasena" autocomplete="current-password">
+        <button type="button" class="ver-contrasena btn" id="ver-contrasena">Mostrar</button>
       </span>
     </label>
 
-    <p class="msg-error" id="mensaje-error" role="alert" hidden></p>
+    <p class="msg-error alert" id="mensaje-error" role="alert" hidden></p>
 
-    <button type="submit" class="entrar">Iniciar sesión</button>
+    <button type="submit" class="entrar btn">Iniciar sesión</button>
 
-    <div class="aviso" id="aviso-pendiente" hidden>
+    <div class="aviso alert" id="aviso-pendiente" hidden>
       <strong>Tu empresa está en proceso de verificación.</strong> Te avisaremos por
       correo cuando el administrador la apruebe y puedas ingresar.
     </div>
 
-    <p class="msg-ok" id="mensaje-recuperacion" hidden>
+    <p class="msg-ok alert" id="mensaje-recuperacion" hidden>
       Si el correo está registrado, te enviaremos un enlace temporal para
       restablecer tu contraseña.
     </p>
@@ -57,7 +57,7 @@
 
   <aside class="demo">
     <h3>Cuentas de prueba del prototipo</h3>
-    <table>
+    <table class="table table-sm">
       <tr><th>Rol</th><th>Correo (clic para usarlo)</th></tr>
       <tr data-correo="compras@aceros-delnorte.mx"><td>Comprador</td><td>compras@aceros-delnorte.mx</td></tr>
       <tr data-correo="ventas@refacciones-gm.mx"><td>Distribuidor</td><td>ventas@refacciones-gm.mx</td></tr>
