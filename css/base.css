@@ -980,3 +980,73 @@ body:has(.demo) {
     }
 
 }
+
+/* Navegación principal fija para todos los roles */
+header + nav,
+nav,
+.barra-navegacion,
+.nav-rol,
+.menu-rol,
+.pestanas {
+    position: fixed !important;
+    top: 92px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: min(var(--content-max), calc(100% - 64px)) !important;
+    z-index: 999 !important;
+
+    background: rgba(255,255,255,.90) !important;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border-radius: 999px !important;
+    box-shadow: 0 12px 35px rgba(15,23,42,.12);
+}
+
+
+/* Reserva espacio para que el contenido no quede debajo */
+main {
+    padding-top: 150px !important;
+}
+
+
+/* Tablet */
+@media(max-width:860px){
+
+    header + nav,
+    nav,
+    .barra-navegacion,
+    .nav-rol,
+    .menu-rol,
+    .pestanas {
+
+        top: 105px !important;
+        width: calc(100% - 24px) !important;
+        border-radius: 20px !important;
+    }
+
+    main {
+        padding-top: 170px !important;
+    }
+
+}
+
+
+/* Móvil */
+@media(max-width:560px){
+
+    header + nav,
+    nav,
+    .barra-navegacion,
+    .nav-rol,
+    .menu-rol,
+    .pestanas {
+
+        top: 115px !important;
+    }
+
+    main {
+        padding-top: 180px !important;
+    }
+
+}
