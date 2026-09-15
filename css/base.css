@@ -1087,7 +1087,6 @@ body {
 button, input, select, textarea { font: inherit; }
 button:disabled, .btn:disabled, .btn.disabled { opacity: .6; cursor: not-allowed; }
 button, a, input, select, textarea, [data-ir] { -webkit-tap-highlight-color: transparent; }
-p { margin-top: 0; margin-bottom: 10px; }
 small { font-size: 12px; }
 hr { margin: 12px 0; border: 0; border-top: 1px solid var(--line); opacity: 1; }
 img, svg { vertical-align: middle; }
@@ -1172,7 +1171,7 @@ header p a:hover { color: #fed7aa; text-decoration: underline; }
 .msg-error,
 .aviso,
 .aviso-sec,
-.ok,
+.ok:not(.paso),
 .permitido,
 .vigencia,
 .disp-ok,
@@ -1266,6 +1265,43 @@ main,
 main { padding: 20px 0 30px; }
 .buscador { margin-top: 14px; padding: 18px 20px; }
 
+/* Bloques que van directamente en <body> (pantalla de resultados) se alinean con el contenedor */
+body > .barra,
+body > .cuerpo {
+  width: min(var(--content-max), calc(100% - 40px));
+  margin: 14px auto 0;
+}
+body > .barra { padding: 12px 14px; }
+body > .cuerpo { padding: 0 0 30px; }
+body > .ruta {
+  width: min(var(--content-max), calc(100% - 40px));
+  margin: 14px auto 0;
+  padding: 0;
+}
+.resumen { padding: 8px 12px; }
+.resumen select { width: auto; margin-top: 0; }
+
+/* Excepciones de la pantalla de detalle de producto: ahí .ficha, .compra y .lateral son contenedores, no tarjetas */
+.pantalla-05 .ficha { padding: 22px; }
+.pantalla-05 .ficha > h3 { margin-top: 18px; }
+.pantalla-05 .compra {
+  padding: 16px 0;
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+}
+.pantalla-05 .lateral {
+  padding: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  overflow: visible;
+}
+
 .buscador,
 .caja:not(.entrada),
 .demo,
@@ -1288,9 +1324,9 @@ main { padding: 20px 0 30px; }
 .grafica,
 .hist,
 .pctbox,
-.grupo,
 .card,
-.rejilla > div {
+.rejilla > div,
+.cuerpo > aside {
   background: var(--surface);
   border: 1px solid var(--line-strong);
   border-radius: var(--radius-md);
@@ -1393,8 +1429,6 @@ h2 {
 }
 
 h3 {
-  margin-top: 0;
-  margin-bottom: 8px;
   font-size: 13px;
   font-weight: bold;
 }
@@ -1500,7 +1534,7 @@ input[type="radio"] {
   vertical-align: middle;
 }
 .campo-error { border-color: var(--danger); box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px rgba(185, 28, 28, 0.45); }
-.ok { border-color: var(--success); box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px rgba(22, 163, 74, 0.45); }
+.ok:not(.paso) { border-color: var(--success); box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px rgba(22, 163, 74, 0.45); }
 
 /* ----- Botones (brillo vertical, borde de 1px y sombra interior) ----- */
 button,
@@ -1678,7 +1712,7 @@ button:is(.sec, .cancelar, .rechazar, .quitar, .limpiar, .vaciar, .secundario):a
 .alerta,
 .cobertura,
 .verificada,
-.ok,
+.ok:not(.paso),
 .permitido,
 .vigencia,
 .msg-ok,
@@ -1705,7 +1739,7 @@ button:is(.sec, .cancelar, .rechazar, .quitar, .limpiar, .vaciar, .secundario):a
 .msg-ok,
 .verificada,
 .cobertura,
-.ok,
+.ok:not(.paso),
 .permitido,
 .vigencia,
 .disp-ok {
@@ -1767,7 +1801,6 @@ button:is(.sec, .cancelar, .rechazar, .quitar, .limpiar, .vaciar, .secundario):a
 .tarjetas,
 .rejilla,
 .pasos,
-.contenido,
 .cuerpo {
   gap: 14px;
 }
@@ -1782,7 +1815,6 @@ button:is(.sec, .cancelar, .rechazar, .quitar, .limpiar, .vaciar, .secundario):a
 .tarjetas,
 .rejilla,
 .pasos,
-.contenido,
 .cuerpo,
 .iconos,
 .marcas,
@@ -1791,7 +1823,6 @@ button:is(.sec, .cancelar, .rechazar, .quitar, .limpiar, .vaciar, .secundario):a
   flex-wrap: wrap;
 }
 
-.contenido,
 .cuerpo { align-items: flex-start; }
 .izq, .der, .principal, .detalle, .lista { min-width: 0; }
 .izq, .principal, .lista { flex: 1 1 620px; }
@@ -1983,9 +2014,7 @@ table tr:hover td { background-color: #fff7ed; }
 .dir-caja {
   position: relative;
 }
-.bolita,
-.pt,
-.punto {
+.pt {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 0 0 3px rgba(249, 115, 22, 0.15);
 }
 
@@ -2048,7 +2077,7 @@ html[data-rol="administrador"] .rol {
 
 @media (max-width: 1100px) {
   header { padding-left: 16px; padding-right: 16px; }
-  nav, main, .buscador, .centro, footer { width: calc(100% - 24px); }
+  nav, main, .buscador, .centro, footer, body > .barra, body > .cuerpo, body > .ruta { width: calc(100% - 24px); }
   .caja, .demo { width: min(100%, 100%); }
   .rep { min-width: 0; }
 }
@@ -2063,7 +2092,7 @@ html[data-rol="administrador"] .rol {
   .empresa { text-align: left; }
   nav { margin-top: 10px; width: calc(100% - 20px); }
   nav a { padding: 8px 12px; }
-  main, .buscador, .centro, footer { width: calc(100% - 20px); }
+  main, .buscador, .centro, footer, body > .barra, body > .cuerpo, body > .ruta { width: calc(100% - 20px); }
   main { padding: 16px 0 24px; }
   .centro {
     padding: 20px 0;
@@ -2090,7 +2119,7 @@ html[data-rol="administrador"] .rol {
   .iconos {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   }
-  .izq, .der, .principal, .detalle, .lista, .rep, .dcaja, .kpi, .compra, .pedido, .ficha, .lateral {
+  .izq, .der, .principal, .detalle, .lista, .rep, .dcaja, .kpi, .compra, .pedido, .ficha, .lateral, .cuerpo > aside {
     width: 100%;
     min-width: 0;
     flex-basis: auto;
