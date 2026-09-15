@@ -1342,7 +1342,7 @@ main { padding: 20px 0 30px; }
 
 .centro {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   gap: 24px;
   padding: 36px 0 30px;
