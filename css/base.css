@@ -912,3 +912,58 @@ html[data-rol="administrador"] .rol {
     z-index: -1;
   }
 }
+
+/* Corrección definitiva pantalla login en laptop y escritorio */
+body:has(.login),
+body:has(.demo) {
+    overflow-x: hidden;
+}
+
+.centro {
+    min-height: calc(100vh - 90px);
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 28px !important;
+}
+
+/* Evita que el header tape contenido */
+@media (min-width: 861px) {
+
+    header {
+        position: relative !important;
+        top: auto !important;
+    }
+
+    .centro {
+        padding-top: 35px !important;
+        padding-bottom: 35px !important;
+    }
+
+}
+
+
+/* Login en columnas limpias */
+@media (min-width: 900px) {
+
+    .centro > * {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+
+    .caja,
+    .demo {
+        align-self: center;
+    }
+
+}
+
+
+/* Laptop 1366x768 */
+@media (min-width: 1200px) and (max-width: 1450px) {
+
+    .centro {
+        transform: scale(.92);
+        transform-origin: center top;
+    }
+
+}
