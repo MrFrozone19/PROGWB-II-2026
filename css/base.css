@@ -156,23 +156,36 @@ header p a:hover { color: #fed7aa !important; }
 }
 
 nav {
-  position: sticky;
-  top: 84px;
-  z-index: 30;
+  position: fixed;
+  top: 92px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(var(--content-max), calc(100% - 64px));
+  z-index: 50;
+
   display: flex;
   align-items: center;
   gap: 10px;
-  max-width: var(--content-max);
-  margin: 16px auto 0;
+
   padding: 10px 16px !important;
-  background: rgba(255, 255, 255, 0.76) !important;
-  border: 1px solid rgba(203, 213, 225, 0.72);
+
+  background: rgba(255, 255, 255, 0.86) !important;
+  border: 1px solid rgba(203, 213, 225, 0.82);
   border-radius: 999px;
-  box-shadow: var(--shadow-sm);
+
+  box-shadow: 0 12px 30px rgba(15,23,42,.12);
+
   backdrop-filter: blur(14px);
+
   overflow-x: auto;
   scrollbar-width: none;
 }
+
+/* Compensación porque la navegación ahora es fija */
+main {
+    padding-top: 120px !important;
+}
+
 nav::-webkit-scrollbar { display: none; }
 nav a {
   flex: 0 0 auto;
