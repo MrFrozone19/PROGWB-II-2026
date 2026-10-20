@@ -16,7 +16,8 @@ const PedidoSchema = new Schema({
   total: { type: Number, required: true, min: 0, default: 0 },
   fechaEstimada: { type: Date, required: false },
   }, {
-  collection: 'pedidos',
+  collection: 'pedidos', 
+  timestamps: { createdAt: 'fechaCreacion', updatedAt: 'fechaActualizacion' }
 });
 
 module.exports = mongoose.model('Pedido', PedidoSchema);

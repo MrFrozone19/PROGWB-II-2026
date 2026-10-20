@@ -11,6 +11,7 @@ const UsuarioSchema = new Schema({
   activo: { type: Boolean, required: true, default: true },
   }, {
   collection: 'usuarios',
+  timestamps: { createdAt: 'fechaCreacion', updatedAt: 'fechaActualizacion' }
 });
 
 module.exports = mongoose.model('Usuario', UsuarioSchema);

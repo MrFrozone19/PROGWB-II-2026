@@ -18,6 +18,7 @@ const EmpresaSchema = new Schema({
   },
 }, {
   collection: 'empresas',
+  timestamps: { createdAt: 'fechaCreacion', updatedAt: 'fechaActualizacion' }
 });
 
 module.exports = mongoose.model('Empresa', EmpresaSchema);

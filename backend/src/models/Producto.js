@@ -12,6 +12,7 @@ const ProductoSchema = new Schema({
   activo: { type: Boolean, required: true, default: true },
   }, {
   collection: 'productos',
+  timestamps: { createdAt: 'fechaCreacion', updatedAt: 'fechaActualizacion' }
 });
 
 ProductoSchema.index({ distribuidorId: 1, sku: 1 }, { unique: true });

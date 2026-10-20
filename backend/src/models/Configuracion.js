@@ -7,6 +7,7 @@ const ConfiguracionSchema = new Schema({
   descripcion: { type: String, required: true, maxlength: 255 },
 }, {
   collection: 'configuraciones',
+  timestamps: { createdAt: 'fechaCreacion', updatedAt: 'fechaActualizacion' }
 });
 
 

@@ -7,6 +7,7 @@ const InventarioSchema = new Schema({
   stockMinimo: { type: Number, required: true, min: 0, default: 0, validate: {validator: Number.isInteger, message: '{VALUE} no es un numero entero valido'}},
   }, {
   collection: 'inventarios',
+  timestamps: { createdAt: 'fechaCreacion', updatedAt: 'fechaActualizacion' }
 });
 
 module.exports = mongoose.model('Inventario', InventarioSchema);
