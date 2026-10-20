@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-
 const EmpresaSchema = new Schema({
   razonSocial: { type: String, required: true, maxlength: 150 },
   rfc: { type: String, required: true, unique: true, maxlength: 13, },
