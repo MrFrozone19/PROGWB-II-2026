@@ -1,13 +1,13 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-const Configuracion = sequelize.define('Configuracion', {
-  id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
-  clave: { type: DataTypes.STRING(60), allowNull: false, unique: true },
-  valor: { type: DataTypes.STRING(200), allowNull: false },
-  descripcion: { type: DataTypes.STRING(255), allowNull: false },
+const ConfiguracionSchema = new Schema({
+  clave: { type: String, required: true, unique: true, maxlength: 60 },
+  valor: { type: String, required: true, maxlength: 200 },
+  descripcion: { type: String, required: true, maxlength: 255 },
 }, {
-  tableName: 'configuraciones',
+  collection: 'configuraciones',
 });
 
-module.exports = Configuracion;
+
+module.exports = mongoose.model('Configuracion', ConfiguracionSchema);
