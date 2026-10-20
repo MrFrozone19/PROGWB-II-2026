@@ -1,20 +1,20 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-const Transaccion = sequelize.define('Transaccion', {
-  id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
-  pedidoId: { type: DataTypes.INTEGER, allowNull: false, field: 'pedido_id' },
-  tipo: { type: DataTypes.STRING(30), allowNull: false, defaultValue: 'venta' },
-  monto: { type: DataTypes.DECIMAL(12, 2), allowNull: false, validate: { min: 0 } },
+const TransaccionSchema = new Schema({
+  pedidoId: { type: Schema.Types.ObjectId, ref: 'Pedido', required: true },
+  tipo: { type: String, required: true, maxlength: 30, default: 'venta' },
+  monto: { type: Number, required: true, min: 0 },
   estado: {
-    type: DataTypes.STRING(20),
-    allowNull: false,
-    defaultValue: 'pendiente',
-    validate: { isIn: [['pendiente', 'aprobada', 'rechazada', 'reembolsada']] },
+    type: String,
+    required: true,
+    default: 'pendiente',
+    enum: ['pendiente', 'aprobada', 'rechazada', 'reembolsada']
   },
-  referencia: { type: DataTypes.STRING(80), allowNull: true },
-}, {
-  tableName: 'transacciones',
+  referencia: { type: String, maxlength: 80 },
+  }, {
+  collection: 'transacciones',
+  timestamps: { createdAt: 'fechaCreacion', updatedAt: 'fechaActualizacion' }
 });
 
-module.exports = Transaccion;
+module.exports = mongoose.model('Transaccion', TransaccionSchema);
