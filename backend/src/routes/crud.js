@@ -8,7 +8,7 @@ function crearRouterCrud(Modelo) {
 
   router.get('/', async (req, res, next) => {
     try {
-      const registros = await Modelo.findAll({ order: [['id', 'ASC']] });
+      const registros = await Modelo.find().sort({ fechaCreacion: 1 });
       res.json(registros);
     } catch (error) {
       next(error);
@@ -17,7 +17,7 @@ function crearRouterCrud(Modelo) {
 
   router.get('/:id', async (req, res, next) => {
     try {
-      const registro = await Modelo.findByPk(req.params.id);
+      const registro = await Modelo.findById(req.params.id);
       if (!registro) return res.status(404).json({ mensaje: 'Registro no encontrado.' });
       return res.json(registro);
     } catch (error) {
