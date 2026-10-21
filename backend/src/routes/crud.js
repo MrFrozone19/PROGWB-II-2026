@@ -36,10 +36,11 @@ function crearRouterCrud(Modelo) {
 
   router.put('/:id', async (req, res, next) => {
     try {
-      const registro = await Modelo.findByPk(req.params.id);
+      const registro = await Modelo.findById(req.params.id);
       if (!registro) return res.status(404).json({ mensaje: 'Registro no encontrado.' });
-      await registro.update(req.body);
-      return res.json(registro);
+      await Modelo.findByIdAndUpdate(req.params.id, req.body, { returnDocument: 'after', runValidators: true });
+      const registroActualizado = await Modelo.findById(req.params.id);
+      return res.json(registroActualizado);
     } catch (error) {
       return next(error);
     }
@@ -47,9 +48,9 @@ function crearRouterCrud(Modelo) {
 
   router.delete('/:id', async (req, res, next) => {
     try {
-      const registro = await Modelo.findByPk(req.params.id);
+      const registro = await Modelo.findById(req.params.id);
       if (!registro) return res.status(404).json({ mensaje: 'Registro no encontrado.' });
-      await registro.destroy();
+      await registro.remove();
       return res.status(204).end();
     } catch (error) {
       return next(error);
