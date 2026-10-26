@@ -50,7 +50,7 @@ function crearRouterCrud(Modelo) {
     try {
       const registro = await Modelo.findById(req.params.id);
       if (!registro) return res.status(404).json({ mensaje: 'Registro no encontrado.' });
-      await registro.remove();
+      await registro.deleteOne();
       return res.status(204).end();
     } catch (error) {
       return next(error);
