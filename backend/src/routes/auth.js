@@ -1,7 +1,6 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const sequelize = require('../config/database');
 const { Empresa, Usuario } = require('../models');
 const { autenticar } = require('../middleware/auth');
 const { registrarEvento } = require('../services/logger');
@@ -14,23 +13,20 @@ router.post('/login', async (req, res, next) => {
     const contrasena = String(req.body.contrasena || '');
     registrarEvento('info', 'login_inicio', { correo });
 
-    const usuario = await Usuario.findOne({
-      where: { correo },
-      include: [{ model: Empresa, as: 'empresa' }],
-    });
+    const usuario = await Usuario.findOne({correo}).populate('empresaId');
 
     if (!usuario || !usuario.activo || !(await bcrypt.compare(contrasena, usuario.passwordHash))) {
       registrarEvento('info', 'login_rechazado', { correo });
       return res.status(401).json({ mensaje: 'Correo o contraseña incorrectos.', motivo: 'credenciales' });
     }
 
-    if (usuario.empresa.estadoVerificacion !== 'verificada') {
-      registrarEvento('info', 'login_pendiente', { correo, empresaId: usuario.empresaId });
+    if (usuario.empresaId.estadoVerificacion !== 'verificada') {
+      registrarEvento('info', 'login_pendiente', { correo, empresaId: usuario.empresaId._id });
       return res.status(403).json({ mensaje: 'La empresa está en proceso de verificación.', motivo: 'pendiente' });
     }
 
     const token = jwt.sign(
-      { id: usuario.id, empresaId: usuario.empresaId, rol: usuario.rol },
+      { id: usuario.id, empresaId: usuario.empresaId._id, rol: usuario.rol },
       process.env.JWT_SECRET,
       { expiresIn: process.env.JWT_EXPIRA || '30m' },
     );
@@ -42,8 +38,8 @@ router.post('/login', async (req, res, next) => {
         id: usuario.id,
         correo: usuario.correo,
         nombre: usuario.nombre,
-        empresa: usuario.empresa.razonSocial,
-        empresaId: usuario.empresaId,
+        empresa: usuario.empresaId.razonSocial,
+        empresaId: usuario.empresaId._id,
         rol: usuario.rol,
       },
     });
@@ -119,7 +115,7 @@ router.get('/perfil', autenticar, async (req, res, next) => {
   try {
     const usuario = await Usuario.findByPk(req.usuario.id, {
       attributes: { exclude: ['passwordHash'] },
-      include: [{ model: Empresa, as: 'empresa' }],
+      populate: [{ model: Empresa, as: 'empresa' }],
     });
     if (!usuario) return res.status(404).json({ mensaje: 'Usuario no encontrado.' });
     return res.json(usuario);
