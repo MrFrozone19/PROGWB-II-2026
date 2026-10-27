@@ -122,14 +122,4 @@ router.get('/perfil', autenticar, async (req, res, next) => {
   }
 });
 
-
-router.get('/', async (req, res, next) => {
-    try {
-      const registros = await Modelo.find().sort({ fechaCreacion: 1 });
-      res.json(registros);
-    } catch (error) {
-      next(error);
-    }
-  });
-
 module.exports = router;
