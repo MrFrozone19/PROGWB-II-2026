@@ -49,29 +49,23 @@ router.post('/login', async (req, res, next) => {
 });
 
 router.post('/registro', async (req, res, next) => {
-  const transaccion = await sequelize.transaction();
   try {
     const datos = req.body;
     const campos = ['razonSocial', 'rfc', 'tipoEmpresa', 'giro', 'calle', 'colonia', 'codigoPostal', 'municipio', 'nombreResponsable', 'telefono', 'correo', 'contrasena'];
     const faltantes = campos.filter((campo) => !String(datos[campo] || '').trim());
     if (faltantes.length > 0) {
-      await transaccion.rollback();
       return res.status(400).json({ mensaje: 'Faltan campos obligatorios.', campos: faltantes });
     }
     if (!/^[A-ZÑ&]{3,4}\d{6}[A-Z\d]{3}$/.test(String(datos.rfc).trim().toUpperCase())) {
-      await transaccion.rollback();
       return res.status(400).json({ mensaje: 'El RFC no tiene un formato válido.' });
     }
     if (!/^\d{5}$/.test(String(datos.codigoPostal).trim())) {
-      await transaccion.rollback();
       return res.status(400).json({ mensaje: 'El código postal debe tener 5 dígitos.' });
     }
     if (!/^\d{10}$/.test(String(datos.telefono).replace(/\s/g, ''))) {
-      await transaccion.rollback();
       return res.status(400).json({ mensaje: 'El teléfono debe tener 10 dígitos.' });
     }
     if (String(datos.contrasena).length < 8) {
-      await transaccion.rollback();
       return res.status(400).json({ mensaje: 'La contraseña debe tener al menos 8 caracteres.' });
     }
     const rol = datos.tipoEmpresa === 'distribuidor' ? 'distribuidor' : 'comprador';
@@ -85,10 +79,12 @@ router.post('/registro', async (req, res, next) => {
       codigoPostal: datos.codigoPostal,
       municipio: datos.municipio,
       estadoVerificacion: 'pendiente',
-    }, { transaction: transaccion });
+    });
 
     const passwordHash = await bcrypt.hash(String(datos.contrasena || ''), 10);
-    const usuario = await Usuario.create({
+    let usuario;
+    try {
+      usuario = await Usuario.create({
       empresaId: empresa.id,
       nombre: datos.nombreResponsable,
       correo: String(datos.correo || '').trim().toLowerCase(),
@@ -96,9 +92,12 @@ router.post('/registro', async (req, res, next) => {
       passwordHash,
       rol,
       activo: true,
-    }, { transaction: transaccion });
+    });
+  } catch (error) {
+        await empresa.deleteOne();
+        throw error;
+  }
 
-    await transaccion.commit();
     registrarEvento('info', 'registro_empresa', { empresaId: empresa.id, usuarioId: usuario.id });
     return res.status(201).json({
       mensaje: 'Registro recibido. La empresa quedó pendiente de verificación.',
@@ -106,7 +105,6 @@ router.post('/registro', async (req, res, next) => {
       usuarioId: usuario.id,
     });
   } catch (error) {
-    await transaccion.rollback();
     return next(error);
   }
 });
