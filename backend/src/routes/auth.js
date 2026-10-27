@@ -113,15 +113,23 @@ router.post('/registro', async (req, res, next) => {
 
 router.get('/perfil', autenticar, async (req, res, next) => {
   try {
-    const usuario = await Usuario.findByPk(req.usuario.id, {
-      attributes: { exclude: ['passwordHash'] },
-      populate: [{ model: Empresa, as: 'empresa' }],
-    });
+    const usuario = await Usuario.findById(req.usuario.id).select({ passwordHash: 0 }).populate('empresaId');
+
     if (!usuario) return res.status(404).json({ mensaje: 'Usuario no encontrado.' });
     return res.json(usuario);
   } catch (error) {
     return next(error);
   }
 });
+
+
+router.get('/', async (req, res, next) => {
+    try {
+      const registros = await Modelo.find().sort({ fechaCreacion: 1 });
+      res.json(registros);
+    } catch (error) {
+      next(error);
+    }
+  });
 
 module.exports = router;
