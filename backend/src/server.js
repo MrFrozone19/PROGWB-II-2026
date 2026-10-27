@@ -7,7 +7,6 @@ const path = require('path');
 const mongoose = require('mongoose');
 require('./models');
 const app = require('./app');
-const sembrarDatos = require('./services/seed');
 const { registrarEvento } = require('./services/logger');
 
 const puerto = Number(process.env.PORT || 3000);
@@ -21,7 +20,6 @@ async function iniciar() {
     fs.mkdirSync(path.resolve(__dirname, '../data'), { recursive: true });
     registrarEvento('info', 'servidor_inicio');
     await conectarDB();
-    await sembrarDatos();
     const servidor = app.listen(puerto, () => {
       registrarEvento('info', 'servidor_listo', { puerto });
       console.log(`Enlace B2B Local disponible en http://localhost:${puerto}`);
