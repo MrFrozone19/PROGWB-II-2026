@@ -2,8 +2,6 @@ require('dotenv').config({ path: require('path').resolve(__dirname, '../.env') }
 
 const conectarDB = require('./config/database');
 
-const fs = require('fs');
-const path = require('path');
 const mongoose = require('mongoose');
 require('./models');
 const app = require('./app');
@@ -17,7 +15,6 @@ if (!process.env.JWT_SECRET) {
 
 async function iniciar() {
   try {
-    fs.mkdirSync(path.resolve(__dirname, '../data'), { recursive: true });
     registrarEvento('info', 'servidor_inicio');
     await conectarDB();
     const servidor = app.listen(puerto, () => {
