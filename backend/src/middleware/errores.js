@@ -20,6 +20,14 @@ function manejarErrores(error, req, res, next) {
     return res.status(400).json({ mensaje: 'El formato del ID no es válido.' });
   }
 
+  if (error.name === 'MongoServerError' && error.code === 11000) {
+    const camposDuplicados = Object.keys(error.keyValue);
+    return res.status(409).json({
+      mensaje: 'Los siguientes campos deben ser únicos y ya existen en la base de datos.',
+      campos: camposDuplicados,
+    });
+  }
+
   return res.status(500).json({ mensaje: 'Ocurrió un error interno en el servicio.' });
 }
 
