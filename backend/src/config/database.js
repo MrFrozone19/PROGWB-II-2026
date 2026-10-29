@@ -1,13 +1,15 @@
 require('dotenv').config({ path: require('path').resolve(__dirname, '../../.env') });
 const mongoose = require('mongoose');
 const dbURI = process.env.MONGODB_URI;
+const { registrarEvento } = require('../services/logger');
 
 async function conectarDB() {
   try {
     await mongoose.connect(dbURI);
-    console.log('Conectado a MongoDB');
+    registrarEvento('info', 'conexion_mongodb', { mensaje: 'Conectado a MongoDB' });
   } catch (error) {
-    console.error('Error de conexion a MongoDB:', error.message);
+    registrarEvento('error', 'conexion_mongodb', { mensaje: 'Error de conexion a MongoDB', error: error.message });
+    throw error;
   }
 }
 
@@ -17,6 +19,13 @@ process.on('SIGINT', function() {
   mongoose.disconnect();
 });
 
-db.on('disconnected', () => console.log('Desconectado de MongoDB'));
+db.on('disconnected', () => { 
+  try {
+    registrarEvento('info', 'conexion_mongodb', { mensaje: 'Desconectado de MongoDB' });
+  } catch (error) {
+    registrarEvento('error', 'conexion_mongodb', { mensaje: 'Error al registrar desconexion de MongoDB', error: error.message });
+    throw error;
+  }
+});
 
 module.exports = conectarDB;
