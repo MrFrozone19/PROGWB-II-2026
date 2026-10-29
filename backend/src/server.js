@@ -19,7 +19,6 @@ async function iniciar() {
     await conectarDB();
     const servidor = app.listen(puerto, () => {
       registrarEvento('info', 'servidor_listo', { puerto });
-      console.log(`Enlace B2B Local disponible en http://localhost:${puerto}`);
     });
 
     const cerrar = async (senal) => {
@@ -35,7 +34,6 @@ async function iniciar() {
     process.on('SIGTERM', () => cerrar('SIGTERM'));
   } catch (error) {
     registrarEvento('error', 'servidor_error_inicio', { mensaje: error.message, stack: error.stack });
-    console.error(error);
     process.exit(1);
   }
 }
