@@ -10,7 +10,8 @@ const { registrarEvento } = require('./services/logger');
 const puerto = Number(process.env.PORT || 3000);
 
 if (!process.env.JWT_SECRET) {
-  process.env.JWT_SECRET = 'desarrollo-local-enlace-b2b-2026';
+  registrarEvento('error', 'servidor_error_inicio', { mensaje: 'JWT_SECRET no esta definido en las variables de entorno.' });
+  process.exit(1);
 }
 
 async function iniciar() {
@@ -19,7 +20,6 @@ async function iniciar() {
     await conectarDB();
     const servidor = app.listen(puerto, () => {
       registrarEvento('info', 'servidor_listo', { puerto });
-      console.log(`Enlace B2B Local disponible en http://localhost:${puerto}`);
     });
 
     const cerrar = async (senal) => {
@@ -35,7 +35,6 @@ async function iniciar() {
     process.on('SIGTERM', () => cerrar('SIGTERM'));
   } catch (error) {
     registrarEvento('error', 'servidor_error_inicio', { mensaje: error.message, stack: error.stack });
-    console.error(error);
     process.exit(1);
   }
 }

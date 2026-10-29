@@ -28,6 +28,10 @@ function manejarErrores(error, req, res, next) {
     });
   }
 
+  if (error.type === 'entity.parse.failed') {
+    return res.status(400).json({ mensaje: 'El cuerpo de la solicitud no es un JSON válido.' });
+  }
+
   return res.status(500).json({ mensaje: 'Ocurrió un error interno en el servicio.' });
 }
 
