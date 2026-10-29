@@ -1,4 +1,4 @@
-const { ValidationError, UniqueConstraintError, ForeignKeyConstraintError } = require('sequelize');
+const mongoose = require('mongoose');
 const { registrarEvento } = require('../services/logger');
 
 function manejarErrores(error, req, res, next) {
@@ -9,15 +9,23 @@ function manejarErrores(error, req, res, next) {
     stack: error.stack,
   });
 
-  if (error instanceof ValidationError || error instanceof UniqueConstraintError) {
+  if (error instanceof mongoose.Error.ValidationError) {
     return res.status(400).json({
       mensaje: 'Los datos enviados no son válidos.',
-      errores: error.errors.map((item) => item.message),
+      errores: Object.values(error.errors).map((e) => e.message),
     });
   }
 
-  if (error instanceof ForeignKeyConstraintError) {
-    return res.status(409).json({ mensaje: 'La operación viola una relación de la base de datos.' });
+  if (error instanceof mongoose.Error.CastError) {
+    return res.status(400).json({ mensaje: 'El formato del ID no es válido.' });
+  }
+
+  if (error.name === 'MongoServerError' && error.code === 11000) {
+    const camposDuplicados = Object.keys(error.keyValue);
+    return res.status(409).json({
+      mensaje: 'Los siguientes campos deben ser únicos y ya existen en la base de datos.',
+      campos: camposDuplicados,
+    });
   }
 
   return res.status(500).json({ mensaje: 'Ocurrió un error interno en el servicio.' });

@@ -6,11 +6,11 @@ const { autenticar } = require('../middleware/auth');
 const router = express.Router();
 router.use(autenticar);
 
-const atributosPublicos = { exclude: ['passwordHash'] };
+const atributosPublicos = { passwordHash: 0 };
 
 router.get('/', async (req, res, next) => {
   try {
-    const usuarios = await Usuario.findAll({ attributes: atributosPublicos, order: [['id', 'ASC']] });
+    const usuarios = await Usuario.find().select(atributosPublicos).sort({ fechaCreacion: 1 });
     res.json(usuarios);
   } catch (error) {
     next(error);
@@ -19,7 +19,7 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:id', async (req, res, next) => {
   try {
-    const usuario = await Usuario.findByPk(req.params.id, { attributes: atributosPublicos });
+    const usuario = await Usuario.findById(req.params.id).select(atributosPublicos);
     if (!usuario) return res.status(404).json({ mensaje: 'Usuario no encontrado.' });
     return res.json(usuario);
   } catch (error) {
@@ -51,7 +51,7 @@ router.post('/', async (req, res, next) => {
 
 router.put('/:id', async (req, res, next) => {
   try {
-    const usuario = await Usuario.findByPk(req.params.id);
+    const usuario = await Usuario.findById(req.params.id);
     if (!usuario) return res.status(404).json({ mensaje: 'Usuario no encontrado.' });
 
     const cambios = { ...req.body };
@@ -64,9 +64,8 @@ router.put('/:id', async (req, res, next) => {
       delete cambios.contrasena;
     }
 
-    await usuario.update(cambios);
-    const respuesta = usuario.toJSON();
-    delete respuesta.passwordHash;
+    await Usuario.findByIdAndUpdate(req.params.id, cambios, { returnDocument: 'after', runValidators: true });
+    const respuesta = await Usuario.findById(req.params.id).select(atributosPublicos);
     return res.json(respuesta);
   } catch (error) {
     return next(error);
@@ -75,9 +74,9 @@ router.put('/:id', async (req, res, next) => {
 
 router.delete('/:id', async (req, res, next) => {
   try {
-    const usuario = await Usuario.findByPk(req.params.id);
+    const usuario = await Usuario.findById(req.params.id);
     if (!usuario) return res.status(404).json({ mensaje: 'Usuario no encontrado.' });
-    await usuario.destroy();
+    await usuario.deleteOne();
     return res.status(204).end();
   } catch (error) {
     return next(error);

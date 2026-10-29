@@ -1,21 +1,17 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-const Usuario = sequelize.define('Usuario', {
-  id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
-  empresaId: { type: DataTypes.INTEGER, allowNull: false, field: 'empresa_id' },
-  nombre: { type: DataTypes.STRING(120), allowNull: false },
-  correo: { type: DataTypes.STRING(160), allowNull: false, unique: true, validate: { isEmail: true } },
-  telefono: { type: DataTypes.STRING(10), allowNull: false, validate: { is: /^\d{10}$/ } },
-  passwordHash: { type: DataTypes.STRING(255), allowNull: false, field: 'password_hash' },
-  rol: {
-    type: DataTypes.STRING(20),
-    allowNull: false,
-    validate: { isIn: [['comprador', 'distribuidor', 'administrador']] },
-  },
-  activo: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: true },
-}, {
-  tableName: 'usuarios',
+const UsuarioSchema = new Schema({
+  empresaId: { type: Schema.Types.ObjectId, ref: 'Empresa', required: true },
+  nombre: { type: String, required: true, maxlength: 120 },
+  correo: { type: String, required: true, unique: true, maxlength: 160, match: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ },
+  telefono: { type: String, required: true, maxlength: 10, match: /^\d{10}$/ },
+  passwordHash: { type: String, required: true, maxlength: 255 },
+  rol: { type: String, required: true, maxlength: 20, enum: ['comprador', 'distribuidor', 'administrador'] },
+  activo: { type: Boolean, required: true, default: true },
+  }, {
+  collection: 'usuarios',
+  timestamps: { createdAt: 'fechaCreacion', updatedAt: 'fechaActualizacion' }
 });
 
-module.exports = Usuario;
+module.exports = mongoose.model('Usuario', UsuarioSchema);

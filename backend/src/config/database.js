@@ -1,15 +1,22 @@
-const path = require('path');
-const { Sequelize } = require('sequelize');
+require('dotenv').config({ path: require('path').resolve(__dirname, '../../.env') });
+const mongoose = require('mongoose');
+const dbURI = process.env.MONGODB_URI;
 
-const almacenamiento = process.env.DB_STORAGE
-  ? path.resolve(__dirname, '../../', process.env.DB_STORAGE)
-  : path.resolve(__dirname, '../../data/enlace-b2b.sqlite');
+async function conectarDB() {
+  try {
+    await mongoose.connect(dbURI);
+    console.log('Conectado a MongoDB');
+  } catch (error) {
+    console.error('Error de conexion a MongoDB:', error.message);
+  }
+}
 
-const sequelize = new Sequelize({
-  dialect: 'sqlite',
-  storage: almacenamiento,
-  logging: false,
-  define: { underscored: true },
+const db = mongoose.connection;
+
+process.on('SIGINT', function() {
+  mongoose.disconnect();
 });
 
-module.exports = sequelize;
+db.on('disconnected', () => console.log('Desconectado de MongoDB'));
+
+module.exports = conectarDB;

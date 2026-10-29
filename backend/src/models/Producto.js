@@ -1,19 +1,20 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-const Producto = sequelize.define('Producto', {
-  id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
-  distribuidorId: { type: DataTypes.INTEGER, allowNull: false, field: 'distribuidor_id' },
-  sku: { type: DataTypes.STRING(50), allowNull: false },
-  nombre: { type: DataTypes.STRING(140), allowNull: false },
-  descripcion: { type: DataTypes.TEXT, allowNull: false },
-  categoria: { type: DataTypes.STRING(80), allowNull: false },
-  precio: { type: DataTypes.DECIMAL(12, 2), allowNull: false, validate: { min: 0 } },
-  unidadMedida: { type: DataTypes.STRING(30), allowNull: false, field: 'unidad_medida' },
-  activo: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: true },
-}, {
-  tableName: 'productos',
-  indexes: [{ unique: true, fields: ['distribuidor_id', 'sku'] }],
+const ProductoSchema = new Schema({
+  distribuidorId: { type: Schema.Types.ObjectId, ref: 'Empresa', required: true },
+  sku : { type: String, required: true, maxlength: 50 },
+  nombre: { type: String, required: true, maxlength: 140 },
+  descripcion: { type: String, required: true, maxlength: 255 },
+  categoria: { type: String, required: true, maxlength: 80 },
+  precio: { type: Number, required: true, min: 0 },
+  unidadMedida: { type: String, required: true, maxlength: 30 },
+  activo: { type: Boolean, required: true, default: true },
+  }, {
+  collection: 'productos',
+  timestamps: { createdAt: 'fechaCreacion', updatedAt: 'fechaActualizacion' }
 });
 
-module.exports = Producto;
+ProductoSchema.index({ distribuidorId: 1, sku: 1 }, { unique: true });
+
+module.exports = mongoose.model('Producto', ProductoSchema);

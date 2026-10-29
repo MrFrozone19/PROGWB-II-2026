@@ -1,13 +1,13 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-const Inventario = sequelize.define('Inventario', {
-  id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
-  productoId: { type: DataTypes.INTEGER, allowNull: false, unique: true, field: 'producto_id' },
-  existencias: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0, validate: { min: 0 } },
-  stockMinimo: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0, field: 'stock_minimo', validate: { min: 0 } },
-}, {
-  tableName: 'inventarios',
+const InventarioSchema = new Schema({
+  productoId: { type: Schema.Types.ObjectId, ref: 'Producto', required: true, unique: true },
+  existencias: { type: Number, required: true, min: 0, default: 0, validate: {validator: Number.isInteger, message: '{VALUE} no es un numero entero valido'}},
+  stockMinimo: { type: Number, required: true, min: 0, default: 0, validate: {validator: Number.isInteger, message: '{VALUE} no es un numero entero valido'}},
+  }, {
+  collection: 'inventarios',
+  timestamps: { createdAt: 'fechaCreacion', updatedAt: 'fechaActualizacion' }
 });
 
-module.exports = Inventario;
+module.exports = mongoose.model('Inventario', InventarioSchema);
