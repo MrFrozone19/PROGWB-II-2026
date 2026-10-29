@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
+const validarReferencia = require('./validarReferencia');
 
 const ProductoSchema = new Schema({
-  distribuidorId: { type: Schema.Types.ObjectId, ref: 'Empresa', required: true },
+  distribuidorId: { type: Schema.Types.ObjectId, ref: 'Empresa', required: true, validate: validarReferencia('Empresa') },
   sku : { type: String, required: true, maxlength: 50 },
   nombre: { type: String, required: true, maxlength: 140 },
   descripcion: { type: String, required: true, maxlength: 255 },
