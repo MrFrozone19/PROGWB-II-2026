@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
+const validarReferencia = require('./validarReferencia');
 
 const DetallePedidoSchema = new Schema({
-  pedidoId: { type: Schema.Types.ObjectId, ref: 'Pedido', required: true },
-  productoId: { type: Schema.Types.ObjectId, ref: 'Producto', required: true },
+  pedidoId: { type: Schema.Types.ObjectId, ref: 'Pedido', required: true, validate: validarReferencia('Pedido') },
+  productoId: { type: Schema.Types.ObjectId, ref: 'Producto', required: true, validate: validarReferencia('Producto') },
   cantidad: { type: Number, required: true, min: 1, validate: {validator: Number.isInteger, message: '{VALUE} no es un numero entero valido'}},
   precioUnitario: { type: Number, required: true, min: 0 },
   subtotal: { type: Number, required: true, min: 0 },
