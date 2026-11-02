@@ -44,7 +44,9 @@
     logout: '<path d="M10 17l5-5-5-5M15 12H3"/><path d="M12 3h7a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-7"/>',
     help: '<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.6 2.6 0 1 1 4.4 1.9c-1.2 1-1.9 1.4-1.9 3"/><path d="M12 17.5h.01"/>',
     shield: '<path d="M12 3l8 4v5c0 4.5-3 7.8-8 9-5-1.2-8-4.5-8-9V7l8-4Z"/><path d="m8.5 12 2.2 2.2 4.8-5"/>' ,
-    tag: '<path d="M20 13 13 20 3 10V3h7l10 10Z"/><circle cx="7.5" cy="7.5" r="1"/>'
+    tag: '<path d="M20 13 13 20 3 10V3h7l10 10Z"/><circle cx="7.5" cy="7.5" r="1"/>',
+    moon: '<path d="M20.8 14.1A8.5 8.5 0 0 1 9.9 3.2 8.7 8.7 0 1 0 20.8 14.1Z"/>',
+    sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/>'
   };
 
   const icono = (nombre, clase = '') => `<svg class="ui-icon ${clase}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${iconos[nombre] || iconos.grid}</svg>`;
@@ -147,6 +149,7 @@
             <button type="submit" aria-label="Buscar">${icono('search')}</button>
           </form>
           <div class="top-actions">
+            <button class="theme-toggle" type="button" data-theme-toggle aria-label="Cambiar a modo oscuro" title="Cambiar a modo oscuro">${icono('moon')}</button>
             <a class="top-account" href="${rol === 'comprador' ? '10-perfil-empresa.html' : rol === 'distribuidor' ? '17-perfil-distribuidor.html' : '18-empresas-por-verificar.html'}">
               ${icono('user')}<span><small>Hola, ${escapar(nombre.split(/\s+/)[0])}</small><strong>Cuenta y perfil</strong></span>
             </a>
@@ -229,9 +232,6 @@
     aviso.timer = setTimeout(() => aviso.classList.remove('visible'), 2600);
   }
 
-  function imagenProducto(archivo, alt = '') {
-    return `<img src="../img/productos/${archivo}" alt="${escapar(alt)}" loading="lazy">`;
-  }
 
   function mejorarInicioComprador() {
     const buscador = document.querySelector('.buscador');
@@ -248,12 +248,6 @@
         <p>Encuentra proveedores cercanos, compara existencias y abastece tu empresa sin perder tiempo.</p>
         <a href="04-resultados-busqueda.html" class="hero-button">Explorar productos ${icono('search')}</a>
         <div class="hero-proof"><span>Proveedores locales</span><span>Inventario disponible</span><span>Compras para empresas</span></div>
-      </div>
-      <div class="hero-art">
-        <div class="hero-product hero-product-main">${imagenProducto('rodamiento.svg', 'Rodamiento industrial')}<span>Rodamientos</span></div>
-        <div class="hero-product hero-product-small hero-product-top">${imagenProducto('herramienta.svg', 'Herramienta industrial')}</div>
-        <div class="hero-product hero-product-small hero-product-bottom">${imagenProducto('casco.svg', 'Equipo de seguridad')}</div>
-        <div class="hero-stamp"><strong>Compra</strong><span>local</span></div>
       </div>`;
     main.parentNode.insertBefore(hero, main);
 
@@ -270,10 +264,10 @@
       productos.innerHTML = `
         <div class="section-heading"><div><span>SELECCIÓN PARA TU EMPRESA</span><h3>Productos destacados</h3></div><a href="04-resultados-busqueda.html">Ver catálogo completo</a></div>
         <div class="product-grid">
-          ${tarjetaProducto('Rodamiento 6205-2RS sellado', 'Refacciones Industriales GM', '$185.00', 'A 2.4 km', 'rodamiento.svg', 'RG-6205-2RS', 185)}
-          ${tarjetaProducto('Guantes de carnaza reforzados', 'Seguridad Total del Norte', '$96.00', 'A 4.8 km', 'guantes.svg', 'ST-GC-REF', 96)}
-          ${tarjetaProducto('Llave ajustable industrial', 'Herramientas del Norte', '$248.00', 'A 3.6 km', 'herramienta.svg', 'HN-LLAVE-01', 248)}
-          ${tarjetaProducto('Lubricante para maquinaria 1 L', 'Suministros Mecánicos MTY', '$132.00', 'A 5.1 km', 'lubricante.svg', 'SM-LUB-1L', 132)}
+          ${tarjetaProducto('Rodamiento 6205-2RS sellado', 'Refacciones Industriales GM', '$185.00', 'A 2.4 km', 'RG-6205-2RS', 185)}
+          ${tarjetaProducto('Guantes de carnaza reforzados', 'Seguridad Total del Norte', '$96.00', 'A 4.8 km', 'ST-GC-REF', 96)}
+          ${tarjetaProducto('Llave ajustable industrial', 'Herramientas del Norte', '$248.00', 'A 3.6 km', 'HN-LLAVE-01', 248)}
+          ${tarjetaProducto('Lubricante para maquinaria 1 L', 'Suministros Mecánicos MTY', '$132.00', 'A 5.1 km', 'SM-LUB-1L', 132)}
         </div>`;
       const recientes = main.querySelector('.recientes');
       if (recientes) main.insertBefore(productos, recientes);
@@ -281,12 +275,13 @@
     }
   }
 
-  function tarjetaProducto(nombre, proveedor, precio, distancia, imagen, id, valor) {
+  function tarjetaProducto(nombre, proveedor, precio, distancia, id, valor) {
     return `<article class="market-product-card">
-      <a class="product-image" href="05-detalle-producto.html">${imagenProducto(imagen, nombre)}<span class="product-tag">Disponible</span></a>
-      <div class="product-card-body"><span class="product-category">INSUMO INDUSTRIAL</span>
+      <div class="product-card-body">
+        <div class="product-card-head"><span class="product-category">INSUMO INDUSTRIAL</span><span class="product-tag">Disponible</span></div>
         <a class="product-name" href="05-detalle-producto.html">${nombre}</a>
-        <span class="product-seller">${proveedor}</span><span class="product-distance">${distancia}</span>
+        <span class="product-seller">${proveedor}</span>
+        <span class="product-distance">${distancia}</span>
         <strong class="product-price">${precio}</strong>
         <button class="product-add" type="button" data-add-cart data-product-id="${id}" data-product-name="${nombre}" data-product-price="${valor}">Agregar al carrito</button>
       </div>
@@ -301,19 +296,8 @@
     const input = document.querySelector('.store-search input[name="q"]');
     if (input && consulta) input.value = consulta;
     const filas = document.querySelectorAll('.store-content .contenido > .fila');
-    const imagenes = ['rodamiento.svg', 'rodamiento.svg', 'rodamiento.svg', 'rodamiento.svg', 'rodamiento.svg'];
     filas.forEach((fila, indice) => {
       fila.classList.add('market-result-row');
-      const columna = fila.firstElementChild;
-      if (columna && !columna.querySelector('.result-image')) {
-        const titulo = columna.querySelector('h4 a, h4');
-        const nombre = titulo ? titulo.textContent.trim() : 'Producto industrial';
-        const imagen = document.createElement('a');
-        imagen.className = 'result-image';
-        imagen.href = '05-detalle-producto.html';
-        imagen.innerHTML = imagenProducto(imagenes[indice] || 'rodamiento.svg', nombre);
-        fila.insertBefore(imagen, columna);
-      }
       const boton = fila.querySelector('.derecha button');
       if (boton) {
         const nombre = fila.querySelector('h4')?.textContent.trim() || 'Producto industrial';
@@ -332,12 +316,8 @@
 
   function mejorarDetalle() {
     const ficha = document.querySelector('.store-content .ficha');
-    if (!ficha || ficha.querySelector('.detail-product-image')) return;
+    if (!ficha) return;
     const nombre = ficha.querySelector('h2')?.textContent.trim() || 'Producto industrial';
-    const visual = document.createElement('div');
-    visual.className = 'detail-product-image';
-    visual.innerHTML = imagenProducto('rodamiento.svg', nombre);
-    ficha.insertBefore(visual, ficha.firstChild);
     const boton = ficha.querySelector('.compra button');
     if (boton) {
       boton.dataset.addCart = '';
