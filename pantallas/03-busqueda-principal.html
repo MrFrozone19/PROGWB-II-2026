@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="../css/base.css">
 <script src="../js/sesion.js"></script>
 <script src="../js/comun.js" defer></script>
+<script src="../js/tienda.js" defer></script>
 </head>
 <body class="pantalla-03">
 
@@ -31,7 +32,7 @@
   <div class="linea">
     <div class="flex-3">
       <span class="etiqueta">Producto o descripción</span>
-      <input class="form-control" type="text" value="rodamien">
+      <input class="form-control" type="text" value="rodamientos">
     </div>
     <div class="flex-1">
       <span class="etiqueta">Distancia máxima</span>
@@ -45,21 +46,81 @@
     <button class="btn" type="button" data-ir="04-resultados-busqueda.html">Buscar</button>
   </div>
   <div class="sugerencias">
-    <div class="sug" data-ir="04-resultados-busqueda.html"><b>rodamien</b>to 6205-2RS · 5 distribuidores cerca</div>
-    <div class="sug" data-ir="04-resultados-busqueda.html"><b>rodamien</b>to 6203-2RS · 4 distribuidores cerca</div>
-    <div class="sug" data-ir="04-resultados-busqueda.html"><b>rodamien</b>to cónico 30206 · 2 distribuidores cerca</div>
+    <div class="sug" data-ir="04-resultados-busqueda.html">rodamientos 6205-2RS · 5 distribuidores cerca</div>
+    <div class="sug" data-ir="04-resultados-busqueda.html">rodamientos 6203-2RS · 4 distribuidores cerca</div>
+    <div class="sug" data-ir="04-resultados-busqueda.html">rodamientos cónico 30206 · 2 distribuidores cerca</div>
   </div>
 </div>
 
 <main>
+  <section class="banner-marketplace">
+    <div class="banner-text">
+      <span class="banner-tag">Marketplace industrial metropolitano</span>
+      <h2>Todo lo que tu empresa necesita, más cerca.</h2>
+      <p>Encuentra insumos industriales, compara distribuidores de la zona y consulta disponibilidad desde un solo lugar.</p>
+      <button class="btn" type="button" data-ir="04-resultados-busqueda.html">Explorar productos</button>
+    </div>
+    <div class="banner-art">
+      <img src="../img/productos/rodamiento.svg" alt="Rodamiento industrial">
+    </div>
+  </section>
   <h3>Categorías más buscadas</h3>
   <div class="iconos">
-    <div class="icono" data-ir="04-resultados-busqueda.html"><div class="fig">🔩</div><div class="nom">Tornillería</div></div>
-    <div class="icono" data-ir="04-resultados-busqueda.html"><div class="fig">🛢️</div><div class="nom">Lubricantes</div></div>
-    <div class="icono" data-ir="04-resultados-busqueda.html"><div class="fig">🔧</div><div class="nom">Herramienta</div></div>
-    <div class="icono" data-ir="04-resultados-busqueda.html"><div class="fig">⚡</div><div class="nom">Material eléctrico</div></div>
-    <div class="icono" data-ir="04-resultados-busqueda.html"><div class="fig">🦺</div><div class="nom">Seguridad industrial</div></div>
+    <div class="icono" data-ir="04-resultados-busqueda.html"><div class="fig"></div><div class="nom">Tornillería</div></div>
+    <div class="icono" data-ir="04-resultados-busqueda.html"><div class="fig"></div><div class="nom">Lubricantes</div></div>
+    <div class="icono" data-ir="04-resultados-busqueda.html"><div class="fig"></div><div class="nom">Herramienta</div></div>
+    <div class="icono" data-ir="04-resultados-busqueda.html"><div class="fig"></div><div class="nom">Material eléctrico</div></div>
+    <div class="icono" data-ir="04-resultados-busqueda.html"><div class="fig"></div><div class="nom">Seguridad industrial</div></div>
   </div>
+
+  <section class="productos-destacados">
+    <div class="rcab">
+      <h3>Productos destacados</h3>
+      <a href="04-resultados-busqueda.html">Ver todos los productos</a>
+    </div>
+    <div class="productos-grid">
+      <article class="producto-card">
+        <a class="producto-foto" href="05-detalle-producto.html">
+          <img src="../img/productos/rodamiento.svg" alt="Rodamiento 6205-2RS">
+        </a>
+        <h4>Rodamiento 6205-2RS sellado</h4>
+        <p class="producto-meta">Refacciones Industriales GM · A 2.4 km</p>
+        <p class="precio">$185.00</p>
+        <p class="producto-meta">60 piezas disponibles</p>
+        <button class="btn" type="button" data-aviso="Producto agregado al carrito de demostración">Agregar al carrito</button>
+      </article>
+      <article class="producto-card">
+        <a class="producto-foto" href="05-detalle-producto.html">
+          <img src="../img/productos/guantes.svg" alt="Guantes de carnaza">
+        </a>
+        <h4>Guantes de carnaza reforzados</h4>
+        <p class="producto-meta">Seguridad Total del Norte · A 4.8 km</p>
+        <p class="precio">$96.00</p>
+        <p class="producto-meta">240 pares disponibles</p>
+        <button class="btn" type="button" data-aviso="Producto agregado al carrito de demostración">Agregar al carrito</button>
+      </article>
+      <article class="producto-card">
+        <a class="producto-foto" href="05-detalle-producto.html">
+          <img src="../img/productos/solera.svg" alt="Solera de acero">
+        </a>
+        <h4>Solera de acero 1/2 × 2</h4>
+        <p class="producto-meta">Aceros Monterrey Sur · A 3.1 km</p>
+        <p class="precio">$420.00</p>
+        <p class="producto-meta">35 tramos disponibles</p>
+        <button class="btn" type="button" data-aviso="Producto agregado al carrito de demostración">Agregar al carrito</button>
+      </article>
+      <article class="producto-card">
+        <a class="producto-foto" href="05-detalle-producto.html">
+          <img src="../img/productos/electrodo.svg" alt="Electrodo 7018">
+        </a>
+        <h4>Electrodo 7018, paquete de 1 kg</h4>
+        <p class="producto-meta">Soldaduras del Bajío MTY · A 6.2 km</p>
+        <p class="precio">$78.50</p>
+        <p class="producto-meta">120 kg disponibles</p>
+        <button class="btn" type="button" data-aviso="Producto agregado al carrito de demostración">Agregar al carrito</button>
+      </article>
+    </div>
+  </section>
 
   <div class="recientes">
     <div class="rcab">
