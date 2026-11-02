@@ -7,6 +7,7 @@ const usuariosRouter = require('./routes/usuarios');
 const reportesRouter = require('./routes/reportes');
 const manejarErrores = require('./middleware/errores');
 const { autenticar } = require('./middleware/auth');
+const validarConfiguracion = require('./middleware/validarConfiguracion');
 const {
   Empresa,
   Usuario,
@@ -35,6 +36,8 @@ app.use('/api/inventarios', crearRouterCrud(Inventario));
 app.use('/api/pedidos', crearRouterCrud(Pedido));
 app.use('/api/detalles-pedido', crearRouterCrud(DetallePedido));
 app.use('/api/transacciones', crearRouterCrud(Transaccion));
+app.post('/api/configuraciones', autenticar, validarConfiguracion);
+app.put('/api/configuraciones/:id', autenticar, validarConfiguracion);
 app.use('/api/configuraciones', crearRouterCrud(Configuracion));
 app.use('/api/reportes', reportesRouter);
 

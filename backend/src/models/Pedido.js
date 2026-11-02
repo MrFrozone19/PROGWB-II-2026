@@ -12,7 +12,7 @@ const PedidoSchema = new Schema({
     enum: ['pendiente', 'aceptado', 'en_preparacion', 'en_camino', 'entregado', 'cancelado']
   },
   subtotal: { type: Number, required: true, min: 0, default: 0 },
-  comisionPct: { type: Number, required: true, min: 0, max: 100, default: 5 },
+  comisionPct: { type: Number, required: true, min: 2, max: 10, default: 5 },
   comisionMonto: { type: Number, required: true, min: 0, default: 0 },
   total: { type: Number, required: true, min: 0, default: 0 },
   fechaEstimada: { type: Date, required: false },
