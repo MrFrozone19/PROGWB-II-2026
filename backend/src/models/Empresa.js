@@ -10,6 +10,8 @@ const EmpresaSchema = new Schema({
   colonia: { type: String, required: true, maxlength: 120},
   codigoPostal: { type: String, required: true, maxlength: 5, match: /^\d{5}$/},
   municipio: { type: String, required: true, maxlength: 100},
+  latitud: { type: Number, required: false, min: -90, max: 90 },
+  longitud: { type: Number, required: false, min: -180, max: 180 },
   estadoVerificacion: {
     type: String,
     required: true,
