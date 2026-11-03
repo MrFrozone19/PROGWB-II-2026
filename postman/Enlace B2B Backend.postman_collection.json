@@ -1,0 +1,1880 @@
+{
+  "info": {
+    "name": "Enlace B2B - Backend local",
+    "description": "Solicitudes preparadas segun las rutas actuales del proyecto. Completa variables y usa datos de prueba. MODO_REVISION usa rol administrador: las acciones que exigen comprador o distribuidor requieren desactivarlo e iniciar sesion con el rol correspondiente.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Servicio y autenticacion",
+      "item": [
+        {
+          "name": "Estado del servidor",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/salud",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "salud"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Registro de empresa",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/auth/registro",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "registro"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"razonSocial\": \"Empresa de prueba\",\n  \"rfc\": \"AAA010101AAA\",\n  \"tipoEmpresa\": \"comprador\",\n  \"giro\": \"Industrial\",\n  \"calle\": \"Calle de prueba\",\n  \"colonia\": \"Centro\",\n  \"codigoPostal\": \"64000\",\n  \"municipio\": \"Monterrey\",\n  \"nombreResponsable\": \"Responsable de prueba\",\n  \"telefono\": \"8181234567\",\n  \"correo\": \"usuario@example.test\",\n  \"contrasena\": \"{{contrasena_prueba}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Iniciar sesion",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/auth/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"correo\": \"{{correo_prueba}}\",\n  \"contrasena\": \"{{contrasena_prueba}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "Copia el token recibido en la variable correspondiente al rol. El registro requiere empresa verificada para iniciar sesion."
+          },
+          "response": []
+        },
+        {
+          "name": "Mi perfil",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/auth/perfil",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "perfil"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_comprador}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "description": "Requiere una sesion real; el modo revision no proporciona una identidad real."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Empresas",
+      "item": [
+        {
+          "name": "Listar",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/empresas",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "empresas"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Consultar por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/empresas/{{empresa_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "empresas",
+                "{{empresa_id}}"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/empresas",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "empresas"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"razonSocial\": \"Empresa de prueba\",\n  \"rfc\": \"AAA010101AAA\",\n  \"tipo\": \"comprador\",\n  \"giro\": \"Industrial\",\n  \"calle\": \"Calle de prueba\",\n  \"colonia\": \"Centro\",\n  \"codigoPostal\": \"64000\",\n  \"municipio\": \"Monterrey\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/empresas/{{empresa_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "empresas",
+                "{{empresa_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"giro\": \"Industrial actualizado\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/empresas/{{empresa_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "empresas",
+                "{{empresa_id}}"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "description": "Elimina el registro indicado. Usar solo con datos de prueba."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Usuarios",
+      "item": [
+        {
+          "name": "Listar",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/usuarios",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "usuarios"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Consultar por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/usuarios/{{usuario_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "usuarios",
+                "{{usuario_id}}"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/usuarios",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "usuarios"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"empresaId\": \"{{empresa_id}}\",\n  \"nombre\": \"Usuario de prueba\",\n  \"correo\": \"usuario@example.test\",\n  \"telefono\": \"8181234567\",\n  \"contrasena\": \"{{contrasena_prueba}}\",\n  \"rol\": \"comprador\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/usuarios/{{usuario_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "usuarios",
+                "{{usuario_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Usuario actualizado\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/usuarios/{{usuario_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "usuarios",
+                "{{usuario_id}}"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "description": "Elimina el registro indicado. Usar solo con datos de prueba."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Productos",
+      "item": [
+        {
+          "name": "Listar",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/productos",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "productos"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Consultar por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/productos/{{producto_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "productos",
+                "{{producto_id}}"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/productos",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "productos"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"distribuidorId\": \"{{distribuidor_id}}\",\n  \"sku\": \"SKU-PRUEBA\",\n  \"nombre\": \"Producto de prueba\",\n  \"descripcion\": \"Descripcion de prueba\",\n  \"categoria\": \"Herramientas\",\n  \"precio\": 100,\n  \"unidadMedida\": \"pieza\",\n  \"activo\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/productos/{{producto_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "productos",
+                "{{producto_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"precio\": 125\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/productos/{{producto_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "productos",
+                "{{producto_id}}"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "description": "Elimina el registro indicado. Usar solo con datos de prueba."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Inventarios",
+      "item": [
+        {
+          "name": "Listar",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/inventarios",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "inventarios"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Consultar por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/inventarios/{{inventario_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "inventarios",
+                "{{inventario_id}}"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/inventarios",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "inventarios"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productoId\": \"{{producto_id}}\",\n  \"existencias\": 10,\n  \"stockMinimo\": 2\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/inventarios/{{inventario_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "inventarios",
+                "{{inventario_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"existencias\": 15\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/inventarios/{{inventario_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "inventarios",
+                "{{inventario_id}}"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "description": "Elimina el registro indicado. Usar solo con datos de prueba."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Transacciones",
+      "item": [
+        {
+          "name": "Listar",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/transacciones",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "transacciones"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Consultar por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/transacciones/{{transaccion_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "transacciones",
+                "{{transaccion_id}}"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/transacciones",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "transacciones"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pedidoId\": \"{{pedido_id}}\",\n  \"tipo\": \"venta\",\n  \"monto\": 100,\n  \"estado\": \"pendiente\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/transacciones/{{transaccion_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "transacciones",
+                "{{transaccion_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"estado\": \"aprobada\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/transacciones/{{transaccion_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "transacciones",
+                "{{transaccion_id}}"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "description": "Elimina el registro indicado. Usar solo con datos de prueba."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Configuraciones",
+      "item": [
+        {
+          "name": "Listar",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/configuraciones",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "configuraciones"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Consultar por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/configuraciones/{{configuracion_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "configuraciones",
+                "{{configuracion_id}}"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/configuraciones",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "configuraciones"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clave\": \"comision_porcentaje\",\n  \"valor\": \"5\",\n  \"descripcion\": \"Comision general de prueba\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/configuraciones/{{configuracion_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "configuraciones",
+                "{{configuracion_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"valor\": \"6\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/configuraciones/{{configuracion_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "configuraciones",
+                "{{configuracion_id}}"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "description": "Elimina el registro indicado. Usar solo con datos de prueba."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Pedidos",
+      "item": [
+        {
+          "name": "Listar pedidos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/pedidos",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "pedidos"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_comprador}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Consultar pedido y detalles",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/pedidos/{{pedido_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "pedidos",
+                "{{pedido_id}}"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_comprador}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Confirmar pedido",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/pedidos/confirmar",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "pedidos",
+                "confirmar"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"compradorId\": \"{{comprador_id}}\",\n  \"distribuidorId\": \"{{distribuidor_id}}\",\n  \"productos\": [\n    {\n      \"productoId\": \"{{producto_id}}\",\n      \"cantidad\": 2\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_comprador}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Aceptar",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/pedidos/{{pedido_id}}/aceptar",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "pedidos",
+                "{{pedido_id}}",
+                "aceptar"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_distribuidor}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Preparar",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/pedidos/{{pedido_id}}/preparar",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "pedidos",
+                "{{pedido_id}}",
+                "preparar"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_distribuidor}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Enviar",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/pedidos/{{pedido_id}}/enviar",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "pedidos",
+                "{{pedido_id}}",
+                "enviar"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_distribuidor}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Entregar",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/pedidos/{{pedido_id}}/entregar",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "pedidos",
+                "{{pedido_id}}",
+                "entregar"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_distribuidor}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Cancelar",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/pedidos/{{pedido_id}}/cancelar",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "pedidos",
+                "{{pedido_id}}",
+                "cancelar"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_comprador}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Rechazar con motivo",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/pedidos/{{pedido_id}}/rechazar",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "pedidos",
+                "{{pedido_id}}",
+                "rechazar"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"motivoRechazo\": \"Sin existencia\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_distribuidor}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Reportes",
+      "item": [
+        {
+          "name": "Ventas por distribuidor",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/reportes/ventas-por-distribuidor",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "reportes",
+                "ventas-por-distribuidor"
+              ],
+              "query": [
+                {
+                  "key": "desde",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "hasta",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Compras por comprador",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/reportes/compras-por-comprador",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "reportes",
+                "compras-por-comprador"
+              ],
+              "query": [
+                {
+                  "key": "desde",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "hasta",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Inventario bajo",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/reportes/inventario-bajo",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "reportes",
+                "inventario-bajo"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Comisiones",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/reportes/comisiones",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "reportes",
+                "comisiones"
+              ],
+              "query": [
+                {
+                  "key": "desde",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "hasta",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Productos mas solicitados",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/reportes/detalle-pedido/productos-mas-solicitados",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "reportes",
+                "detalle-pedido",
+                "productos-mas-solicitados"
+              ],
+              "query": [
+                {
+                  "key": "desde",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "hasta",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Empresas activas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/reportes/empresas-activas",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "reportes",
+                "empresas-activas"
+              ],
+              "query": [
+                {
+                  "key": "desde",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "hasta",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_admin}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Busqueda",
+      "item": [
+        {
+          "name": "Buscar productos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/busqueda/productos",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "busqueda",
+                "productos"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "categoria",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "precioMin",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "precioMax",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_comprador}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "description": "Busqueda basica. La busqueda por cercania aun esta en desarrollo."
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000",
+      "type": "string"
+    },
+    {
+      "key": "token_admin",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "token_comprador",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "token_distribuidor",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "correo_prueba",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "contrasena_prueba",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "empresa_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "usuario_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "comprador_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "distribuidor_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "producto_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "inventario_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "pedido_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "transaccion_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "configuracion_id",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}

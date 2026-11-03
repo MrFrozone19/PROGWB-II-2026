@@ -69,7 +69,14 @@ router.post('/registro', async (req, res, next) => {
       return res.status(400).json({ mensaje: 'La contraseña debe tener al menos 8 caracteres.' });
     }
     const rol = datos.tipoEmpresa === 'distribuidor' ? 'distribuidor' : 'comprador';
+    const hayLatitud = datos.latitud !== undefined && datos.latitud !== null;
+    const hayLongitud = datos.longitud !== undefined && datos.longitud !== null;
+    if (hayLatitud !== hayLongitud) {
+      return res.status(400).json({ mensaje: 'Si se proporciona latitud, también debe proporcionarse longitud, y viceversa.' });
+    }
     const empresa = await Empresa.create({
+      latitud: datos.latitud,
+      longitud: datos.longitud,
       razonSocial: datos.razonSocial,
       rfc: String(datos.rfc || '').trim().toUpperCase(),
       tipo: datos.tipoEmpresa,

@@ -6,6 +6,7 @@ const authRouter = require('./routes/auth');
 const usuariosRouter = require('./routes/usuarios');
 const reportesRouter = require('./routes/reportes');
 const pedidosRouter = require('./routes/pedidos');
+const busquedaRouter = require('./routes/busqueda');
 const manejarErrores = require('./middleware/errores');
 const { autenticar } = require('./middleware/auth');
 const validarConfiguracion = require('./middleware/validarConfiguracion');
@@ -39,6 +40,7 @@ app.post('/api/configuraciones', autenticar, validarConfiguracion);
 app.put('/api/configuraciones/:id', autenticar, validarConfiguracion);
 app.use('/api/configuraciones', crearRouterCrud(Configuracion));
 app.use('/api/reportes', reportesRouter);
+app.use('/api/busqueda', busquedaRouter);
 
 const raizFrontend = path.resolve(__dirname, '../..');
 app.use('/pantallas', express.static(path.join(raizFrontend, 'pantallas')));
