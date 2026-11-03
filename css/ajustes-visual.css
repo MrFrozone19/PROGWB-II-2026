@@ -1,0 +1,340 @@
+/* Ajustes globales de contraste y desbordamiento para Enlace B2B Local.
+   Este archivo se carga después de base.css y marketplace.css. */
+
+/* Variables del tema oscuro usadas por las hojas originales. */
+html[data-tema="oscuro"] {
+  color-scheme: dark;
+  --navy: #142b3b;
+  --navy-2: #29495c;
+  --navy-3: #35596e;
+  --yellow: #f3a51c;
+  --yellow-dark: #d9920e;
+  --blue: #8bc8ed;
+  --blue-soft: #263b49;
+  --green: #83d2a3;
+  --green-soft: #203d31;
+  --red: #ffaaa2;
+  --red-soft: #482e2d;
+  --orange: #f1bf72;
+  --orange-soft: #423624;
+  --ink: #edf2f5;
+  --muted: #b7c4ce;
+  --line: #3b4c58;
+  --surface: #22313c;
+  --page: #18232c;
+  --shadow: 0 4px 18px rgba(0, 0, 0, .2);
+}
+
+/* Contraste base de todas las pantallas que usan el marketplace. */
+html[data-tema="oscuro"] body.marketplace-app,
+html[data-tema="oscuro"] body.market-public {
+  color: #edf2f5 !important;
+  background: #18232c !important;
+}
+
+html[data-tema="oscuro"] body.marketplace-app .market-content,
+html[data-tema="oscuro"] body.marketplace-app .market-shell,
+html[data-tema="oscuro"] body.market-public .centro,
+html[data-tema="oscuro"] body.market-public main {
+  color: #edf2f5;
+  background-color: transparent;
+}
+
+/* Títulos, etiquetas y textos que en base.css tenían colores azul/gris fijos. */
+html[data-tema="oscuro"] body.marketplace-app .market-content :is(
+  h1, h2, h3, h4, h5, h6, p, label, legend, li, dt, dd,
+  .nom, .clave, .rfc, .folio, .candado, .dato, .fila-b,
+  .dir-caja, .hist, .art, .per, .et, .leyenda, .grafica .mes,
+  .grafica .n, .cifra .n, .cifra .l, .kpi span, .kpi strong,
+  .resumen p, .barras .et, .pie-tabla, .texto-ayuda
+) {
+  color: #e5edf2;
+}
+
+html[data-tema="oscuro"] body.marketplace-app .market-content :is(.sub, .dist, .prov, .fecha, .det, .m, .p, .clave, .rfc, .per, .candado, .pie-tabla) {
+  color: #b7c4ce !important;
+}
+
+html[data-tema="oscuro"] body.marketplace-app .market-content a:not(.market-sidebar-link):not(.market-brand):not(.market-header-action):not(.market-cart-link) {
+  color: #8bd5d6;
+}
+
+html[data-tema="oscuro"] body.marketplace-app .market-content a:hover {
+  color: #b8eeee;
+}
+
+/* Paneles y recuadros que conservaban fondos blancos de base.css. */
+html[data-tema="oscuro"] body.marketplace-app .market-content :is(
+  .caja, .dcaja, .recientes, .rep, .lista, .detalle, .tabla,
+  .panel, .ficha, .lateral, .grupo, .pedido, .contenido,
+  .filtros, .barra, .resumen, .kpi, .icono, .producto-card,
+  .producto-foto, .grafica, .rango, .publico, .roles,
+  .salida, .confirmacion, fieldset, .dir-caja, .market-filter-panel,
+  .market-results-toolbar, .market-product-card, .market-cart-summary,
+  .market-cart-group, .market-dialog, .market-compare-tray
+) {
+  color: #e5edf2;
+  background-color: #22313c !important;
+  border-color: #3b4c58 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .16);
+}
+
+html[data-tema="oscuro"] body.marketplace-app .market-content :is(.cab, .rcab, .dcab, .pcab, .market-cart-group-head) {
+  color: #edf2f5;
+  background-color: #293b47 !important;
+  border-color: #3b4c58 !important;
+}
+
+html[data-tema="oscuro"] body.marketplace-app .market-content :is(.icono .fig, .market-category, .market-filter-chip, .market-product-media, .market-detail-media, .cond, .pista) {
+  color: #dce8ee;
+  background-color: #2a414e !important;
+  border-color: #465b68 !important;
+}
+
+html[data-tema="oscuro"] body.marketplace-app .market-content .cifra::before {
+  background: #22313c !important;
+}
+
+html[data-tema="oscuro"] body.marketplace-app .market-content .grafica .b {
+  background: #6f9ab8 !important;
+}
+
+/* Tablas: evita encabezados blancos, filas claras y texto pálido sobre blanco. */
+html[data-tema="oscuro"] body.marketplace-app .market-content table,
+html[data-tema="oscuro"] body.marketplace-app .market-content .table {
+  color: #e5edf2;
+  background: transparent;
+  border-color: #3b4c58;
+}
+
+html[data-tema="oscuro"] body.marketplace-app .market-content :is(th, td) {
+  color: #e5edf2 !important;
+  background-color: transparent !important;
+  border-color: #3b4c58 !important;
+  text-shadow: none !important;
+}
+
+html[data-tema="oscuro"] body.marketplace-app .market-content th {
+  color: #cbd8e0 !important;
+  background-color: #293b47 !important;
+}
+
+html[data-tema="oscuro"] body.marketplace-app .market-content tbody tr:nth-child(even) td {
+  background-color: #263742 !important;
+}
+
+html[data-tema="oscuro"] body.marketplace-app .market-content tbody tr:hover td,
+html[data-tema="oscuro"] body.marketplace-app .market-content tr.sel td {
+  background-color: #304754 !important;
+}
+
+html[data-tema="oscuro"] body.marketplace-app .market-content :is(.table .nom, .table .clave, .table .folio, .hist .p, .dato span) {
+  color: #dce7ed !important;
+}
+
+html[data-tema="oscuro"] body.marketplace-app .market-content :is(.precio, .precio-grande, .imp, .num, .total, .kpi strong, .hist .p) {
+  color: #f4c16c !important;
+}
+
+/* Formularios y controles nativos. */
+html[data-tema="oscuro"] body.marketplace-app .market-content :is(input:not([type="checkbox"]):not([type="radio"]), select, textarea, .form-control, .form-select),
+html[data-tema="oscuro"] body.market-public :is(input:not([type="checkbox"]):not([type="radio"]), select, textarea, .form-control, .form-select) {
+  color: #f1f5f7 !important;
+  background-color: #172630 !important;
+  border-color: #465b68 !important;
+  color-scheme: dark;
+}
+
+html[data-tema="oscuro"] body.marketplace-app .market-content input::placeholder,
+html[data-tema="oscuro"] body.market-public input::placeholder,
+html[data-tema="oscuro"] body.market-public textarea::placeholder {
+  color: #aebdc7 !important;
+  opacity: 1;
+}
+
+html[data-tema="oscuro"] body.marketplace-app .market-content input[readonly],
+html[data-tema="oscuro"] body.marketplace-app .market-content input:disabled,
+html[data-tema="oscuro"] body.marketplace-app .market-content select:disabled,
+html[data-tema="oscuro"] body.market-public input[readonly],
+html[data-tema="oscuro"] body.market-public input:disabled {
+  color: #bdc9d1 !important;
+  background-color: #293944 !important;
+}
+
+html[data-tema="oscuro"] body.marketplace-app .market-content input[type="checkbox"],
+html[data-tema="oscuro"] body.marketplace-app .market-content input[type="radio"],
+html[data-tema="oscuro"] body.marketplace-app .market-content input[type="range"] {
+  accent-color: #f3a51c;
+}
+
+html[data-tema="oscuro"] body.marketplace-app .market-content :is(.btn.sec, .sec.btn, .cancelar.btn, button.sec, button.cancelar, button.limpiar, button.vaciar) {
+  color: #e5edf2 !important;
+  background: #293b47 !important;
+  border-color: #50616d !important;
+}
+
+/* Avisos y estados conservan su significado, con fondos oscuros legibles. */
+html[data-tema="oscuro"] body.marketplace-app .market-content :is(.aviso, .alert.aviso, .nota.alert, .aviso-sec, .alert.aviso-sec) {
+  color: #d7e2e8 !important;
+  background: #293944 !important;
+  border-color: #465b68 !important;
+}
+
+html[data-tema="oscuro"] body.marketplace-app .market-content :is(.msg-error, .alert.msg-error, .alerta) {
+  color: #ffc5bf !important;
+  background: #472e2d !important;
+  border-color: #754744 !important;
+}
+
+html[data-tema="oscuro"] body.marketplace-app .market-content :is(.msg-ok, .alert.msg-ok, .verificada) {
+  color: #c2efd1 !important;
+  background: #203d31 !important;
+  border-color: #37674f !important;
+}
+
+html[data-tema="oscuro"] body.marketplace-app .market-content :is(.b-nue, .b-pen, .b-pre, .b-cam, .b-ent, .b-apr, .b-act, .b-ok, .b-can, .b-rec, .b-ago, .b-baj, .b-oculto) {
+  filter: brightness(.9) saturate(.95);
+}
+
+/* Pantallas públicas (acceso y registro). */
+html[data-tema="oscuro"] body.market-public :is(.caja, .demo, #formulario-registro, .confirmacion, fieldset) {
+  color: #edf2f5 !important;
+  background: #22313c !important;
+  border-color: #3b4c58 !important;
+}
+
+html[data-tema="oscuro"] body.market-public :is(h1, h2, h3, h4, p, label, legend, th, td, .sub) {
+  color: #e5edf2;
+}
+
+html[data-tema="oscuro"] body.market-public .demo th {
+  color: #dce7ed !important;
+  background: #293b47 !important;
+}
+
+html[data-tema="oscuro"] body.market-public .demo td {
+  color: #e5edf2 !important;
+  background: transparent !important;
+  border-color: #3b4c58 !important;
+}
+
+html[data-tema="oscuro"] body.market-public .demo td:last-child,
+html[data-tema="oscuro"] body.market-public .enlaces a {
+  color: #8bd5d6 !important;
+}
+
+/* Correcciones de ancho: inputs, textos, cifras, tablas y rejillas. */
+body.marketplace-app .market-content,
+body.marketplace-app .market-content :is(main, .cuerpo, .izq, .der, .caja, .dcaja, .grupo, .contenido, .ficha, .panel, .tabla, .lista, .detalle, .rep, .pedido, .market-results-layout, .market-filter-panel, .market-product-grid, .market-product-card, .tarjetas, .rejilla) {
+  min-width: 0;
+  max-width: 100%;
+}
+
+body.marketplace-app .market-content :is(.fila, .resumen, .titulo, .cab, .rcab, .dcab, .pcab, .fila-b, .dato, .dir-caja, .ajuste, .acciones, .market-filter-actions, .market-results-toolbar, .market-results-tools, .market-product-buy, .market-cart-group-head) > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+body.marketplace-app .market-content :is(p, h1, h2, h3, h4, h5, h6, label, td, th, .nom, .prov, .clave, .folio, .hist, .dato, .kpi strong, .market-product-name, .market-product-supplier) {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+body.marketplace-app .market-content :is(input, select, textarea, button) {
+  max-width: 100%;
+  min-width: 0;
+}
+
+body.marketplace-app .market-content .market-price-range {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+body.marketplace-app .market-content .market-price-range label,
+body.marketplace-app .market-content .market-price-range input {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+body.marketplace-app .market-content .resumen {
+  flex-wrap: wrap;
+}
+
+body.marketplace-app .market-content .resumen .form-select {
+  width: min(100%, 260px);
+  min-width: 0;
+}
+
+body.marketplace-app .market-content :is(.tabla, .lista, .detalle, .caja, .dcaja, .rep) {
+  overflow-wrap: anywhere;
+}
+
+body.marketplace-app .market-content :is(.tabla, .lista, .detalle) {
+  overflow-x: auto;
+}
+
+body.marketplace-app .market-content table {
+  max-width: 100%;
+}
+
+body.marketplace-app .market-content :is(.table th, .table td, table th, table td) {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+body.marketplace-app .market-content :is(.num, .imp, .precio, .fecha, .folio) {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  font-variant-numeric: tabular-nums;
+}
+
+body.marketplace-app .market-content .kpi strong {
+  font-size: clamp(18px, 2vw, 26px);
+  line-height: 1.2;
+}
+
+body.marketplace-app .market-content .dato,
+body.marketplace-app .market-content .fila-b,
+body.marketplace-app .market-content .dir-caja {
+  flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+  body.marketplace-app .market-content :is(.tabla, .lista, .detalle) {
+    overflow-x: auto;
+  }
+
+  body.marketplace-app .market-content table {
+    min-width: 620px;
+  }
+
+  body.marketplace-app .market-content .market-price-range {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  body.marketplace-app .market-content .market-price-range {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  body.marketplace-app .market-content table {
+    min-width: 560px;
+  }
+}
+
+/* Navegación lateral: el hover debe seguir teniendo contraste en oscuro. */
+html[data-tema="oscuro"] body.marketplace-app .market-sidebar-link:hover {
+  color: #f1f5f7 !important;
+  background: #304552 !important;
+  border-color: #48606e !important;
+}
+
+html[data-tema="oscuro"] body.marketplace-app .market-sidebar-link:hover svg {
+  color: #a9dfe0 !important;
+}
+
+html[data-tema="oscuro"] body.marketplace-app .market-content a:not(.btn):not(.market-sidebar-link):not(.market-brand):not(.market-header-action):not(.market-cart-link):hover {
+  color: #b8eeee;
+}

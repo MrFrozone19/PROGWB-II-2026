@@ -1,0 +1,74 @@
+/* Estilos exclusivos de pantallas/01-inicio-sesion.html */
+body.market-public.pantalla-01{min-height:100vh;background:var(--market-bg);color:var(--market-text)}
+
+/* Encabezado corporativo */
+body.market-public.pantalla-01>.login-header{min-height:70px;padding:9px max(20px,calc((100vw - 1120px)/2));display:flex;align-items:center;justify-content:space-between;gap:20px;background:var(--market-blue);border:0;border-bottom:3px solid var(--market-orange);box-shadow:none}
+body.market-public.pantalla-01 .login-brand{min-width:0}
+body.market-public.pantalla-01 .login-header h1{display:flex;align-items:center;gap:10px;margin:0;color:#fff;font-size:19px;font-weight:750;line-height:1.2;letter-spacing:-.35px}
+body.market-public.pantalla-01 .login-header h1::before{content:"E";width:36px;height:36px;flex:0 0 36px;display:inline-grid;place-items:center;color:var(--market-blue);background:#fff;border-radius:3px;box-shadow:inset 0 -4px 0 var(--market-orange);font-size:22px;font-weight:850;line-height:1}
+body.market-public.pantalla-01 .login-header p{margin:3px 0 0 46px;color:#d7e1e7;font-size:11px;line-height:1.3;letter-spacing:.01em}
+body.market-public.pantalla-01 .login-header .market-theme-button{min-height:36px;margin-left:auto;padding:7px 11px;color:#fff;background:transparent;border:1px solid rgba(255,255,255,.35);border-radius:4px;box-shadow:none;font-size:12px;font-weight:650}
+body.market-public.pantalla-01 .login-header .market-theme-button:hover{color:#fff;background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.55)}
+body.market-public.pantalla-01 .login-header .market-theme-button svg{width:17px;height:17px}
+
+/* Composición: formulario principal y panel secundario */
+body.market-public.pantalla-01 .centro{width:min(940px,calc(100% - 40px));max-width:940px;min-height:calc(100svh - 70px);margin:0 auto;padding:clamp(30px,6vh,62px) 0;display:grid;grid-template-columns:minmax(0,1.12fr) minmax(300px,.88fr);align-items:center;gap:22px}
+body.market-public.pantalla-01 .centro>.caja,body.market-public.pantalla-01 .demo{min-width:0;margin:0;border:1px solid var(--market-line);border-radius:6px;box-shadow:var(--market-shadow)}
+body.market-public.pantalla-01 .centro>.caja{padding:30px 32px 27px;background:var(--market-surface);border-top:3px solid var(--market-teal)}
+body.market-public.pantalla-01 .centro h2{margin:0;color:var(--market-text);font-size:26px;font-weight:750;line-height:1.2;letter-spacing:-.45px}
+body.market-public.pantalla-01 .centro .sub{margin:8px 0 26px;color:var(--market-muted);font-size:14px;line-height:1.5}
+body.market-public.pantalla-01 .centro label{display:block;margin:0 0 17px;color:var(--market-text);font-size:12px;font-weight:700;line-height:1.4}
+body.market-public.pantalla-01 .centro label .form-control{display:block;width:100%;min-height:45px;margin-top:7px;padding:10px 12px;color:var(--market-text);background:var(--market-surface);border:1px solid var(--market-line-strong);border-radius:4px;font-size:14px;font-weight:450}
+body.market-public.pantalla-01 .centro input::placeholder{color:var(--market-muted);opacity:1}
+body.market-public.pantalla-01 .centro .campo-contrasena{display:flex;align-items:stretch;gap:8px;margin-top:7px}
+body.market-public.pantalla-01 .centro .campo-contrasena .form-control{flex:1 1 auto;width:0;min-width:0;min-height:45px;margin:0}
+body.market-public.pantalla-01 .centro .ver-contrasena{min-width:78px;min-height:45px;padding:8px 12px;color:#fff;background:var(--market-teal);border:1px solid var(--market-teal);border-radius:4px;font-size:12px;font-weight:700}
+body.market-public.pantalla-01 .centro .ver-contrasena:hover{background:#066b70;border-color:#066b70}
+body.market-public.pantalla-01 .centro .entrar{width:100%;min-height:46px;margin-top:4px;padding:11px 16px;color:#fff;background:var(--market-teal);border:1px solid var(--market-teal);border-radius:4px;font-size:13px;font-weight:750;letter-spacing:.01em}
+body.market-public.pantalla-01 .centro .entrar:hover{background:#066b70;border-color:#066b70}
+body.market-public.pantalla-01 .enlaces{margin-top:20px;padding-top:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 18px;border-top:1px solid var(--market-line);font-size:12px;font-weight:650}
+body.market-public.pantalla-01 .enlaces a{color:var(--market-teal);text-decoration:none}
+body.market-public.pantalla-01 .enlaces a:hover{color:var(--market-blue);text-decoration:underline;text-underline-offset:3px}
+
+/* Cuentas de prueba */
+body.market-public.pantalla-01 .demo{padding:21px;align-self:center;background:var(--market-surface-soft);border-radius:6px;box-shadow:none}
+body.market-public.pantalla-01 .demo h3{margin:0 0 14px;color:var(--market-text);font-size:15px;font-weight:720;line-height:1.35}
+body.market-public.pantalla-01 .demo table{width:100%;table-layout:fixed;border-collapse:collapse;font-size:12px}
+body.market-public.pantalla-01 .demo th{padding:10px 9px;color:#536675;background:#eaf0f4;border:0;border-bottom:1px solid var(--market-line);font-size:10px;font-weight:750;letter-spacing:.035em;text-align:left;white-space:normal}
+body.market-public.pantalla-01 .demo th:first-child,body.market-public.pantalla-01 .demo td:first-child{width:34%}
+body.market-public.pantalla-01 .demo td{padding:11px 9px;color:var(--market-text);background:transparent;border-bottom:1px solid var(--market-line);font-size:12px;line-height:1.4;vertical-align:middle}
+body.market-public.pantalla-01 .demo td:last-child{color:var(--market-teal);font-weight:600;overflow-wrap:anywhere}
+body.market-public.pantalla-01 .demo tr[data-correo]{cursor:pointer}
+body.market-public.pantalla-01 .demo tr[data-correo]:hover td{background:rgba(8,126,131,.07)}
+body.market-public.pantalla-01 .demo tr:last-child td{border-bottom:0}
+body.market-public.pantalla-01 .demo p{margin:14px 0 0;padding-top:13px;color:var(--market-muted);border-top:1px solid var(--market-line);font-size:12px;line-height:1.5}
+body.market-public.pantalla-01 .demo p strong{color:var(--market-text);font-weight:750}
+
+/* Mensajes y foco accesible */
+body.market-public.pantalla-01 .centro .alert{margin:12px 0;padding:11px 12px;border-radius:4px;font-size:12px;line-height:1.45}
+body.market-public.pantalla-01 .centro .msg-error{color:#8f2924;background:#fff0ee;border:1px solid #edc3bf}
+body.market-public.pantalla-01 .centro .msg-ok{color:#17643d;background:#e8f5ed;border:1px solid #bfe2cc}
+body.market-public.pantalla-01 .centro .aviso{color:#74500d;background:#fff8e6;border:1px solid #f2dfab}
+body.market-public.pantalla-01 .centro input:focus-visible,body.market-public.pantalla-01 .centro button:focus-visible,body.market-public.pantalla-01 .enlaces a:focus-visible,body.market-public.pantalla-01 .login-header button:focus-visible{outline:3px solid rgba(8,126,131,.28);outline-offset:2px}
+
+/* Tema oscuro: todos los textos, campos y encabezados de tabla */
+html[data-tema="oscuro"] body.market-public.pantalla-01{--market-bg:#14212b;--market-surface:#1e2d38;--market-surface-soft:#1d2a34;--market-text:#f3f6f8;--market-muted:#b7c4ce;--market-line:#344754;--market-line-strong:#465b68;--market-shadow:0 1px 3px rgba(0,0,0,.22);background:var(--market-bg)}
+html[data-tema="oscuro"] body.market-public.pantalla-01 .centro>.caja{background:#1e2d38;border-color:#344754;border-top-color:#087e83}
+html[data-tema="oscuro"] body.market-public.pantalla-01 .demo{background:#1d2a34;border-color:#344754}
+html[data-tema="oscuro"] body.market-public.pantalla-01 .demo th{color:#dbe5eb;background:#293b47;border-color:#3b4d59}
+html[data-tema="oscuro"] body.market-public.pantalla-01 .demo td{color:#e6edf1;border-color:#344754}
+html[data-tema="oscuro"] body.market-public.pantalla-01 .demo td:last-child,html[data-tema="oscuro"] body.market-public.pantalla-01 .enlaces a{color:#83d0d1}
+html[data-tema="oscuro"] body.market-public.pantalla-01 .demo tr[data-correo]:hover td{background:#2b414d}
+html[data-tema="oscuro"] body.market-public.pantalla-01 .demo p,html[data-tema="oscuro"] body.market-public.pantalla-01 .centro .sub{color:#b7c4ce}
+html[data-tema="oscuro"] body.market-public.pantalla-01 .centro label,html[data-tema="oscuro"] body.market-public.pantalla-01 .centro h2,html[data-tema="oscuro"] body.market-public.pantalla-01 .demo h3,html[data-tema="oscuro"] body.market-public.pantalla-01 .demo p strong{color:#f3f6f8}
+html[data-tema="oscuro"] body.market-public.pantalla-01 .centro label .form-control{color:#f3f6f8;background:#172630;border-color:#465b68}
+html[data-tema="oscuro"] body.market-public.pantalla-01 .centro input::placeholder{color:#aebdc7}
+html[data-tema="oscuro"] body.market-public.pantalla-01 .centro .msg-error{color:#ffd7d2;background:#472c2c;border-color:#754442}
+html[data-tema="oscuro"] body.market-public.pantalla-01 .centro .msg-ok{color:#c5f0d4;background:#203d30;border-color:#37674f}
+html[data-tema="oscuro"] body.market-public.pantalla-01 .centro .aviso{color:#f6dfad;background:#403722;border-color:#665632}
+html[data-tema="oscuro"] body.market-public.pantalla-01 .enlaces a:hover{color:#b3e8e8}
+
+/* Responsive */
+@media(max-width:800px){body.market-public.pantalla-01 .centro{width:min(520px,calc(100% - 32px));min-height:auto;padding:30px 0 42px;grid-template-columns:minmax(0,1fr);align-items:stretch;gap:16px}body.market-public.pantalla-01 .centro>.caja{padding:26px 25px 23px}body.market-public.pantalla-01 .demo{padding:18px}}
+@media(max-width:520px){body.market-public.pantalla-01>.login-header{min-height:64px;padding:8px 13px;gap:10px}body.market-public.pantalla-01 .login-header h1{gap:8px;font-size:16px}body.market-public.pantalla-01 .login-header h1::before{width:31px;height:31px;flex-basis:31px;font-size:19px}body.market-public.pantalla-01 .login-header p{margin-left:39px;font-size:10px}body.market-public.pantalla-01 .login-header .market-theme-button{min-width:36px;min-height:34px;padding:6px 8px}body.market-public.pantalla-01 .login-header .market-theme-button .market-theme-label{font-size:10px}body.market-public.pantalla-01 .centro{width:calc(100% - 28px);padding:22px 0 32px;gap:13px}body.market-public.pantalla-01 .centro>.caja{padding:23px 18px 20px}body.market-public.pantalla-01 .centro h2{font-size:23px}body.market-public.pantalla-01 .centro .sub{margin-bottom:21px;font-size:13px}body.market-public.pantalla-01 .enlaces{align-items:flex-start;flex-direction:column;gap:12px}body.market-public.pantalla-01 .demo{padding:16px 13px}body.market-public.pantalla-01 .demo th,body.market-public.pantalla-01 .demo td{padding:9px 6px;font-size:11px}}
+@media(prefers-reduced-motion:reduce){body.market-public.pantalla-01 *,body.market-public.pantalla-01 *::before,body.market-public.pantalla-01 *::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important}}
