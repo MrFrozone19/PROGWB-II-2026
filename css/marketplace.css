@@ -241,7 +241,8 @@ body.marketplace-app a:hover {
 .market-cart-link svg,
 .market-theme-button svg,
 .market-menu-toggle svg,
-.market-logout svg {
+.market-logout svg,
+.market-search button svg {
   width: 20px;
   height: 20px;
   flex: 0 0 20px;
