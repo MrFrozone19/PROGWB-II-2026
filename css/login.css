@@ -12,7 +12,7 @@ body.market-public.pantalla-01 .login-header .market-theme-button:hover{color:#f
 body.market-public.pantalla-01 .login-header .market-theme-button svg{width:17px;height:17px}
 
 /* Composición: formulario principal y panel secundario */
-body.market-public.pantalla-01 .centro{width:min(940px,calc(100% - 40px));max-width:940px;min-height:calc(100svh - 70px);margin:0 auto;padding:clamp(30px,6vh,62px) 0;display:grid;grid-template-columns:minmax(0,1.12fr) minmax(300px,.88fr);align-items:center;gap:22px}
+body.market-public.pantalla-01 .centro{width:min(940px,calc(100% - 40px));max-width:940px;min-height:calc(100svh - 70px);margin:0 auto;padding:clamp(30px,6vh,62px) 0;display:grid;grid-template-columns:minmax(0,520px);justify-content:center;align-items:center;gap:22px}
 body.market-public.pantalla-01 .centro>.caja,body.market-public.pantalla-01 .demo{min-width:0;margin:0;border:1px solid var(--market-line);border-radius:6px;box-shadow:var(--market-shadow)}
 body.market-public.pantalla-01 .centro>.caja{padding:30px 32px 27px;background:var(--market-surface);border-top:3px solid var(--market-teal)}
 body.market-public.pantalla-01 .centro h2{margin:0;color:var(--market-text);font-size:26px;font-weight:750;line-height:1.2;letter-spacing:-.45px}
