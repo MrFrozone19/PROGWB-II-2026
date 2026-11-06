@@ -20,6 +20,11 @@ router.post('/login', async (req, res, next) => {
       return res.status(401).json({ mensaje: 'Correo o contraseña incorrectos.', motivo: 'credenciales' });
     }
 
+    if (!usuario.empresaId) {
+      registrarEvento('info', 'login_rechazado', { correo });
+      return res.status(403).json({ mensaje: 'El usuario no está asociado a ninguna empresa.', motivo: 'sin_empresa' });
+    }
+
     if (usuario.empresaId.estadoVerificacion !== 'verificada') {
       registrarEvento('info', 'login_pendiente', { correo, empresaId: usuario.empresaId._id });
       return res.status(403).json({ mensaje: 'La empresa está en proceso de verificación.', motivo: 'pendiente' });

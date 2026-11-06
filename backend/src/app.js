@@ -8,7 +8,7 @@ const reportesRouter = require('./routes/reportes');
 const pedidosRouter = require('./routes/pedidos');
 const busquedaRouter = require('./routes/busqueda');
 const manejarErrores = require('./middleware/errores');
-const { autenticar } = require('./middleware/auth');
+const { autenticar, autorizarRoles } = require('./middleware/auth');
 const validarConfiguracion = require('./middleware/validarConfiguracion');
 const {
   Empresa,
@@ -30,14 +30,18 @@ app.get('/api/salud', autenticar, (req, res) => {
 });
 
 app.use('/api/auth', authRouter);
+app.put('/api/empresas/:id', autenticar, autorizarRoles('administrador'));
+app.post('/api/empresas', autenticar, autorizarRoles('administrador'));
+app.delete('/api/empresas/:id', autenticar, autorizarRoles('administrador'));
 app.use('/api/empresas', crearRouterCrud(Empresa));
 app.use('/api/usuarios', usuariosRouter);
 app.use('/api/productos', crearRouterCrud(Producto));
 app.use('/api/inventarios', crearRouterCrud(Inventario));
 app.use('/api/pedidos', pedidosRouter);
 app.use('/api/transacciones', crearRouterCrud(Transaccion));
-app.post('/api/configuraciones', autenticar, validarConfiguracion);
-app.put('/api/configuraciones/:id', autenticar, validarConfiguracion);
+app.use('/api/configuraciones', autenticar, autorizarRoles('administrador'));
+app.post('/api/configuraciones', validarConfiguracion);
+app.put('/api/configuraciones/:id', validarConfiguracion);
 app.use('/api/configuraciones', crearRouterCrud(Configuracion));
 app.use('/api/reportes', reportesRouter);
 app.use('/api/busqueda', busquedaRouter);

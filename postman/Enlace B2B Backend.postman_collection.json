@@ -1,7 +1,7 @@
 {
   "info": {
     "name": "Enlace B2B - Backend local",
-    "description": "Solicitudes preparadas segun las rutas actuales del proyecto. Completa variables y usa datos de prueba. MODO_REVISION usa rol administrador: las acciones que exigen comprador o distribuidor requieren desactivarlo e iniciar sesion con el rol correspondiente.",
+    "description": "Solicitudes preparadas segun las rutas actuales del proyecto. Completa variables y usa datos de prueba.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [

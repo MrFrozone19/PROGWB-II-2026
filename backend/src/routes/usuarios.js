@@ -1,10 +1,11 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const { Usuario } = require('../models');
-const { autenticar } = require('../middleware/auth');
+const { autenticar, autorizarRoles } = require('../middleware/auth');
 
 const router = express.Router();
 router.use(autenticar);
+router.use(autorizarRoles('administrador'));
 
 const atributosPublicos = { passwordHash: 0 };
 

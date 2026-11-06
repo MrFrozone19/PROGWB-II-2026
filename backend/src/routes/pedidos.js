@@ -65,13 +65,11 @@ router.post('/confirmar', async (req, res, next) => {
     if (!mongoose.isValidObjectId(compradorId) || !mongoose.isValidObjectId(distribuidorId)) {
         return res.status(400).json({ mensaje: 'Los campos compradorId y distribuidorId deben ser IDs válidos de MongoDB.' });
     }
-    if (process.env.MODO_REVISION !== 'true') {
-        if (req.usuario.rol !== 'comprador') {
-            return res.status(403).json({ mensaje: 'El usuario no tiene el rol adecuado para realizar pedidos.' });
-        }
-        if (String(req.usuario.empresaId).toLowerCase() !== compradorId.toLowerCase()) {
-            return res.status(403).json({ mensaje: 'El usuario no pertenece a la empresa compradora especificada.' });
-        }
+    if (req.usuario.rol !== 'comprador') {
+        return res.status(403).json({ mensaje: 'El usuario no tiene el rol adecuado para realizar pedidos.' });
+    }
+    if (String(req.usuario.empresaId).toLowerCase() !== compradorId.toLowerCase()) {
+        return res.status(403).json({ mensaje: 'El usuario no pertenece a la empresa compradora especificada.' });
     }
     if (!Array.isArray(productos)) {
         return res.status(400).json({ mensaje: 'La lista de productos no es un arreglo.' });
