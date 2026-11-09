@@ -7,9 +7,11 @@ const usuariosRouter = require('./routes/usuarios');
 const reportesRouter = require('./routes/reportes');
 const pedidosRouter = require('./routes/pedidos');
 const busquedaRouter = require('./routes/busqueda');
+const productosRouter = require('./routes/productos');
 const manejarErrores = require('./middleware/errores');
 const { autenticar, autorizarRoles } = require('./middleware/auth');
 const validarConfiguracion = require('./middleware/validarConfiguracion');
+const autorizarProductos = require('./middleware/autorizarProductos');
 const {
   Empresa,
   Usuario,
@@ -17,7 +19,7 @@ const {
   Inventario,
   Pedido,
   Transaccion,
-  Configuracion,
+  Configuracion
 } = require('./models');
 
 const app = express();
@@ -34,7 +36,9 @@ app.put('/api/empresas/:id', autenticar, autorizarRoles('administrador'));
 app.post('/api/empresas', autenticar, autorizarRoles('administrador'));
 app.delete('/api/empresas/:id', autenticar, autorizarRoles('administrador'));
 app.use('/api/empresas', crearRouterCrud(Empresa));
+app.post('/api/productos', autenticar, autorizarProductos);
 app.use('/api/usuarios', usuariosRouter);
+app.use('/api/productos', productosRouter);
 app.use('/api/productos', crearRouterCrud(Producto));
 app.use('/api/inventarios', crearRouterCrud(Inventario));
 app.use('/api/pedidos', pedidosRouter);
