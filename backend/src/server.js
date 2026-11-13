@@ -7,7 +7,7 @@ require('./models');
 const app = require('./app');
 const { registrarEvento } = require('./services/logger');
 
-const puerto = Number(process.env.PORT || 3000);
+const puerto = Number(process.env.PORT);
 
 if (!process.env.JWT_SECRET) {
   registrarEvento('error', 'servidor_error_inicio', { mensaje: 'JWT_SECRET no esta definido en las variables de entorno.' });
