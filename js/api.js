@@ -18,6 +18,10 @@ async function solicitarApi(ruta, opciones = {}) {
   const datos = tipo.includes('application/json') ? await respuesta.json() : null;
 
   if (!respuesta.ok) {
+    if (respuesta.status === 401 && ruta !== '/auth/login') {
+      if (typeof borrarSesion === 'function') borrarSesion();
+      location.replace('01-inicio-sesion.html');
+    }
     const error = new Error(datos?.mensaje || `Error HTTP ${respuesta.status}`);
     error.estado = respuesta.status;
     error.datos = datos;

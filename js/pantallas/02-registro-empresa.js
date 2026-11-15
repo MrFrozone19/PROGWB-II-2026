@@ -93,7 +93,7 @@ formularioRegistro.addEventListener('submit', async (evento) => {
   botonRegistrar.textContent = 'Registrando...';
 
   try {
-    if (usarBackendLocal()) {
+    {
       await solicitarApi('/auth/registro', {
         method: 'POST',
         body: JSON.stringify(datosRegistro()),
