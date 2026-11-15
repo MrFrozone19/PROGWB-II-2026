@@ -15,6 +15,10 @@ const PedidoSchema = new Schema({
   comisionPct: { type: Number, required: true, min: 2, max: 10, default: 5 },
   comisionMonto: { type: Number, required: true, min: 0, default: 0 },
   total: { type: Number, required: true, min: 0, default: 0 },
+  direccionEntrega: { type: String, maxlength: 300, default: '' },
+  referenciaEntrega: { type: String, maxlength: 300, default: '' },
+  metodoPago: { type: String, enum: ['transferencia', 'contra_entrega'], default: 'transferencia' },
+  notaEntrega: { type: String, maxlength: 400, default: '' },
   fechaEstimada: { type: Date, required: false },
   motivoRechazo: { type: String, required: false, maxlength: 255 },
   historialEstados: [{
