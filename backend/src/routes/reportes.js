@@ -1,9 +1,9 @@
 const express = require('express');
-const { autenticar } = require('../middleware/auth');
+const { autenticar, autorizarRoles } = require('../middleware/auth');
 const { Pedido, Inventario, DetallePedido, Empresa } = require('../models');
 
 const router = express.Router();
-router.use(autenticar);
+router.use(autenticar, autorizarRoles('administrador'));
 
 router.get('/ventas-por-distribuidor', async (req, res, next) => {
   try {
@@ -36,8 +36,8 @@ router.get('/ventas-por-distribuidor', async (req, res, next) => {
 
     const acumulado = new Map();
     pedidos.forEach((pedido) => {
-      const clave = pedido.distribuidorId.id;
-      const actual = acumulado.get(clave) || { distribuidorId: clave, distribuidor: pedido.distribuidorId.razonSocial, pedidos: 0, ventas: 0 };
+      const clave = pedido.distribuidorId?.id || 'distribuidor_eliminado';
+      const actual = acumulado.get(clave) || { distribuidorId: clave, distribuidor: pedido.distribuidorId?.razonSocial || 'Distribuidor no disponible', pedidos: 0, ventas: 0 };
       actual.pedidos += 1;
       actual.ventas += Number(pedido.total);
       acumulado.set(clave, actual);
@@ -75,8 +75,8 @@ router.get('/compras-por-comprador', async (req, res, next) => {
     const pedidos = await Pedido.find(filtro).populate('compradorId', 'razonSocial');
     const acumulado = new Map();
     pedidos.forEach((pedido) => {
-      const clave = pedido.compradorId.id;
-      const actual = acumulado.get(clave) || { compradorId: clave, comprador: pedido.compradorId.razonSocial, pedidos: 0, compras: 0 };
+      const clave = pedido.compradorId?.id || 'comprador_eliminado';
+      const actual = acumulado.get(clave) || { compradorId: clave, comprador: pedido.compradorId?.razonSocial || 'Comprador no disponible', pedidos: 0, compras: 0 };
       actual.pedidos += 1;
       actual.compras += Number(pedido.total);
       acumulado.set(clave, actual);
@@ -124,8 +124,8 @@ router.get('/comisiones', async (req, res, next) => {
     const total = pedidos.reduce((suma, pedido) => suma + Number(pedido.comisionMonto), 0);
     const acumulado = new Map();
     pedidos.forEach((pedido) => {
-      const clave = pedido.distribuidorId.id;
-      const actual = acumulado.get(clave) || { distribuidorId: clave, distribuidor: pedido.distribuidorId.razonSocial, comisionMonto: 0 };
+      const clave = pedido.distribuidorId?.id || 'distribuidor_eliminado';
+      const actual = acumulado.get(clave) || { distribuidorId: clave, distribuidor: pedido.distribuidorId?.razonSocial || 'Distribuidor no disponible', comisionMonto: 0 };
       actual.comisionMonto += Number(pedido.comisionMonto);
       acumulado.set(clave, actual);
     });

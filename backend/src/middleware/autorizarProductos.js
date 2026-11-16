@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Producto } = require('../models');
 
-const camposProducto = ['distribuidorId', 'sku', 'nombre', 'descripcion', 'categoria', 'precio', 'unidadMedida', 'activo'];
+const camposProducto = ['distribuidorId', 'sku', 'nombre', 'descripcion', 'categoria', 'precio', 'unidadMedida', 'activo', 'marca', 'fotoUrl'];
 
 const autorizarProductos = async (req, res, next) => {
   try {

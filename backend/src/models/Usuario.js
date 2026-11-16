@@ -9,6 +9,9 @@ const UsuarioSchema = new Schema({
   telefono: { type: String, required: true, maxlength: 10, match: /^\d{10}$/ },
   passwordHash: { type: String, required: true, maxlength: 255 },
   rol: { type: String, required: true, maxlength: 20, enum: ['comprador', 'distribuidor', 'administrador'] },
+  resetTokenHash: { type: String, select: false },
+  resetVence: { type: Date, select: false },
+  ultimaRecuperacion: { type: Date, select: false },
   activo: { type: Boolean, required: true, default: true },
   }, {
   collection: 'usuarios',

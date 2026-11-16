@@ -1,0 +1,25 @@
+.real {max-width:1180px;margin:0 auto;padding:14px 15px 55px;color:var(--market-text)}
+.real h2{font-size:1.7rem;margin:0 0 8px}.real h3{font-size:1.15rem;margin:0 0 12px}.real p{line-height:1.5}
+.real-panel{background:var(--market-surface);border:1px solid var(--market-line);padding:20px;margin:14px 0;border-radius:7px;color:inherit}
+.real-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:12px}
+.real-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:8px 0}
+.real form{display:flex;gap:10px;align-items:end;flex-wrap:wrap;margin:8px 0}
+.real label{display:grid;gap:5px;font-weight:600;font-size:.88rem;min-width:130px;flex:1}
+.real input,.real select,.real textarea{padding:10px;border-radius:4px;background:var(--market-surface);color:inherit;border:1px solid #99aab4;max-width:100%;width:100%;font:inherit}
+.real input[type=checkbox]{width:auto}.real textarea{min-height:75px}
+.real button,.real .real-link{background:#1e5266;color:white;padding:9px 12px;border:0;border-radius:4px;cursor:pointer;display:inline-block;text-decoration:none;font:inherit;font-size:.9rem}
+.real button.subtle,.real .real-link.subtle{background:#e7edef;color:#142d38;border:1px solid #bac8ce}
+.real button.danger{background:#a53e38}.real button:disabled{opacity:.6;cursor:wait}
+.real table{width:100%;border-collapse:collapse}.real th,.real td{padding:10px;border-bottom:1px solid #c9d2d8;text-align:left;font-size:.89rem;vertical-align:middle}
+.real .real-table{overflow-x:auto}.real .small{font-size:.86rem;color:var(--market-muted)}
+.real .price{font-weight:bold;font-size:1.15rem}.real .real-muted{color:var(--market-muted)}.real .error{color:#a12323}
+.real .real-stat{font-size:1.6rem;font-weight:700;margin:8px 0}.real .real-heading{border-bottom:1px solid #c6d1d7;padding-bottom:8px}
+.real .real-product{display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px}.real .real-product p{margin:5px 0}
+.real .real-pills{display:flex;gap:6px;flex-wrap:wrap}.real .pill{background:#dce8ec;color:#245063;border-radius:4px;padding:3px 7px;font-size:.8rem}
+.real .notice{background:#f1f5f7;border-left:4px solid #44758a;padding:12px;margin:12px 0;color:#263944}
+.real .real-photo{width:100%;max-width:250px;max-height:190px;object-fit:contain}
+.real details{margin:12px 0}.real summary{cursor:pointer;font-weight:bold}
+@media(max-width:650px){.real{padding:10px}.real-panel{padding:12px}.real table{min-width:560px}}
+
+.real .notice{background:var(--market-surface-soft);color:var(--market-text)}
+.real input,.real select,.real textarea{background:var(--market-surface);color:var(--market-text)}
