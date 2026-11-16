@@ -50,31 +50,7 @@ function sesionVigente() {
   return sesion;
 }
 
-function iniciarSesionDemo(correo, contrasena) {
-  const correoNormalizado = correo.trim().toLowerCase();
-  const usuario = USUARIOS_DEMO.find((item) => item.correo === correoNormalizado);
-
-  if (!usuario || usuario.contrasena !== contrasena) {
-    return { exito: false, motivo: 'credenciales' };
-  }
-  if (usuario.estadoEmpresa !== 'verificada') {
-    return { exito: false, motivo: 'pendiente' };
-  }
-
-  guardarSesion({
-    correo: usuario.correo,
-    nombre: usuario.nombre,
-    empresa: usuario.empresa,
-    rol: usuario.rol,
-    ultimaActividad: Date.now(),
-    modo: 'demo',
-  });
-  return { exito: true, destino: pantallaInicioDe(usuario.rol) };
-}
-
 async function iniciarSesion(correo, contrasena) {
-  if (!usarBackendLocal()) return iniciarSesionDemo(correo, contrasena);
-
   try {
     const respuesta = await solicitarApi('/auth/login', {
       method: 'POST',
@@ -87,6 +63,7 @@ async function iniciarSesion(correo, contrasena) {
       empresa: respuesta.usuario.empresa,
       empresaId: respuesta.usuario.empresaId,
       rol: respuesta.usuario.rol,
+      tipoEmpresa: respuesta.usuario.tipoEmpresa,
       token: respuesta.token,
       ultimaActividad: Date.now(),
       modo: 'backend',
@@ -95,6 +72,7 @@ async function iniciarSesion(correo, contrasena) {
     return { exito: true, destino: pantallaInicioDe(respuesta.usuario.rol) };
   } catch (error) {
     if (error.datos?.motivo === 'pendiente') return { exito: false, motivo: 'pendiente' };
+    if (error.datos?.motivo === 'rechazada') return { exito: false, motivo: 'rechazada', mensaje: error.message };
     if (error.estado === 401) return { exito: false, motivo: 'credenciales' };
     return { exito: false, motivo: 'servicio' };
   }

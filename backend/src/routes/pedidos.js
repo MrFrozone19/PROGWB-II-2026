@@ -3,6 +3,9 @@ const { Empresa, Producto, Configuracion, Pedido, DetallePedido, Inventario } = 
 const express = require('express');
 const { autenticar } = require('../middleware/auth');
 const { registrarEvento } = require('../services/logger');
+const Transaccion = require('../models/Transaccion');
+const avisar = require('../services/avisar');
+const calcularComision = require('../services/comision');
 
 const router = express.Router();
 
@@ -18,7 +21,7 @@ router.get('/', async (req, res, next) => {
     } else if (req.usuario.rol !== 'administrador') {
       return res.status(403).json({ mensaje: 'El usuario no tiene el rol adecuado para ver pedidos.' });
     }
-    const pedidos = await Pedido.find(filtro).sort({ fechaCreacion: -1 });
+    const pedidos = await Pedido.find(filtro).populate('compradorId', 'razonSocial').populate('distribuidorId', 'razonSocial').sort({ fechaCreacion: -1 });
     res.json(pedidos);
   } catch (error) {
     next(error);
@@ -43,7 +46,9 @@ router.get('/:id', async (req, res, next) => {
     if (req.usuario.rol !== 'administrador' && req.usuario.rol !== 'comprador' && req.usuario.rol !== 'distribuidor') {
       return res.status(403).json({ mensaje: 'El usuario no tiene el rol adecuado para ver pedidos.' });
     }
-    const detallesPedido = await DetallePedido.find({ pedidoId: pedido._id });
+    const detallesPedido = await DetallePedido.find({ pedidoId: pedido._id }).populate('productoId', 'nombre sku unidadMedida');
+    await pedido.populate('compradorId', 'razonSocial calle colonia municipio codigoPostal');
+    await pedido.populate('distribuidorId', 'razonSocial calle colonia municipio codigoPostal');
     return res.json({ pedido, detalles: detallesPedido });
   } catch (error) {
     next(error);
@@ -55,7 +60,7 @@ router.post('/confirmar', async (req, res, next) => {
     if (!req.body || typeof req.body !== 'object' || Array.isArray(req.body)) {
         return res.status(400).json({ mensaje: 'El cuerpo de la solicitud debe ser un objeto JSON.' });
     }
-    const { compradorId, distribuidorId, productos } = req.body;
+    const { compradorId, distribuidorId, productos, direccionEntrega, referenciaEntrega, metodoPago } = req.body;
     if (!compradorId || !distribuidorId) {
         return res.status(400).json({ mensaje: 'Faltan campos obligatorios.' });
     }
@@ -127,8 +132,10 @@ router.post('/confirmar', async (req, res, next) => {
         productosEncontrados.push(productoEncontrado);
         subtotal += productoEncontrado.precio * producto.cantidad;
     }
-    const configuracionComision = await Configuracion.findOne({ clave: 'comision_porcentaje' });
-    const comisionPct = configuracionComision ? Number(configuracionComision.valor) : 5;
+    if (direccionEntrega && String(direccionEntrega).length > 300 || referenciaEntrega && String(referenciaEntrega).length > 300) return res.status(400).json({ mensaje: 'La dirección o referencia de entrega es demasiado larga.' });
+    if (metodoPago && !['transferencia','contra_entrega'].includes(metodoPago)) return res.status(400).json({ mensaje: 'Forma de pago inválida.' });
+    if (distribuidor.formasPago?.length && metodoPago && !distribuidor.formasPago.includes(metodoPago)) return res.status(400).json({ mensaje: 'El distribuidor no acepta esa forma de pago.' });
+    const comisionPct = await calcularComision(productos.map((p,i) => ({ producto: productosEncontrados[i], cantidad: p.cantidad })), distribuidorId);
     if (!Number.isFinite(comisionPct) || comisionPct < 2 || comisionPct > 10) {
         return res.status(500).json({ mensaje: 'La comision debe ser un número entre 2 y 10.' });
     }
@@ -137,6 +144,9 @@ router.post('/confirmar', async (req, res, next) => {
         distribuidorId,
         subtotal,
         comisionPct,
+        direccionEntrega: String(direccionEntrega || `${comprador.calle}, ${comprador.colonia}, ${comprador.municipio}`).trim(),
+        referenciaEntrega: String(referenciaEntrega || '').trim(),
+        metodoPago: metodoPago || 'transferencia',
         historialEstados: [{ estado: 'pendiente' }],
 
         total: subtotal
@@ -163,6 +173,8 @@ router.post('/confirmar', async (req, res, next) => {
         await pedido.deleteOne();
         throw error;
     }
+    await Transaccion.updateOne({ pedidoId: pedido._id }, { $setOnInsert: { tipo: 'venta', monto: pedido.total, estado: 'pendiente', referencia: String(pedido._id) } }, { upsert: true });
+    await avisar(distribuidorId, pedido._id, `Tienes un nuevo pedido ${String(pedido._id).slice(-7)}.`);
     return res.status(201).json({ pedido, detalles });
 
   } catch (error) {
@@ -247,6 +259,7 @@ router.put('/:id/aceptar', async (req, res, next) => {
     if (!pedidoAceptado) {
         throw new Error('No se pudo actualizar el estado del pedido a aceptado.');
     }
+    await avisar(pedido.compradorId, pedido._id, 'El distribuidor aceptó tu pedido.');
     return res.status(200).json({ mensaje: 'Pedido aceptado exitosamente.', pedido: pedidoAceptado });
     } catch (error) {
         for (const descuento of descuentosRealizados) {
@@ -302,6 +315,7 @@ router.put('/:id/preparar', async (req, res, next) => {
     if (!pedidoPreparado) {
       return res.status(409).json({ mensaje: 'No se pudo actualizar el estado del pedido a en preparación.' });
     }
+    await avisar(pedido.compradorId, pedido._id, 'Tu pedido está en preparación.');
     return res.status(200).json({ mensaje: 'Pedido en preparación.', pedido: pedidoPreparado });
   } catch (error) {
     next(error);
@@ -334,6 +348,7 @@ router.put('/:id/enviar', async (req, res, next) => {
     if (!pedidoEnviado) {
       return res.status(409).json({ mensaje: 'No se pudo actualizar el estado del pedido a en camino.' });
     }
+    await avisar(pedido.compradorId, pedido._id, 'Tu pedido está en camino.');
     return res.status(200).json({ mensaje: 'Pedido enviado exitosamente.', pedido: pedidoEnviado });
   } catch (error) {
     next(error);
@@ -368,6 +383,8 @@ router.put('/:id/entregar', async (req, res, next) => {
     if (!pedidoEntregado) {
       return res.status(409).json({ mensaje: 'No se pudo actualizar el estado del pedido a entregado.' });
     }
+    await Transaccion.updateOne({ pedidoId: pedido._id }, { $set: { estado: 'aprobada', monto: pedido.total } }, { upsert: false });
+    await avisar(pedido.compradorId, pedido._id, 'Tu pedido fue marcado como entregado.');
     return res.status(200).json({ mensaje: 'Pedido entregado exitosamente.', pedido: pedidoEntregado });
   } catch (error) {
     next(error);
@@ -392,7 +409,7 @@ router.put('/:id/cancelar', async (req, res, next) => {
     if (req.usuario.rol !== 'comprador' && req.usuario.rol !== 'distribuidor') {
       return res.status(403).json({ mensaje: 'El usuario no tiene el rol adecuado para cancelar pedidos.' });
     }
-    if (!(['pendiente', 'aceptado', 'en_preparacion']).includes(pedido.estado)) {
+    if (pedido.estado !== 'pendiente') {
         return res.status(409).json({ mensaje: 'El pedido no está en un estado que permita la cancelación.' });
     }
     if (pedido.estado === 'pendiente') {
@@ -404,6 +421,8 @@ router.put('/:id/cancelar', async (req, res, next) => {
         if (!pedidoCancelado) {
             return res.status(409).json({ mensaje: 'No se pudo actualizar el estado del pedido a cancelado.' });
         }
+        await Transaccion.updateOne({ pedidoId: pedido._id }, { $set: { estado: 'rechazada' } });
+        await avisar(pedido.distribuidorId, pedido._id, 'El comprador canceló el pedido.');
         return res.status(200).json({ mensaje: 'Pedido cancelado exitosamente.', pedido: pedidoCancelado });
     }
     const detalles = await DetallePedido.find({ pedidoId: pedido._id });
@@ -442,6 +461,8 @@ router.put('/:id/cancelar', async (req, res, next) => {
         if (!pedidoCancelado) {
             throw new Error('No se pudo actualizar el estado del pedido a cancelado.');
         }
+        await Transaccion.updateOne({ pedidoId: pedido._id }, { $set: { estado: 'rechazada' } });
+        await avisar(pedido.distribuidorId, pedido._id, 'El comprador canceló el pedido.');
         return res.status(200).json({ mensaje: 'Pedido cancelado exitosamente.', pedido: pedidoCancelado });
     } catch (error) {
         registrarEvento('error', 'cancelacion_incompleta', { pedidoId: pedido._id, devoluciones: devolucionesRealizadas, error: error.message });
@@ -487,6 +508,8 @@ router.put('/:id/rechazar', async (req, res, next) => {
     if (!pedidoRechazado) {
       return res.status(409).json({ mensaje: 'No se pudo actualizar el estado del pedido a rechazado.' });
     }
+    await Transaccion.updateOne({ pedidoId: pedido._id }, { $set: { estado: 'rechazada' } });
+    await avisar(pedido.compradorId, pedido._id, `El pedido fue rechazado: ${motivoRechazo}`);
     return res.status(200).json({ mensaje: 'Pedido rechazado exitosamente.', pedido: pedidoRechazado });
   } catch (error) {
     next(error);

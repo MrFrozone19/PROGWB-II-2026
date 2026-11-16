@@ -52,6 +52,8 @@ formularioLogin.addEventListener('submit', async (evento) => {
     location.href = resultado.destino;
   } else if (resultado.motivo === 'pendiente') {
     avisoPendiente.hidden = false;
+  } else if (resultado.motivo === 'rechazada') {
+    mostrarError(resultado.mensaje || 'La empresa fue rechazada.');
   } else if (resultado.motivo === 'servicio') {
     mostrarError('No fue posible comunicarse con el servicio. Revisa que el Back End esté iniciado.');
   } else {
@@ -65,10 +67,12 @@ botonVerContrasena.addEventListener('click', () => {
   botonVerContrasena.textContent = mostrar ? 'Ocultar' : 'Mostrar';
 });
 
-document.getElementById('olvide-contrasena').addEventListener('click', (evento) => {
+document.getElementById('olvide-contrasena').addEventListener('click', async (evento) => {
   evento.preventDefault();
-  ocultarMensajes();
-  mensajeRecuperacion.hidden = false;
+  const correo = prompt('Escribe tu correo para recuperar el acceso:', campoCorreo.value);
+  if (!correo) return;
+  try { await solicitarApi('/auth/recuperar',{method:'POST',body:JSON.stringify({correo})});ocultarMensajes();mensajeRecuperacion.hidden=false; }
+  catch(error){mostrarError(error.message);}
 });
 
 document.querySelectorAll('.demo [data-correo]').forEach((fila) => {

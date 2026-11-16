@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 const validarReferencia = require('./validarReferencia');
 
 const TransaccionSchema = new Schema({
-  pedidoId: { type: Schema.Types.ObjectId, ref: 'Pedido', required: true, validate: validarReferencia('Pedido') },
+  pedidoId: { type: Schema.Types.ObjectId, ref: 'Pedido', required: true, unique: true, validate: validarReferencia('Pedido') },
   tipo: { type: String, required: true, maxlength: 30, default: 'venta' },
   monto: { type: Number, required: true, min: 0 },
   estado: {

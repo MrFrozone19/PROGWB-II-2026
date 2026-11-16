@@ -10,6 +10,8 @@ const ProductoSchema = new Schema({
   categoria: { type: String, required: true, maxlength: 80 },
   precio: { type: Number, required: true, min: 0 },
   unidadMedida: { type: String, required: true, maxlength: 30 },
+  marca: { type: String, maxlength: 80, default: '' },
+  fotoUrl: { type: String, maxlength: 500, default: '' },
   activo: { type: Boolean, required: true, default: true },
   }, {
   collection: 'productos',
